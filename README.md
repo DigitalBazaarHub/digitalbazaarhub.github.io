@@ -1,2 +1,2 @@
-# digitalbazaar.github.io
+# digitalbazaarhub.github.io
 The community's landing page
