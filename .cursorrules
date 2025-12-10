@@ -1,0 +1,159 @@
+# Digital Bazaar Community — Agent Rules
+
+> Bilingual Arabic/English Jekyll site for WhatsApp community
+> Aesthetic: High-end magazine, Middle Eastern-inspired palette
+
+---
+
+## 🧠 AGENT MINDSET
+
+### 1. Research First, Code Second
+
+Before writing ANY custom code, search in this order:
+1. Jekyll built-in features and plugins
+2. Tailwind CSS utilities and plugins
+3. Bootstrap components (especially RTL)
+4. Community solutions (GitHub, Stack Overflow)
+5. Only then: custom implementation
+
+### 2. Bilingual UX Thinking
+
+Every feature must work in BOTH languages:
+- Arabic: RTL, larger line-height (1.8+), right-aligned
+- English: LTR, standard line-height, left-aligned
+- Test both `/ar/` and `/en/` before considering anything complete
+
+### 3. Magazine, Not Blog
+
+**This is a high-end digital magazine, not a basic blog.**
+
+Design every page like a premium publication spread:
+- Editorial layouts with intentional white space
+- Images that command attention (floats, bleeds, overlays)
+- Typography as art (pull quotes, drop caps, hierarchy)
+- Refined details (shadows, borders, spacing)
+
+---
+
+## 🎨 COLOR PALETTE
+
+```
+--sand: #F4E6C4        Background, warm neutral
+--saffron: #E2B714     Accent, highlights
+--terracotta: #B34E36  Primary CTA, warmth
+--marigold: #D9912A    Secondary accent, energy
+--teal: #2F8F9D        Links, cool contrast
+--night: #152029       Headings, strong text
+--ink: #21313B         Body text
+--white: #FFFFFF       Cards, buttons
+```
+
+**Never introduce colors outside this palette.**
+
+---
+
+## 📁 FILE STRUCTURE
+
+```
+├── _config.yml
+├── _data/rules_{ar,en}.yml
+├── _includes/{header,footer,language-toggle,article-card}.html
+├── _layouts/{default,home,article}.html
+├── _posts/YYYY-MM-DD-title.md
+├── _docs/                    ← Design system reference
+│   ├── design-system.md
+│   ├── image-layouts.md
+│   └── article-templates.md
+├── assets/css/styles.css
+├── ar/index.html
+├── en/index.html
+└── index.html               ← Redirects to /ar/
+```
+
+---
+
+## 📝 ARTICLE FRONT MATTER
+
+```yaml
+---
+layout: article
+title: "عنوان المقال"
+author: "اسم الكاتب"
+date: 2025-01-15
+lang: ar                    # 'ar' or 'en'
+excerpt: "ملخص قصير"
+---
+```
+
+---
+
+## ✅ ALWAYS
+
+1. Search for existing solutions before custom code
+2. Run `bundle exec jekyll serve --trace` and watch logs
+3. Test BOTH `/ar/` and `/en/` pages in browser
+4. Use CSS logical properties (`margin-inline-start`, not `margin-left`)
+5. Keep text in `_data/` files, never hardcode
+6. Use only palette colors
+7. Design like a magazine — floats, bleeds, pull quotes, drop caps
+8. Check browser DevTools console for errors
+9. Test mobile responsiveness
+10. Verify language toggle works
+
+---
+
+## 🚫 NEVER
+
+1. Write custom code before checking existing solutions
+2. Hardcode text in templates
+3. Use physical properties (`left/right`) — use logical (`start/end`)
+4. Design boring layouts — no walls of text
+5. Use default/unstyled code blocks
+6. Skip manual browser testing
+7. Ignore Jekyll build warnings
+8. Introduce colors outside the palette
+9. Merge without testing both languages
+10. Create cramped layouts — white space is design
+
+---
+
+## ✅ VERIFICATION (After Every Change)
+
+```bash
+# 1. Watch logs
+bundle exec jekyll serve --livereload --trace
+
+# 2. Test both languages
+open http://localhost:4000/ar/
+open http://localhost:4000/en/
+
+# 3. Check:
+#    - Page loads without errors
+#    - Text direction correct (RTL/LTR)
+#    - Language toggle works
+#    - Mobile layout (resize window)
+#    - DevTools console (F12) — no errors
+```
+
+---
+
+## 📚 DESIGN REFERENCES
+
+When implementing specific features, read these files:
+
+| Need | Reference |
+|------|-----------|
+| Image layouts (floats, bleeds, overlays) | `_docs/image-layouts.md` |
+| Typography (pull quotes, drop caps) | `_docs/design-system.md` |
+| Article page structure | `_docs/article-templates.md` |
+| Code block styling | `_docs/design-system.md` |
+
+---
+
+## 🔗 EXTERNAL RESOURCES
+
+- Jekyll Docs: https://jekyllrb.com/docs/
+- Tailwind RTL: https://github.com/20lives/tailwindcss-rtl
+- CSS Logical Properties: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values
+- Arabic Fonts: https://fonts.google.com/?subset=arabic
+

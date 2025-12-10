@@ -1,0 +1,30 @@
+---
+layout: default
+title: Articles
+lang: en
+---
+{%- assign strings = site.data.strings_en -%}
+{%- assign articles = site.posts -%}
+
+<section class="articles-page">
+  <header class="articles-header">
+    <h1>{{ strings.nav.articles }}</h1>
+    <p class="articles-intro">{{ strings.articles.intro }}</p>
+  </header>
+
+  {% include article-filters.html %}
+
+  <div class="articles-grid" id="articlesGrid">
+    {%- for post in articles -%}
+      {% include article-card.html post=post lang="en" %}
+    {%- endfor -%}
+  </div>
+
+  <div class="articles-empty" id="articlesEmpty" style="display: none;">
+    <p>{{ strings.articles.no_results }}</p>
+  </div>
+</section>
+
+<script>
+{% include article-filters.js %}
+</script>

@@ -1,0 +1,123 @@
+# English UI Strings — Digital Bazaar
+# All user-facing text for the English version
+
+# Site
+site_title: "Digital Bazaar"
+site_tagline: "Where the Arab digital world meets, trades, and grows."
+
+# Navigation
+nav:
+  home: "Home"
+  articles: "Articles"
+  rules: "Rules"
+  about: "About"
+  join: "Join Us"
+  menu: "Menu"
+
+# Rules Page
+rules_page:
+  title: "Community Rules"
+  subtitle: "Our guidelines for a healthy and thriving community environment"
+
+# Language Toggle
+language:
+  current: "English"
+  switch_to: "العربية"
+  switch_url: "/ar/"
+
+# Hero Section
+hero:
+  badge: "🛍️ A warm, informal community"
+  intro: |
+    **Digital Bazaar** is a modern souq for founders, builders, marketers, designers, 
+    and engineers across the Arab world. We swap ideas, share opportunities, 
+    and help each other build real things — without the noise.
+  secondary: |
+    Join the WhatsApp community, tinker with us on GitHub, 
+    and help shape the bazaar's next stall.
+
+# Buttons
+buttons:
+  join_whatsapp: "Join WhatsApp"
+  visit_github: "Visit GitHub"
+  read_more: "Read More"
+  back_home: "Back to Home"
+  back_to_articles: "← Back to Articles"
+
+# Articles Section
+articles:
+  intro: "Ideas and insights from Digital Bazaar members"
+  empty: "No articles yet. Be the first to write!"
+  no_results: "No articles match the selected filters."
+  featured: "Featured Articles"
+
+# Filters
+filters:
+  title: "Filter Articles"
+  language:
+    label: "Language"
+    all: "All"
+    ar: "العربية"
+    en: "English"
+  category:
+    label: "Category"
+    all: "All Categories"
+  author:
+    label: "Author"
+    all: "All"
+    team: "Bazaar Team"
+    member: "Community Member"
+  time:
+    label: "Time"
+    all: "All Time"
+    week: "Last Week"
+    month: "Last Month"
+    year: "This Year"
+  sort:
+    label: "Sort"
+    newest: "Newest First"
+    oldest: "Oldest First"
+  clear: "Clear Filters"
+  results: "result"
+  results_plural: "results"
+
+# Community Rules Section
+rules:
+  title: "🤝 Community Rules"
+  items:
+    - title: "Be kind and respectful"
+      description: "Be kind and respectful to all members. We're here to support and uplift each other in our professional journeys."
+    - title: "Share knowledge freely"
+      description: "Share knowledge and opportunities freely. The bazaar thrives on open exchange of ideas and connections."
+    - title: "Keep discussions constructive"
+      description: "Keep discussions constructive and relevant to tech, business, and the digital ecosystem."
+    - title: "No spam, no hard selling"
+      description: "No spam, no hard selling. Share your work naturally and respect the community's attention."
+    - title: "Professional yet warm"
+      description: "Maintain professionalism while keeping the warm, informal spirit that makes our community special."
+    - title: "Moderators' discretion"
+      description: "Moderators reserve the right to remove disruptive members at any time, no warnings required."
+    - title: "Don't be an asshole"
+      description: "Zero tolerance for racism, sexism, harassment, or toxic behavior of any kind."
+
+# Footer
+footer:
+  copyright: "© %{year} Digital Bazaar"
+  tagline: "Made with ❤ across the Arab world"
+  links:
+    whatsapp: "WhatsApp"
+    github: "GitHub"
+
+# Article
+article:
+  by: "By"
+  published: "Published on"
+  read_time: "min read"
+  share: "Share this article"
+
+# 404 Page
+error_404:
+  title: "Page Not Found"
+  message: "Sorry, the page you're looking for doesn't exist."
+  back: "Back to Home"
+
