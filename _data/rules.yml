@@ -1,0 +1,59 @@
+# Community Rules — Digital Bazaar
+# Bilingual rules with unique keys
+
+- id: be_kind
+  ar:
+    title: "كن لطيفاً ومحترماً"
+    description: "كن لطيفاً ومحترماً مع جميع الأعضاء. نحن هنا لدعم ورفع بعضنا البعض في مسيرتنا المهنية."
+  en:
+    title: "Be kind and respectful"
+    description: "Be kind and respectful to all members. We're here to support and uplift each other in our professional journeys."
+
+- id: share_knowledge
+  ar:
+    title: "شارك المعرفة والفرص"
+    description: "شارك المعرفة والفرص بحرية. البازار يزدهر بالتبادل المفتوح للأفكار والعلاقات."
+  en:
+    title: "Share knowledge freely"
+    description: "Share knowledge and opportunities freely. The bazaar thrives on open exchange of ideas and connections."
+
+- id: constructive
+  ar:
+    title: "حافظ على النقاشات البناءة"
+    description: "حافظ على النقاشات البناءة وذات صلة بالتكنولوجيا والأعمال والنظام الرقمي."
+  en:
+    title: "Keep discussions constructive"
+    description: "Keep discussions constructive and relevant to tech, business, and the digital ecosystem."
+
+- id: no_spam
+  ar:
+    title: "لا إزعاج ولا للبيع المباشر"
+    description: "لا لل spam (الرسائل المزعجة)، لا للبيع المباشر. شارك عملك بشكل طبيعي واحترم انتباه المجتمع."
+  en:
+    title: "No spam, no hard selling"
+    description: "No spam, no hard selling. Share your work naturally and respect the community's attention."
+
+- id: professional_warm
+  ar:
+    title: "احترافية مع دفء"
+    description: "حافظ على الاحترافية مع الإبقاء على الروح الدافئة والغير رسمية التي تميز مجتمعنا."
+  en:
+    title: "Professional yet warm"
+    description: "Maintain professionalism while keeping the warm, informal spirit that makes our community special."
+
+- id: moderators
+  ar:
+    title: "حقوق المشرفين"
+    description: "المشرفين لديهم الحق في إزالة الأعضاء المسببين للإزعاج في أي وقت، دون الحاجة للتحذيرات."
+  en:
+    title: "Moderators' discretion"
+    description: "Moderators reserve the right to remove disruptive members at any time, no warnings required."
+
+- id: zero_tolerance
+  ar:
+    title: "لا تكن نذلاً"
+    description: "عدم التسامح مطلقاً مع العنصرية أو التمييز أو التحرش أو أي سلوك سام."
+  en:
+    title: "Don't be an asshole"
+    description: "Zero tolerance for racism, sexism, harassment, or toxic behavior of any kind."
+

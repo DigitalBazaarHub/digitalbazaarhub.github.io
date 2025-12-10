@@ -1,0 +1,87 @@
+# Digital Bazaar — Jekyll Configuration
+# A bilingual (Arabic/English) digital magazine for the Arab tech community
+
+# Site Settings
+title: Digital Bazaar
+title_ar: البازار الرقمي
+tagline: Where the Arab digital world meets, trades, and grows.
+tagline_ar: حيث يلتقي العالم العربي الرقمي، ويتبادل، وينمو.
+description: A warm, informal community for Arab founders, builders, marketers, designers, and engineers.
+description_ar: مجتمع دافئ وغير رسمي للمؤسسين والبناة والمسوقين والمصممين والمهندسين العرب.
+url: "https://digitalbazaarhub.github.io"
+baseurl: ""
+
+# Default Language
+default_lang: ar
+languages:
+  - ar
+  - en
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:title/
+
+# Sass/SCSS
+sass:
+  style: compressed
+  sass_dir: _sass
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - .git/
+  - .gitignore
+  - README.md
+  - LICENSE
+  - lefthook.yml
+  - _docs/
+
+# Include dotfiles if needed
+include:
+  - .nojekyll
+
+# Plugins (GitHub Pages compatible)
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /articles/:title/
+
+# Defaults
+defaults:
+  # Arabic pages
+  - scope:
+      path: "ar"
+    values:
+      lang: ar
+      layout: default
+  # English pages  
+  - scope:
+      path: "en"
+    values:
+      lang: en
+      layout: default
+  # Posts default
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: article
+
+# Social Links
+social:
+  whatsapp: "https://chat.whatsapp.com/Lg73q7FG8cHGFKzfYSkZV5"
+  github: "https://github.com/DigitalBazaarHub"
+
+# Analytics (add your ID when ready)
+# google_analytics: UA-XXXXXXXX-X
+

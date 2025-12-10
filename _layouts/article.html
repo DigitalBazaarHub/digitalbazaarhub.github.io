@@ -1,0 +1,58 @@
+---
+layout: default
+---
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign strings_key = 'strings_' | append: lang -%}
+{%- assign strings = site.data[strings_key] -%}
+
+<article class="article">
+  <header class="article-header">
+    {%- if page.category -%}
+    <span class="article-category">{{ page.category }}</span>
+    {%- endif -%}
+    
+    <h1 class="article-title">{{ page.title }}</h1>
+    
+    {%- if page.excerpt -%}
+    <p class="article-excerpt">{{ page.excerpt }}</p>
+    {%- endif -%}
+    
+    <div class="article-meta">
+      <span class="article-author">
+        {{ strings.article.by }} <strong>{{ page.author }}</strong>
+      </span>
+      <span class="meta-separator">•</span>
+      <time class="article-date" datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%B %d, %Y" }}
+      </time>
+      {%- if page.read_time -%}
+      <span class="meta-separator">•</span>
+      <span class="article-read-time">{{ page.read_time }} {{ strings.article.read_time }}</span>
+      {%- endif -%}
+    </div>
+  </header>
+
+  {%- if page.image -%}
+  <figure class="article-hero-image">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+    {%- if page.image_caption -%}
+    <figcaption>{{ page.image_caption }}</figcaption>
+    {%- endif -%}
+  </figure>
+  {%- endif -%}
+
+  <div class="article-content">
+    {{ content }}
+  </div>
+
+  <footer class="article-footer">
+    <div class="divider"><span>✦</span></div>
+    
+    <div class="article-actions">
+      <a href="/{{ lang }}/articles/" class="btn btn-secondary">
+        <span>{{ strings.buttons.back_to_articles | default: strings.buttons.back_home }}</span>
+      </a>
+    </div>
+  </footer>
+</article>
+

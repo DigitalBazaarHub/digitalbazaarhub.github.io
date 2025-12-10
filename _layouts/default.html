@@ -1,0 +1,75 @@
+<!doctype html>
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign text_direction = page.text_direction | default: 'rtl' -%}
+{%- if lang == 'en' -%}
+  {%- assign text_direction = 'ltr' -%}
+{%- endif -%}
+{%- assign strings_key = 'strings_' | append: lang -%}
+{%- assign strings = site.data[strings_key] -%}
+<html lang="{{ lang }}" dir="{{ text_direction }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  {%- if page.title -%}
+    <title>{{ page.title }} — {{ strings.site_title }}</title>
+  {%- else -%}
+    <title>{{ strings.site_title }} — {{ strings.site_tagline }}</title>
+  {%- endif -%}
+  
+  <meta name="description" content="{{ page.excerpt | default: site.description }}">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ page.title | default: strings.site_title }}">
+  <meta property="og:description" content="{{ page.excerpt | default: strings.site_tagline }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="{{ lang }}">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#B34E36">
+  
+  <!-- Fonts (self-hosted) -->
+  {%- if lang == 'ar' -%}
+    <link rel="preload" href="{{ '/assets/fonts/Tajawal-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/Tajawal-Bold.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  {%- else -%}
+    <link rel="preload" href="{{ '/assets/fonts/DMSans-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/DMSans-Bold.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  {%- endif -%}
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+  
+  <!-- SEO -->
+  {% seo %}
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{{ '/assets/img/digital_bazaar_2025.png' | relative_url }}">
+</head>
+<body class="lang-{{ lang }}">
+  <div class="wrap">
+    {% include header.html %}
+    
+    <main>
+      {{ content }}
+    </main>
+    
+    {% include footer.html %}
+  </div>
+  
+  <script>
+    // Convert to Arabic-Indic numerals
+    function toArabicNumerals(num) {
+      const arabicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+      return String(num).replace(/\d/g, d => arabicDigits[d]);
+    }
+    
+    // Set current year in footer
+    document.querySelectorAll('[data-year]').forEach(el => {
+      const year = new Date().getFullYear();
+      const lang = el.dataset.lang || 'en';
+      el.textContent = lang === 'ar' ? toArabicNumerals(year) : year;
+    });
+  </script>
+</body>
+</html>

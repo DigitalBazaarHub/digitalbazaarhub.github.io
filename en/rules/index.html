@@ -1,0 +1,34 @@
+---
+layout: default
+title: Community Rules
+lang: en
+permalink: /en/rules/
+---
+{%- assign strings = site.data.strings_en -%}
+{%- assign rules = site.data.rules -%}
+
+<section class="rules-page">
+  <header class="rules-header">
+    <h1>🤝 {{ strings.rules_page.title }}</h1>
+    <p class="rules-subtitle">{{ strings.rules_page.subtitle }}</p>
+  </header>
+
+  <ol class="rules-list">
+    {%- for rule in rules -%}
+    <li class="rule-item">
+      <div class="rule-number">{{ forloop.index }}</div>
+      <div class="rule-content">
+        <h2 class="rule-title">{{ rule.en.title }}</h2>
+        <p class="rule-description">{{ rule.en.description }}</p>
+      </div>
+    </li>
+    {%- endfor -%}
+  </ol>
+
+  <div class="rules-cta">
+    <a href="{{ site.social.whatsapp }}" class="btn btn-primary" target="_blank" rel="noopener">
+      {{ strings.buttons.join_whatsapp }} ↗
+    </a>
+  </div>
+</section>
+

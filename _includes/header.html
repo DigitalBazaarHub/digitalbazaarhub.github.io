@@ -1,0 +1,51 @@
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign strings_key = 'strings_' | append: lang -%}
+{%- assign strings = site.data[strings_key] -%}
+
+<header class="site-header">
+  <div class="header-main">
+    <a href="/{{ lang }}/" class="logo-link">
+      <img 
+        src="{{ '/assets/img/digital_bazaar_2025.jpg' | relative_url }}" 
+        alt="{{ strings.site_title }}" 
+        class="logo"
+      >
+      <div class="site-branding">
+        <h1 class="site-title">{{ strings.site_title }} 💬</h1>
+        <p class="site-tagline">{{ strings.site_tagline }}</p>
+      </div>
+    </a>
+    
+    <button class="nav-toggle" id="navToggle" aria-label="{{ strings.nav.menu | default: 'Menu' }}" aria-expanded="false">
+      <span class="nav-toggle-icon"></span>
+    </button>
+  </div>
+  
+  <div class="header-nav" id="headerNav">
+    <nav class="site-nav">
+      <a href="/{{ lang }}/articles/" class="nav-link {% if page.url contains '/articles/' %}active{% endif %}">
+        {{ strings.nav.articles }}
+      </a>
+      <a href="/{{ lang }}/rules/" class="nav-link {% if page.url contains '/rules/' %}active{% endif %}">
+        {{ strings.nav.rules }}
+      </a>
+    </nav>
+    
+    {% include language-toggle.html %}
+  </div>
+</header>
+<div class="header-separator"></div>
+
+<script>
+(function() {
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('headerNav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function() {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !expanded);
+      nav.classList.toggle('is-open');
+    });
+  }
+})();
+</script>

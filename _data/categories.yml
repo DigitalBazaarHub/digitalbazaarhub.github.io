@@ -1,0 +1,34 @@
+# Article Categories — Digital Bazaar
+# Bilingual category definitions
+# Add new categories here and they'll appear in filters automatically
+
+- id: community
+  ar: "مجتمع"
+  en: "Community"
+  color: "teal"
+
+- id: tech
+  ar: "تقنية"
+  en: "Tech"
+  color: "terracotta"
+
+- id: startups
+  ar: "ريادة أعمال"
+  en: "Startups"
+  color: "marigold"
+
+- id: design
+  ar: "تصميم"
+  en: "Design"
+  color: "saffron"
+
+- id: marketing
+  ar: "تسويق"
+  en: "Marketing"
+  color: "teal"
+
+- id: career
+  ar: "مسيرة مهنية"
+  en: "Career"
+  color: "terracotta"
+

@@ -1,0 +1,108 @@
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign strings_key = 'strings_' | append: lang -%}
+{%- assign strings = site.data[strings_key] -%}
+{%- assign categories = site.data.categories -%}
+
+<div class="filters-section">
+  <div class="filters-header">
+    <button type="button" class="filters-toggle" id="filtersToggle" aria-expanded="false" aria-controls="filtersContent">
+      <span class="filters-toggle-icon"></span>
+      <h2 class="filters-title">{{ strings.filters.title }}</h2>
+      <span class="filters-toggle-arrow">▾</span>
+    </button>
+    <button type="button" class="filters-clear" id="clearFilters" style="display: none;">
+      {{ strings.filters.clear }}
+    </button>
+  </div>
+  
+  <div class="filters-content" id="filtersContent">
+    <div class="filters-grid">
+      <!-- Language Filter -->
+      <div class="filter-group">
+        <label class="filter-label" for="filter-lang">{{ strings.filters.language.label }}</label>
+        <div class="filter-select-wrap">
+          <select class="filter-select" id="filter-lang" data-filter="lang">
+            <option value="all">{{ strings.filters.language.all }}</option>
+            <option value="ar">{{ strings.filters.language.ar }}</option>
+            <option value="en">{{ strings.filters.language.en }}</option>
+          </select>
+          <span class="filter-select-arrow">▾</span>
+        </div>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="filter-group">
+        <label class="filter-label" for="filter-category">{{ strings.filters.category.label }}</label>
+        <div class="filter-select-wrap">
+          <select class="filter-select" id="filter-category" data-filter="category">
+            <option value="all">{{ strings.filters.category.all }}</option>
+            {%- for cat in categories -%}
+            <option value="{{ cat.id }}">{{ cat[lang] }}</option>
+            {%- endfor -%}
+          </select>
+          <span class="filter-select-arrow">▾</span>
+        </div>
+      </div>
+
+      <!-- Author Type Filter -->
+      <div class="filter-group">
+        <label class="filter-label" for="filter-author">{{ strings.filters.author.label }}</label>
+        <div class="filter-select-wrap">
+          <select class="filter-select" id="filter-author" data-filter="author">
+            <option value="all">{{ strings.filters.author.all }}</option>
+            <option value="team">{{ strings.filters.author.team }}</option>
+            <option value="member">{{ strings.filters.author.member }}</option>
+          </select>
+          <span class="filter-select-arrow">▾</span>
+        </div>
+      </div>
+
+      <!-- Time Filter -->
+      <div class="filter-group">
+        <label class="filter-label" for="filter-time">{{ strings.filters.time.label }}</label>
+        <div class="filter-select-wrap">
+          <select class="filter-select" id="filter-time" data-filter="time">
+            <option value="all">{{ strings.filters.time.all }}</option>
+            <option value="week">{{ strings.filters.time.week }}</option>
+            <option value="month">{{ strings.filters.time.month }}</option>
+            <option value="year">{{ strings.filters.time.year }}</option>
+          </select>
+          <span class="filter-select-arrow">▾</span>
+        </div>
+      </div>
+
+      <!-- Sort Order -->
+      <div class="filter-group">
+        <label class="filter-label" for="filter-sort">{{ strings.filters.sort.label }}</label>
+        <div class="filter-select-wrap">
+          <select class="filter-select" id="filter-sort" data-filter="sort">
+            <option value="newest">{{ strings.filters.sort.newest }}</option>
+            <option value="oldest">{{ strings.filters.sort.oldest }}</option>
+          </select>
+          <span class="filter-select-arrow">▾</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="filters-results" id="filtersResults" style="display: none;">
+      <span id="resultsCount">0</span> 
+      <span id="resultsLabel">{{ strings.filters.results_plural }}</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const toggle = document.getElementById('filtersToggle');
+  const content = document.getElementById('filtersContent');
+  const section = document.querySelector('.filters-section');
+  
+  if (toggle && content) {
+    toggle.addEventListener('click', function() {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !expanded);
+      section.classList.toggle('is-open');
+    });
+  }
+})();
+</script>

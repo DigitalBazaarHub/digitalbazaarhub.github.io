@@ -1,0 +1,48 @@
+{%- assign lang = include.lang | default: page.lang | default: site.default_lang -%}
+{%- assign strings_key = 'strings_' | append: lang -%}
+{%- assign strings = site.data[strings_key] -%}
+{%- assign post = include.post -%}
+{%- assign categories = site.data.categories -%}
+
+{%- assign cat_label = post.category -%}
+{%- for cat in categories -%}
+  {%- if cat.id == post.category -%}
+    {%- assign cat_label = cat[post.lang] | default: cat[lang] | default: post.category -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<article class="article-card" 
+  data-lang="{{ post.lang }}"
+  data-category="{{ post.category }}"
+  data-author="{{ post.author_type | default: 'member' }}"
+  data-date="{{ post.date | date: '%Y-%m-%d' }}">
+  
+  {%- if post.image -%}
+  <a href="{{ post.url | relative_url }}" class="article-card-image">
+    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
+  </a>
+  {%- endif -%}
+  
+  <div class="article-card-content">
+    {%- if post.category -%}
+    <span class="article-card-category">{{ cat_label }}</span>
+    {%- endif -%}
+    
+    <h3 class="article-card-title">
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </h3>
+    
+    {%- if post.excerpt -%}
+    <p class="article-card-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+    {%- endif -%}
+    
+    <div class="article-card-meta">
+      <span class="article-card-author">{{ post.author }}</span>
+      <span class="meta-separator">•</span>
+      <time datetime="{{ post.date | date_to_xmlschema }}">
+        {{ post.date | date: "%b %d, %Y" }}
+      </time>
+    </div>
+  </div>
+</article>
