@@ -100,6 +100,18 @@ excerpt: "ملخص قصير"
 9. Test mobile responsiveness
 10. Verify language toggle works
 
+### Performance (PageSpeed)
+11. Use WebP images with JPG/PNG fallbacks
+12. Add `loading="lazy"` to images below the fold
+13. Add `loading="eager"` and `fetchpriority="high"` to hero/LCP images
+14. Preload critical fonts with `<link rel="preload" as="font" crossorigin>`
+15. Add `font-display: swap` to all `@font-face` declarations
+16. Preload hero/LCP images on pages where they appear
+17. Use async CSS loading: `<link rel="preload" as="style" onload="this.rel='stylesheet'">`
+18. Inline critical above-the-fold CSS in `<head>`
+19. Specify `width` and `height` on images to prevent layout shift
+20. Run `make prod-build` before committing
+
 ---
 
 ## 🚫 NEVER
@@ -114,6 +126,17 @@ excerpt: "ملخص قصير"
 8. Introduce colors outside the palette
 9. Merge without testing both languages
 10. Create cramped layouts — white space is design
+
+### Performance (PageSpeed)
+11. Serve unoptimized images (always use WebP, compress JPG/PNG)
+12. Use images larger than needed (resize to display size)
+13. Forget `loading="lazy"` on below-fold images
+14. Chain critical requests (HTML → CSS → Font) — preload instead
+15. Use render-blocking CSS without inlining critical styles
+16. Load fonts without `font-display: swap`
+17. Omit `width`/`height` on images (causes layout shift)
+18. Use external font CDNs — self-host fonts instead
+19. Ship unminified CSS (use `sass: style: compressed` in `_config.yml`)
 
 ---
 
