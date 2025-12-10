@@ -1,7 +1,7 @@
 # Digital Bazaar — Makefile
 # Simplifies common development tasks
 
-.PHONY: help install update build serve clean fonts prod-build serve-drafts images images-webp
+.PHONY: help install update build serve clean fonts prod-build serve-drafts images images-webp setup-hooks
 
 # Homebrew Ruby paths (macOS)
 RUBY_BIN := /opt/homebrew/opt/ruby/bin
@@ -63,6 +63,11 @@ images-webp: ## Convert images to WebP (requires: brew install webp)
 	@cd assets/img && \
 	cwebp -q 80 logo-128.jpg -o logo-128.webp 2>/dev/null && \
 	cwebp -q 80 logo-256.jpg -o logo-256.webp 2>/dev/null && \
-	cwebp -q 80 logo-512.jpg -o logo-512.webp 2>/dev/null && \
+	cwebp -q 90 logo-512.jpg -o logo-512-hq.webp 2>/dev/null && \
 	echo "✓ WebP images created:" && \
 	ls -lh logo-*.webp
+
+setup-hooks: ## Enable git pre-commit hooks
+	@echo "Setting up git hooks..."
+	@git config core.hooksPath .githooks
+	@echo "✓ Git hooks enabled. Pre-commit will run: images, images-webp, prod-build"

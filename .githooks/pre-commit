@@ -1,0 +1,44 @@
+#!/bin/bash
+# Digital Bazaar — Pre-commit Hook
+# Ensures assets are optimized and site builds before committing
+
+set -e
+
+echo "🔍 Running pre-commit checks..."
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
+# Check if image source files changed
+IMAGES_CHANGED=$(git diff --cached --name-only | grep -E "assets/img/digital_bazaar.*\.(jpg|png)$" || true)
+
+if [ -n "$IMAGES_CHANGED" ]; then
+  echo -e "${YELLOW}📷 Image source files changed, optimizing...${NC}"
+  make images
+  make images-webp
+  # Stage the generated files
+  git add assets/img/*.webp assets/img/logo-*.jpg assets/img/favicon-*.png assets/img/apple-touch-icon.png 2>/dev/null || true
+fi
+
+# Check if any content/style files changed
+CONTENT_CHANGED=$(git diff --cached --name-only | grep -E "\.(html|md|yml|scss|css)$" || true)
+
+if [ -n "$CONTENT_CHANGED" ] || [ -n "$IMAGES_CHANGED" ]; then
+  echo -e "${YELLOW}🔨 Building for production...${NC}"
+  make prod-build
+  
+  if [ $? -eq 0 ]; then
+    echo -e "${GREEN}✅ Production build successful${NC}"
+  else
+    echo -e "${RED}❌ Production build failed${NC}"
+    exit 1
+  fi
+else
+  echo -e "${GREEN}✅ No content changes, skipping build${NC}"
+fi
+
+echo -e "${GREEN}✅ Pre-commit checks passed${NC}"
+

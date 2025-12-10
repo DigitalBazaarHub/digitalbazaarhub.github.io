@@ -23,6 +23,7 @@
 git clone https://github.com/DigitalBazaarHub/digitalbazaar.github.io.git
 cd digitalbazaar.github.io
 make install
+make setup-hooks   # Enable pre-commit checks
 make serve
 ```
 
@@ -40,6 +41,7 @@ Visit [http://localhost:4000](http://localhost:4000)
 | `make fonts` | Download self-hosted fonts |
 | `make images` | Optimize images (PNG/JPG) |
 | `make images-webp` | Convert to WebP (requires `webp`) |
+| `make setup-hooks` | Enable git pre-commit hooks |
 
 ## Workflows
 

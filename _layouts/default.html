@@ -43,18 +43,8 @@
     <link rel="preload" href="{{ '/assets/img/logo-512-hq.webp' | relative_url }}" as="image" type="image/webp" fetchpriority="high">
   {%- endif -%}
   
-  <!-- Critical inline CSS (prevents FOUC) -->
-  <style>
-    :root{--sand:#F4E6C4;--terracotta:#B34E36;--night:#152029;--ink:#21313B}
-    html,body{margin:0;padding:0;color:var(--ink);background:linear-gradient(180deg,#FFFDF6 0%,var(--sand) 100%);min-height:100vh}
-    html[dir="rtl"],html[dir="rtl"] body{font-family:'Tajawal',sans-serif;line-height:1.8}
-    html[dir="ltr"],html[dir="ltr"] body{font-family:'DM Sans',sans-serif;line-height:1.6}
-    .wrap{max-width:940px;margin:0 auto;padding:32px 20px 64px}
-  </style>
-  
-  <!-- Full styles (async load to avoid render blocking) -->
-  <link rel="preload" href="{{ '/assets/css/styles.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}"></noscript>
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
   
   <!-- SEO -->
   {% seo %}
