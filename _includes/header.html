@@ -5,11 +5,17 @@
 <header class="site-header">
   <div class="header-main">
     <a href="/{{ lang }}/" class="logo-link">
-      <img 
-        src="{{ '/assets/img/digital_bazaar_2025.jpg' | relative_url }}" 
-        alt="{{ strings.site_title }}" 
-        class="logo"
-      >
+      <picture>
+          <source srcset="{{ '/assets/img/logo-128.webp' | relative_url }}" type="image/webp">
+          <img 
+            src="{{ '/assets/img/logo-128.jpg' | relative_url }}" 
+            alt="{{ strings.site_title }}" 
+            class="logo"
+            width="54"
+            height="54"
+            loading="eager"
+          >
+        </picture>
       <div class="site-branding">
         <h1 class="site-title">{{ strings.site_title }} 💬</h1>
         <p class="site-tagline">{{ strings.site_tagline }}</p>

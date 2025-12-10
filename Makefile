@@ -1,12 +1,12 @@
 # Digital Bazaar — Makefile
 # Simplifies common development tasks
 
-.PHONY: help install update build serve clean fonts
+.PHONY: help install update build serve clean fonts prod-build serve-drafts images images-webp
 
-# Default Ruby path (Homebrew on macOS)
-RUBY_PATH := /opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/3.4.0/bin
-SHELL := /bin/bash
-export PATH := $(RUBY_PATH):$(PATH)
+# Homebrew Ruby paths (macOS)
+RUBY_BIN := /opt/homebrew/opt/ruby/bin
+GEM_BIN := /opt/homebrew/lib/ruby/gems/3.4.0/bin
+BUNDLE := PATH="$(RUBY_BIN):$(GEM_BIN):$$PATH" bundle
 
 # Colors for help output
 CYAN := \033[36m
@@ -21,27 +21,48 @@ help: ## Show this help message
 	@echo ""
 
 install: ## Install Ruby gem dependencies
-	bundle install
+	$(BUNDLE) install
 
 update: ## Update all gem dependencies to latest versions
-	bundle update
+	$(BUNDLE) update
 
 build: ## Build the static site (output to _site/)
-	bundle exec jekyll build
+	$(BUNDLE) exec jekyll build
 
 serve: ## Start local development server at http://localhost:4000
-	bundle exec jekyll serve --livereload
+	$(BUNDLE) exec jekyll serve --livereload
 
 serve-drafts: ## Start server with draft posts visible
-	bundle exec jekyll serve --livereload --drafts
+	$(BUNDLE) exec jekyll serve --livereload --drafts
 
 clean: ## Remove generated site and caches
-	bundle exec jekyll clean
+	$(BUNDLE) exec jekyll clean
 	rm -rf _site .jekyll-cache .jekyll-metadata
 
 prod-build: ## Build for production (minified, no drafts)
-	JEKYLL_ENV=production bundle exec jekyll build
+	JEKYLL_ENV=production $(BUNDLE) exec jekyll build
 
 fonts: ## Download self-hosted fonts (DM Sans + Tajawal)
 	@chmod +x scripts/download-fonts.sh
 	@./scripts/download-fonts.sh
+
+images: ## Optimize images (creates web-ready PNG/JPG copies)
+	@echo "Optimizing images..."
+	@cd assets/img && \
+	sips -z 128 128 digital_bazaar_2025.jpg --out logo-128.jpg 2>/dev/null && \
+	sips -z 256 256 digital_bazaar_2025.jpg --out logo-256.jpg 2>/dev/null && \
+	sips -z 512 512 digital_bazaar_2025.jpg --out logo-512.jpg 2>/dev/null && \
+	sips -z 16 16 digital_bazaar_2025.png --out favicon-16.png 2>/dev/null && \
+	sips -z 32 32 digital_bazaar_2025.png --out favicon-32.png 2>/dev/null && \
+	sips -z 180 180 digital_bazaar_2025.png --out apple-touch-icon.png 2>/dev/null && \
+	sips -z 192 192 digital_bazaar_2025.png --out icon-192.png 2>/dev/null
+	@echo "✓ Optimized images created in assets/img/"
+
+images-webp: ## Convert images to WebP (requires: brew install webp)
+	@echo "Converting to WebP..."
+	@cd assets/img && \
+	cwebp -q 80 logo-128.jpg -o logo-128.webp 2>/dev/null && \
+	cwebp -q 80 logo-256.jpg -o logo-256.webp 2>/dev/null && \
+	cwebp -q 80 logo-512.jpg -o logo-512.webp 2>/dev/null && \
+	echo "✓ WebP images created:" && \
+	ls -lh logo-*.webp

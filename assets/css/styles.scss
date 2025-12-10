@@ -545,7 +545,8 @@ html[dir="rtl"], .lang-ar {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('../img/digital_bazaar_2025.jpg') center/cover;
+  background: url('../img/logo-512.jpg') center/cover; /* Fallback for older browsers */
+  background: url('../img/logo-512-hq.webp') center/cover;
   mask-image: linear-gradient(to bottom, transparent 5%, black 35%, black 100%);
   -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 35%, black 100%);
 }

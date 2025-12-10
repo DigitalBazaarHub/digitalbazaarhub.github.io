@@ -39,7 +39,7 @@ hero:
 # Buttons
 buttons:
   join_whatsapp: "انضم للواتساب"
-  visit_github: "زر GitHub"
+  visit_github: "GitHub"
   read_more: "اقرأ المزيد"
   back_home: "العودة للرئيسية"
   back_to_articles: "العودة للمقالات →"

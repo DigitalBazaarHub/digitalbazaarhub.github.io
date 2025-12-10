@@ -39,7 +39,7 @@ hero:
 # Buttons
 buttons:
   join_whatsapp: "Join WhatsApp"
-  visit_github: "Visit GitHub"
+  visit_github: "GitHub"
   read_more: "Read More"
   back_home: "Back to Home"
   back_to_articles: "← Back to Articles"
