@@ -15,7 +15,7 @@ layout: default
 
 {%- assign cat_label = page.category -%}
 {%- for cat in categories -%}
-  {%- if cat.key == page.category -%}
+  {%- if cat.id == page.category -%}
     {%- if content_lang == 'ar' -%}
       {%- assign cat_label = cat.ar -%}
     {%- else -%}
@@ -30,68 +30,62 @@ layout: default
   {%- assign post_lang_label = 'العربية' -%}
 {%- endif -%}
 
-<div class="wrap" 
+<div class="article-page" 
      data-content-lang="{{ content_lang }}"
      data-strings-ar='{"by":"{{ strings_ar.article.by }}","read_time":"{{ strings_ar.article.read_time }}","back_to_articles":"{{ strings_ar.buttons.back_to_articles }}","tags":"{{ strings_ar.article.tags | default: "الوسوم" }}"}'
      data-strings-en='{"by":"{{ strings_en.article.by }}","read_time":"{{ strings_en.article.read_time }}","back_to_articles":"{{ strings_en.buttons.back_to_articles }}","tags":"{{ strings_en.article.tags | default: "Tags" }}"}'>
   
-  <!-- Article content wrapper with its own language direction -->
-  <div class="article-content-wrapper" lang="{{ content_lang }}" dir="{{ content_dir }}">
-    <header class="article-header">
-      {%- if page.category -%}
-      <div class="kicker">{{ cat_label }}</div>
-      {%- endif -%}
-      
-      <h1>{{ page.title }}</h1>
-      
-      {%- if page.excerpt -%}
-      <p class="dek">{{ page.excerpt }}</p>
-      {%- endif -%}
-      
-      <div class="meta">
-        {{ strings.article.by }} {{ page.author }}
-        {%- if page.read_time -%} • {{ page.read_time }} {{ strings.article.read_time }}{%- endif -%}
-        • {{ strings.article.published }} {{ page.date | date: "%d %B %Y" }}
-        • {{ post_lang_label }}
-      </div>
-    </header>
-
-    {%- if page.image -%}
-    <figure class="banner">
-      <picture>
-        <source srcset="{{ page.image | replace: '.png', '.webp' | replace: '.jpg', '.webp' | relative_url }}" type="image/webp">
-        <img 
-          src="{{ page.image | relative_url }}" 
-          alt="{{ page.title }}"
-          loading="eager"
-        >
-      </picture>
-    </figure>
+  <header lang="{{ content_lang }}" dir="{{ content_dir }}">
+    {%- if page.category -%}
+    <div class="kicker">{{ cat_label }}</div>
     {%- endif -%}
+    
+    <h1>{{ page.title }}</h1>
+    
+    {%- if page.excerpt -%}
+    <p class="dek">{{ page.excerpt }}</p>
+    {%- endif -%}
+    
+    <div class="meta">
+      {{ strings.article.by }} {{ page.author }}
+      {%- if page.reading_time -%} • {{ page.reading_time }} {{ strings.article.read_time }}{%- endif -%}
+      • {{ page.date | date: "%d %B %Y" }}
+      • {{ post_lang_label }}
+    </div>
+  </header>
 
-    <article>
-      {{ content }}
-      
-      {%- if page.tags and page.tags.size > 0 -%}
-      <div class="tag-row">
-        <span data-i18n="tags">{{ strings.article.tags | default: "Tagged" }}:</span>
-        {%- for tag in page.tags -%}
-        <span class="chip">#{{ tag }}</span>
-        {%- endfor -%}
-      </div>
-      {%- endif -%}
-      <div class="article-back">
-        <a href="/{{ content_lang }}/articles/" id="backToArticles" data-i18n="back_to_articles">← {{ strings.buttons.back_to_articles }}</a>
-      </div>
-    </article>
-  </div>
+  {%- if page.image -%}
+  <figure class="banner">
+    <picture>
+      <source srcset="{{ page.image | replace: '.png', '.webp' | replace: '.jpg', '.webp' | relative_url }}" type="image/webp">
+      <img 
+        src="{{ page.image | relative_url }}" 
+        alt="{{ page.title }}"
+        loading="eager"
+      >
+    </picture>
+  </figure>
+  {%- endif -%}
+
+  <article lang="{{ content_lang }}" dir="{{ content_dir }}">
+    {{ content }}
+    
+    {%- if page.tags and page.tags.size > 0 -%}
+    <div class="tag-row">
+      <span data-i18n="tags">{{ strings.article.tags | default: "Tagged" }}:</span>
+      {%- for tag in page.tags -%}
+      <span class="chip">#{{ tag }}</span>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+  </article>
 </div>
 
 <script>
 (function() {
   // Get UI language from query param, default to content language
   const params = new URLSearchParams(window.location.search);
-  const wrapper = document.querySelector('.wrap');
+  const wrapper = document.querySelector('.article-page');
   const contentLang = wrapper?.dataset.contentLang || 'ar';
   const uiLang = params.get('lang') || contentLang;
   

@@ -1,13 +1,16 @@
 {%- assign lang = include.lang | default: page.lang | default: site.default_lang -%}
-{%- assign strings_key = 'strings_' | append: lang -%}
-{%- assign strings = site.data[strings_key] -%}
 {%- assign post = include.post -%}
 {%- assign categories = site.data.categories -%}
 
+{%- comment -%} Load strings based on ARTICLE language (not site language) {%- endcomment -%}
+{%- assign card_strings_key = 'strings_' | append: post.lang -%}
+{%- assign card_strings = site.data[card_strings_key] -%}
+
+{%- comment -%} Category label in article's language {%- endcomment -%}
 {%- assign cat_label = post.category -%}
 {%- for cat in categories -%}
-  {%- if cat.key == post.category -%}
-    {%- if lang == 'ar' -%}
+  {%- if cat.id == post.category -%}
+    {%- if post.lang == 'ar' -%}
       {%- assign cat_label = cat.ar -%}
     {%- else -%}
       {%- assign cat_label = cat.en -%}
@@ -16,13 +19,33 @@
   {%- endif -%}
 {%- endfor -%}
 
+{%- comment -%} Language label {%- endcomment -%}
 {%- assign post_lang_label = 'English' -%}
 {%- if post.lang == 'ar' -%}
   {%- assign post_lang_label = 'العربية' -%}
 {%- endif -%}
 
+{%- comment -%} Card direction based on article language {%- endcomment -%}
+{%- if post.lang == 'ar' -%}
+  {%- assign card_dir = 'rtl' -%}
+{%- else -%}
+  {%- assign card_dir = 'ltr' -%}
+{%- endif -%}
+
+{%- comment -%} Localize date based on article language {%- endcomment -%}
+{%- assign day_num = post.date | date: "%-d" -%}
+{%- assign month_short = post.date | date: "%b" -%}
+{%- assign year_num = post.date | date: "%Y" -%}
+{%- if post.lang == 'ar' -%}
+  {%- assign month_localized = card_strings.months_short[month_short] | default: month_short -%}
+  {%- assign date_display = day_num | append: " " | append: month_localized | append: " " | append: year_num -%}
+{%- else -%}
+  {%- assign date_display = post.date | date: "%d %b %Y" -%}
+{%- endif -%}
 <a href="{{ post.url | relative_url }}?lang={{ lang }}" 
    class="card"
+   dir="{{ card_dir }}"
+   lang="{{ post.lang }}"
    data-lang="{{ post.lang }}"
    data-category="{{ post.category }}"
    data-author="{{ post.author_type | default: 'member' }}"
@@ -47,9 +70,9 @@
     <div class="card-title">{{ post.title }}</div>
     
     <div class="card-meta">
-      {{ strings.article.by }} {{ post.author }}
-      • {%- if post.read_time %} {{ post.read_time }} {{ strings.article.read_time }} •{%- endif %}
-      {{ post.date | date: "%d %b %Y" }}
+      {{ card_strings.article.by }} {{ post.author }}
+      {%- if post.reading_time %} • {{ post.reading_time }} {{ card_strings.article.read_time }}{%- endif %}
+      • {{ date_display }}
       • {{ post_lang_label }}
     </div>
     

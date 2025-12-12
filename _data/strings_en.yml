@@ -65,7 +65,7 @@ rhythm:
 # Rules Summary Section (for home page)
 rules_summary:
   kicker: "Community rules"
-  title: "How we keep the bazaar healthy."
+  title: "How we keep the bazaar healthy"
   subtitle: "The full rules live on their own page, but the spirit is simple: be decent, bring value, don't abuse the space."
   short_title: "In short"
   items:
@@ -106,14 +106,14 @@ buttons:
 # Archive Page
 archive:
   kicker: "Full archive"
-  title: "The shelves of the Digital Bazaar."
+  title: "The shelves of the Digital Bazaar"
   subtitle: "Every article, essay and field note that's been written so far. Filters start with everything set to \"all\", sorted by newest first. Browse by year, month, topic, language or author."
   hero_alt: "Ancient archive shelves of scrolls mixed with glowing digital artifacts, tended by small robots."
 
 # Articles Section
 articles:
   kicker: "Articles & field notes"
-  title: "Recent writing from the Digital Bazaar."
+  title: "Recent writing from the Digital Bazaar"
   subtitle: "Essays, reflections and notes from people in the Bazaar – on engineering, product, management, markets, careers and life. These are the latest pieces; older work lives in the archive."
   hero_alt: "Groups of people and robots talking in the Digital Bazaar"
   section_title: "Latest essays"
@@ -160,7 +160,7 @@ filters:
 # Rules Page
 rules_page:
   kicker: "Community rules"
-  title: "How we keep the bazaar healthy."
+  title: "How we keep the bazaar healthy"
   dek: "These guidelines exist so that Digital Bazaar stays useful, warm and safe – not to over-police conversation. If in doubt, lean towards generosity, clarity and respect."
   meta_note: "This is a living document. We may refine it as the community grows and new situations appear."
   short_version: "Be kind. Share generously. Keep things constructive and relevant. Don't spam or harass people. Moderators can remove anyone who repeatedly makes the bazaar worse."

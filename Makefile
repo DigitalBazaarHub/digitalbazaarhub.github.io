@@ -42,7 +42,7 @@ clean: ## Remove generated site and caches
 prod-build: ## Build for production (minified, no drafts)
 	JEKYLL_ENV=production $(BUNDLE) exec jekyll build
 
-fonts: ## Download self-hosted fonts (DM Sans + Tajawal)
+fonts: ## Download self-hosted fonts (Space Grotesk + Tajawal)
 	@chmod +x scripts/download-fonts.sh
 	@./scripts/download-fonts.sh
 

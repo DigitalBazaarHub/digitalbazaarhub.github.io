@@ -24,7 +24,7 @@ layout: default
   </picture>
   <div class="hero-text">
     <div class="hero-kicker">{{ strings.archive.kicker | default: 'Full archive' }}</div>
-    <h1 class="hero-title">{{ strings.archive.title | default: 'The shelves of the Digital Bazaar.' }}</h1>
+    <h1 class="hero-title">{{ strings.archive.title | default: 'The shelves of the Digital Bazaar' }}</h1>
     <p class="hero-sub">{{ strings.archive.subtitle }}</p>
   </div>
 </section>
@@ -44,8 +44,8 @@ layout: default
         <label for="filter-language">{{ strings.filters.language.label | default: 'Language' }}</label>
         <select id="filter-language" class="filter-select">
           <option value="">{{ strings.filters.language.all | default: 'All languages' }}</option>
-          <option value="en">English</option>
-          <option value="ar">العربية</option>
+          <option value="en">{{ strings.filters.language.en | default: 'English' }}</option>
+          <option value="ar">{{ strings.filters.language.ar | default: 'العربية' }}</option>
         </select>
       </div>
       <div class="filter-group">
@@ -53,7 +53,7 @@ layout: default
         <select id="filter-category" class="filter-select">
           <option value="">{{ strings.filters.category.all | default: 'All categories' }}</option>
           {%- for cat in categories -%}
-          <option value="{{ cat.key }}">{% if lang == 'ar' %}{{ cat.ar }}{% else %}{{ cat.en }}{% endif %}</option>
+          <option value="{{ cat.id }}">{% if lang == 'ar' %}{{ cat.ar }}{% else %}{{ cat.en }}{% endif %}</option>
           {%- endfor -%}
         </select>
       </div>
@@ -84,58 +84,183 @@ layout: default
   </div>
 </section>
 
-<!-- Full archive list, grouped by year & month -->
-<section>
-  <div class="archive" id="archive-list">
+<!-- Full archive list - grouped by year & month -->
+<section class="archive-section">
+  <div class="archive-container">
     {%- assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
     {%- for year in posts_by_year -%}
-    <div class="archive-year" data-year="{{ year.name }}">
-      <div class="archive-year-title">{{ year.name }}</div>
-      
-      {%- assign posts_by_month = year.items | group_by_exp: "post", "post.date | date: '%B'" -%}
-      {%- for month in posts_by_month -%}
-      <div class="archive-month">
-        <div class="archive-month-title">{{ month.name }}</div>
-        <ul class="archive-list">
-          {%- for post in month.items -%}
-          {%- assign cat_label = post.category -%}
-          {%- for cat in categories -%}
-            {%- if cat.key == post.category -%}
-              {%- if lang == 'ar' -%}
-                {%- assign cat_label = cat.ar -%}
-              {%- else -%}
-                {%- assign cat_label = cat.en -%}
-              {%- endif -%}
-              {%- break -%}
-            {%- endif -%}
-          {%- endfor -%}
-          {%- assign post_lang_label = 'English' -%}
-          {%- if post.lang == 'ar' -%}
-            {%- assign post_lang_label = 'العربية' -%}
+    
+    <h2 class="archive-year-heading">{{ year.name }}</h2>
+    
+    {%- assign posts_by_month = year.items | group_by_exp: "post", "post.date | date: '%B'" -%}
+    {%- for month in posts_by_month -%}
+    
+    {%- if lang == 'ar' -%}
+      {%- assign month_display = strings.months[month.name] | default: month.name -%}
+    {%- else -%}
+      {%- assign month_display = month.name -%}
+    {%- endif -%}
+    <h3 class="archive-month-heading">{{ month_display }}</h3>
+    
+    <ul class="archive-entries">
+      {%- for post in month.items -%}
+      {%- assign cat_label = post.category -%}
+      {%- for cat in categories -%}
+        {%- if cat.id == post.category -%}
+          {%- if lang == 'ar' -%}
+            {%- assign cat_label = cat.ar -%}
+          {%- else -%}
+            {%- assign cat_label = cat.en -%}
           {%- endif -%}
-          <li class="archive-item" 
-              data-lang="{{ post.lang }}"
-              data-category="{{ post.category }}"
-              data-author="{{ post.author_type | default: 'member' }}"
-              data-date="{{ post.date | date: '%Y-%m-%d' }}">
-            <span class="archive-date">{{ post.date | date: "%b %d" }}</span>
-            <div class="archive-main">
-              <div class="archive-title">
-                <a href="{{ post.url | relative_url }}?lang={{ lang }}">{{ post.title }}</a>
-              </div>
-              <div class="archive-meta">{{ cat_label }} • {{ post_lang_label }}{% if post.read_time %} • {{ post.read_time }} {{ strings.article.read_time }}{% endif %}</div>
-              {%- if post.excerpt -%}
-              <div class="archive-teaser">{{ post.excerpt | strip_html | truncate: 160 }}</div>
-              {%- endif -%}
-            </div>
-          </li>
-          {%- endfor -%}
-        </ul>
-      </div>
+          {%- break -%}
+        {%- endif -%}
       {%- endfor -%}
-    </div>
+      {%- if post.lang == 'ar' -%}
+        {%- assign post_lang_label = 'العربية' -%}
+      {%- else -%}
+        {%- if lang == 'ar' -%}
+          {%- assign post_lang_label = 'الإنجليزية' -%}
+        {%- else -%}
+          {%- assign post_lang_label = 'English' -%}
+        {%- endif -%}
+      {%- endif -%}
+      {%- assign day_num = post.date | date: "%-d" -%}
+      {%- assign month_short = post.date | date: "%b" -%}
+      {%- if lang == 'ar' -%}
+        {%- assign month_short_ar = strings.months_short[month_short] | default: month_short -%}
+        {%- assign date_display = day_num | append: " " | append: month_short_ar -%}
+      {%- else -%}
+        {%- assign date_display = month_short | append: " " | append: day_num -%}
+      {%- endif -%}
+      <li class="archive-entry" 
+          data-lang="{{ post.lang }}"
+          data-category="{{ post.category }}"
+          data-author="{{ post.author_type | default: 'member' }}"
+          data-date="{{ post.date | date: '%Y-%m-%d' }}">
+        <span class="archive-entry-date">{{ date_display }}</span>
+        <div class="archive-entry-content">
+          <a href="{{ post.url | relative_url }}?lang={{ lang }}" class="archive-entry-title">{{ post.title }}</a>
+          <div class="archive-entry-meta">{{ cat_label }} • {{ post_lang_label }}{% if post.reading_time %} • {{ post.reading_time }} {{ strings.article.read_time | default: 'min read' }}{% endif %}</div>
+          {%- if post.excerpt -%}
+          <p class="archive-entry-teaser">{{ post.excerpt | strip_html | truncate: 160 }}</p>
+          {%- endif -%}
+        </div>
+      </li>
+      {%- endfor -%}
+    </ul>
+    
+    {%- endfor -%}
     {%- endfor -%}
   </div>
 </section>
+
+<script>
+(function() {
+  // Filter elements
+  const filterLang = document.getElementById('filter-language');
+  const filterCat = document.getElementById('filter-category');
+  const filterAuthor = document.getElementById('filter-author');
+  const filterYear = document.getElementById('filter-year');
+  const filterSort = document.getElementById('filter-sort');
+  const clearBtn = document.getElementById('clear-filters');
+  const summary = document.getElementById('filters-summary');
+  
+  // All archive entries
+  const entries = Array.from(document.querySelectorAll('.archive-entry'));
+  const yearHeadings = document.querySelectorAll('.archive-year-heading');
+  const monthHeadings = document.querySelectorAll('.archive-month-heading');
+  const entryLists = document.querySelectorAll('.archive-entries');
+  
+  function applyFilters() {
+    const lang = filterLang.value;
+    const cat = filterCat.value;
+    const author = filterAuthor.value;
+    const year = filterYear.value;
+    const sort = filterSort.value;
+    
+    // Filter entries
+    let visible = 0;
+    entries.forEach(entry => {
+      const eLang = entry.dataset.lang;
+      const eCat = entry.dataset.category;
+      const eAuthor = entry.dataset.author;
+      const eDate = entry.dataset.date;
+      const eYear = eDate ? eDate.split('-')[0] : '';
+      
+      const show = 
+        (!lang || eLang === lang) &&
+        (!cat || eCat === cat) &&
+        (!author || eAuthor === author) &&
+        (!year || eYear === year);
+      
+      entry.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    
+    // Sort entries within each list
+    entryLists.forEach(list => {
+      const items = Array.from(list.querySelectorAll('.archive-entry'));
+      items.sort((a, b) => {
+        const dateA = new Date(a.dataset.date);
+        const dateB = new Date(b.dataset.date);
+        return sort === 'oldest' ? dateA - dateB : dateB - dateA;
+      });
+      items.forEach(item => list.appendChild(item));
+    });
+    
+    // Hide empty year/month sections
+    yearHeadings.forEach(heading => {
+      const nextSiblings = [];
+      let sibling = heading.nextElementSibling;
+      while (sibling && !sibling.classList.contains('archive-year-heading')) {
+        nextSiblings.push(sibling);
+        sibling = sibling.nextElementSibling;
+      }
+      const hasVisible = nextSiblings.some(el => {
+        if (el.classList.contains('archive-entries')) {
+          return Array.from(el.children).some(li => li.style.display !== 'none');
+        }
+        return false;
+      });
+      heading.style.display = hasVisible ? '' : 'none';
+      nextSiblings.forEach(el => {
+        if (el.classList.contains('archive-month-heading')) {
+          const list = el.nextElementSibling;
+          if (list && list.classList.contains('archive-entries')) {
+            const hasVisibleItems = Array.from(list.children).some(li => li.style.display !== 'none');
+            el.style.display = hasVisibleItems ? '' : 'none';
+          }
+        }
+      });
+    });
+    
+    // Update summary
+    const parts = [];
+    parts.push(visible + ' {{ strings.filters.articles_count | default: "articles" }}');
+    if (year) parts.push(year);
+    else parts.push('{{ strings.filters.all_years | default: "all years" }}');
+    parts.push(sort === 'oldest' ? '{{ strings.filters.sort.oldest | default: "oldest first" }}' : '{{ strings.filters.sort.newest | default: "newest first" }}');
+    summary.textContent = parts.join(' • ');
+  }
+  
+  function clearFilters() {
+    filterLang.value = '';
+    filterCat.value = '';
+    filterAuthor.value = '';
+    filterYear.value = '';
+    filterSort.value = 'newest';
+    applyFilters();
+  }
+  
+  // Event listeners
+  [filterLang, filterCat, filterAuthor, filterYear, filterSort].forEach(el => {
+    if (el) el.addEventListener('change', applyFilters);
+  });
+  if (clearBtn) clearBtn.addEventListener('click', clearFilters);
+  
+  // Initial count
+  applyFilters();
+})();
+</script>
 
 {{ content }}

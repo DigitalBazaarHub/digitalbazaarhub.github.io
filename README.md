@@ -92,11 +92,11 @@ layout: article
 title: "Your Title"
 author: "Name"
 date: 2025-01-15
-lang: ar              # 'ar' or 'en'
-category: community   # See _data/categories.yml
-author_type: team     # 'team' or 'member'
+lang: ar               # 'ar' or 'en'
+category: community    # See _data/categories.yml
+author_type: team      # 'team' or 'member'
 excerpt: "Brief description"
-read_time: 5          # Minutes
+reading_time: 5        # Minutes
 ---
 
 Your content here (supports Markdown and HTML)...
@@ -106,16 +106,27 @@ Your content here (supports Markdown and HTML)...
 
 ```
 _config.yml        # Jekyll config
-_data/             # Translations & content (strings_ar.yml, strings_en.yml, rules.yml)
-_includes/         # Components
-_layouts/          # Templates
-_posts/            # Articles
-ar/, en/           # Language-specific pages
-assets/css/        # Styles (SCSS)
-assets/fonts/      # Self-hosted fonts
-assets/img/        # Images
+_data/             # Translations & content (strings_ar.yml, strings_en.yml, categories.yml)
+_docs/             # Design system documentation
+_includes/         # Components (article-card, header, footer)
+_layouts/          # Templates (home, article, archive, rules)
+_posts/            # Articles (bilingual)
+pages/ar/, pages/en/  # Language-specific pages
+assets/css/        # Styles (SCSS → compiled CSS)
+assets/fonts/      # Self-hosted fonts (Space Grotesk, Tajawal)
+assets/img/        # Optimized images (WebP)
+scripts/           # Utility scripts (download-fonts.sh)
 Makefile           # Dev commands
 ```
+
+## Fonts
+
+| Font | Language | Weights | Source |
+|------|----------|---------|--------|
+| Space Grotesk | English (LTR) | 400, 500, 700 | [Google Fonts](https://fonts.google.com/specimen/Space+Grotesk) |
+| Tajawal | Arabic (RTL) | 400, 500, 700, 800 | [Google Fonts](https://fonts.google.com/specimen/Tajawal) |
+
+Fonts are self-hosted for performance. Run `make fonts` to download.
 
 ## Deployment
 

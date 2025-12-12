@@ -6,7 +6,7 @@ author: "English Writer"
 author_type: member
 date: 2025-12-11
 lang: en
-category: managements
+category: management
 excerpt: "This article is only available in English, with no Arabic translation."
 tags:
   - teams
