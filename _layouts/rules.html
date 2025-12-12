@@ -1,0 +1,51 @@
+---
+layout: default
+---
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign strings_key = 'strings_' | append: lang -%}
+{%- assign strings = site.data[strings_key] -%}
+
+<div class="wrap">
+  <header class="rules-header">
+    <div class="kicker">{{ strings.rules_page.kicker }}</div>
+    <h1>{{ strings.rules_page.title }}</h1>
+    <p class="dek">{{ strings.rules_page.dek }}</p>
+    <p class="meta-note">{{ strings.rules_page.meta_note }}</p>
+  </header>
+
+  <div class="highlight-box">
+    <strong>{{ strings.rules_page.short_version_label | default: 'Short version:' }}</strong> {{ strings.rules_page.short_version }}
+  </div>
+
+  <ol class="rules-list-detailed">
+    {%- for rule in strings.rules_page.rules -%}
+    <li class="rule">
+      <div class="rule-title-row">
+        <div class="rule-number">{{ rule.number }}</div>
+        <div class="rule-title">{{ rule.title }}</div>
+      </div>
+      <div class="rule-body">
+        {{ rule.body | newline_to_br }}
+        {%- if rule.list -%}
+        <ul class="rule-list-inner">
+          {%- for item in rule.list -%}
+          <li>{{ item }}</li>
+          {%- endfor -%}
+        </ul>
+        {%- endif -%}
+      </div>
+    </li>
+    {%- endfor -%}
+  </ol>
+
+  <div class="cta-box">
+    <p><strong>{{ strings.rules_page.cta_title }}</strong> {{ strings.rules_page.cta_text }}</p>
+    <p>{{ strings.rules_page.cta_closing }}</p>
+    <a class="btn btn-tertiary" href="{{ site.social.whatsapp }}" target="_blank" rel="noopener">
+      <span>{{ strings.buttons.join_whatsapp_community }}</span>
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</div>
+
+{{ content }}

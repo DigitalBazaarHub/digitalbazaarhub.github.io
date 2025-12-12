@@ -1,0 +1,141 @@
+---
+layout: default
+---
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign strings_key = 'strings_' | append: lang -%}
+{%- assign strings = site.data[strings_key] -%}
+{%- assign categories = site.data.categories -%}
+
+<!-- Archive hero with banner -->
+<section class="hero">
+  <picture>
+    <source media="(max-width: 600px)" srcset="{{ '/assets/img/archive_hero_banner-600.webp' | relative_url }}" type="image/webp">
+    <source media="(max-width: 900px)" srcset="{{ '/assets/img/archive_hero_banner-800.webp' | relative_url }}" type="image/webp">
+    <source srcset="{{ '/assets/img/archive_hero_banner-1200.webp' | relative_url }}" type="image/webp">
+    <img 
+      src="{{ '/assets/img/archive_hero_banner-1200.webp' | relative_url }}" 
+      alt="{{ strings.archive.hero_alt | default: 'Ancient archive shelves of scrolls mixed with glowing digital artifacts' }}"
+      class="hero-image archive-hero-image"
+      width="1200"
+      height="400"
+      loading="eager"
+      fetchpriority="high"
+    >
+  </picture>
+  <div class="hero-text">
+    <div class="hero-kicker">{{ strings.archive.kicker | default: 'Full archive' }}</div>
+    <h1 class="hero-title">{{ strings.archive.title | default: 'The shelves of the Digital Bazaar.' }}</h1>
+    <p class="hero-sub">{{ strings.archive.subtitle }}</p>
+  </div>
+</section>
+
+<!-- Filters -->
+<section class="filters-section">
+  <h2>{{ strings.filters.title | default: 'Filter the archive' }}</h2>
+  <p>{{ strings.filters.subtitle | default: 'Use these controls to slice the archive.' }}</p>
+
+  <div class="filters">
+    <div class="filters-header">
+      <div class="filters-title" id="filters-summary">{{ strings.filters.all_articles | default: 'All articles' }} • {{ strings.filters.all_years | default: 'all years' }} • {{ strings.filters.newest | default: 'newest first' }}</div>
+      <div class="filters-clear" id="clear-filters">{{ strings.filters.clear | default: 'Clear filters' }}</div>
+    </div>
+    <div class="filters-grid">
+      <div class="filter-group">
+        <label for="filter-language">{{ strings.filters.language.label | default: 'Language' }}</label>
+        <select id="filter-language" class="filter-select">
+          <option value="">{{ strings.filters.language.all | default: 'All languages' }}</option>
+          <option value="en">English</option>
+          <option value="ar">العربية</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-category">{{ strings.filters.category.label | default: 'Category' }}</label>
+        <select id="filter-category" class="filter-select">
+          <option value="">{{ strings.filters.category.all | default: 'All categories' }}</option>
+          {%- for cat in categories -%}
+          <option value="{{ cat.key }}">{% if lang == 'ar' %}{{ cat.ar }}{% else %}{{ cat.en }}{% endif %}</option>
+          {%- endfor -%}
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-author">{{ strings.filters.author.label | default: 'Author' }}</label>
+        <select id="filter-author" class="filter-select">
+          <option value="">{{ strings.filters.author.all | default: 'All authors' }}</option>
+          <option value="team">{{ strings.filters.author.team | default: 'Bazaar Team' }}</option>
+          <option value="member">{{ strings.filters.author.member | default: 'Community member' }}</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-year">{{ strings.filters.time.label | default: 'Year' }}</label>
+        <select id="filter-year" class="filter-select">
+          <option value="">{{ strings.filters.time.all | default: 'All years' }}</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-sort">{{ strings.filters.sort.label | default: 'Sort' }}</label>
+        <select id="filter-sort" class="filter-select">
+          <option value="newest">{{ strings.filters.sort.newest | default: 'Newest first' }}</option>
+          <option value="oldest">{{ strings.filters.sort.oldest | default: 'Oldest first' }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Full archive list, grouped by year & month -->
+<section>
+  <div class="archive" id="archive-list">
+    {%- assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
+    {%- for year in posts_by_year -%}
+    <div class="archive-year" data-year="{{ year.name }}">
+      <div class="archive-year-title">{{ year.name }}</div>
+      
+      {%- assign posts_by_month = year.items | group_by_exp: "post", "post.date | date: '%B'" -%}
+      {%- for month in posts_by_month -%}
+      <div class="archive-month">
+        <div class="archive-month-title">{{ month.name }}</div>
+        <ul class="archive-list">
+          {%- for post in month.items -%}
+          {%- assign cat_label = post.category -%}
+          {%- for cat in categories -%}
+            {%- if cat.key == post.category -%}
+              {%- if lang == 'ar' -%}
+                {%- assign cat_label = cat.ar -%}
+              {%- else -%}
+                {%- assign cat_label = cat.en -%}
+              {%- endif -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%- assign post_lang_label = 'English' -%}
+          {%- if post.lang == 'ar' -%}
+            {%- assign post_lang_label = 'العربية' -%}
+          {%- endif -%}
+          <li class="archive-item" 
+              data-lang="{{ post.lang }}"
+              data-category="{{ post.category }}"
+              data-author="{{ post.author_type | default: 'member' }}"
+              data-date="{{ post.date | date: '%Y-%m-%d' }}">
+            <span class="archive-date">{{ post.date | date: "%b %d" }}</span>
+            <div class="archive-main">
+              <div class="archive-title">
+                <a href="{{ post.url | relative_url }}?lang={{ lang }}">{{ post.title }}</a>
+              </div>
+              <div class="archive-meta">{{ cat_label }} • {{ post_lang_label }}{% if post.read_time %} • {{ post.read_time }} {{ strings.article.read_time }}{% endif %}</div>
+              {%- if post.excerpt -%}
+              <div class="archive-teaser">{{ post.excerpt | strip_html | truncate: 160 }}</div>
+              {%- endif -%}
+            </div>
+          </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+      {%- endfor -%}
+    </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{{ content }}

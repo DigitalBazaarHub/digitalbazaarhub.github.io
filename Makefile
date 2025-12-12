@@ -30,7 +30,7 @@ build: ## Build the static site (output to _site/)
 	$(BUNDLE) exec jekyll build
 
 serve: ## Start local development server at http://localhost:4000
-	$(BUNDLE) exec jekyll serve --livereload
+	$(BUNDLE) exec jekyll serve --livereload --watch
 
 serve-drafts: ## Start server with draft posts visible
 	$(BUNDLE) exec jekyll serve --livereload --drafts

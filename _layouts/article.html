@@ -1,58 +1,123 @@
 ---
 layout: default
 ---
-{%- assign lang = page.lang | default: site.default_lang -%}
-{%- assign strings_key = 'strings_' | append: lang -%}
+{%- assign content_lang = page.lang | default: site.default_lang -%}
+{%- assign strings_key = 'strings_' | append: content_lang -%}
 {%- assign strings = site.data[strings_key] -%}
+{%- assign strings_ar = site.data.strings_ar -%}
+{%- assign strings_en = site.data.strings_en -%}
+{%- assign categories = site.data.categories -%}
 
-<article class="article">
-  <header class="article-header">
-    {%- if page.category -%}
-    <span class="article-category">{{ page.category }}</span>
-    {%- endif -%}
-    
-    <h1 class="article-title">{{ page.title }}</h1>
-    
-    {%- if page.excerpt -%}
-    <p class="article-excerpt">{{ page.excerpt }}</p>
-    {%- endif -%}
-    
-    <div class="article-meta">
-      <span class="article-author">
-        {{ strings.article.by }} <strong>{{ page.author }}</strong>
-      </span>
-      <span class="meta-separator">•</span>
-      <time class="article-date" datetime="{{ page.date | date_to_xmlschema }}">
-        {{ page.date | date: "%B %d, %Y" }}
-      </time>
-      {%- if page.read_time -%}
-      <span class="meta-separator">•</span>
-      <span class="article-read-time">{{ page.read_time }} {{ strings.article.read_time }}</span>
-      {%- endif -%}
-    </div>
-  </header>
+{%- assign content_dir = 'rtl' -%}
+{%- if content_lang == 'en' -%}
+  {%- assign content_dir = 'ltr' -%}
+{%- endif -%}
 
-  {%- if page.image -%}
-  <figure class="article-hero-image">
-    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
-    {%- if page.image_caption -%}
-    <figcaption>{{ page.image_caption }}</figcaption>
+{%- assign cat_label = page.category -%}
+{%- for cat in categories -%}
+  {%- if cat.key == page.category -%}
+    {%- if content_lang == 'ar' -%}
+      {%- assign cat_label = cat.ar -%}
+    {%- else -%}
+      {%- assign cat_label = cat.en -%}
     {%- endif -%}
-  </figure>
+    {%- break -%}
   {%- endif -%}
+{%- endfor -%}
 
-  <div class="article-content">
-    {{ content }}
+{%- assign post_lang_label = 'English' -%}
+{%- if page.lang == 'ar' -%}
+  {%- assign post_lang_label = 'العربية' -%}
+{%- endif -%}
+
+<div class="wrap" 
+     data-content-lang="{{ content_lang }}"
+     data-strings-ar='{"by":"{{ strings_ar.article.by }}","read_time":"{{ strings_ar.article.read_time }}","back_to_articles":"{{ strings_ar.buttons.back_to_articles }}","tags":"{{ strings_ar.article.tags | default: "الوسوم" }}"}'
+     data-strings-en='{"by":"{{ strings_en.article.by }}","read_time":"{{ strings_en.article.read_time }}","back_to_articles":"{{ strings_en.buttons.back_to_articles }}","tags":"{{ strings_en.article.tags | default: "Tags" }}"}'>
+  
+  <!-- Article content wrapper with its own language direction -->
+  <div class="article-content-wrapper" lang="{{ content_lang }}" dir="{{ content_dir }}">
+    <header class="article-header">
+      {%- if page.category -%}
+      <div class="kicker">{{ cat_label }}</div>
+      {%- endif -%}
+      
+      <h1>{{ page.title }}</h1>
+      
+      {%- if page.excerpt -%}
+      <p class="dek">{{ page.excerpt }}</p>
+      {%- endif -%}
+      
+      <div class="meta">
+        {{ strings.article.by }} {{ page.author }}
+        {%- if page.read_time -%} • {{ page.read_time }} {{ strings.article.read_time }}{%- endif -%}
+        • {{ strings.article.published }} {{ page.date | date: "%d %B %Y" }}
+        • {{ post_lang_label }}
+      </div>
+    </header>
+
+    {%- if page.image -%}
+    <figure class="banner">
+      <picture>
+        <source srcset="{{ page.image | replace: '.png', '.webp' | replace: '.jpg', '.webp' | relative_url }}" type="image/webp">
+        <img 
+          src="{{ page.image | relative_url }}" 
+          alt="{{ page.title }}"
+          loading="eager"
+        >
+      </picture>
+    </figure>
+    {%- endif -%}
+
+    <article>
+      {{ content }}
+      
+      {%- if page.tags and page.tags.size > 0 -%}
+      <div class="tag-row">
+        <span data-i18n="tags">{{ strings.article.tags | default: "Tagged" }}:</span>
+        {%- for tag in page.tags -%}
+        <span class="chip">#{{ tag }}</span>
+        {%- endfor -%}
+      </div>
+      {%- endif -%}
+      <div class="article-back">
+        <a href="/{{ content_lang }}/articles/" id="backToArticles" data-i18n="back_to_articles">← {{ strings.buttons.back_to_articles }}</a>
+      </div>
+    </article>
   </div>
+</div>
 
-  <footer class="article-footer">
-    <div class="divider"><span>✦</span></div>
-    
-    <div class="article-actions">
-      <a href="/{{ lang }}/articles/" class="btn btn-secondary">
-        <span>{{ strings.buttons.back_to_articles | default: strings.buttons.back_home }}</span>
-      </a>
-    </div>
-  </footer>
-</article>
-
+<script>
+(function() {
+  // Get UI language from query param, default to content language
+  const params = new URLSearchParams(window.location.search);
+  const wrapper = document.querySelector('.wrap');
+  const contentLang = wrapper?.dataset.contentLang || 'ar';
+  const uiLang = params.get('lang') || contentLang;
+  
+  // Get strings for the UI language
+  const stringsData = wrapper?.dataset[`strings${uiLang.charAt(0).toUpperCase() + uiLang.slice(1)}`];
+  if (!stringsData) return;
+  
+  const strings = JSON.parse(stringsData);
+  
+  // Update all translatable elements in article
+  wrapper.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (strings[key]) {
+      // Preserve the arrow for back link
+      if (key === 'back_to_articles') {
+        el.textContent = '← ' + strings[key];
+      } else {
+        el.textContent = strings[key];
+      }
+    }
+  });
+  
+  // Update the back link href to preserve UI language
+  const backLink = document.getElementById('backToArticles');
+  if (backLink) {
+    backLink.href = `/${uiLang}/articles/`;
+  }
+})();
+</script>

@@ -1,18 +1,31 @@
 {%- assign lang = page.lang | default: site.default_lang -%}
 {%- assign strings_key = 'strings_' | append: lang -%}
 {%- assign strings = site.data[strings_key] -%}
+{%- assign strings_ar = site.data.strings_ar -%}
+{%- assign strings_en = site.data.strings_en -%}
 
-<footer class="site-footer">
-  <div class="footer-copyright">
-    © <span data-year data-lang="{{ lang }}"></span> {{ strings.site_title }} • {{ strings.footer.tagline }}
+<!-- Full Footer for All Pages -->
+<footer class="site-footer footer-full">
+  <div>
+    <div class="footer-title" data-i18n="footer_title" data-ar="{{ strings_ar.footer.title | default: strings_ar.site_title }}" data-en="{{ strings_en.footer.title | default: strings_en.site_title }}">{{ strings.footer.title | default: strings.site_title }}</div>
+    <p class="footer-text" data-i18n="footer_desc" data-ar="{{ strings_ar.footer.description | default: '' }}" data-en="{{ strings_en.footer.description | default: '' }}">{{ strings.footer.description }}</p>
   </div>
-  <nav class="footer-links">
-    <a href="{{ site.social.whatsapp }}" target="_blank" rel="noopener">
-      {{ strings.footer.links.whatsapp }}
-    </a>
-    <span class="separator">•</span>
-    <a href="{{ site.social.github }}" target="_blank" rel="noopener">
-      {{ strings.footer.links.github }}
-    </a>
-  </nav>
+
+  <div>
+    <div class="footer-title">{{ strings.footer.sections_title | default: 'Sections' }}</div>
+    <div class="footer-links">
+      <a href="/{{ lang }}/">{{ strings.nav.home }}</a>
+      <a href="/{{ lang }}/articles/">{{ strings.footer.links.articles | default: strings.nav.articles }}</a>
+      <a href="/{{ lang }}/archive/">{{ strings.footer.links.archive | default: strings.nav.archive }}</a>
+      <a href="/{{ lang }}/rules/">{{ strings.footer.links.rules | default: strings.nav.rules }}</a>
+    </div>
+  </div>
+
+  <div>
+    <div class="footer-title">{{ strings.footer.community_title | default: 'Community' }}</div>
+    <div class="footer-links">
+      <a href="{{ site.social.whatsapp }}" target="_blank" rel="noopener">{{ strings.footer.links.join_whatsapp | default: 'Join WhatsApp ↗' }}</a>
+      <a href="{{ site.social.github }}" target="_blank" rel="noopener">{{ strings.footer.links.visit_github | default: 'Visit GitHub org ↗' }}</a>
+    </div>
+  </div>
 </footer>

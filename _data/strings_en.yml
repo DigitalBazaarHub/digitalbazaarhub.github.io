@@ -9,15 +9,11 @@ site_tagline: "Where the Arab digital world meets, trades, and grows."
 nav:
   home: "Home"
   articles: "Articles"
+  archive: "Archive"
   rules: "Rules"
   about: "About"
   join: "Join Us"
   menu: "Menu"
-
-# Rules Page
-rules_page:
-  title: "Community Rules"
-  subtitle: "Our guidelines for a healthy and thriving community environment"
 
 # Language Toggle
 language:
@@ -27,25 +23,101 @@ language:
 
 # Hero Section
 hero:
-  badge: "🛍️ A warm, informal community"
-  intro: |
-    **Digital Bazaar** is a modern souq for founders, builders, marketers, designers, 
-    and engineers across the Arab world. We swap ideas, share opportunities, 
-    and help each other build real things — without the noise.
-  secondary: |
-    Join the WhatsApp community, tinker with us on GitHub, 
-    and help shape the bazaar's next stall.
+  kicker: "A warm, informal community"
+  headline: "Where the Arab digital world meets, trades, and grows."
+  description: "Digital Bazaar is a community for Arab builders, founders,product people, marketers, researchers, financiers and curious learners from across MENA and the diaspora. We swap ideas, share opportunities, write essays, and tinker with tools together."
+  image_alt: "Humans and friendly robots talking and working together in a Middle Eastern bazaar."
+
+# About Section (What happens in the Bazaar?)
+about:
+  kicker: "What happens in the Bazaar?"
+  title: "Conversations, writing and tinkering under one tent."
+  subtitle: "Digital Bazaar isn't just a chat, a blog, or a GitHub org. It's all three at once – tied together by the same people and stories."
+  features:
+    - label: "Discussions"
+      title: "Conversations & lanes"
+      description: "Focused WhatsApp groups for different kinds of talk: General Chat, Jordanian Expats, Startups & Founders, Software & Engineering, Product & Growth, Management & Leadership, Advice & Mentorship, Jobs and more. Think of it as a souq of ongoing, overlapping conversations."
+    - label: "Writing"
+      title: "Articles & field notes"
+      description: "Essays, reflections and notes from people in the Bazaar – on engineering, product, leadership, markets, careers and life. Less \"content marketing\", more \"here's what actually happened and what we learned\"."
+    - label: "Tinkering"
+      title: "Open source & tools"
+      description: "A GitHub organisation for small tools, bots and experiments that grow out of community needs. Shared infra, shared learning, and low-pressure projects anyone can join when curiosity hits."
+
+# Rhythm Section (How we use the space)
+rhythm:
+  kicker: "How we use the space"
+  title: "A working bazaar, not a broadcast channel."
+  subtitle: "Most days, the Bazaar looks like a mix of small, specific exchanges and slower, deeper threads. You dip in where it's relevant, add something useful, then step back out."
+  items:
+    - title: "Short questions, real answers."
+      description: "Ask concrete questions from your context: a product decision, a management knot, an infra tradeoff, a career move."
+    - title: "Stories over takes."
+      description: "We prefer \"here's what we tried and how it went\" more than hot takes or generic advice threads."
+    - title: "Slow-burning threads."
+      description: "Some discussions turn into articles or tools. When something keeps coming up, we write it down or prototype it."
+  tips_title: "Light rules of thumb"
+  tips:
+    - "Skim, don't try to read everything. The bazaar is always on."
+    - "Reply where you can genuinely help, not everywhere you have an opinion."
+    - "It's fine to lurk for a while – just introduce yourself when you're ready."
+
+# Rules Summary Section (for home page)
+rules_summary:
+  kicker: "Community rules"
+  title: "How we keep the bazaar healthy."
+  subtitle: "The full rules live on their own page, but the spirit is simple: be decent, bring value, don't abuse the space."
+  short_title: "In short"
+  items:
+    - title: "Be kind and respectful."
+      description: "We're here to support and uplift each other in our professional journeys."
+    - title: "Share knowledge freely."
+      description: "The bazaar thrives on open exchange of ideas, stories and opportunities."
+    - title: "Keep it constructive."
+      description: "Stay relevant to tech, business and the wider digital ecosystem – no drama for drama's sake."
+    - title: "No spam, no hard selling."
+      description: "Share your work naturally and respect everyone's attention."
+    - title: "Don't be an asshole."
+      description: "Zero tolerance for racism, sexism, harassment or toxic behavior of any kind."
+  moderation_title: "Moderation & safety"
+  moderation_text: "Moderators reserve the right to remove disruptive members at any time, with or without warning. The goal is not control – it's keeping the bazaar usable for everyone."
+
+# CTA Section
+cta:
+  kicker: "Step inside"
+  title: "Pull up a chair in the Bazaar."
+  subtitle: "Introduce yourself, share what you're working on, and join a lane that fits. The bazaar gets better every time someone brings a real story, question or experiment."
 
 # Buttons
 buttons:
   join_whatsapp: "Join WhatsApp"
+  join_whatsapp_bazaar: "Join the WhatsApp Bazaar"
+  join_whatsapp_community: "Join the WhatsApp Community"
   visit_github: "GitHub"
+  visit_github_org: "Visit us on GitHub"
+  read_articles: "Read articles & field notes"
+  browse_articles: "Browse recent articles"
+  read_full_rules: "Read the full rules"
   read_more: "Read More"
   back_home: "Back to Home"
-  back_to_articles: "← Back to Articles"
+  back_to_articles: "Back to Articles"
+  view_archive: "View Full Archive"
+
+# Archive Page
+archive:
+  kicker: "Full archive"
+  title: "The shelves of the Digital Bazaar."
+  subtitle: "Every article, essay and field note that's been written so far. Filters start with everything set to \"all\", sorted by newest first. Browse by year, month, topic, language or author."
+  hero_alt: "Ancient archive shelves of scrolls mixed with glowing digital artifacts, tended by small robots."
 
 # Articles Section
 articles:
+  kicker: "Articles & field notes"
+  title: "Recent writing from the Digital Bazaar."
+  subtitle: "Essays, reflections and notes from people in the Bazaar – on engineering, product, management, markets, careers and life. These are the latest pieces; older work lives in the archive."
+  hero_alt: "Groups of people and robots talking in the Digital Bazaar"
+  section_title: "Latest essays"
+  section_sub: "The most recent articles, sorted by newest first."
   intro: "Ideas and insights from Digital Bazaar members"
   empty: "No articles yet. Be the first to write!"
   no_results: "No articles match the selected filters."
@@ -53,60 +125,118 @@ articles:
 
 # Filters
 filters:
-  title: "Filter Articles"
+  title: "Filter the archive"
+  subtitle: "Use these controls to slice the archive."
+  all_articles: "All articles"
+  all_years: "all years"
+  newest: "newest first"
   language:
     label: "Language"
-    all: "All"
+    all: "All languages"
     ar: "العربية"
     en: "English"
   category:
     label: "Category"
-    all: "All Categories"
+    all: "All categories"
   author:
     label: "Author"
-    all: "All"
+    all: "All authors"
     team: "Bazaar Team"
-    member: "Community Member"
+    member: "Community member"
   time:
-    label: "Time"
-    all: "All Time"
+    label: "Year"
+    all: "All years"
     week: "Last Week"
     month: "Last Month"
     year: "This Year"
   sort:
     label: "Sort"
-    newest: "Newest First"
-    oldest: "Oldest First"
-  clear: "Clear Filters"
+    newest: "Newest first"
+    oldest: "Oldest first"
+  clear: "Clear filters"
   results: "result"
   results_plural: "results"
 
-# Community Rules Section
-rules:
-  title: "🤝 Community Rules"
-  items:
-    - title: "Be kind and respectful"
-      description: "Be kind and respectful to all members. We're here to support and uplift each other in our professional journeys."
-    - title: "Share knowledge freely"
-      description: "Share knowledge and opportunities freely. The bazaar thrives on open exchange of ideas and connections."
-    - title: "Keep discussions constructive"
-      description: "Keep discussions constructive and relevant to tech, business, and the digital ecosystem."
-    - title: "No spam, no hard selling"
-      description: "No spam, no hard selling. Share your work naturally and respect the community's attention."
-    - title: "Professional yet warm"
-      description: "Maintain professionalism while keeping the warm, informal spirit that makes our community special."
-    - title: "Moderators' discretion"
-      description: "Moderators reserve the right to remove disruptive members at any time, no warnings required."
-    - title: "Don't be an asshole"
-      description: "Zero tolerance for racism, sexism, harassment, or toxic behavior of any kind."
+# Rules Page
+rules_page:
+  kicker: "Community rules"
+  title: "How we keep the bazaar healthy."
+  dek: "These guidelines exist so that Digital Bazaar stays useful, warm and safe – not to over-police conversation. If in doubt, lean towards generosity, clarity and respect."
+  meta_note: "This is a living document. We may refine it as the community grows and new situations appear."
+  short_version: "Be kind. Share generously. Keep things constructive and relevant. Don't spam or harass people. Moderators can remove anyone who repeatedly makes the bazaar worse."
+  rules:
+    - number: "01"
+      title: "Be kind and respectful"
+      body: |
+        Treat everyone in the bazaar with basic human decency. We come from different countries, backgrounds and disciplines – assume good intent, ask questions, and avoid personal attacks.
+        
+        We're here to support and uplift each other in our professional journeys, not to score points.
+    - number: "02"
+      title: "Share knowledge and opportunities freely"
+      body: |
+        The bazaar only works if people bring real stories, lessons and opportunities. Share what you know: things you've tried, pitfalls you've hit, resources you've found useful, roles you're hiring for.
+        
+        You don't need to be "an expert" to contribute – honest field notes are often more valuable than polished theory.
+    - number: "03"
+      title: "Keep discussions constructive and on-topic"
+      body: |
+        Stay broadly within the world of tech, product, business, research and the digital ecosystem.
+        Side quests are fine, but the main lanes are for useful, work-adjacent conversations.
+        
+        Disagreeing is welcome; dragging people or starting flame wars is not. Critique ideas and systems, not people or whole groups.
+    - number: "04"
+      title: "No spam, no hard selling"
+      body: |
+        Share your work naturally – as part of a discussion, a story, or a genuine "here's something that might help".
+        Don't blast the same link everywhere or turn the bazaar into a sales funnel.
+        
+        If you're not sure whether something is appropriate, add context: why you're sharing it, who it's for, and what kind of feedback or response you're looking for.
+    - number: "05"
+      title: "Jobs & hiring etiquette"
+      body: |
+        Job posts and contract opportunities belong in the dedicated "Jobs Market" group, not sprayed across every group.
+      list:
+        - "Keep posts clear: role, company, location/remote, type (full-time, part-time, contract), and how to apply."
+        - "Don't tag or DM people at random with offers they didn't ask for."
+        - "If you're looking for work, one well-written message is better than daily bumps."
+    - number: "06"
+      title: "Professional yet warm"
+      body: |
+        The tone is deliberately informal – like a good café table at a conference – but this is still a professional space.
+        
+        Jokes are welcome; punching down is not. Share wins and losses, but respect privacy and avoid sharing sensitive information that isn't yours to share.
+    - number: "07"
+      title: "Moderators' discretion"
+      body: |
+        Moderators can remove messages or members that are clearly making the space worse – spam, harassment, persistent bad-faith arguing, or ignoring repeated feedback.
+        
+        When possible, we'll nudge and explain first. In more serious cases, we may remove people without warning to protect the rest of the community.
+    - number: "08"
+      title: "Don't be an asshole"
+      body: |
+        Zero tolerance for racism, sexism, hate, personal harassment, doxxing, or any kind of targeted abuse.
+        
+        If you're not sure whether something crosses the line, don't post it. If someone flags something to you, listen instead of doubling down.
+  cta_title: "See something off?"
+  cta_text: "If a message or interaction makes you uncomfortable, reach out to a moderator privately. We'd rather hear about it early than let it fester."
+  cta_closing: "If all of this sounds good to you, you'll probably enjoy the bazaar."
 
 # Footer
 footer:
+  title: "Digital Bazaar"
+  description: "A modern souq for Arab digital minds. Discussions, essays, experiments and community rules – across tech, product, business, research and more."
+  sections_title: "Sections"
+  community_title: "Community"
   copyright: "© %{year} Digital Bazaar"
   tagline: "Made with ❤ across the Arab world"
   links:
     whatsapp: "WhatsApp"
     github: "GitHub"
+    join_whatsapp: "Join WhatsApp ↗"
+    visit_github: "Visit GitHub org ↗"
+    articles: "Articles & field notes"
+    archive: "Archive"
+    rules: "Community rules"
 
 # Article
 article:
@@ -114,10 +244,10 @@ article:
   published: "Published on"
   read_time: "min read"
   share: "Share this article"
+  tags: "Tags"
 
 # 404 Page
 error_404:
   title: "Page Not Found"
   message: "Sorry, the page you're looking for doesn't exist."
   back: "Back to Home"
-
