@@ -24,8 +24,10 @@
   {%- endif -%}
 {%- endif -%}
 
-<div class="lang-toggle" data-is-article="{{ is_article }}">
-  <a href="{{ ar_url }}" class="{% if lang == 'ar' %}active{% endif %}" data-lang="ar">AR</a>
-  <span>|</span>
-  <a href="{{ en_url }}" class="{% if lang == 'en' %}active{% endif %}" data-lang="en">EN</a>
+<div class="lang-theme-toggle" data-is-article="{{ is_article }}">
+  <a href="{{ ar_url }}" class="lang-btn {% if lang == 'ar' %}active{% endif %}" data-lang="ar">عربي</a>
+  <span class="separator">|</span>
+  <a href="{{ en_url }}" class="lang-btn {% if lang == 'en' %}active{% endif %}" data-lang="en">English</a>
+  <span class="separator">|</span>
+  <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌑</button>
 </div>

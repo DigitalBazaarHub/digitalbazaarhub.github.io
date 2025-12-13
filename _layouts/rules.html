@@ -5,12 +5,47 @@ layout: default
 {%- assign strings_key = 'strings_' | append: lang -%}
 {%- assign strings = site.data[strings_key] -%}
 
-<header class="rules-header">
-  <div class="kicker">{{ strings.rules_page.kicker }}</div>
-  <h1>{{ strings.rules_page.title }}</h1>
-  <p class="dek">{{ strings.rules_page.dek }}</p>
+<!-- Rules hero with banner (light/dark variants) -->
+<section class="hero">
+  <!-- Light mode hero image -->
+  <picture class="hero-image-light">
+    <source media="(max-width: 600px)" srcset="{{ '/assets/img/rules_hero_banner-600.webp' | relative_url }}" type="image/webp">
+    <source media="(max-width: 900px)" srcset="{{ '/assets/img/rules_hero_banner-800.webp' | relative_url }}" type="image/webp">
+    <source srcset="{{ '/assets/img/rules_hero_banner-1200.webp' | relative_url }}" type="image/webp">
+    <img 
+      src="{{ '/assets/img/rules_hero_banner-1200.webp' | relative_url }}" 
+      alt="{{ strings.rules_page.hero_alt | default: 'Ancient scrolls with community guidelines in the Digital Bazaar' }}"
+      class="hero-image rules-hero-image"
+      width="1200"
+      height="400"
+      loading="eager"
+      fetchpriority="high"
+    >
+  </picture>
+  <!-- Dark mode hero image -->
+  <picture class="hero-image-dark">
+    <source media="(max-width: 600px)" srcset="{{ '/assets/img/rules_hero_banner_dark-600.webp' | relative_url }}" type="image/webp">
+    <source media="(max-width: 900px)" srcset="{{ '/assets/img/rules_hero_banner_dark-800.webp' | relative_url }}" type="image/webp">
+    <source srcset="{{ '/assets/img/rules_hero_banner_dark-1200.webp' | relative_url }}" type="image/webp">
+    <img 
+      src="{{ '/assets/img/rules_hero_banner_dark-1200.webp' | relative_url }}" 
+      alt="{{ strings.rules_page.hero_alt | default: 'Ancient scrolls with community guidelines in the Digital Bazaar' }}"
+      class="hero-image rules-hero-image"
+      width="1200"
+      height="400"
+      loading="lazy"
+    >
+  </picture>
+  <div class="hero-text">
+    <div class="hero-kicker">{{ strings.rules_page.kicker }}</div>
+    <h1 class="hero-title">{{ strings.rules_page.title }}</h1>
+    <p class="hero-sub">{{ strings.rules_page.dek }}</p>
+  </div>
+</section>
+
+<div class="rules-intro">
   <p class="meta-note">{{ strings.rules_page.meta_note }}</p>
-</header>
+</div>
 
 <div class="highlight-box">
   <strong>{{ strings.rules_page.short_version_label | default: 'Short version:' }}</strong> {{ strings.rules_page.short_version }}

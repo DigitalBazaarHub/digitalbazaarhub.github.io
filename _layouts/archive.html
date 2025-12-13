@@ -6,9 +6,10 @@ layout: default
 {%- assign strings = site.data[strings_key] -%}
 {%- assign categories = site.data.categories -%}
 
-<!-- Archive hero with banner -->
+<!-- Archive hero with banner (light/dark variants) -->
 <section class="hero">
-  <picture>
+  <!-- Light mode hero image -->
+  <picture class="hero-image-light">
     <source media="(max-width: 600px)" srcset="{{ '/assets/img/archive_hero_banner-600.webp' | relative_url }}" type="image/webp">
     <source media="(max-width: 900px)" srcset="{{ '/assets/img/archive_hero_banner-800.webp' | relative_url }}" type="image/webp">
     <source srcset="{{ '/assets/img/archive_hero_banner-1200.webp' | relative_url }}" type="image/webp">
@@ -20,6 +21,20 @@ layout: default
       height="400"
       loading="eager"
       fetchpriority="high"
+    >
+  </picture>
+  <!-- Dark mode hero image -->
+  <picture class="hero-image-dark">
+    <source media="(max-width: 600px)" srcset="{{ '/assets/img/archive_hero_banner_dark-600.webp' | relative_url }}" type="image/webp">
+    <source media="(max-width: 900px)" srcset="{{ '/assets/img/archive_hero_banner_dark-800.webp' | relative_url }}" type="image/webp">
+    <source srcset="{{ '/assets/img/archive_hero_banner_dark-1200.webp' | relative_url }}" type="image/webp">
+    <img 
+      src="{{ '/assets/img/archive_hero_banner_dark-1200.webp' | relative_url }}" 
+      alt="{{ strings.archive.hero_alt | default: 'Ancient archive shelves of scrolls mixed with glowing digital artifacts' }}"
+      class="hero-image archive-hero-image"
+      width="1200"
+      height="400"
+      loading="lazy"
     >
   </picture>
   <div class="hero-text">
