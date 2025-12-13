@@ -1,48 +1,91 @@
 {%- assign lang = include.lang | default: page.lang | default: site.default_lang -%}
-{%- assign strings_key = 'strings_' | append: lang -%}
-{%- assign strings = site.data[strings_key] -%}
 {%- assign post = include.post -%}
 {%- assign categories = site.data.categories -%}
 
+{%- comment -%} Load strings based on ARTICLE language (not site language) {%- endcomment -%}
+{%- assign card_strings_key = 'strings_' | append: post.lang -%}
+{%- assign card_strings = site.data[card_strings_key] -%}
+
+{%- comment -%} Category label in article's language {%- endcomment -%}
 {%- assign cat_label = post.category -%}
 {%- for cat in categories -%}
   {%- if cat.id == post.category -%}
-    {%- assign cat_label = cat[post.lang] | default: cat[lang] | default: post.category -%}
+    {%- if post.lang == 'ar' -%}
+      {%- assign cat_label = cat.ar -%}
+    {%- else -%}
+      {%- assign cat_label = cat.en -%}
+    {%- endif -%}
     {%- break -%}
   {%- endif -%}
 {%- endfor -%}
 
-<article class="article-card" 
-  data-lang="{{ post.lang }}"
-  data-category="{{ post.category }}"
-  data-author="{{ post.author_type | default: 'member' }}"
-  data-date="{{ post.date | date: '%Y-%m-%d' }}">
+{%- comment -%} Language label {%- endcomment -%}
+{%- assign post_lang_label = 'English' -%}
+{%- if post.lang == 'ar' -%}
+  {%- assign post_lang_label = 'العربية' -%}
+{%- endif -%}
+
+{%- comment -%} Card direction based on article language {%- endcomment -%}
+{%- if post.lang == 'ar' -%}
+  {%- assign card_dir = 'rtl' -%}
+{%- else -%}
+  {%- assign card_dir = 'ltr' -%}
+{%- endif -%}
+
+{%- comment -%} Localize date based on article language {%- endcomment -%}
+{%- assign day_num = post.date | date: "%-d" -%}
+{%- assign month_short = post.date | date: "%b" -%}
+{%- assign year_num = post.date | date: "%Y" -%}
+{%- if post.lang == 'ar' -%}
+  {%- assign month_localized = card_strings.months_short[month_short] | default: month_short -%}
+  {%- assign date_display = day_num | append: " " | append: month_localized | append: " " | append: year_num -%}
+{%- else -%}
+  {%- assign date_display = post.date | date: "%d %b %Y" -%}
+{%- endif -%}
+<a href="{{ post.url | relative_url }}?lang={{ lang }}" 
+   class="card"
+   dir="{{ card_dir }}"
+   lang="{{ post.lang }}"
+   data-lang="{{ post.lang }}"
+   data-category="{{ post.category }}"
+   data-author="{{ post.author_type | default: 'member' }}"
+   data-date="{{ post.date | date: '%Y-%m-%d' }}">
   
-  {%- if post.image -%}
-  <a href="{{ post.url | relative_url }}" class="article-card-image">
-    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
-  </a>
+  {%- if post.thumbnail or post.image -%}
+  <img 
+    src="{{ post.thumbnail | default: post.image | relative_url }}" 
+    alt="{{ post.title }}" 
+    class="card-thumb"
+    width="280"
+    height="140"
+    loading="lazy"
+  >
   {%- endif -%}
   
-  <div class="article-card-content">
+  <div class="card-body">
     {%- if post.category -%}
-    <span class="article-card-category">{{ cat_label }}</span>
+    <div class="card-kicker">{{ cat_label }}</div>
     {%- endif -%}
     
-    <h3 class="article-card-title">
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    </h3>
+    <div class="card-title">{{ post.title }}</div>
+    
+    <div class="card-meta">
+      {{ card_strings.article.by }} {{ post.author }}
+      {%- if post.reading_time %} • {{ post.reading_time }} {{ card_strings.article.read_time }}{%- endif %}
+      • {{ date_display }}
+      • {{ post_lang_label }}
+    </div>
     
     {%- if post.excerpt -%}
-    <p class="article-card-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+    <div class="card-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</div>
     {%- endif -%}
     
-    <div class="article-card-meta">
-      <span class="article-card-author">{{ post.author }}</span>
-      <span class="meta-separator">•</span>
-      <time datetime="{{ post.date | date_to_xmlschema }}">
-        {{ post.date | date: "%b %d, %Y" }}
-      </time>
+    {%- if post.tags and post.tags.size > 0 -%}
+    <div class="card-tags">
+      {%- for tag in post.tags limit: 3 -%}
+      <span class="chip">{{ tag }}</span>
+      {%- endfor -%}
     </div>
+    {%- endif -%}
   </div>
-</article>
+</a>

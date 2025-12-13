@@ -1,0 +1,329 @@
+---
+layout: default
+---
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign strings_key = 'strings_' | append: lang -%}
+{%- assign strings = site.data[strings_key] -%}
+{%- assign categories = site.data.categories -%}
+
+<!-- Archive hero with banner -->
+<section class="hero">
+  <picture>
+    <source media="(max-width: 600px)" srcset="{{ '/assets/img/archive_hero_banner-600.webp' | relative_url }}" type="image/webp">
+    <source media="(max-width: 900px)" srcset="{{ '/assets/img/archive_hero_banner-800.webp' | relative_url }}" type="image/webp">
+    <source srcset="{{ '/assets/img/archive_hero_banner-1200.webp' | relative_url }}" type="image/webp">
+    <img 
+      src="{{ '/assets/img/archive_hero_banner-1200.webp' | relative_url }}" 
+      alt="{{ strings.archive.hero_alt | default: 'Ancient archive shelves of scrolls mixed with glowing digital artifacts' }}"
+      class="hero-image archive-hero-image"
+      width="1200"
+      height="400"
+      loading="eager"
+      fetchpriority="high"
+    >
+  </picture>
+  <div class="hero-text">
+    <div class="hero-kicker">{{ strings.archive.kicker | default: 'Full archive' }}</div>
+    <h1 class="hero-title">{{ strings.archive.title | default: 'The shelves of the Digital Bazaar' }}</h1>
+    <p class="hero-sub">{{ strings.archive.subtitle }}</p>
+  </div>
+</section>
+
+<!-- Filters -->
+<section class="filters-section">
+  <h2>{{ strings.filters.title | default: 'Filter the archive' }}</h2>
+  <p>{{ strings.filters.subtitle | default: 'Use these controls to slice the archive.' }}</p>
+
+  <div class="filters">
+    <div class="filters-header">
+      <div class="filters-title" id="filters-summary">{{ strings.filters.all_articles | default: 'All articles' }} • {{ strings.filters.all_years | default: 'all years' }} • {{ strings.filters.newest | default: 'newest first' }}</div>
+      <div class="filters-clear" id="clear-filters">{{ strings.filters.clear | default: 'Clear filters' }}</div>
+    </div>
+    <div class="filters-grid">
+      <div class="filter-group">
+        <label for="filter-language">{{ strings.filters.language.label | default: 'Language' }}</label>
+        <select id="filter-language" class="filter-select">
+          <option value="">{{ strings.filters.language.all | default: 'All languages' }}</option>
+          <option value="en">{{ strings.filters.language.en | default: 'English' }}</option>
+          <option value="ar">{{ strings.filters.language.ar | default: 'العربية' }}</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-category">{{ strings.filters.category.label | default: 'Category' }}</label>
+        <select id="filter-category" class="filter-select">
+          <option value="">{{ strings.filters.category.all | default: 'All categories' }}</option>
+          {%- for cat in categories -%}
+          <option value="{{ cat.id }}">{% if lang == 'ar' %}{{ cat.ar }}{% else %}{{ cat.en }}{% endif %}</option>
+          {%- endfor -%}
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-author">{{ strings.filters.author.label | default: 'Author' }}</label>
+        <select id="filter-author" class="filter-select">
+          <option value="">{{ strings.filters.author.all | default: 'All authors' }}</option>
+          <option value="team">{{ strings.filters.author.team | default: 'Bazaar Team' }}</option>
+          <option value="member">{{ strings.filters.author.member | default: 'Community member' }}</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-year">{{ strings.filters.time.label | default: 'Year' }}</label>
+        <select id="filter-year" class="filter-select">
+          <option value="">{{ strings.filters.time.all | default: 'All years' }}</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-sort">{{ strings.filters.sort.label | default: 'Sort' }}</label>
+        <select id="filter-sort" class="filter-select">
+          <option value="newest">{{ strings.filters.sort.newest | default: 'Newest first' }}</option>
+          <option value="oldest">{{ strings.filters.sort.oldest | default: 'Oldest first' }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Full archive list - grouped by year & month -->
+<section class="archive-section">
+  <div class="archive-container">
+    {%- assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
+    {%- for year in posts_by_year -%}
+    
+    <h2 class="archive-year-heading">{{ year.name }}</h2>
+    
+    {%- assign posts_by_month = year.items | group_by_exp: "post", "post.date | date: '%B'" -%}
+    {%- for month in posts_by_month -%}
+    
+    {%- if lang == 'ar' -%}
+      {%- assign month_display = strings.months[month.name] | default: month.name -%}
+    {%- else -%}
+      {%- assign month_display = month.name -%}
+    {%- endif -%}
+    <h3 class="archive-month-heading">{{ month_display }}</h3>
+    
+    <ul class="archive-entries">
+      {%- for post in month.items -%}
+      {%- assign cat_label = post.category -%}
+      {%- for cat in categories -%}
+        {%- if cat.id == post.category -%}
+          {%- if lang == 'ar' -%}
+            {%- assign cat_label = cat.ar -%}
+          {%- else -%}
+            {%- assign cat_label = cat.en -%}
+          {%- endif -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if post.lang == 'ar' -%}
+        {%- assign post_lang_label = 'العربية' -%}
+      {%- else -%}
+        {%- if lang == 'ar' -%}
+          {%- assign post_lang_label = 'الإنجليزية' -%}
+        {%- else -%}
+          {%- assign post_lang_label = 'English' -%}
+        {%- endif -%}
+      {%- endif -%}
+      {%- assign day_num = post.date | date: "%-d" -%}
+      {%- assign month_short = post.date | date: "%b" -%}
+      {%- if lang == 'ar' -%}
+        {%- assign month_short_ar = strings.months_short[month_short] | default: month_short -%}
+        {%- assign date_display = day_num | append: " " | append: month_short_ar -%}
+      {%- else -%}
+        {%- assign date_display = month_short | append: " " | append: day_num -%}
+      {%- endif -%}
+      <li class="archive-entry" 
+          data-lang="{{ post.lang }}"
+          data-category="{{ post.category }}"
+          data-author="{{ post.author_type | default: 'member' }}"
+          data-date="{{ post.date | date: '%Y-%m-%d' }}">
+        <span class="archive-entry-date">{{ date_display }}</span>
+        <div class="archive-entry-content">
+          <a href="{{ post.url | relative_url }}?lang={{ lang }}" class="archive-entry-title">{{ post.title }}</a>
+          <div class="archive-entry-meta">{{ cat_label }} • {{ post_lang_label }}{% if post.reading_time %} • {{ post.reading_time }} {{ strings.article.read_time | default: 'min read' }}{% endif %}</div>
+          {%- if post.excerpt -%}
+          <p class="archive-entry-teaser">{{ post.excerpt | strip_html | truncate: 160 }}</p>
+          {%- endif -%}
+        </div>
+      </li>
+      {%- endfor -%}
+    </ul>
+    
+    {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+<script>
+(function() {
+  // Filter elements
+  const filterLang = document.getElementById('filter-language');
+  const filterCat = document.getElementById('filter-category');
+  const filterAuthor = document.getElementById('filter-author');
+  const filterYear = document.getElementById('filter-year');
+  const filterSort = document.getElementById('filter-sort');
+  const clearBtn = document.getElementById('clear-filters');
+  const summary = document.getElementById('filters-summary');
+  const container = document.querySelector('.archive-container');
+  
+  // Store the original HTML to restore when needed
+  const originalHTML = container.innerHTML;
+  let currentSort = 'newest';
+  
+  function rebuildForSort(sortOrder) {
+    // Restore original HTML first
+    container.innerHTML = originalHTML;
+    
+    if (sortOrder === 'oldest') {
+      // Get all elements
+      const allElements = Array.from(container.children);
+      
+      // Group elements by year (each year = heading + its month sections)
+      const yearGroups = [];
+      let currentGroup = [];
+      
+      allElements.forEach(el => {
+        if (el.classList.contains('archive-year-heading') && currentGroup.length > 0) {
+          yearGroups.push(currentGroup);
+          currentGroup = [];
+        }
+        currentGroup.push(el);
+      });
+      if (currentGroup.length > 0) yearGroups.push(currentGroup);
+      
+      // Reverse year groups
+      yearGroups.reverse();
+      
+      // Within each year, reverse month sections (keep year heading first)
+      yearGroups.forEach(group => {
+        const yearHeading = group[0]; // First element is the year heading
+        const monthSections = [];
+        let currentMonth = [];
+        
+        for (let i = 1; i < group.length; i++) {
+          const el = group[i];
+          if (el.classList.contains('archive-month-heading') && currentMonth.length > 0) {
+            monthSections.push(currentMonth);
+            currentMonth = [];
+          }
+          currentMonth.push(el);
+        }
+        if (currentMonth.length > 0) monthSections.push(currentMonth);
+        
+        // Reverse months
+        monthSections.reverse();
+        
+        // Rebuild group
+        group.length = 0;
+        group.push(yearHeading);
+        monthSections.forEach(month => {
+          month.forEach(el => group.push(el));
+        });
+      });
+      
+      // Clear and rebuild container
+      container.innerHTML = '';
+      yearGroups.forEach(group => {
+        group.forEach(el => container.appendChild(el));
+      });
+      
+      // Reverse entries within each list
+      container.querySelectorAll('.archive-entries').forEach(list => {
+        const items = Array.from(list.children);
+        items.reverse().forEach(item => list.appendChild(item));
+      });
+    }
+  }
+  
+  function applyFilters() {
+    const lang = filterLang.value;
+    const cat = filterCat.value;
+    const author = filterAuthor.value;
+    const year = filterYear.value;
+    const sort = filterSort.value;
+    
+    // Rebuild structure if sort changed
+    if (sort !== currentSort) {
+      rebuildForSort(sort);
+      currentSort = sort;
+    }
+    
+    // Get all entries
+    const entries = Array.from(document.querySelectorAll('.archive-entry'));
+    
+    // Filter entries
+    let visible = 0;
+    entries.forEach(entry => {
+      const eLang = entry.dataset.lang;
+      const eCat = entry.dataset.category;
+      const eAuthor = entry.dataset.author;
+      const eDate = entry.dataset.date;
+      const eYear = eDate ? eDate.split('-')[0] : '';
+      
+      const show = 
+        (!lang || eLang === lang) &&
+        (!cat || eCat === cat) &&
+        (!author || eAuthor === author) &&
+        (!year || eYear === year);
+      
+      entry.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    
+    // Hide empty year/month sections
+    document.querySelectorAll('.archive-year-heading').forEach(heading => {
+      const nextSiblings = [];
+      let sibling = heading.nextElementSibling;
+      while (sibling && !sibling.classList.contains('archive-year-heading')) {
+        nextSiblings.push(sibling);
+        sibling = sibling.nextElementSibling;
+      }
+      const hasVisible = nextSiblings.some(el => {
+        if (el.classList.contains('archive-entries')) {
+          return Array.from(el.children).some(li => li.style.display !== 'none');
+        }
+        return false;
+      });
+      heading.style.display = hasVisible ? '' : 'none';
+      nextSiblings.forEach(el => {
+        if (el.classList.contains('archive-month-heading')) {
+          const list = el.nextElementSibling;
+          if (list && list.classList.contains('archive-entries')) {
+            const hasVisibleItems = Array.from(list.children).some(li => li.style.display !== 'none');
+            el.style.display = hasVisibleItems ? '' : 'none';
+          }
+        }
+      });
+    });
+    
+    // Update summary
+    const parts = [];
+    parts.push(visible + ' {{ strings.filters.articles_count | default: "articles" }}');
+    if (year) parts.push(year);
+    else parts.push('{{ strings.filters.all_years | default: "all years" }}');
+    parts.push(sort === 'oldest' ? '{{ strings.filters.sort.oldest | default: "oldest first" }}' : '{{ strings.filters.sort.newest | default: "newest first" }}');
+    summary.textContent = parts.join(' • ');
+  }
+  
+  function clearFilters() {
+    filterLang.value = '';
+    filterCat.value = '';
+    filterAuthor.value = '';
+    filterYear.value = '';
+    filterSort.value = 'newest';
+    applyFilters();
+  }
+  
+  // Event listeners
+  [filterLang, filterCat, filterAuthor, filterYear, filterSort].forEach(el => {
+    if (el) el.addEventListener('change', applyFilters);
+  });
+  if (clearBtn) clearBtn.addEventListener('click', clearFilters);
+  
+  // Initial count
+  const entries = Array.from(document.querySelectorAll('.archive-entry'));
+  summary.textContent = entries.length + ' {{ strings.filters.articles_count | default: "articles" }} • {{ strings.filters.all_years | default: "all years" }} • {{ strings.filters.sort.newest | default: "newest first" }}';
+})();
+</script>
+
+{{ content }}

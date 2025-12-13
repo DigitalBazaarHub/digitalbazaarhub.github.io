@@ -28,19 +28,18 @@
   <!-- Theme Color -->
   <meta name="theme-color" content="#B34E36">
   
-  <!-- Preload critical fonts (breaks render-blocking chain) -->
+  <!-- Preload critical fonts -->
   {%- if lang == 'ar' -%}
-    <link rel="preload" href="{{ '/assets/fonts/Tajawal-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ '/assets/fonts/Tajawal-Bold.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ '/assets/fonts/Tajawal-ExtraBold.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/IBMPlexSansArabic-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/IBMPlexSansArabic-Bold.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   {%- else -%}
-    <link rel="preload" href="{{ '/assets/fonts/DMSans-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ '/assets/fonts/DMSans-Bold.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/SpaceGrotesk-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/SpaceGrotesk-Bold.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   {%- endif -%}
   
   <!-- Preload hero image (LCP element) -->
   {%- if page.layout == 'home' or page.url == '/ar/' or page.url == '/en/' -%}
-    <link rel="preload" href="{{ '/assets/img/logo-512-hq.webp' | relative_url }}" as="image" type="image/webp" fetchpriority="high">
+    <link rel="preload" href="{{ '/assets/img/home_hero_banner-1200.webp' | relative_url }}" as="image" type="image/webp" fetchpriority="high">
   {%- endif -%}
   
   <!-- Styles -->
@@ -55,9 +54,9 @@
   <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}">
 </head>
 <body class="lang-{{ lang }}">
+  {% include header.html %}
+  
   <div class="wrap">
-    {% include header.html %}
-    
     <main>
       {{ content }}
     </main>
@@ -72,12 +71,102 @@
       return String(num).replace(/\d/g, d => arabicDigits[d]);
     }
     
+    // Handle UI language from query param (for article pages)
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const uiLang = params.get('lang');
+      if (uiLang && (uiLang === 'ar' || uiLang === 'en')) {
+        // Update document language and direction
+        document.documentElement.lang = uiLang;
+        document.documentElement.dir = uiLang === 'ar' ? 'rtl' : 'ltr';
+        document.body.className = 'lang-' + uiLang;
+        
+        // Update all translatable elements
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const text = el.dataset[uiLang];
+          if (text) el.textContent = text;
+        });
+        
+        // Update nav links to preserve UI language
+        document.querySelectorAll('.site-nav .nav-link').forEach(link => {
+          const href = link.getAttribute('href');
+          if (href && href.startsWith('/')) {
+            link.href = href.replace(/^\/(ar|en)\//, '/' + uiLang + '/');
+          }
+        });
+        
+        // Update logo link
+        const logoLink = document.querySelector('.logo-link');
+        if (logoLink) {
+          logoLink.href = '/' + uiLang + '/';
+        }
+        
+        // Update language toggle active state
+        document.querySelectorAll('.lang-toggle a').forEach(item => {
+          const itemLang = item.dataset.lang;
+          if (itemLang === uiLang) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }
+    })();
+    
     // Set current year in footer
     document.querySelectorAll('[data-year]').forEach(el => {
       const year = new Date().getFullYear();
-      const lang = el.dataset.lang || 'en';
+      const params = new URLSearchParams(window.location.search);
+      const lang = params.get('lang') || el.dataset.lang || 'en';
       el.textContent = lang === 'ar' ? toArabicNumerals(year) : year;
     });
+  </script>
+
+  <!-- Mermaid Diagrams (loaded only when needed) -->
+  <script>
+    (function() {
+      const mermaidBlocks = document.querySelectorAll('code.language-mermaid');
+      if (mermaidBlocks.length === 0) return;
+      
+      // Load mermaid.min.js only if diagrams exist
+      const script = document.createElement('script');
+      script.src = '{{ "/assets/js/mermaid-11.12.2.min.js" | relative_url }}';
+      script.onload = function() {
+        mermaid.initialize({ 
+          startOnLoad: false,
+          theme: 'dark',
+          themeVariables: {
+            primaryColor: '#2F8F9D',
+            primaryTextColor: '#e5e7eb',
+            primaryBorderColor: '#2F8F9D',
+            lineColor: '#6a7c89',
+            secondaryColor: '#21313B',
+            tertiaryColor: '#E2B714',
+            background: '#152029',
+            mainBkg: '#21313B',
+            nodeBorder: '#2F8F9D',
+            clusterBkg: '#21313B',
+            titleColor: '#F4E6C4',
+            edgeLabelBackground: '#21313B',
+            nodeTextColor: '#e5e7eb'
+          }
+        });
+        
+        // Convert code blocks to mermaid diagrams
+        mermaidBlocks.forEach(function(block) {
+          const code = block.textContent;
+          const container = document.createElement('div');
+          container.className = 'mermaid';
+          container.textContent = code;
+          
+          const pre = block.closest('pre') || block.parentElement;
+          pre.parentElement.replaceChild(container, pre);
+        });
+        
+        mermaid.run();
+      };
+      document.head.appendChild(script);
+    })();
   </script>
 </body>
 </html>

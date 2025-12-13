@@ -5,39 +5,142 @@ layout: default
 {%- assign strings_key = 'strings_' | append: lang -%}
 {%- assign strings = site.data[strings_key] -%}
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="copy">
-      <div class="badge">{{ strings.hero.badge }}</div>
-      <div class="intro-text">
-        {{ strings.hero.intro | markdownify }}
-      </div>
-      <p class="secondary-text">{{ strings.hero.secondary | strip_newlines | replace: '  ', ' ' }}</p>
-      <div class="cta">
+<!-- Hero Section - Full Bleed with Overlay -->
+<section class="hero-home" aria-labelledby="hero-heading">
+  <picture>
+    <source media="(max-width: 600px)" srcset="{{ '/assets/img/home_hero_banner-600.webp' | relative_url }}" type="image/webp">
+    <source media="(max-width: 900px)" srcset="{{ '/assets/img/home_hero_banner-800.webp' | relative_url }}" type="image/webp">
+    <source srcset="{{ '/assets/img/home_hero_banner-1200.webp' | relative_url }}" type="image/webp">
+    <img 
+      src="{{ '/assets/img/home_hero_banner-1200.webp' | relative_url }}" 
+      alt="{{ strings.hero.image_alt }}"
+      class="hero-home-img"
+      width="1024"
+      height="1024"
+      loading="eager"
+      fetchpriority="high"
+    >
+  </picture>
+  <div class="hero-home-gradient"></div>
+  <div class="hero-home-content">
+    <div class="hero-home-inner">
+      <div class="hero-kicker">{{ strings.hero.kicker }}</div>
+      <h1 class="hero-home-title" id="hero-heading">{{ strings.hero.headline }}</h1>
+      <p class="hero-home-sub">{{ strings.hero.description }}</p>
+      <div class="hero-cta">
         <a class="btn btn-primary" href="{{ site.social.whatsapp }}" target="_blank" rel="noopener">
-          <span>{{ strings.buttons.join_whatsapp }}</span>
+          <span>{{ strings.buttons.join_whatsapp_community }}</span>
           <span aria-hidden="true">↗</span>
         </a>
-        <a class="btn btn-secondary" href="{{ site.social.github }}" target="_blank" rel="noopener">
-          <span>{{ strings.buttons.visit_github }}</span>
-          <span aria-hidden="true">↗</span>
+        <a class="btn btn-teal" href="{{ site.social.github }}" target="_blank" rel="noopener">
+          <span>{{ strings.buttons.visit_github_org }}</span>
+          <span aria-hidden="true">💻</span>
+        </a>
+        <a class="btn btn-saffron" href="/{{ lang }}/articles/">
+          <span>{{ strings.buttons.read_articles }}</span>
+          <span aria-hidden="true">✍️</span>
         </a>
       </div>
     </div>
-    <div class="arch" aria-hidden="true"></div>
   </div>
 </section>
 
-<section class="rules">
-  <h2>{{ strings.rules.title }}</h2>
-  <ul class="rules-list">
-    {%- for rule in strings.rules.items -%}
-    <li>
-      <span>{{ forloop.index }}</span>
-      <div>{{ rule.description }}</div>
-    </li>
+<!-- 1) WHAT HAPPENS IN THE BAZAAR -->
+<section class="section" id="about">
+  <div class="section-header">
+    <div class="section-kicker">{{ strings.about.kicker }}</div>
+    <h2 class="section-title">{{ strings.about.title }}</h2>
+    <p class="section-sub">{{ strings.about.subtitle }}</p>
+  </div>
+
+  <div class="features-grid">
+    {%- for feature in strings.about.features -%}
+    <article class="feature-card">
+      <div class="feature-card-label">{{ feature.label }}</div>
+      <h3 class="feature-card-title">{{ feature.title }}</h3>
+      <p class="feature-card-body">{{ feature.description }}</p>
+    </article>
     {%- endfor -%}
-  </ul>
+  </div>
+</section>
+
+{% comment %}
+<!-- 2) HOW THE BAZAAR FLOWS - HIDDEN -->
+<section class="section" id="rhythm">
+  <div class="section-header">
+    <div class="section-kicker">{{ strings.rhythm.kicker }}</div>
+    <h2 class="section-title">{{ strings.rhythm.title }}</h2>
+    <p class="section-sub">{{ strings.rhythm.subtitle }}</p>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <ul class="clean">
+        {%- for item in strings.rhythm.items -%}
+        <li><strong>{{ item.title }}</strong> {{ item.description }}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div class="callout">
+      <div class="mini-heading">{{ strings.rhythm.tips_title }}</div>
+      <ul class="clean">
+        {%- for tip in strings.rhythm.tips -%}
+        <li>{{ tip }}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endcomment %}
+
+<!-- 3) HOW WE KEEP THE BAZAAR HEALTHY (RULES SUMMARY) -->
+<section class="section" id="rules-summary">
+  <div class="section-header">
+    <div class="section-kicker">{{ strings.rules_summary.kicker }}</div>
+    <h2 class="section-title">{{ strings.rules_summary.title }}</h2>
+    <p class="section-sub">{{ strings.rules_summary.subtitle }}</p>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="mini-heading">{{ strings.rules_summary.short_title }}</div>
+      <ul class="clean">
+        {%- for rule in strings.rules_summary.items -%}
+        <li><strong>{{ rule.title }}</strong> {{ rule.description }}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div class="callout">
+      <p class="mini-heading">{{ strings.rules_summary.moderation_title }}</p>
+      <p>{{ strings.rules_summary.moderation_text }}</p>
+      <p style="margin-top:10px;">
+        <a href="/{{ lang }}/rules/" class="btn btn-teal">
+          <span>{{ strings.buttons.read_full_rules }}</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SOFT CTA -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-kicker">{{ strings.cta.kicker }}</div>
+    <h2 class="section-title">{{ strings.cta.title }}</h2>
+    <p class="section-sub">{{ strings.cta.subtitle }}</p>
+  </div>
+
+  <div class="chip-row">
+    <a class="btn btn-primary" href="{{ site.social.whatsapp }}" target="_blank" rel="noopener">
+      <span>{{ strings.buttons.join_whatsapp_community }}</span>
+      <span aria-hidden="true">↗</span>
+    </a>
+    <a class="btn btn-saffron" href="/{{ lang }}/articles/">
+      <span>{{ strings.buttons.browse_articles }}</span>
+      <span aria-hidden="true">✍️</span>
+    </a>
+  </div>
 </section>
 
 {{ content }}

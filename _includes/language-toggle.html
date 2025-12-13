@@ -1,11 +1,9 @@
 {%- assign lang = page.lang | default: site.default_lang -%}
-{%- assign strings_key = 'strings_' | append: lang -%}
-{%- assign strings = site.data[strings_key] -%}
 
 {%- comment -%}
   Build URLs for language switching.
   - For regular pages: Replace /ar/ with /en/ or vice versa
-  - For article pages: Use query param ?ui_lang=XX to change UI only
+  - For article pages: Use query param ?lang=XX to change UI only
 {%- endcomment -%}
 {%- assign current_url = page.url -%}
 {%- assign is_article = false -%}
@@ -14,36 +12,20 @@
 {%- endif -%}
 
 {%- if is_article -%}
-  {%- comment -%} For articles, use query params to switch UI language {%- endcomment -%}
   {%- assign ar_url = current_url | append: '?lang=ar' -%}
   {%- assign en_url = current_url | append: '?lang=en' -%}
 {%- else -%}
-  {%- comment -%} For regular pages, swap the language prefix {%- endcomment -%}
   {%- if lang == 'ar' -%}
-    {%- assign other_lang_url = current_url | replace_first: '/ar/', '/en/' -%}
     {%- assign ar_url = current_url -%}
-    {%- assign en_url = other_lang_url -%}
+    {%- assign en_url = current_url | replace_first: '/ar/', '/en/' -%}
   {%- else -%}
-    {%- assign other_lang_url = current_url | replace_first: '/en/', '/ar/' -%}
-    {%- assign ar_url = other_lang_url -%}
+    {%- assign ar_url = current_url | replace_first: '/en/', '/ar/' -%}
     {%- assign en_url = current_url -%}
   {%- endif -%}
 {%- endif -%}
 
-<div class="lang-dropdown" data-is-article="{{ is_article }}">
-  <button class="lang-trigger" type="button">
-    <span class="lang-globe">🌐</span>
-    <span class="lang-current">{{ strings.language.current }}</span>
-    <span class="lang-arrow">▾</span>
-  </button>
-  <div class="lang-menu">
-    <a href="{{ ar_url }}" class="lang-item {% if lang == 'ar' %}is-active{% endif %}" data-lang="ar">
-      العربية
-      {% if lang == 'ar' %}<span class="lang-check">✓</span>{% endif %}
-    </a>
-    <a href="{{ en_url }}" class="lang-item {% if lang == 'en' %}is-active{% endif %}" data-lang="en">
-      English
-      {% if lang == 'en' %}<span class="lang-check">✓</span>{% endif %}
-    </a>
-  </div>
+<div class="lang-toggle" data-is-article="{{ is_article }}">
+  <a href="{{ ar_url }}" class="{% if lang == 'ar' %}active{% endif %}" data-lang="ar">AR</a>
+  <span>|</span>
+  <a href="{{ en_url }}" class="{% if lang == 'en' %}active{% endif %}" data-lang="en">EN</a>
 </div>

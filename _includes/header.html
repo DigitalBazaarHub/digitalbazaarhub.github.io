@@ -1,51 +1,57 @@
 {%- assign lang = page.lang | default: site.default_lang -%}
 {%- assign strings_key = 'strings_' | append: lang -%}
 {%- assign strings = site.data[strings_key] -%}
+{%- assign strings_ar = site.data.strings_ar -%}
+{%- assign strings_en = site.data.strings_en -%}
 
 <header class="site-header">
-  <div class="header-main">
-    <a href="/{{ lang }}/" class="logo-link">
-      <picture>
+  <nav class="nav-inner">
+    <div class="nav-left">
+      <a href="/{{ lang }}/" class="logo-link">
+        <picture>
           <source srcset="{{ '/assets/img/logo-128.webp' | relative_url }}" type="image/webp">
           <img 
             src="{{ '/assets/img/logo-128.jpg' | relative_url }}" 
             alt="{{ strings.site_title }}" 
             class="logo"
-            width="54"
-            height="54"
+            width="28"
+            height="28"
             loading="eager"
           >
         </picture>
-      <div class="site-branding">
-        <h1 class="site-title">{{ strings.site_title }} 💬</h1>
-        <p class="site-tagline">{{ strings.site_tagline }}</p>
-      </div>
-    </a>
+        <div class="site-branding">
+          <span class="site-title" data-i18n="site_title" data-ar="{{ strings_ar.site_title }} 💬" data-en="{{ strings_en.site_title }} 💬">{{ strings.site_title }} 💬</span>
+          <span class="site-tagline" data-i18n="site_tagline" data-ar="{{ strings_ar.site_tagline }}" data-en="{{ strings_en.site_tagline }}">{{ strings.site_tagline }}</span>
+        </div>
+      </a>
+    </div>
     
     <button class="nav-toggle" id="navToggle" aria-label="{{ strings.nav.menu | default: 'Menu' }}" aria-expanded="false">
       <span class="nav-toggle-icon"></span>
     </button>
-  </div>
-  
-  <div class="header-nav" id="headerNav">
-    <nav class="site-nav">
-      <a href="/{{ lang }}/articles/" class="nav-link {% if page.url contains '/articles/' %}active{% endif %}">
-        {{ strings.nav.articles }}
-      </a>
-      <a href="/{{ lang }}/rules/" class="nav-link {% if page.url contains '/rules/' %}active{% endif %}">
-        {{ strings.nav.rules }}
-      </a>
-    </nav>
     
-    {% include language-toggle.html %}
-  </div>
+    <div class="nav-right" id="navRight">
+      <div class="site-nav">
+        <a href="/{{ lang }}/articles/" class="nav-link {% if page.url contains '/articles/' %}active{% endif %}" data-i18n="nav_articles" data-ar="{{ strings_ar.nav.articles }}" data-en="{{ strings_en.nav.articles }}">
+          {{ strings.nav.articles }}
+        </a>
+        <a href="/{{ lang }}/archive/" class="nav-link {% if page.url contains '/archive/' %}active{% endif %}" data-i18n="nav_archive" data-ar="{{ strings_ar.nav.archive | default: 'الأرشيف' }}" data-en="{{ strings_en.nav.archive | default: 'Archive' }}">
+          {{ strings.nav.archive | default: 'Archive' }}
+        </a>
+        <a href="/{{ lang }}/rules/" class="nav-link {% if page.url contains '/rules/' %}active{% endif %}" data-i18n="nav_rules" data-ar="{{ strings_ar.nav.rules }}" data-en="{{ strings_en.nav.rules }}">
+          {{ strings.nav.rules }}
+        </a>
+      </div>
+      
+      {% include language-toggle.html %}
+    </div>
+  </nav>
 </header>
-<div class="header-separator"></div>
 
 <script>
 (function() {
   const toggle = document.getElementById('navToggle');
-  const nav = document.getElementById('headerNav');
+  const nav = document.getElementById('navRight');
   if (toggle && nav) {
     toggle.addEventListener('click', function() {
       const expanded = toggle.getAttribute('aria-expanded') === 'true';
