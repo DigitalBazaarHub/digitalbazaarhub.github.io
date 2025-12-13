@@ -1,7 +1,7 @@
 # Digital Bazaar — Makefile
 # Simplifies common development tasks
 
-.PHONY: help install update assets images images-hero clean serve serve-drafts build setup-hooks prod-build
+.PHONY: help install update assets images hero clean serve serve-drafts build setup-hooks prod-build
 
 # Homebrew Ruby paths (macOS)
 RUBY_BIN := /opt/homebrew/opt/ruby/bin
@@ -27,7 +27,7 @@ help: ## Show this help message
 	@echo "  $(CYAN)update$(RESET)         Update all gem dependencies"
 	@echo "  $(CYAN)assets$(RESET)         Download fonts + mermaid.js"
 	@echo "  $(CYAN)images$(RESET)         Generate logos, favicons, icons"
-	@echo "  $(CYAN)images-hero$(RESET)    Show hero banner generation guide"
+	@echo "  $(CYAN)hero$(RESET)           Generate hero banners (make hero SRC=x OUT=y)"
 	@echo "  $(CYAN)clean$(RESET)          Remove generated site and caches"
 	@echo ""
 	@echo "$(YELLOW)Development:$(RESET)"
@@ -58,39 +58,79 @@ images: ## Generate all site images from gallery sources
 	@echo "📷 Generating site images from assets/gallery/..."
 	@echo ""
 	@echo "  → Logo sizes..."
-	sips -z 128 128 assets/gallery/bazaar_2025.jpg --out assets/img/logo-128.jpg
-	sips -z 256 256 assets/gallery/bazaar_2025.jpg --out assets/img/logo-256.jpg
-	sips -z 512 512 assets/gallery/bazaar_2025.jpg --out assets/img/logo-512.jpg
+	sips -z 128 128 assets/gallery/icons/bazaar_2025.jpg --out assets/img/logo-128.jpg
+	sips -z 256 256 assets/gallery/icons/bazaar_2025.jpg --out assets/img/logo-256.jpg
+	sips -z 512 512 assets/gallery/icons/bazaar_2025.jpg --out assets/img/logo-512.jpg
 	@echo "  → Favicons and icons..."
-	sips -z 16 16 assets/gallery/bazaar_2025.png --out assets/img/favicon-16.png
-	sips -z 32 32 assets/gallery/bazaar_2025.png --out assets/img/favicon-32.png
-	sips -z 180 180 assets/gallery/bazaar_2025.png --out assets/img/apple-touch-icon.png
-	sips -z 192 192 assets/gallery/bazaar_2025.png --out assets/img/icon-192.png
+	sips -z 16 16 assets/gallery/icons/bazaar_2025.png --out assets/img/favicon-16.png
+	sips -z 32 32 assets/gallery/icons/bazaar_2025.png --out assets/img/favicon-32.png
+	sips -z 180 180 assets/gallery/icons/bazaar_2025.png --out assets/img/apple-touch-icon.png
+	sips -z 192 192 assets/gallery/icons/bazaar_2025.png --out assets/img/icon-192.png
 	@echo "  → Converting to WebP..."
 	cwebp -q 80 assets/img/logo-128.jpg -o assets/img/logo-128.webp
 	cwebp -q 80 assets/img/logo-256.jpg -o assets/img/logo-256.webp
 	cwebp -q 90 assets/img/logo-512.jpg -o assets/img/logo-512-hq.webp
+	@echo "  → Social share image (OG)..."
+	sips -Z 1200 assets/gallery/hero_selections/hero_home_light.png --out /tmp/og_temp.png
+	sips -c 630 1200 /tmp/og_temp.png --out /tmp/og_cropped.png
+	sips -s format jpeg -s formatOptions 80 /tmp/og_cropped.png --out assets/img/og-image.jpg
+	rm /tmp/og_temp.png /tmp/og_cropped.png
 	@echo ""
 	@echo "✅ Site images generated in assets/img/"
 
-images-hero: ## Show hero banner generation guide
-	@echo "📷 Hero Banner Generator"
+hero: ## Generate responsive hero images from a gallery source
+	@# ═══════════════════════════════════════════════════════════════════════════
+	@# HERO IMAGE GENERATOR
+	@# ═══════════════════════════════════════════════════════════════════════════
+	@# 
+	@# Usage:
+	@#   make hero SRC=bazaar_conversations_1.png OUT=articles_hero_banner
+	@#
+	@# This generates 3 responsive WebP images with optimized compression:
+	@#   - assets/img/$(OUT)-1200.webp  (desktop)
+	@#   - assets/img/$(OUT)-800.webp   (tablet)
+	@#   - assets/img/$(OUT)-600.webp   (mobile)
+	@#
+	@# Compression settings: -q 80 -m 6 -sharp_yuv
+	@#   - q 80: High quality, good compression balance
+	@#   - m 6:  Maximum compression effort
+	@#   - sharp_yuv: Better detail preservation
+	@#
+	@# Examples:
+	@#   make hero SRC=bazaar_conversations_dark_5.png OUT=articles_hero_banner_dark
+	@#   make hero SRC=bazaar_archives_2.png OUT=archive_hero_banner
+	@#   make hero SRC=bazaar_guidelines_2.png OUT=rules_hero_banner
+	@#
+	@# ═══════════════════════════════════════════════════════════════════════════
+ifndef SRC
+	@echo "❌ Error: SRC is required"
 	@echo ""
-	@echo "Run these commands to generate responsive hero images:"
+	@echo "Usage: make hero SRC=<gallery_image.png> OUT=<output_prefix>"
 	@echo ""
-	@echo "  # Replace SOURCE.png with your gallery image name"
-	@echo "  # Replace PREFIX with: home_hero, articles_hero, or archive_hero"
+	@echo "Example: make hero SRC=bazaar_conversations_1.png OUT=articles_hero_banner"
+	@exit 1
+endif
+ifndef OUT
+	@echo "❌ Error: OUT is required"
 	@echo ""
-	@echo "  sips -Z 1200 assets/gallery/SOURCE.png --out /tmp/hero.png"
-	@echo "  cwebp -q 82 /tmp/hero.png -o assets/img/PREFIX_banner-1200.webp"
+	@echo "Usage: make hero SRC=<gallery_image.png> OUT=<output_prefix>"
 	@echo ""
-	@echo "  sips -Z 800 assets/gallery/SOURCE.png --out /tmp/hero.png"
-	@echo "  cwebp -q 82 /tmp/hero.png -o assets/img/PREFIX_banner-800.webp"
+	@echo "Example: make hero SRC=bazaar_conversations_1.png OUT=articles_hero_banner"
+	@exit 1
+endif
+	@echo "📷 Generating hero images from $(SRC)..."
+	@echo "   Output: assets/img/$(OUT)-{1200,800,600}.webp"
 	@echo ""
-	@echo "  sips -Z 600 assets/gallery/SOURCE.png --out /tmp/hero.png"
-	@echo "  cwebp -q 82 /tmp/hero.png -o assets/img/PREFIX_banner-600.webp"
+	@sips -Z 1200 assets/gallery/$(SRC) --out /tmp/hero_1200.png
+	@cwebp -q 80 -m 6 -sharp_yuv /tmp/hero_1200.png -o assets/img/$(OUT)-1200.webp
+	@sips -Z 800 assets/gallery/$(SRC) --out /tmp/hero_800.png
+	@cwebp -q 80 -m 6 -sharp_yuv /tmp/hero_800.png -o assets/img/$(OUT)-800.webp
+	@sips -Z 600 assets/gallery/$(SRC) --out /tmp/hero_600.png
+	@cwebp -q 80 -m 6 -sharp_yuv /tmp/hero_600.png -o assets/img/$(OUT)-600.webp
+	@rm -f /tmp/hero_1200.png /tmp/hero_800.png /tmp/hero_600.png
 	@echo ""
-	@echo "  rm /tmp/hero.png"
+	@echo "✅ Done! Generated:"
+	@ls -lh assets/img/$(OUT)-*.webp
 
 clean: ## Remove generated site and caches
 	$(BUNDLE) exec jekyll clean

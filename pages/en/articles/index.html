@@ -8,9 +8,10 @@ permalink: /en/articles/
 {%- assign strings = site.data.strings_en -%}
 {%- assign articles = site.posts | slice: 0, 9 -%}
 
-<!-- Hero with conversations banner -->
+<!-- Hero with conversations banner (light/dark variants) -->
 <section class="hero">
-  <picture>
+  <!-- Light mode hero image -->
+  <picture class="hero-image-light">
     <source media="(max-width: 600px)" srcset="{{ '/assets/img/articles_hero_banner-600.webp' | relative_url }}" type="image/webp">
     <source media="(max-width: 900px)" srcset="{{ '/assets/img/articles_hero_banner-800.webp' | relative_url }}" type="image/webp">
     <source srcset="{{ '/assets/img/articles_hero_banner-1200.webp' | relative_url }}" type="image/webp">
@@ -24,9 +25,23 @@ permalink: /en/articles/
       fetchpriority="high"
     >
   </picture>
+  <!-- Dark mode hero image -->
+  <picture class="hero-image-dark">
+    <source media="(max-width: 600px)" srcset="{{ '/assets/img/articles_hero_banner_dark-600.webp' | relative_url }}" type="image/webp">
+    <source media="(max-width: 900px)" srcset="{{ '/assets/img/articles_hero_banner_dark-800.webp' | relative_url }}" type="image/webp">
+    <source srcset="{{ '/assets/img/articles_hero_banner_dark-1200.webp' | relative_url }}" type="image/webp">
+    <img 
+      src="{{ '/assets/img/articles_hero_banner_dark-1200.webp' | relative_url }}" 
+      alt="{{ strings.articles.hero_alt | default: 'Groups of people and robots talking in the Digital Bazaar' }}"
+      class="hero-image articles-hero-image"
+      width="1200"
+      height="400"
+      loading="lazy"
+    >
+  </picture>
   <div class="hero-text">
     <div class="hero-kicker">{{ strings.articles.kicker | default: 'Articles & field notes' }}</div>
-    <h1 class="hero-title">{{ strings.articles.title | default: 'Recent writing from the Digital Bazaar' }}</h1>
+    <h1 class="hero-title">{{ strings.articles.title | default: 'Recent writings from the Digital Bazaar' }}</h1>
     <p class="hero-sub">{{ strings.articles.subtitle | default: 'Essays, reflections and notes from people in the Bazaar – on engineering, product, management, markets, careers and life.' }}</p>
   </div>
 </section>
