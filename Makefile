@@ -57,19 +57,12 @@ assets: ## Download self-hosted assets (fonts + mermaid.js)
 images: ## Generate all site images from gallery sources
 	@echo "📷 Generating site images from assets/gallery/..."
 	@echo ""
-	@echo "  → Logo sizes..."
+	@echo "  → Logo (128px for header)..."
 	sips -z 128 128 assets/gallery/icons/bazaar_2025.jpg --out assets/img/logo-128.jpg
-	sips -z 256 256 assets/gallery/icons/bazaar_2025.jpg --out assets/img/logo-256.jpg
-	sips -z 512 512 assets/gallery/icons/bazaar_2025.jpg --out assets/img/logo-512.jpg
-	@echo "  → Favicons and icons..."
-	sips -z 16 16 assets/gallery/icons/bazaar_2025.png --out assets/img/favicon-16.png
+	cwebp -q 80 assets/img/logo-128.jpg -o assets/img/logo-128.webp
+	@echo "  → Favicons..."
 	sips -z 32 32 assets/gallery/icons/bazaar_2025.png --out assets/img/favicon-32.png
 	sips -z 180 180 assets/gallery/icons/bazaar_2025.png --out assets/img/apple-touch-icon.png
-	sips -z 192 192 assets/gallery/icons/bazaar_2025.png --out assets/img/icon-192.png
-	@echo "  → Converting to WebP..."
-	cwebp -q 80 assets/img/logo-128.jpg -o assets/img/logo-128.webp
-	cwebp -q 80 assets/img/logo-256.jpg -o assets/img/logo-256.webp
-	cwebp -q 90 assets/img/logo-512.jpg -o assets/img/logo-512-hq.webp
 	@echo "  → Social share image (OG)..."
 	sips -Z 1200 assets/gallery/hero_selections/hero_home_light.png --out /tmp/og_temp.png
 	sips -c 630 1200 /tmp/og_temp.png --out /tmp/og_cropped.png
