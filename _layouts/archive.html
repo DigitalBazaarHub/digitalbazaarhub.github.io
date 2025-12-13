@@ -164,12 +164,76 @@ layout: default
   const filterSort = document.getElementById('filter-sort');
   const clearBtn = document.getElementById('clear-filters');
   const summary = document.getElementById('filters-summary');
+  const container = document.querySelector('.archive-container');
   
-  // All archive entries
-  const entries = Array.from(document.querySelectorAll('.archive-entry'));
-  const yearHeadings = document.querySelectorAll('.archive-year-heading');
-  const monthHeadings = document.querySelectorAll('.archive-month-heading');
-  const entryLists = document.querySelectorAll('.archive-entries');
+  // Store the original HTML to restore when needed
+  const originalHTML = container.innerHTML;
+  let currentSort = 'newest';
+  
+  function rebuildForSort(sortOrder) {
+    // Restore original HTML first
+    container.innerHTML = originalHTML;
+    
+    if (sortOrder === 'oldest') {
+      // Get all elements
+      const allElements = Array.from(container.children);
+      
+      // Group elements by year (each year = heading + its month sections)
+      const yearGroups = [];
+      let currentGroup = [];
+      
+      allElements.forEach(el => {
+        if (el.classList.contains('archive-year-heading') && currentGroup.length > 0) {
+          yearGroups.push(currentGroup);
+          currentGroup = [];
+        }
+        currentGroup.push(el);
+      });
+      if (currentGroup.length > 0) yearGroups.push(currentGroup);
+      
+      // Reverse year groups
+      yearGroups.reverse();
+      
+      // Within each year, reverse month sections (keep year heading first)
+      yearGroups.forEach(group => {
+        const yearHeading = group[0]; // First element is the year heading
+        const monthSections = [];
+        let currentMonth = [];
+        
+        for (let i = 1; i < group.length; i++) {
+          const el = group[i];
+          if (el.classList.contains('archive-month-heading') && currentMonth.length > 0) {
+            monthSections.push(currentMonth);
+            currentMonth = [];
+          }
+          currentMonth.push(el);
+        }
+        if (currentMonth.length > 0) monthSections.push(currentMonth);
+        
+        // Reverse months
+        monthSections.reverse();
+        
+        // Rebuild group
+        group.length = 0;
+        group.push(yearHeading);
+        monthSections.forEach(month => {
+          month.forEach(el => group.push(el));
+        });
+      });
+      
+      // Clear and rebuild container
+      container.innerHTML = '';
+      yearGroups.forEach(group => {
+        group.forEach(el => container.appendChild(el));
+      });
+      
+      // Reverse entries within each list
+      container.querySelectorAll('.archive-entries').forEach(list => {
+        const items = Array.from(list.children);
+        items.reverse().forEach(item => list.appendChild(item));
+      });
+    }
+  }
   
   function applyFilters() {
     const lang = filterLang.value;
@@ -177,6 +241,15 @@ layout: default
     const author = filterAuthor.value;
     const year = filterYear.value;
     const sort = filterSort.value;
+    
+    // Rebuild structure if sort changed
+    if (sort !== currentSort) {
+      rebuildForSort(sort);
+      currentSort = sort;
+    }
+    
+    // Get all entries
+    const entries = Array.from(document.querySelectorAll('.archive-entry'));
     
     // Filter entries
     let visible = 0;
@@ -197,19 +270,8 @@ layout: default
       if (show) visible++;
     });
     
-    // Sort entries within each list
-    entryLists.forEach(list => {
-      const items = Array.from(list.querySelectorAll('.archive-entry'));
-      items.sort((a, b) => {
-        const dateA = new Date(a.dataset.date);
-        const dateB = new Date(b.dataset.date);
-        return sort === 'oldest' ? dateA - dateB : dateB - dateA;
-      });
-      items.forEach(item => list.appendChild(item));
-    });
-    
     // Hide empty year/month sections
-    yearHeadings.forEach(heading => {
+    document.querySelectorAll('.archive-year-heading').forEach(heading => {
       const nextSiblings = [];
       let sibling = heading.nextElementSibling;
       while (sibling && !sibling.classList.contains('archive-year-heading')) {
@@ -259,7 +321,8 @@ layout: default
   if (clearBtn) clearBtn.addEventListener('click', clearFilters);
   
   // Initial count
-  applyFilters();
+  const entries = Array.from(document.querySelectorAll('.archive-entry'));
+  summary.textContent = entries.length + ' {{ strings.filters.articles_count | default: "articles" }} • {{ strings.filters.all_years | default: "all years" }} • {{ strings.filters.sort.newest | default: "newest first" }}';
 })();
 </script>
 

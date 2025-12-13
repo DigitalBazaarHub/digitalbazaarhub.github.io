@@ -14,7 +14,7 @@ font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetic
 
 /* Arabic enhancement */
 html[lang="ar"] {
-  font-family: 'Tajawal', 'Cairo', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'IBM Plex Sans Arabic', ui-sans-serif, system-ui, sans-serif;
   line-height: 1.8;
 }
 ```

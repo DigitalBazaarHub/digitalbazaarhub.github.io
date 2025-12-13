@@ -90,7 +90,7 @@ cta:
 
 # Buttons
 buttons:
-  join_whatsapp: "Join WhatsApp"
+  join_whatsapp: "Join the WhatsApp Community"
   join_whatsapp_bazaar: "Join the WhatsApp Bazaar"
   join_whatsapp_community: "Join the WhatsApp Community"
   visit_github: "GitHub"
@@ -232,8 +232,8 @@ footer:
   links:
     whatsapp: "WhatsApp"
     github: "GitHub"
-    join_whatsapp: "Join WhatsApp ↗"
-    visit_github: "Visit GitHub org ↗"
+    join_whatsapp: "Join us on WhatsApp ↗"
+    visit_github: "Visit us on GitHub ↗"
     articles: "Articles & field notes"
     archive: "Archive"
     rules: "Community rules"

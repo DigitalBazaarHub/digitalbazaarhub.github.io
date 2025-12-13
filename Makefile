@@ -1,7 +1,7 @@
 # Digital Bazaar — Makefile
 # Simplifies common development tasks
 
-.PHONY: help install update build serve clean fonts prod-build serve-drafts images images-webp setup-hooks
+.PHONY: help install update assets images images-hero clean serve serve-drafts build setup-hooks prod-build
 
 # Homebrew Ruby paths (macOS)
 RUBY_BIN := /opt/homebrew/opt/ruby/bin
@@ -10,21 +10,100 @@ BUNDLE := PATH="$(RUBY_BIN):$(GEM_BIN):$$PATH" bundle
 
 # Colors for help output
 CYAN := \033[36m
+YELLOW := \033[33m
 RESET := \033[0m
+
+# =============================================================================
+# HELP
+# =============================================================================
 
 help: ## Show this help message
 	@echo "Digital Bazaar — Development Commands"
 	@echo ""
 	@echo "Usage: make [target]"
 	@echo ""
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  $(CYAN)%-15s$(RESET) %s\n", $$1, $$2}'
+	@echo "$(YELLOW)Setup:$(RESET)"
+	@echo "  $(CYAN)install$(RESET)        Install Ruby gem dependencies"
+	@echo "  $(CYAN)update$(RESET)         Update all gem dependencies"
+	@echo "  $(CYAN)assets$(RESET)         Download fonts + mermaid.js"
+	@echo "  $(CYAN)images$(RESET)         Generate logos, favicons, icons"
+	@echo "  $(CYAN)images-hero$(RESET)    Show hero banner generation guide"
+	@echo "  $(CYAN)clean$(RESET)          Remove generated site and caches"
 	@echo ""
+	@echo "$(YELLOW)Development:$(RESET)"
+	@echo "  $(CYAN)serve$(RESET)          Start dev server (localhost:4000)"
+	@echo "  $(CYAN)serve-drafts$(RESET)   Start server with drafts visible"
+	@echo "  $(CYAN)build$(RESET)          Build static site to _site/"
+	@echo "  $(CYAN)setup-hooks$(RESET)    Enable git pre-commit hooks"
+	@echo ""
+	@echo "$(YELLOW)Production:$(RESET)"
+	@echo "  $(CYAN)prod-build$(RESET)     Build for production (minified)"
+	@echo ""
+
+# =============================================================================
+# SETUP
+# =============================================================================
 
 install: ## Install Ruby gem dependencies
 	$(BUNDLE) install
 
 update: ## Update all gem dependencies to latest versions
 	$(BUNDLE) update
+
+assets: ## Download self-hosted assets (fonts + mermaid.js)
+	@chmod +x scripts/download-assets.sh
+	@./scripts/download-assets.sh
+
+images: ## Generate all site images from gallery sources
+	@echo "📷 Generating site images from assets/gallery/..."
+	@echo ""
+	@echo "  → Logo sizes..."
+	sips -z 128 128 assets/gallery/bazaar_2025.jpg --out assets/img/logo-128.jpg
+	sips -z 256 256 assets/gallery/bazaar_2025.jpg --out assets/img/logo-256.jpg
+	sips -z 512 512 assets/gallery/bazaar_2025.jpg --out assets/img/logo-512.jpg
+	@echo "  → Favicons and icons..."
+	sips -z 16 16 assets/gallery/bazaar_2025.png --out assets/img/favicon-16.png
+	sips -z 32 32 assets/gallery/bazaar_2025.png --out assets/img/favicon-32.png
+	sips -z 180 180 assets/gallery/bazaar_2025.png --out assets/img/apple-touch-icon.png
+	sips -z 192 192 assets/gallery/bazaar_2025.png --out assets/img/icon-192.png
+	@echo "  → Converting to WebP..."
+	cwebp -q 80 assets/img/logo-128.jpg -o assets/img/logo-128.webp
+	cwebp -q 80 assets/img/logo-256.jpg -o assets/img/logo-256.webp
+	cwebp -q 90 assets/img/logo-512.jpg -o assets/img/logo-512-hq.webp
+	@echo ""
+	@echo "✅ Site images generated in assets/img/"
+
+images-hero: ## Show hero banner generation guide
+	@echo "📷 Hero Banner Generator"
+	@echo ""
+	@echo "Run these commands to generate responsive hero images:"
+	@echo ""
+	@echo "  # Replace SOURCE.png with your gallery image name"
+	@echo "  # Replace PREFIX with: home_hero, articles_hero, or archive_hero"
+	@echo ""
+	@echo "  sips -Z 1200 assets/gallery/SOURCE.png --out /tmp/hero.png"
+	@echo "  cwebp -q 82 /tmp/hero.png -o assets/img/PREFIX_banner-1200.webp"
+	@echo ""
+	@echo "  sips -Z 800 assets/gallery/SOURCE.png --out /tmp/hero.png"
+	@echo "  cwebp -q 82 /tmp/hero.png -o assets/img/PREFIX_banner-800.webp"
+	@echo ""
+	@echo "  sips -Z 600 assets/gallery/SOURCE.png --out /tmp/hero.png"
+	@echo "  cwebp -q 82 /tmp/hero.png -o assets/img/PREFIX_banner-600.webp"
+	@echo ""
+	@echo "  rm /tmp/hero.png"
+
+clean: ## Remove generated site and caches
+	$(BUNDLE) exec jekyll clean
+	rm -rf _site .jekyll-cache .jekyll-metadata
+
+# =============================================================================
+# DEVELOPMENT
+# =============================================================================
+
+setup-hooks: ## Enable git pre-commit hooks
+	@echo "Setting up git hooks..."
+	@git config core.hooksPath .githooks
+	@echo "✓ Git hooks enabled"
 
 build: ## Build the static site (output to _site/)
 	$(BUNDLE) exec jekyll build
@@ -35,39 +114,9 @@ serve: ## Start local development server at http://localhost:4000
 serve-drafts: ## Start server with draft posts visible
 	$(BUNDLE) exec jekyll serve --livereload --drafts
 
-clean: ## Remove generated site and caches
-	$(BUNDLE) exec jekyll clean
-	rm -rf _site .jekyll-cache .jekyll-metadata
+# =============================================================================
+# PRODUCTION
+# =============================================================================
 
 prod-build: ## Build for production (minified, no drafts)
 	JEKYLL_ENV=production $(BUNDLE) exec jekyll build
-
-fonts: ## Download self-hosted fonts (Space Grotesk + Tajawal)
-	@chmod +x scripts/download-fonts.sh
-	@./scripts/download-fonts.sh
-
-images: ## Optimize images (creates web-ready PNG/JPG copies)
-	@echo "Optimizing images..."
-	@cd assets/img && \
-	sips -z 128 128 digital_bazaar_2025.jpg --out logo-128.jpg 2>/dev/null && \
-	sips -z 256 256 digital_bazaar_2025.jpg --out logo-256.jpg 2>/dev/null && \
-	sips -z 512 512 digital_bazaar_2025.jpg --out logo-512.jpg 2>/dev/null && \
-	sips -z 16 16 digital_bazaar_2025.png --out favicon-16.png 2>/dev/null && \
-	sips -z 32 32 digital_bazaar_2025.png --out favicon-32.png 2>/dev/null && \
-	sips -z 180 180 digital_bazaar_2025.png --out apple-touch-icon.png 2>/dev/null && \
-	sips -z 192 192 digital_bazaar_2025.png --out icon-192.png 2>/dev/null
-	@echo "✓ Optimized images created in assets/img/"
-
-images-webp: ## Convert images to WebP (requires: brew install webp)
-	@echo "Converting to WebP..."
-	@cd assets/img && \
-	cwebp -q 80 logo-128.jpg -o logo-128.webp 2>/dev/null && \
-	cwebp -q 80 logo-256.jpg -o logo-256.webp 2>/dev/null && \
-	cwebp -q 90 logo-512.jpg -o logo-512-hq.webp 2>/dev/null && \
-	echo "✓ WebP images created:" && \
-	ls -lh logo-*.webp
-
-setup-hooks: ## Enable git pre-commit hooks
-	@echo "Setting up git hooks..."
-	@git config core.hooksPath .githooks
-	@echo "✓ Git hooks enabled. Pre-commit will run: images, images-webp, prod-build"

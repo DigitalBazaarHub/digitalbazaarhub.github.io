@@ -38,7 +38,7 @@ Visit [http://localhost:4000](http://localhost:4000)
 | `make prod-build` | Production build (run before committing) |
 | `make build` | Build static site |
 | `make clean` | Remove generated files |
-| `make fonts` | Download self-hosted fonts |
+| `make assets` | Download self-hosted assets (fonts + JS) |
 | `make images` | Optimize images (PNG/JPG) |
 | `make images-webp` | Convert to WebP (requires `webp`) |
 | `make setup-hooks` | Enable git pre-commit hooks |
@@ -73,7 +73,7 @@ make images        # Creates resized PNG/JPG
 make images-webp   # Creates WebP versions
 
 # 3. If updating fonts
-make fonts
+make assets
 
 # 4. Build and commit
 make prod-build
@@ -113,9 +113,9 @@ _layouts/          # Templates (home, article, archive, rules)
 _posts/            # Articles (bilingual)
 pages/ar/, pages/en/  # Language-specific pages
 assets/css/        # Styles (SCSS → compiled CSS)
-assets/fonts/      # Self-hosted fonts (Space Grotesk, Tajawal)
+assets/fonts/      # Self-hosted fonts (Space Grotesk, IBM Plex Sans Arabic)
 assets/img/        # Optimized images (WebP)
-scripts/           # Utility scripts (download-fonts.sh)
+scripts/           # Utility scripts (download-assets.sh)
 Makefile           # Dev commands
 ```
 
@@ -124,9 +124,9 @@ Makefile           # Dev commands
 | Font | Language | Weights | Source |
 |------|----------|---------|--------|
 | Space Grotesk | English (LTR) | 400, 500, 700 | [Google Fonts](https://fonts.google.com/specimen/Space+Grotesk) |
-| Tajawal | Arabic (RTL) | 400, 500, 700, 800 | [Google Fonts](https://fonts.google.com/specimen/Tajawal) |
+| IBM Plex Sans Arabic | Arabic (RTL) | 400, 500, 700 | [Google Fonts](https://fonts.google.com/specimen/IBM+Plex+Sans+Arabic) |
 
-Fonts are self-hosted for performance. Run `make fonts` to download.
+Fonts are self-hosted for performance. Run `make assets` to download.
 
 ## Deployment
 

@@ -423,7 +423,7 @@ module.exports = {
         ink: '#21313B',
       },
       fontFamily: {
-        arabic: ['Tajawal', 'sans-serif'],
+        arabic: ['IBM Plex Sans Arabic', 'sans-serif'],
         english: ['DM Sans', 'sans-serif'],
       },
     },

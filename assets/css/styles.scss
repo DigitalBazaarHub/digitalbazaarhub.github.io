@@ -1,12 +1,65 @@
 ---
 ---
 /* ==========================================================================
-   DIGITAL BAZAAR THEME - Based on Demo Pages
-   Bilingual (AR/EN) with RTL/LTR support
+   DIGITAL BAZAAR THEME
+   ==========================================================================
+   
+   A bilingual (Arabic/English) Jekyll theme with full RTL/LTR support.
+   Designed as a high-end digital magazine aesthetic with Middle Eastern
+   inspired color palette.
+   
+   TABLE OF CONTENTS
+   -----------------
+   1.  FONTS           - Self-hosted web fonts (Space Grotesk + IBM Plex Sans Arabic)
+   2.  CSS VARIABLES   - Design tokens (colors, spacing, shadows, etc.)
+   3.  RESET & BASE    - Minimal reset and global styles
+   4.  LAYOUT          - Container and wrapper utilities
+   5.  NAVBAR          - Sticky header with blur, mobile hamburger menu
+   6.  HERO - HOME     - Full-bleed hero with gradient overlay
+   7.  HERO - BANNER   - Image + text block style (articles, archive)
+   8.  BUTTONS         - Primary, secondary, outline button styles
+   9.  SECTIONS        - Generic section styling
+   10. FEATURE CARDS   - Home page feature grid
+   11. CHIPS/TAGS      - Category and tag pills
+   12. TWO COLUMN      - Sidebar layout utility
+   13. CALLOUT BOX     - Highlighted info boxes
+   14. ARTICLE CARDS   - Card grid for article listings
+   15. ARCHIVE PAGE    - Filters and grouped article list
+   16. SINGLE ARTICLE  - Article page typography and layout
+   17. RULES PAGE      - Community rules detailed layout
+   18. FOOTER          - Simple and full footer variants
+   19. CODE BLOCKS     - Syntax highlighting styles
+   20. UTILITIES       - Helper classes
+   21. PRINT STYLES    - Print-friendly overrides
+   
+   BREAKPOINTS
+   -----------
+   - 800px: Tablet (nav collapse, 2-col → 1-col)
+   - 768px: Mobile nav hamburger
+   - 640px: Small tablet adjustments
+   - 520px: Mobile (stacked CTAs)
+   - 480px: Small mobile
+   - 400px: Very small screens
+   
+   RTL/LTR NOTES
+   -------------
+   - Uses CSS logical properties (inline-start/end, block-start/end)
+   - [dir="rtl"] overrides for gradients and specific layouts
+   - Arabic gets +2px larger base font size and 1.9 line-height
+   
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   FONTS
+   1. FONTS
+   --------------------------------------------------------------------------
+   Self-hosted fonts for performance and GDPR compliance.
+   - Space Grotesk: English text (geometric, modern)
+   - IBM Plex Sans Arabic: Arabic text (clean, professional)
+   
+   Weights loaded:
+   - 400 (Regular): Body text
+   - 500 (Medium): Semi-bold emphasis
+   - 700 (Bold): Headings, buttons
    -------------------------------------------------------------------------- */
 @font-face {
   font-family: "Space Grotesk";
@@ -32,74 +85,84 @@
   src: url("../fonts/SpaceGrotesk-Bold.woff2") format("woff2");
 }
 
+/* IBM Plex Sans Arabic - Arabic font (IBM's open source typeface) */
 @font-face {
-  font-family: "Tajawal";
+  font-family: "IBM Plex Sans Arabic";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../fonts/Tajawal-Regular.woff2") format("woff2");
+  src: url("../fonts/IBMPlexSansArabic-Regular.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "Tajawal";
+  font-family: "IBM Plex Sans Arabic";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("../fonts/Tajawal-Medium.woff2") format("woff2");
+  src: url("../fonts/IBMPlexSansArabic-Medium.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "Tajawal";
+  font-family: "IBM Plex Sans Arabic";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("../fonts/Tajawal-Bold.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Tajawal";
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url("../fonts/Tajawal-ExtraBold.woff2") format("woff2");
+  src: url("../fonts/IBMPlexSansArabic-Bold.woff2") format("woff2");
 }
 
 /* --------------------------------------------------------------------------
-   CSS VARIABLES
+   2. CSS VARIABLES (Design Tokens)
+   --------------------------------------------------------------------------
+   All colors, spacing, and effects are defined here for consistency.
+   The palette is inspired by Middle Eastern bazaars: warm sands, spices,
+   and the cool teal of traditional tilework.
    -------------------------------------------------------------------------- */
 :root {
-  --sand: #F4E6C4;
-  --saffron: #E2B714;
-  --terracotta: #B34E36;
-  --marigold: #D9912A;
-  --teal: #2F8F9D;
-  --night: #152029;
-  --ink: #21313B;
-  --white: #FFFFFF;
-  --muted: #4a5d6a;
-  --kicker: #7a6330;
+  /* === COLOR PALETTE ===
+     Primary colors from the Digital Bazaar brand guide */
+  --sand: #F4E6C4;        /* Background, warm neutral base */
+  --saffron: #E2B714;     /* Accent, highlights, year headings */
+  --terracotta: #B34E36;  /* Primary CTA, warmth, energy */
+  --marigold: #D9912A;    /* Secondary accent, gradient endpoints */
+  --teal: #2F8F9D;        /* Links, interactive elements, cool contrast */
+  --night: #152029;       /* Headings, strong text, dark backgrounds */
+  --ink: #21313B;         /* Body text, slightly softer than night */
+  --white: #FFFFFF;       /* Cards, button text on dark backgrounds */
+  --muted: #4a5d6a;       /* Secondary text, meta info, captions */
+  --kicker: #7a6330;      /* Section labels, category kickers */
   
-  --radius-sm: 9px;
-  --radius-md: 16px;
-  --radius-lg: 18px;
-  --radius-xl: 20px;
-  --radius-full: 999px;
+  /* === BORDER RADIUS ===
+     Consistent rounded corners throughout the design */
+  --radius-sm: 9px;       /* Small elements (chips, toggles) */
+  --radius-md: 16px;      /* Cards, filter boxes */
+  --radius-lg: 18px;      /* Feature cards, archive container */
+  --radius-xl: 20px;      /* Hero banners */
+  --radius-full: 999px;   /* Pills, buttons, fully rounded */
   
-  --shadow-sm: 0 4px 10px rgba(0,0,0,0.18);
-  --shadow-md: 0 7px 18px rgba(0,0,0,0.04);
-  --shadow-lg: 0 10px 24px rgba(0,0,0,0.04);
-  --shadow-xl: 0 16px 40px rgba(0,0,0,0.22);
+  /* === SHADOWS ===
+     Layered depth for cards and elevated elements */
+  --shadow-sm: 0 4px 10px rgba(0,0,0,0.18);   /* Logo, small elements */
+  --shadow-md: 0 7px 18px rgba(0,0,0,0.04);   /* Cards at rest */
+  --shadow-lg: 0 10px 24px rgba(0,0,0,0.04);  /* Feature cards */
+  --shadow-xl: 0 16px 40px rgba(0,0,0,0.22);  /* Hero sections, elevated */
   
-  --container-width: 1100px;
-  --article-width: 760px;
+  /* === LAYOUT ===
+     Max-widths for content containers */
+  --container-width: 1100px;  /* Main content wrapper */
+  --article-width: 760px;     /* Single article optimal reading width */
   
-  --transition-fast: 0.06s ease;
-  --transition-normal: 0.16s ease;
-  --transition-slow: 0.18s ease;
+  /* === TRANSITIONS ===
+     Timing for hover/focus effects */
+  --transition-fast: 0.06s ease;    /* Immediate feedback (buttons) */
+  --transition-normal: 0.16s ease;  /* Standard interactions */
+  --transition-slow: 0.18s ease;    /* Subtle animations */
 }
 
 /* --------------------------------------------------------------------------
-   RESET & BASE
+   3. RESET & BASE
+   --------------------------------------------------------------------------
+   Minimal reset focused on box-sizing and removing default margins.
+   Background uses a subtle saffron radial gradient for warmth.
    -------------------------------------------------------------------------- */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -109,25 +172,30 @@ html, body {
   margin: 0;
   padding: 0;
   color: var(--ink);
+  /* Warm gradient background: saffron glow top-left, sand base */
   background:
     radial-gradient(1200px 600px at 10% -10%, rgba(227, 183, 20, 0.15), transparent 60%),
     linear-gradient(180deg, #FFFDF6 0%, var(--sand) 100%);
   min-height: 100vh;
-  font-size: 18px; /* Psyche.co editorial style */
+  font-size: 18px; /* Editorial baseline inspired by Psyche.co */
 }
 
-/* Language-specific fonts */
+/* === LANGUAGE-SPECIFIC TYPOGRAPHY ===
+   Arabic requires larger font size and more generous line-height
+   for optimal readability with Arabic script. */
 html[dir="ltr"], .lang-en {
   font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.7;
 }
 
 html[dir="rtl"], .lang-ar {
-  font-family: "Tajawal", system-ui, sans-serif;
-  font-size: 20px; /* +2px larger base for Arabic (vs 18px for English) */
-  line-height: 1.9;
+  font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  font-size: 19px;
+  line-height: 1.85;
 }
 
+/* === LINKS ===
+   Links inherit color by default, teal on hover */
 a {
   color: inherit;
   text-decoration: none;
@@ -138,7 +206,10 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   LAYOUT
+   4. LAYOUT
+   --------------------------------------------------------------------------
+   Main content wrapper with responsive horizontal padding.
+   Uses CSS logical properties for RTL compatibility.
    -------------------------------------------------------------------------- */
 .wrap {
   max-width: var(--container-width);
@@ -148,12 +219,21 @@ a:hover {
 
 @media (max-width: 640px) {
   .wrap {
-    padding-inline: 16px;
+    padding-inline: 16px; /* Logical property: works for both LTR and RTL */
   }
 }
 
 /* --------------------------------------------------------------------------
-   NAVBAR - Sticky with blur
+   5. NAVBAR
+   --------------------------------------------------------------------------
+   Sticky header with backdrop blur effect. Contains:
+   - Logo and site branding (left)
+   - Navigation links (right)
+   - Language toggle (right)
+   - Hamburger menu for mobile (appears at 768px)
+   
+   The blur effect uses both standard and -webkit- prefixed properties
+   for cross-browser support.
    -------------------------------------------------------------------------- */
 .site-header {
   position: sticky;
@@ -418,16 +498,34 @@ a:hover {
     display: none;
   }
   
+  /* Mobile active state: teal background + left/right border accent */
   .nav-link.active {
     background: rgba(47, 143, 157, 0.12);
     color: var(--teal);
     font-weight: 600;
-    border-inline-start: 3px solid var(--teal);
+    border-inline-start: 3px solid var(--teal); /* Logical property for RTL */
   }
 }
 
 /* --------------------------------------------------------------------------
-   HERO - Home page (full-bleed with overlay)
+   6. HERO - HOME PAGE
+   --------------------------------------------------------------------------
+   Full-bleed hero with background image and gradient overlay.
+   
+   STRUCTURE:
+   .hero-home
+     .hero-home-img        (absolute positioned, fills container)
+     .hero-home-gradient   (absolute positioned, darkens left side)
+     .hero-home-content    (relative, determines container height)
+       .hero-home-inner
+         .hero-kicker
+         .hero-home-title
+         .hero-home-sub
+         .hero-cta
+   
+   The content uses position:relative with min-height so the container
+   grows to fit content on narrow screens (prevents clipping on mobile).
+   The image is position:absolute to fill whatever height the content needs.
    -------------------------------------------------------------------------- */
 .hero-home {
   margin-top: 16px;
@@ -437,11 +535,14 @@ a:hover {
   border: 1px solid rgba(21,32,41,0.18);
   box-shadow: var(--shadow-xl);
   background: var(--night);
+  min-height: clamp(320px, 50vh, 480px);
 }
 
 .hero-home-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: clamp(320px, 60vh, 480px);
+  height: 100%;
   object-fit: cover;
   object-position: 50% 50%;
   display: block;
@@ -451,6 +552,7 @@ a:hover {
 .hero-home-gradient {
   position: absolute;
   inset: 0;
+  z-index: 0;
   background: linear-gradient(90deg,
     rgba(21,32,41,0.90) 0%,
     rgba(21,32,41,0.75) 32%,
@@ -467,31 +569,25 @@ a:hover {
     transparent 100%);
 }
 
+/* Content is position:relative (not absolute) so it flows and the
+   container grows to fit on narrow screens. The image is absolute
+   behind it, filling whatever height the content needs. */
 .hero-home-content {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  z-index: 1; /* Above the image and gradient */
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 26px 30px;
-  pointer-events: none;
-}
-
-[dir="rtl"] .hero-home-content {
-  justify-content: flex-start;
+  min-height: clamp(320px, 50vh, 480px); /* Minimum aesthetic height */
 }
 
 .hero-home-inner {
   max-width: 480px;
-  pointer-events: auto;
 }
 
 [dir="rtl"] .hero-home-inner {
   text-align: right;
-}
-
-[dir="rtl"] .hero-cta {
-  justify-content: flex-start;
 }
 
 /* Hero kicker - default for home overlay (white text) */
@@ -534,7 +630,18 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   HERO - Articles/Archive pages (image + text block below)
+   6b. HERO - ARTICLES/ARCHIVE PAGES
+   --------------------------------------------------------------------------
+   Simpler hero style: image on top, text block below.
+   Used on articles listing and archive pages.
+   
+   STRUCTURE:
+   .hero
+     .hero-image (or .articles-hero-image / .archive-hero-image)
+     .hero-text
+       .hero-kicker
+       .hero-title
+       .hero-sub
    -------------------------------------------------------------------------- */
 .hero {
   margin-top: 16px;
@@ -681,13 +788,6 @@ a:hover {
   justify-content: center;
 }
 
-
-@media (max-width: 480px) {
-  .hero-home-img {
-    height: clamp(420px, 55vh, 580px);
-  }
-}
-
 @media (max-width: 520px) {
   .hero-cta {
     flex-direction: column;
@@ -697,8 +797,7 @@ a:hover {
 
 @media (max-width: 800px) {
   .hero-home-content {
-    align-items: flex-end;
-    padding: 18px 16px;
+    padding: 24px 16px;
   }
   .hero-home-inner {
     max-width: 100%;
@@ -706,7 +805,10 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   HERO - Banner style (articles, archive pages)
+   7. HERO - BANNER STYLE (alternate)
+   --------------------------------------------------------------------------
+   Alternative banner hero with separate kicker/title/sub components.
+   RTL version flips the gradient direction.
    -------------------------------------------------------------------------- */
 .hero-banner {
   margin-top: 10px;
@@ -754,7 +856,21 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   BUTTONS
+   8. BUTTONS
+   --------------------------------------------------------------------------
+   Button system with gradient backgrounds and hover states.
+   
+   VARIANTS:
+   - .btn-primary   : Terracotta→Marigold gradient (main CTA, WhatsApp)
+   - .btn-teal      : Teal→Deep Teal gradient (GitHub, Read Rules)
+   - .btn-saffron   : Saffron→Marigold gradient (Browse Articles)
+   - .btn-outline   : Transparent with border (secondary actions)
+   
+   All buttons have:
+   - Pill shape (border-radius: 999px)
+   - Box shadow for depth
+   - Hover: slight lift + brightness increase
+   - Mobile: full-width stacking at 520px
    -------------------------------------------------------------------------- */
 .btn {
   appearance: none;
@@ -790,8 +906,8 @@ a:hover {
 
 .btn-primary:hover,
 .btn-primary:focus {
-  color: var(--white);
-  background: linear-gradient(135deg, #9a4430, #c47f24); /* slightly darker */
+  color: var(--white); /* Explicit white prevents global a:hover override */
+  background: linear-gradient(135deg, #9a4430, #c47f24); /* Darker terracotta→marigold */
 }
 
 .btn-saffron {
@@ -817,8 +933,8 @@ a:hover {
 
 .btn-teal:hover,
 .btn-teal:focus {
-  color: #fff;
-  background: linear-gradient(135deg, #257a86, #1a4f56);
+  color: #fff; /* Must be explicit to override global a:hover */
+  background: linear-gradient(135deg, #257a86, #1a4f56); /* Darker teal tones */
 }
 
 .btn-outline {
@@ -841,7 +957,10 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   SECTIONS
+   9. SECTIONS
+   --------------------------------------------------------------------------
+   Generic section styling for content blocks.
+   Includes kicker (uppercase label), title, and subtitle patterns.
    -------------------------------------------------------------------------- */
 .section {
   margin-top: 32px;
@@ -885,7 +1004,10 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   FEATURE CARDS (Home page)
+   10. FEATURE CARDS (Home page)
+   --------------------------------------------------------------------------
+   Grid of feature highlights on the home page.
+   Auto-fit columns with minimum 260px width.
    -------------------------------------------------------------------------- */
 .features-grid {
   display: grid;
@@ -924,7 +1046,10 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   CHIPS / TAGS
+   11. CHIPS / TAGS
+   --------------------------------------------------------------------------
+   Small pill-shaped labels for categories and tags.
+   Teal-tinted with subtle border.
    -------------------------------------------------------------------------- */
 .chip-row {
   display: flex;
@@ -944,7 +1069,10 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   TWO COLUMN LAYOUT
+   12. TWO COLUMN LAYOUT
+   --------------------------------------------------------------------------
+   3:2 ratio grid for main content + sidebar.
+   Collapses to single column at 800px.
    -------------------------------------------------------------------------- */
 .two-col {
   display: grid;
@@ -960,7 +1088,10 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   CALLOUT BOX
+   13. CALLOUT BOX
+   --------------------------------------------------------------------------
+   Highlighted info boxes with dashed border.
+   Used for important notes and sidebar content.
    -------------------------------------------------------------------------- */
 .callout {
   border-radius: var(--radius-lg);
@@ -1003,7 +1134,13 @@ ul.clean li::before {
 }
 
 /* --------------------------------------------------------------------------
-   ARTICLE CARDS (Grid)
+   14. ARTICLE CARDS (Grid)
+   --------------------------------------------------------------------------
+   Card grid for article listings on the articles page.
+   Each card has: thumbnail, kicker, title, meta, excerpt, tags.
+   
+   Cards support per-card RTL/LTR via dir attribute, so Arabic articles
+   display RTL even on English pages and vice versa.
    -------------------------------------------------------------------------- */
 .articles-grid {
   display: grid;
@@ -1080,15 +1217,21 @@ ul.clean li::before {
   font-size: 11px;
 }
 
-/* Archive CTA */
-.archive-cta {
-  margin-top: 24px;
-  display: flex;
-  justify-content: center;
-}
-
 /* --------------------------------------------------------------------------
-   ARCHIVE PAGE - Filters
+   15. ARCHIVE PAGE
+   --------------------------------------------------------------------------
+   Full archive with filter controls and grouped article list.
+   
+   FILTERS (.filters-section):
+   - Language, category, author, year, sort dropdowns
+   - Summary text updates via JavaScript
+   - Clear filters button
+   
+   ARCHIVE LIST (.archive-section):
+   - Grouped by year (h2.archive-year-heading)
+   - Sub-grouped by month (h3.archive-month-heading)
+   - Each entry shows: date, title, meta, teaser
+   - JavaScript rebuilds structure when sorting changes
    -------------------------------------------------------------------------- */
 .filters-section {
   margin-top: 26px;
@@ -1185,9 +1328,10 @@ ul.clean li::before {
   }
 }
 
-/* --------------------------------------------------------------------------
-   ARCHIVE LIST - Grouped by year & month
-   -------------------------------------------------------------------------- */
+/* === ARCHIVE LIST ===
+   Year headings have saffron underline, month headings are kicker-colored.
+   Entries use CSS Grid: date column (70px) + content column.
+   On mobile (<640px), collapses to single column with date above. */
 .archive-section {
   margin-top: 26px;
 }
@@ -1288,7 +1432,20 @@ ul.clean li::before {
 }
 
 /* --------------------------------------------------------------------------
-   SINGLE ARTICLE PAGE
+   16. SINGLE ARTICLE PAGE
+   --------------------------------------------------------------------------
+   Article detail page with editorial typography.
+   
+   Max-width constrained to --article-width (760px) for optimal readability.
+   
+   STRUCTURE:
+   .article-page
+     header (h1 + .meta)
+     .banner (hero image)
+     article (main content)
+       p, h2, h3, blockquote, ul/ol, hr
+     .article-tags
+     .article-footer (back link)
    -------------------------------------------------------------------------- */
 .article-page {
   max-width: 760px;
@@ -1436,7 +1593,24 @@ ul.clean li::before {
 }
 
 /* --------------------------------------------------------------------------
-   RULES PAGE (New detailed layout)
+   17. RULES PAGE
+   --------------------------------------------------------------------------
+   Community rules with numbered list and detailed explanations.
+   
+   STRUCTURE:
+   .rules-header
+     .kicker
+     h1
+     .dek (subtitle/description)
+     .meta-note
+   .highlight-box (intro callout)
+   .rules-list-detailed
+     .rule
+       .rule-title-row (.rule-number + .rule-title)
+       .rule-body (explanation text, may contain .rule-list-inner)
+   .cta-box (WhatsApp CTA)
+   
+   Rule numbers and titles stay on same line via flexbox (no wrap).
    -------------------------------------------------------------------------- */
 .rules-header {
   margin-bottom: 20px;
@@ -1507,7 +1681,6 @@ ul.clean li::before {
   align-items: baseline;
   gap: 8px;
   margin-bottom: 4px;
-  flex-wrap: wrap;
 }
 
 .rule-number {
@@ -1579,7 +1752,17 @@ ul.clean li::before {
 }
 
 /* --------------------------------------------------------------------------
-   FOOTER
+   18. FOOTER
+   --------------------------------------------------------------------------
+   Two variants:
+   
+   .footer-simple: Minimal footer for article pages (back link + copyright)
+   .footer-full:   3-column grid footer for home/main pages
+                   - Column 1: Site description
+                   - Column 2: Sections links
+                   - Column 3: Community links
+   
+   Responsive: 3-col → 2-col (800px) → 1-col (600px)
    -------------------------------------------------------------------------- */
 .site-footer {
   margin-top: 36px;
@@ -1662,8 +1845,22 @@ ul.clean li::before {
 }
 
 /* --------------------------------------------------------------------------
-   CODE BLOCKS
+   19. CODE BLOCKS
+   --------------------------------------------------------------------------
+   Styled code blocks with dark background (--night).
+   
+   pre: Block-level code with monospace font, horizontal scroll
+   code (inline): Teal-tinted background, smaller font
+   
+   Font stack prioritizes coding fonts: JetBrains Mono, Fira Code, SF Mono
+   
+   IMPORTANT: Code is always LTR, even on RTL pages (Arabic).
    -------------------------------------------------------------------------- */
+pre, code {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
 pre {
   background: var(--night);
   color: #e5e7eb;
@@ -1671,11 +1868,69 @@ pre {
   border-radius: var(--radius-lg);
   overflow-x: auto;
   font-family: "JetBrains Mono", "Fira Code", "SF Mono", Consolas, monospace;
-  font-size: 0.9rem;
-  line-height: 1.7;
+  font-size: 0.75rem;
+  line-height: 1.6;
   margin-block: 2rem;
   box-shadow: var(--shadow-lg), inset 0 1px 0 hsla(0, 0%, 100%, 0.05);
 }
+
+/* Language label above code blocks */
+.highlighter-rouge {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.highlighter-rouge::before {
+  content: attr(data-lang);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 14px;
+  font-size: 11px;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  text-transform: lowercase;
+  letter-spacing: 0.05em;
+  color: #6a7c89;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* Add padding-top to pre inside highlighter-rouge to make room for label */
+.highlighter-rouge pre {
+  margin: 0;
+  padding-top: 2.7rem;
+  border-radius: var(--radius-lg);
+}
+
+/* Language-specific labels using CSS */
+.language-python::before { content: "python"; }
+.language-bash::before { content: "bash"; }
+.language-shell::before { content: "shell"; }
+.language-javascript::before { content: "javascript"; }
+.language-js::before { content: "javascript"; }
+.language-typescript::before { content: "typescript"; }
+.language-ts::before { content: "typescript"; }
+.language-html::before { content: "html"; }
+.language-css::before { content: "css"; }
+.language-scss::before { content: "scss"; }
+.language-json::before { content: "json"; }
+.language-yaml::before { content: "yaml"; }
+.language-yml::before { content: "yaml"; }
+.language-ruby::before { content: "ruby"; }
+.language-go::before { content: "go"; }
+.language-rust::before { content: "rust"; }
+.language-java::before { content: "java"; }
+.language-c::before { content: "c"; }
+.language-cpp::before { content: "c++"; }
+.language-sql::before { content: "sql"; }
+.language-markdown::before { content: "markdown"; }
+.language-md::before { content: "markdown"; }
+.language-plaintext::before { content: "text"; }
+.language-text::before { content: "text"; }
+.language-mermaid::before { content: "diagram"; }
 
 code:not(pre code) {
   background: rgba(47, 143, 157, 0.12);
@@ -1686,8 +1941,94 @@ code:not(pre code) {
   font-family: "JetBrains Mono", "Fira Code", monospace;
 }
 
+/* === ROUGE SYNTAX HIGHLIGHTING ===
+   Custom theme matching Digital Bazaar's dark code blocks.
+   Based on a warm color palette with teal, saffron, and terracotta accents. */
+
+/* Comments */
+.highlight .c, .highlight .c1, .highlight .cm, .highlight .cs { color: #6a7c89; font-style: italic; }
+
+/* Strings */
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sc, .highlight .sd,
+.highlight .se, .highlight .sh, .highlight .si, .highlight .sx, .highlight .sr { color: #E2B714; }
+
+/* Numbers */
+.highlight .m, .highlight .mi, .highlight .mf, .highlight .mh, .highlight .mo, .highlight .il { color: #D9912A; }
+
+/* Keywords */
+.highlight .k, .highlight .kc, .highlight .kd, .highlight .kn, .highlight .kp,
+.highlight .kr, .highlight .kt, .highlight .kv { color: #B34E36; font-weight: 600; }
+
+/* Functions, methods */
+.highlight .nf, .highlight .fm, .highlight .nc { color: #2F8F9D; }
+
+/* Variables, names */
+.highlight .n, .highlight .nb, .highlight .ni, .highlight .nl, .highlight .nn,
+.highlight .no, .highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi { color: #e5e7eb; }
+
+/* Operators, punctuation */
+.highlight .o, .highlight .ow, .highlight .p { color: #9ca3af; }
+
+/* Built-in constants */
+.highlight .bp, .highlight .nb { color: #7dd3fc; }
+
+/* Class names, types */
+.highlight .nc, .highlight .ne { color: #2F8F9D; font-weight: 600; }
+
+/* Decorators, annotations */
+.highlight .nd, .highlight .na { color: #D9912A; }
+
+/* Errors */
+.highlight .err { color: #f87171; background: rgba(248, 113, 113, 0.1); }
+
+/* Generic styles */
+.highlight .ge { font-style: italic; }
+.highlight .gs { font-weight: bold; }
+.highlight .gd { color: #f87171; } /* Deleted */
+.highlight .gi { color: #4ade80; } /* Inserted */
+
+/* Shell/Bash specific */
+.highlight .nv { color: #7dd3fc; } /* Variables */
+.highlight .nb { color: #2F8F9D; } /* Builtins */
+
+/* Line numbers (if enabled) */
+.highlight .lineno { color: #4a5d6a; padding-right: 1em; user-select: none; }
+
+/* Mermaid diagrams - same style as code blocks */
+.mermaid {
+  position: relative;
+  background: var(--night);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem 1.5rem;
+  margin-block: 2rem;
+  text-align: center;
+  overflow-x: auto;
+  box-shadow: var(--shadow-lg), inset 0 1px 0 hsla(0, 0%, 100%, 0.05);
+}
+
+.mermaid::before {
+  content: "diagram";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 14px;
+  font-size: 11px;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  text-transform: lowercase;
+  letter-spacing: 0.05em;
+  color: #6a7c89;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  direction: ltr !important;
+  text-align: left !important;
+}
+
 /* --------------------------------------------------------------------------
-   UTILITY CLASSES
+   20. UTILITY CLASSES
+   --------------------------------------------------------------------------
+   Helper classes for common styling needs.
+   Uses logical properties where applicable for RTL support.
    -------------------------------------------------------------------------- */
 .text-center { text-align: center; }
 .text-start { text-align: start; }
@@ -1699,7 +2040,11 @@ code:not(pre code) {
 .hidden { display: none !important; }
 
 /* --------------------------------------------------------------------------
-   PRINT STYLES
+   21. PRINT STYLES
+   --------------------------------------------------------------------------
+   Minimal print-friendly overrides.
+   Hides navigation, footer, and interactive elements.
+   Sets plain white background with black text.
    -------------------------------------------------------------------------- */
 @media print {
   .site-header,

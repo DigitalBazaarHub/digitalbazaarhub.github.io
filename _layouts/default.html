@@ -30,8 +30,8 @@
   
   <!-- Preload critical fonts -->
   {%- if lang == 'ar' -%}
-    <link rel="preload" href="{{ '/assets/fonts/Tajawal-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ '/assets/fonts/Tajawal-Bold.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/IBMPlexSansArabic-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/IBMPlexSansArabic-Bold.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   {%- else -%}
     <link rel="preload" href="{{ '/assets/fonts/SpaceGrotesk-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ '/assets/fonts/SpaceGrotesk-Bold.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
@@ -120,6 +120,53 @@
       const lang = params.get('lang') || el.dataset.lang || 'en';
       el.textContent = lang === 'ar' ? toArabicNumerals(year) : year;
     });
+  </script>
+
+  <!-- Mermaid Diagrams (loaded only when needed) -->
+  <script>
+    (function() {
+      const mermaidBlocks = document.querySelectorAll('code.language-mermaid');
+      if (mermaidBlocks.length === 0) return;
+      
+      // Load mermaid.min.js only if diagrams exist
+      const script = document.createElement('script');
+      script.src = '{{ "/assets/js/mermaid-11.12.2.min.js" | relative_url }}';
+      script.onload = function() {
+        mermaid.initialize({ 
+          startOnLoad: false,
+          theme: 'dark',
+          themeVariables: {
+            primaryColor: '#2F8F9D',
+            primaryTextColor: '#e5e7eb',
+            primaryBorderColor: '#2F8F9D',
+            lineColor: '#6a7c89',
+            secondaryColor: '#21313B',
+            tertiaryColor: '#E2B714',
+            background: '#152029',
+            mainBkg: '#21313B',
+            nodeBorder: '#2F8F9D',
+            clusterBkg: '#21313B',
+            titleColor: '#F4E6C4',
+            edgeLabelBackground: '#21313B',
+            nodeTextColor: '#e5e7eb'
+          }
+        });
+        
+        // Convert code blocks to mermaid diagrams
+        mermaidBlocks.forEach(function(block) {
+          const code = block.textContent;
+          const container = document.createElement('div');
+          container.className = 'mermaid';
+          container.textContent = code;
+          
+          const pre = block.closest('pre') || block.parentElement;
+          pre.parentElement.replaceChild(container, pre);
+        });
+        
+        mermaid.run();
+      };
+      document.head.appendChild(script);
+    })();
   </script>
 </body>
 </html>
