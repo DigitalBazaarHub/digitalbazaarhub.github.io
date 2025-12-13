@@ -490,7 +490,7 @@ a:hover {
   position: relative;
   width: 24px;
   height: 2px;
-  background: var(--ink);
+  background: var(--text-muted);
   border-radius: 2px;
   transition: all var(--transition-normal);
 }
@@ -501,7 +501,7 @@ a:hover {
   position: absolute;
   width: 24px;
   height: 2px;
-  background: var(--ink);
+  background: var(--text-muted);
   border-radius: 2px;
   transition: all var(--transition-normal);
   inset-inline-start: 0;
@@ -1739,11 +1739,15 @@ ul.clean li::before {
 .highlight-box {
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
-  background: var(--surface-elevated);
+  background: rgba(21, 32, 41, 0.06);
   padding: 12px 14px;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text);
   margin-bottom: 24px;
+}
+
+[data-theme="dark"] .highlight-box {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .highlight-box strong {
@@ -1811,8 +1815,8 @@ ul.clean li::before {
 
 .rule-list-inner li {
   margin-bottom: 4px;
-  font-size: 14px;
-  color: #3a4a55;
+  font-size: inherit;
+  color: inherit;
 }
 
 /* CTA Box */

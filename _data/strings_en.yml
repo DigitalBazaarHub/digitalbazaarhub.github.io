@@ -163,6 +163,7 @@ rules_page:
   title: "How we keep the bazaar healthy"
   dek: "These guidelines exist so that Digital Bazaar stays useful, warm and safe – not to over-police conversation. If in doubt, lean towards generosity, clarity and respect."
   meta_note: "This is a living document. We may refine it as the community grows and new situations appear."
+  short_version_label: "Short version:"
   short_version: "Be kind. Share generously. Keep things constructive and relevant. Don't spam or harass people. Moderators can remove anyone who repeatedly makes the bazaar worse."
   rules:
     - number: "01"
