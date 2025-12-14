@@ -129,6 +129,7 @@ layout: default
     {%- endfor -%}
   </ul>
   <p class="next-up">{{ strings.start_here_page.cadence.next_up }}</p>
+  <a href="/{{ lang }}/cadence/" class="cadence-cta">{{ strings.start_here_page.cadence.cta_text }} {{ strings.arrow_right }}</a>
 </div>
 
 <!-- 7) Rules in 20 Seconds -->
@@ -139,9 +140,7 @@ layout: default
     <li>{{ item }}</li>
     {%- endfor -%}
   </ul>
-  <a class="btn btn-teal" href="/{{ lang }}/rules/">
-    {{ strings.start_here_page.rules_summary.button }} <span aria-hidden="true">{{ strings.arrow_external }}</span>
-  </a>
+  <a class="cadence-cta" href="/{{ lang }}/rules/">{{ strings.start_here_page.rules_summary.button }} {{ strings.arrow_right }}</a>
 </div>
 
 <!-- 8) Privacy Notice -->

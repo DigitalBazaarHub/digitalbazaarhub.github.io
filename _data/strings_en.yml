@@ -49,7 +49,7 @@ about:
       description: "Topic-based WhatsApp groups where people swap practical experience: engineering, product, design & growth, leadership, jobs, startups, expats, and more. Think of it as a souq of overlapping lanes — you join what matters and ignore the rest."
     - label: "Cadence"
       title: "Rituals and sessions that bring people back"
-      description: "We don’t rely on hope-based interaction. We run recurring rhythms like Bazaar Saturdays, plus monthly firesides/panels and periodic Q&A threads — so the network compounds over time instead of fading."
+      description: "We don't rely on hope-based interaction. We run recurring rhythms like Bazaar Saturdays, plus monthly firesides/panels and periodic Q&A threads — so the network compounds over time instead of fading."
     - label: "Projects & Mentorship"
       title: "From talk → warm intros → shipped work"
       description: "When trust forms, things happen: feedback loops, mentorship, collaborations, and community-born projects like Meshkah. Mentorship is structured (time-boxed office hours / clear asks), and projects are opt-in — no vague promises, just proof-of-work."
@@ -317,6 +317,7 @@ start_here_page:
       - title: "Periodic Q&A threads"
         description: "Async \"ask me anything\" from community experts."
     next_up: "Next Fireside: announced in the Announcements group."
+    cta_text: "See how the Bazaar works"
   
   # Rules summary
   rules_summary:
@@ -369,7 +370,7 @@ cadence_page:
       - title: "📱 Bazaar Saturdays"
         description: "A casual text-based Saturday session across the groups: share what you're building/learning, ask questions, and join the conversation."
         how: "Best way to join: post a 2–3 line update + one clear question."
-      - title: "🔥 Monthly Firesides"
+      - title: "🎙️ Monthly Firesides"
         description: "A guest-led session (or panel) on one topic, with live Q&A. Format + time are announced in advance."
         how: "Best way to join: read the prompt, bring one thoughtful question, and follow up after."
       - title: "🤔 Periodic Q&A threads"

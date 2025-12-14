@@ -303,13 +303,16 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  flex-wrap: nowrap; /* Keep logo and hamburger on same line */
 }
 
 .nav-left {
   display: flex;
   align-items: center;
   gap: 10px;
-  min-width: 0; /* Allow shrinking for text wrap */
+  min-width: 0; /* Allow shrinking */
+  flex: 1 1 auto; /* Grow and shrink as needed */
+  overflow: hidden; /* Clip overflowing text */
 }
 
 /* Logo */
@@ -528,18 +531,19 @@ a:hover {
 @media (max-width: 768px) {
   .nav-inner {
     padding-inline: 14px;
-    flex-wrap: wrap; /* Allow nav-right to wrap below on mobile */
   }
   
   .nav-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0; /* Never shrink the hamburger */
   }
   
   .site-tagline {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   
   .nav-right {
@@ -1119,6 +1123,21 @@ a:hover {
   font-size: 14px;
   color: var(--text-muted);
   margin: 0;
+}
+
+.feature-card-cta {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--teal);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.feature-card-cta:hover {
+  color: var(--terracotta);
+  text-decoration: underline;
 }
 
 /* --------------------------------------------------------------------------
@@ -1724,10 +1743,10 @@ ul.clean li::before {
 }
 
 .dek {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--text-muted);
-  margin: 0 0 12px;
-  line-height: 1.5;
+  margin: 0 0 14px;
+  line-height: 1.55;
 }
 
 .meta-note {
@@ -1740,8 +1759,9 @@ ul.clean li::before {
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
   background: rgba(21, 32, 41, 0.06);
-  padding: 12px 14px;
-  font-size: 15px;
+  padding: 14px 16px;
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--text);
   margin-bottom: 24px;
 }
@@ -1788,16 +1808,16 @@ ul.clean li::before {
 }
 
 .rule-title {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 650;
   color: var(--text-heading);
 }
 
 .rule-body {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text);
-  margin: 4px 0 0;
-  line-height: 1.6;
+  margin: 6px 0 0;
+  line-height: 1.65;
 }
 
 .rule-body p {
@@ -2460,6 +2480,21 @@ code:not(pre code) {
   font-size: 0.85rem;
   color: var(--text-muted);
   font-style: italic;
+}
+
+.cadence-cta {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--teal);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.cadence-cta:hover {
+  color: var(--terracotta);
+  text-decoration: underline;
 }
 
 /* Rules Summary - Quick rules with CTA */
