@@ -15,8 +15,10 @@
     <div class="footer-title" data-i18n="footer_sections" data-ar="{{ strings_ar.footer.sections_title }}" data-en="{{ strings_en.footer.sections_title | default: 'Sections' }}">{{ strings.footer.sections_title | default: 'Sections' }}</div>
     <div class="footer-links">
       <a href="/{{ lang }}/" data-i18n="nav_home" data-ar="{{ strings_ar.nav.home }}" data-en="{{ strings_en.nav.home }}">{{ strings.nav.home }}</a>
+      {% comment %}
       <a href="/{{ lang }}/articles/" data-i18n="footer_articles" data-ar="{{ strings_ar.footer.links.articles }}" data-en="{{ strings_en.footer.links.articles | default: 'Articles & field notes' }}">{{ strings.footer.links.articles | default: strings.nav.articles }}</a>
       <a href="/{{ lang }}/archive/" data-i18n="footer_archive" data-ar="{{ strings_ar.footer.links.archive }}" data-en="{{ strings_en.footer.links.archive | default: 'Archive' }}">{{ strings.footer.links.archive | default: strings.nav.archive }}</a>
+      {% endcomment %}
       <a href="/{{ lang }}/rules/" data-i18n="footer_rules" data-ar="{{ strings_ar.footer.links.rules }}" data-en="{{ strings_en.footer.links.rules | default: 'Community rules' }}">{{ strings.footer.links.rules | default: strings.nav.rules }}</a>
     </div>
   </div>
@@ -24,7 +26,7 @@
   <div>
     <div class="footer-title" data-i18n="footer_community" data-ar="{{ strings_ar.footer.community_title }}" data-en="{{ strings_en.footer.community_title | default: 'Community' }}">{{ strings.footer.community_title | default: 'Community' }}</div>
     <div class="footer-links">
-      <a href="{{ site.social.whatsapp }}" target="_blank" rel="noopener" data-i18n="footer_whatsapp" data-ar="{{ strings_ar.footer.links.join_whatsapp }}" data-en="{{ strings_en.footer.links.join_whatsapp | default: 'Join us on WhatsApp ↗' }}">{{ strings.footer.links.join_whatsapp | default: 'Join WhatsApp ↗' }}</a>
+      <a href="{{ site.social.whatsapp_community }}" target="_blank" rel="noopener" data-i18n="footer_whatsapp" data-ar="{{ strings_ar.footer.links.join_whatsapp }}" data-en="{{ strings_en.footer.links.join_whatsapp | default: 'Join us on WhatsApp ↗' }}">{{ strings.footer.links.join_whatsapp | default: 'Join WhatsApp ↗' }}</a>
       <a href="{{ site.social.github }}" target="_blank" rel="noopener" data-i18n="footer_github" data-ar="{{ strings_ar.footer.links.visit_github }}" data-en="{{ strings_en.footer.links.visit_github | default: 'Visit us on GitHub ↗' }}">{{ strings.footer.links.visit_github | default: 'Visit GitHub org ↗' }}</a>
     </div>
   </div>

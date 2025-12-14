@@ -1,0 +1,167 @@
+---
+layout: default
+---
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign strings_key = 'strings_' | append: lang -%}
+{%- assign strings = site.data[strings_key] -%}
+
+<!-- 1) Top header -->
+<div class="start-here-header">
+  <h1>{{ strings.start_here.title }}</h1>
+  <p>{{ strings.start_here.subtitle }}</p>
+</div>
+
+<!-- 2) 3 Steps Checklist Card -->
+<div class="checklist-card">
+  <h2>{{ strings.start_here.checklist.heading }}</h2>
+  <ol class="checklist-steps">
+    <li>
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <strong>{{ strings.start_here.checklist.step1.title }}</strong>
+        <p>{{ strings.start_here.checklist.step1.description }}</p>
+        <div class="step-cta">
+          <a class="btn btn-primary" href="{{ site.social.whatsapp_community }}" target="_blank" rel="noopener">
+            {{ strings.start_here.checklist.step1.button }} <span aria-hidden="true">{{ strings.arrow_external }}</span>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <strong>{{ strings.start_here.checklist.step2.title }}</strong>
+        <p>{{ strings.start_here.checklist.step2.description }}</p>
+        <div class="step-cta">
+          <a class="btn btn-saffron" href="{{ site.social.whatsapp_intros_group }}" target="_blank" rel="noopener">
+            {{ strings.start_here.checklist.step2.button }} <span aria-hidden="true">{{ strings.arrow_external }}</span>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <strong>{{ strings.start_here.checklist.step3.title }}</strong>
+        <p>{{ strings.start_here.checklist.step3.description }}</p>
+      </div>
+    </li>
+  </ol>
+</div>
+
+<!-- 3) Intro Template -->
+<div class="intro-template">
+  <h2>{{ strings.start_here.intro_template.heading }}</h2>
+  <div class="template-wrapper">
+    <pre id="intro-template-text" {% if lang == 'ar' %}dir="rtl"{% endif %}>{{ strings.start_here.intro_template.template }}</pre>
+    <button class="copy-btn" id="copy-template-btn" type="button" aria-label="{{ strings.start_here.intro_template.copy_button }}">
+      <span class="copy-icon">📋</span>
+      <span class="copy-text">{{ strings.start_here.intro_template.copy_button }}</span>
+    </button>
+  </div>
+  <p class="copy-hint">{{ strings.start_here.intro_template.hint }}</p>
+</div>
+
+<script>
+(function() {
+  const btn = document.getElementById('copy-template-btn');
+  const pre = document.getElementById('intro-template-text');
+  if (!btn || !pre) return;
+  
+  btn.addEventListener('click', function() {
+    const text = pre.textContent;
+    navigator.clipboard.writeText(text).then(function() {
+      const originalText = btn.querySelector('.copy-text').textContent;
+      btn.querySelector('.copy-text').textContent = '{{ strings.start_here.intro_template.copied | default: "Copied!" }}';
+      btn.classList.add('copied');
+      setTimeout(function() {
+        btn.querySelector('.copy-text').textContent = originalText;
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  });
+})();
+</script>
+
+<!-- 4) Pick Your 2 Lanes -->
+<div class="lanes-section">
+  <h2>{{ strings.start_here.lanes.heading }}</h2>
+  <div class="lanes-note">
+    <strong>{{ strings.start_here.lanes.note_label | default: "Rule of thumb:" }}</strong> {{ strings.start_here.lanes.note }}
+  </div>
+  <div class="lanes-grid">
+    {%- for lane in strings.start_here.lanes.items -%}
+    <div class="lane-card">
+      <strong>{{ lane.name }}</strong>
+      <span>{{ lane.description }}</span>
+      <!-- <a href="{{ lane.link | default: '#' }}">{{ strings.start_here.lanes.join_button }}</a> -->
+    </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+<!-- 5) Ask Well / Give Back -->
+<div class="two-col-quality">
+  <div class="quality-card">
+    <h3>{{ strings.start_here.quality.ask_well.heading }}</h3>
+    <ul>
+      {%- for item in strings.start_here.quality.ask_well.items -%}
+      <li>{{ item | markdownify | remove: '<p>' | remove: '</p>' }}</li>
+      {%- endfor -%}
+    </ul>
+  </div>
+  <div class="quality-card">
+    <h3>{{ strings.start_here.quality.give_back.heading }}</h3>
+    <ul>
+      {%- for item in strings.start_here.quality.give_back.items -%}
+      <li>{{ item }}</li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+<!-- 6) Recurring Sessions / Cadence -->
+<div class="cadence-card">
+  <h2>{{ strings.start_here.cadence.heading }}</h2>
+  <ul>
+    {%- for item in strings.start_here.cadence.items -%}
+    <li><strong>{{ item.title }}</strong> — {{ item.description }}</li>
+    {%- endfor -%}
+  </ul>
+  <p class="next-up">{{ strings.start_here.cadence.next_up }}</p>
+</div>
+
+<!-- 7) Rules in 20 Seconds -->
+<div class="rules-summary">
+  <h2>{{ strings.start_here.rules_summary.heading }}</h2>
+  <ul>
+    {%- for item in strings.start_here.rules_summary.items -%}
+    <li>{{ item }}</li>
+    {%- endfor -%}
+  </ul>
+  <a class="btn btn-teal" href="/{{ lang }}/rules/">
+    {{ strings.start_here.rules_summary.button }} <span aria-hidden="true">{{ strings.arrow_external }}</span>
+  </a>
+</div>
+
+<!-- 8) Privacy Notice -->
+<div class="privacy-notice">
+  <div>
+    <strong>{{ strings.start_here.privacy.label }}</strong> {{ strings.start_here.privacy.text }}
+  </div>
+</div>
+
+<!-- 9) Mini FAQ -->
+<div class="mini-faq">
+  <h2>{{ strings.start_here.faq.heading }}</h2>
+  
+  {%- for item in strings.start_here.faq.items -%}
+  <div class="faq-item">
+    <strong>{{ item.question }}</strong>
+    <p>{{ item.answer }}</p>
+  </div>
+  {%- endfor -%}
+</div>
+
+{{ content }}
+
