@@ -5,6 +5,11 @@
 site_title: "Digital Bazaar 💬"
 site_tagline: "A modern bazaar for Arab digital minds."
 
+#############################
+#                           #
+#           META            #
+#                           #
+#############################
 # Navigation
 nav:
   home: "Home"
@@ -21,6 +26,17 @@ language:
   switch_to: "العربية"
   switch_url: "/ar/"
 
+# Directional arrows (flip for RTL)
+arrow_right: "→"
+arrow_left: "←"
+arrow_external: "↗"
+arrow_external_rtl: "↖"
+
+#############################
+#                           #
+#       "Home" Page         #
+#                           #
+#############################
 # Hero Section
 hero:
   kicker: "warm, focused, and curated"
@@ -81,8 +97,6 @@ rules_summary:
       description: "No harassment, hate, doxxing, scams, or impersonation. WhatsApp shows your phone number to members."
   moderation_title: "Moderation & safety"
   moderation_text: "We usually escalate: nudge → timeout/mute → removal → ban. Severe cases (harassment/scams) skip steps."
-
-
 
 # CTA Section
 cta:
@@ -155,7 +169,11 @@ filters:
   results: "result"
   results_plural: "results"
 
-# Rules Page
+#############################
+#                           #
+#     "Rules" Page          #
+#                           #
+#############################
 rules_page:
   kicker: "Community rules"
   title: "How we keep the bazaar healthy"
@@ -261,9 +279,141 @@ rules_page:
         If you feel unsafe or see something off, message a moderator privately with:
         **(a) link/screenshot, (b) what happened, (c) what outcome you want.**
   cta_title: "See something off?"
-  cta_text: "If a message or interaction makes you uncomfortable, reach out to a moderator privately. We’d rather hear about it early than let it fester."
-  cta_closing: "If this sounds good to you, you’ll probably enjoy the bazaar."
+  cta_text: "If a message or interaction makes you uncomfortable, reach out to a moderator privately. We'd rather hear about it early than let it fester."
+  cta_closing: "If this sounds good to you, you'll probably enjoy the bazaar."
 
+#############################
+#                           #
+#     "Start Here" Page     #
+#                           #
+#############################
+start_here:
+  title: "Start Here (60 seconds)"
+  subtitle: "Do these three steps to be active, not overwhelmed, today."
+  
+  # Checklist
+  checklist:
+    heading: "3 steps to get started"
+    step1:
+      title: "Join the WhatsApp Community"
+      description: "One tap gets you into the main hub. You'll see all the group lanes from there."
+      button: "Join WhatsApp"
+    step2:
+      title: "Post your intro in the \"Start Here / Intros\" group"
+      description: "30 seconds. Use the template below—no fluff, just context so people know how to help."
+      button: "Go to Intros group"
+    step3:
+      title: "Join only 2 lanes (for now)"
+      description: "Pick two groups that match what you actually do. More lanes = more noise. You can add more later."
+  
+  # Intro Template
+  intro_template:
+    heading: "📝 Post this intro (copy/paste)"
+    template: |
+      👋 [Name] — [City/Country, optional]
+      
+      🛠 Role: [What you do — e.g. "Backend engineer at X" or "Solo founder building Y"]
+      
+      🔨 Building/Learning: [One line about your current focus]
+      
+      💡 Can help with: [1–2 things — e.g. "Python, system design, hiring engineers"]
+      
+      🔍 Looking for: [One thing — e.g. "Co-founder intros" or "Feedback on landing page"]
+      
+      🔗 [LinkedIn/GitHub/Website — optional]
+    hint: "Tip: Keep it short. You can always share more in conversation. If you want replies, end with one clear ask (feedback / intros / hiring / learning)."
+    copy_button: "Copy"
+    copied: "Copied!"
+  
+  # Lanes
+  lanes:
+    heading: "🚦 Pick your 2 lanes"
+    note_label: "Rule of thumb:"
+    note: "Join 2 lanes today. Add more later if you stay unmuted for a week."
+    join_button: "Join →"
+    items:
+      - name: "General Chat"
+        description: "Casual discussion, random questions, community vibes, Bazaar Saturdays sessions"
+      - name: "Software & Engineering"
+        description: "Code, architecture, tools, debugging, tech deep-dives"
+      - name: "Product, Design & Growth"
+        description: "UX, metrics, experiments, go-to-market, design critiques"
+      - name: "Jobs Market"
+        description: "Hiring, job posts, contract gigs, career moves"
+      - name: "Advice & Mentorship"
+        description: "Career questions, feedback requests, \"how did you…\" threads"
+      - name: "Management & Leadership"
+        description: "Leading teams, org design, people problems, growth paths"
+      - name: "Startups & Founders"
+        description: "Fundraising, MVPs, pivots, co-founder matching"
+      - name: "Jordanian Expats"
+        description: "For Jordanians abroad—local context, diaspora connections"
+  
+  # Quality guidance
+  quality:
+    ask_well:
+      heading: "🎯 Ask well"
+      items:
+        - "**Context** — what's the situation?"
+        - "**What you tried** — show your work"
+        - "**Constraints** — timeline, budget, blockers"
+        - "**What you want** — feedback? options? an intro?"
+    give_back:
+      heading: "🤝 Give back"
+      items:
+        - "Follow up with what happened"
+        - "Keep requests public when possible"
+        - "Don't cross-post the same thing everywhere"
+        - "Help others when you can"
+  
+  # Cadence
+  cadence:
+    heading: "📅 Recurring sessions"
+    items:
+      - title: "Bazaar Saturdays"
+        description: "A casual text-based Saturday session across the groups: share what you’re building/learning, ask questions, and join the conversation."
+      - title: "Monthly Firesides"
+        description: "One or more guests, one topic, live Q&A. Announced in advance."
+      - title: "Periodic Q&A threads"
+        description: "Async \"ask me anything\" from community experts."
+    next_up: "Next Fireside: announced in the Announcements group."
+  
+  # Rules summary
+  rules_summary:
+    heading: "📜 Rules in 20 seconds"
+    items:
+      - "No spam, no stealth promotion, no cross-posting"
+      - "No \"DM me\" marketplace behavior"
+      - "Stay work-adjacent (no political/sectarian flamewars)"
+      - "Respect privacy and safety"
+      - "Mods can remove anyone making the space worse"
+    button: "Read full rules"
+  
+  # Privacy notice
+  privacy:
+    label: "Privacy note:"
+    text: "WhatsApp shows your phone number to members in the same groups. If you're not comfortable with that, don't join groups you're unsure about."
+  
+  # FAQ
+  faq:
+    heading: "❓ Quick answers"
+    items:
+      - question: "Is this Arabic-only?"
+        answer: "No. Most discussion is in English or Arabic depending on who's talking. Both are welcome. Many threads are bilingual."
+      - question: "Can I promote my product?"
+        answer: "Yes—if you add context (who it's for, what problem it solves, what feedback you want). No drive-by links."
+      - question: "Can I DM people?"
+        answer: "Only if they've invited it or you have genuine context. Cold outreach = bad look. Start in public threads first."
+      - question: "Who moderates?"
+        answer: "A small group of active community members. We nudge first, escalate if needed. Severe cases (harassment, spam) skip steps."
+      - question: "What if I mess up?"
+        answer: "You'll probably get a friendly nudge. We're not looking to kick people—just keep the signal high. Learn and move on."
+
+#############################
+#                           #
+#         SECTIONS          #
+#                           #
+#############################
 # Footer
 footer:
   title: "Digital Bazaar"

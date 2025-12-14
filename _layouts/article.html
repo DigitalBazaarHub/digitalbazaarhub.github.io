@@ -95,13 +95,16 @@ layout: default
   
   const strings = JSON.parse(stringsData);
   
+  // Arrows based on UI language direction
+  const backArrow = uiLang === 'ar' ? '→' : '←';
+  
   // Update all translatable elements in article
   wrapper.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
     if (strings[key]) {
-      // Preserve the arrow for back link
+      // Preserve the arrow for back link (flipped for RTL)
       if (key === 'back_to_articles') {
-        el.textContent = '← ' + strings[key];
+        el.textContent = backArrow + ' ' + strings[key];
       } else {
         el.textContent = strings[key];
       }

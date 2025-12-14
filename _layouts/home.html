@@ -28,13 +28,13 @@ layout: default
       <h1 class="hero-home-title" id="hero-heading">{{ strings.hero.headline }}</h1>
       <p class="hero-home-sub">{{ strings.hero.description }}</p>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="{{ site.social.whatsapp }}" target="_blank" rel="noopener">
+        <a class="btn btn-primary" href="{{ site.social.whatsapp_community }}" target="_blank" rel="noopener">
           <span>{{ strings.buttons.join_whatsapp }}</span>
-          <span aria-hidden="true">↗</span>
+          <span aria-hidden="true">{{ strings.arrow_external }}</span>
         </a>
         <a class="btn btn-teal" href="/{{ lang }}/start-here/">
           <span>{{ strings.buttons.start_here }}</span>
-          <span aria-hidden="true">→</span>
+          <span aria-hidden="true">{{ strings.arrow_right }}</span>
         </a>
       </div>
     </div>
@@ -112,7 +112,7 @@ layout: default
       <p style="margin-top:10px;">
         <a href="/{{ lang }}/rules/" class="btn btn-teal">
           <span>{{ strings.buttons.read_full_rules }}</span>
-          <span aria-hidden="true">↗</span>
+          <span aria-hidden="true">{{ strings.arrow_external }}</span>
         </a>
       </p>
     </div>

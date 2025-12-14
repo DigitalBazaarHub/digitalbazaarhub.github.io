@@ -75,7 +75,8 @@ defaults:
 
 # Social Links
 social:
-  whatsapp: "https://chat.whatsapp.com/Lg73q7FG8cHGFKzfYSkZV5"
+  whatsapp_community: "https://chat.whatsapp.com/Lg73q7FG8cHGFKzfYSkZV5"
+  whatsapp_intros_group: "https://chat.whatsapp.com/LbYwP0ZQ29vJRDc5A1ocWn"
   github: "https://github.com/DigitalBazaarHub"
 
 # Analytics (add your ID when ready)
