@@ -20,23 +20,11 @@ nav:
   rules: "Rules"
   menu: "Menu"
 
-# Language Toggle
-language:
-  current: "English"
-  switch_to: "العربية"
-  switch_url: "/ar/"
-
 # Directional arrows (flip for RTL)
 arrow_right: "→"
 arrow_left: "←"
 arrow_external: "↗"
 arrow_external_rtl: "↖"
-
-# 404 Page
-error_404:
-  title: "Page Not Found"
-  message: "Sorry, the page you're looking for doesn't exist."
-  back: "Back to Home"
 
 #############################
 #                           #
@@ -373,20 +361,23 @@ cadence_page:
   hero_alt: "People gathering in a warm digital bazaar"
   keep_up:
     label: "How to keep up:"
-    text: "Dates and reminders are posted in the Announcements group on WhatsApp. Times vary — we try to rotate for different time zones."
+    text: "Dates and reminders are posted in the WhatsApp <i>\"Announcements\"</i> group. Times vary — we try to rotate for different time zones."
 
   rhythms:
     heading: "📅 Recurring sessions"
     items:
-      - title: "Bazaar Saturdays"
-        description: "A casual text-based Saturday session across the groups: share what you’re building/learning, ask questions, and join the conversation."
+      - title: "📱 Bazaar Saturdays"
+        description: "A casual text-based Saturday session across the groups: share what you're building/learning, ask questions, and join the conversation."
         how: "Best way to join: post a 2–3 line update + one clear question."
-      - title: "Monthly Firesides"
+      - title: "🔥 Monthly Firesides"
         description: "A guest-led session (or panel) on one topic, with live Q&A. Format + time are announced in advance."
         how: "Best way to join: read the prompt, bring one thoughtful question, and follow up after."
-      - title: "Periodic Q&A threads"
-        description: "Async “ask me anything” threads with community experts. Great for deep questions without meeting times."
+      - title: "🤔 Periodic Q&A threads"
+        description: "Async ask me anything threads with community experts. Great for deep questions without meeting times."
         how: "Best way to join: give context + constraints + what you tried."
+      - title: "🤝 Mentorship"
+        description: "Structured mentorship with time-boxed office hours and clear asks. No vague promises — just proof-of-work and real feedback loops. Head to the <i>\"Advice & Mentorship\"</i> group."
+        how: "Best way to join: come with a specific question or challenge, not a general 'pick your brain' request."
 
   participation:
     heading: "✅ How to participate (without getting overwhelmed)"
@@ -426,7 +417,7 @@ cadence_page:
       - question: "Do you post recaps?"
         answer: "Sometimes. If we do, we’ll link them from the relevant group (and later, on the website)."
       - question: "How do I know what’s next?"
-        answer: "Announcements group on WhatsApp — that’s the source of truth."
+        answer: "<i>\"Announcements\"</i> group on WhatsApp — that’s the source of truth."
 
 #####################################
 #                                   #

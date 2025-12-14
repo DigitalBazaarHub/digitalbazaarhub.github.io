@@ -1,7 +1,7 @@
 # Digital Bazaar — Makefile
 # Simplifies common development tasks
 
-.PHONY: help install update assets images hero clean serve serve-drafts build setup-hooks prod-build
+.PHONY: help install update assets images hero clean serve serve-drafts build setup-hooks prod-build dev-lint dev-install-tools
 
 # Homebrew Ruby paths (macOS)
 RUBY_BIN := /opt/homebrew/opt/ruby/bin
@@ -35,6 +35,8 @@ help: ## Show this help message
 	@echo "  $(CYAN)serve-drafts$(RESET)   Start server with drafts visible"
 	@echo "  $(CYAN)build$(RESET)          Build static site to _site/"
 	@echo "  $(CYAN)setup-hooks$(RESET)    Enable git pre-commit hooks"
+	@echo "  $(CYAN)dev-install-tools$(RESET) Install PurgeCSS for dead code detection"
+	@echo "  $(CYAN)dev-lint$(RESET)       Find unused CSS (requires dev-install-tools)"
 	@echo ""
 	@echo "$(YELLOW)Production:$(RESET)"
 	@echo "  $(CYAN)prod-build$(RESET)     Build for production (minified)"
@@ -146,6 +148,45 @@ serve: ## Start local development server at http://localhost:4000
 
 serve-drafts: ## Start server with draft posts visible
 	$(BUNDLE) exec jekyll serve --livereload --drafts
+
+dev-lint: ## Find unused CSS using PurgeCSS (requires: make dev-install-tools)
+	@echo "🔍 Analyzing CSS for unused selectors..."
+	@echo ""
+	@if [ ! -d node_modules/purgecss ]; then \
+		echo "❌ PurgeCSS not installed. Run 'make dev-install-tools' first."; \
+		exit 1; \
+	fi
+	@# Build the site first to get all HTML
+	@$(BUNDLE) exec jekyll build --quiet
+	@mkdir -p _site/purged
+	@echo "Scanning _site/ for unused CSS..."
+	@echo ""
+	@npx purgecss \
+		--css _site/assets/css/styles.css \
+		--content '_site/**/*.html' \
+		--output _site/purged
+	@echo ""
+	@echo "$(YELLOW)Results:$(RESET)"
+	@ORIG=$$(wc -c < _site/assets/css/styles.css | tr -d ' '); \
+	PURGED=$$(wc -c < _site/purged/styles.css | tr -d ' '); \
+	SAVED=$$((ORIG - PURGED)); \
+	echo "  Original:  $$ORIG bytes"; \
+	echo "  Purged:    $$PURGED bytes"; \
+	echo "  Savings:   $$SAVED bytes ($$(( (SAVED * 100) / ORIG ))%)"
+	@echo ""
+	@echo "$(YELLOW)Purged CSS saved to:$(RESET) _site/purged/styles.css"
+	@echo ""
+	@echo "💡 Compare _site/assets/css/styles.css with _site/purged/styles.css"
+	@echo "   to identify unused selectors, then manually remove from source."
+
+dev-install-tools: ## Install dead code detection tools (PurgeCSS)
+	@echo "📦 Installing dead code detection tools..."
+	@if [ ! -f package.json ]; then \
+		echo '{"name": "digitalbazaar-dev", "private": true}' > package.json; \
+	fi
+	npm install --save-dev purgecss
+	@echo ""
+	@echo "✅ Tools installed. Run 'make dev-lint' to analyze CSS."
 
 # =============================================================================
 # PRODUCTION

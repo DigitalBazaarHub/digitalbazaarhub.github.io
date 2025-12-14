@@ -1,8 +1,8 @@
-# Digital Bazaar 🛍️
+# Digital Bazaar 💬
 
-**البازار الرقمي** — A bilingual (Arabic/English) digital magazine for the Arab tech community.
+**البازار الرقمي** — A bilingual (Arabic/English) digital community for the Arab world.
 
-> A high-signal Arabic community for builders.
+> A modern bazaar for Arab digital minds.
 
 ## Dependencies
 
