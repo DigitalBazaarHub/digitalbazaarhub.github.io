@@ -32,6 +32,12 @@ arrow_left: "←"
 arrow_external: "↗"
 arrow_external_rtl: "↖"
 
+# 404 Page
+error_404:
+  title: "Page Not Found"
+  message: "Sorry, the page you're looking for doesn't exist."
+  back: "Back to Home"
+
 #############################
 #                           #
 #       "Home" Page         #
@@ -114,60 +120,6 @@ buttons:
   back_home: "Back to Home"
   back_to_articles: "Back to Articles"
   view_archive: "View Full Archive"
-
-# Archive Page
-archive:
-  kicker: "Full archive"
-  title: "The shelves of the Digital Bazaar"
-  subtitle: "Every article, essay and field note that's been written so far. Filters start with everything set to \"all\", sorted by newest first. Browse by year, month, topic, language or author."
-  hero_alt: "Ancient archive shelves of scrolls mixed with glowing digital artifacts, tended by small robots."
-
-# Articles Section
-articles:
-  kicker: "Articles & field notes"
-  title: "Recent writings from the Digital Bazaar"
-  subtitle: "Essays, reflections and notes from people in the Bazaar – on engineering, product, management, markets, careers and life. These are the latest pieces; older work lives in the archive."
-  hero_alt: "Groups of people and robots talking in the Digital Bazaar"
-  section_title: "Latest essays"
-  section_sub: "The most recent articles, sorted by newest first."
-  intro: "Ideas and insights from Digital Bazaar members"
-  empty: "No articles yet. Be the first to write!"
-  no_results: "No articles match the selected filters."
-  featured: "Featured Articles"
-
-# Filters
-filters:
-  title: "Filter the archive"
-  subtitle: "Use these controls to slice the archive."
-  all_articles: "All articles"
-  all_years: "all years"
-  newest: "newest first"
-  language:
-    label: "Language"
-    all: "All languages"
-    ar: "العربية"
-    en: "English"
-  category:
-    label: "Category"
-    all: "All categories"
-  author:
-    label: "Author"
-    all: "All authors"
-    team: "Bazaar Team"
-    member: "Community member"
-  time:
-    label: "Year"
-    all: "All years"
-    week: "Last Week"
-    month: "Last Month"
-    year: "This Year"
-  sort:
-    label: "Sort"
-    newest: "Newest first"
-    oldest: "Oldest first"
-  clear: "Clear filters"
-  results: "result"
-  results_plural: "results"
 
 #############################
 #                           #
@@ -411,7 +363,137 @@ start_here:
 
 #############################
 #                           #
-#         SECTIONS          #
+#       "Cadence" Page      #
+#                           #
+#############################
+cadence_page:
+  title: "Cadence"
+  subtitle: "The Bazaar stays warm and high-signal because a few things repeat. Show up consistently — the network compounds."
+  keep_up:
+    label: "How to keep up:"
+    text: "Dates and reminders are posted in the Announcements group. Times vary — we try to rotate for different time zones."
+
+  rhythms:
+    heading: "📅 Recurring sessions"
+    items:
+      - title: "Bazaar Saturdays"
+        description: "A casual text-based Saturday session across the groups: share what you’re building/learning, ask questions, and join the conversation."
+        how: "Best way to join: post a 2–3 line update + one clear question."
+      - title: "Monthly Firesides"
+        description: "A guest-led session (or panel) on one topic, with live Q&A. Format + time are announced in advance."
+        how: "Best way to join: read the prompt, bring one thoughtful question, and follow up after."
+      - title: "Periodic Q&A threads"
+        description: "Async “ask me anything” threads with community experts. Great for deep questions without meeting times."
+        how: "Best way to join: give context + constraints + what you tried."
+
+  participation:
+    heading: "✅ How to participate (without getting overwhelmed)"
+    do:
+      heading: "Do this"
+      items:
+        - "Join 1–2 lanes first, stay unmuted for a week, then expand."
+        - "Ask with context, and follow up with outcomes."
+        - "Reply where you can genuinely help — not everywhere you have an opinion."
+    dont:
+      heading: "Avoid this"
+      items:
+        - "Cross-posting the same message everywhere."
+        - "Drive-by links with no context."
+        - "“DM me” marketplace behavior or cold outreach."
+
+  host:
+    heading: "🎙️ Want to host a Fireside or run a Q&A?"
+    text: "We love community-led sessions. Keep it practical, focused, and useful."
+    template_label: "Copy/paste pitch:"
+    template: |
+      Topic: [one clear topic]
+      Format: [fireside / panel / Q&A thread]
+      Who it’s for: [roles / level]
+      What people will walk away with: [3 bullets]
+      Suggested guests (optional): [names + why]
+      Preferred month/time zone: [optional]
+    note: "Send this to the moderators (or post where you collect session proposals)."
+
+  faq:
+    heading: "❓ Quick answers"
+    items:
+      - question: "Are sessions Arabic-only?"
+        answer: "No. Some are Arabic, some English, many are mixed. Both are welcome."
+      - question: "Do you post recaps?"
+        answer: "Sometimes. If we do, we’ll link them from the relevant group (and later, on the website)."
+      - question: "How do I know what’s next?"
+        answer: "Announcements group — that’s the source of truth."
+
+#####################################
+#                                   #
+#    "Articles & Archive" Pages     #
+#                                   #
+#####################################
+# Archive Page
+archive:
+  kicker: "Full archive"
+  title: "The shelves of the Digital Bazaar"
+  subtitle: "Every article, essay and field note that's been written so far. Filters start with everything set to \"all\", sorted by newest first. Browse by year, month, topic, language or author."
+  hero_alt: "Ancient archive shelves of scrolls mixed with glowing digital artifacts, tended by small robots."
+
+# Articles Section
+articles:
+  kicker: "Articles & field notes"
+  title: "Recent writings from the Digital Bazaar"
+  subtitle: "Essays, reflections and notes from people in the Bazaar – on engineering, product, management, markets, careers and life. These are the latest pieces; older work lives in the archive."
+  hero_alt: "Groups of people and robots talking in the Digital Bazaar"
+  section_title: "Latest essays"
+  section_sub: "The most recent articles, sorted by newest first."
+  intro: "Ideas and insights from Digital Bazaar members"
+  empty: "No articles yet. Be the first to write!"
+  no_results: "No articles match the selected filters."
+  featured: "Featured Articles"
+
+# Filters
+filters:
+  title: "Filter the archive"
+  subtitle: "Use these controls to slice the archive."
+  all_articles: "All articles"
+  all_years: "all years"
+  newest: "newest first"
+  language:
+    label: "Language"
+    all: "All languages"
+    ar: "العربية"
+    en: "English"
+  category:
+    label: "Category"
+    all: "All categories"
+  author:
+    label: "Author"
+    all: "All authors"
+    team: "Bazaar Team"
+    member: "Community member"
+  time:
+    label: "Year"
+    all: "All years"
+    week: "Last Week"
+    month: "Last Month"
+    year: "This Year"
+  sort:
+    label: "Sort"
+    newest: "Newest first"
+    oldest: "Oldest first"
+  clear: "Clear filters"
+  results: "result"
+  results_plural: "results"
+
+# Article
+article:
+  by: "By"
+  published: "Published on"
+  read_time: "min read"
+  share: "Share this article"
+  tags: "Tags"
+
+#############################
+#                           #
+#      Footer Section       #
 #                           #
 #############################
 # Footer
@@ -430,17 +512,3 @@ footer:
     articles: "Articles & field notes"
     archive: "Archive"
     rules: "Community rules"
-
-# Article
-article:
-  by: "By"
-  published: "Published on"
-  read_time: "min read"
-  share: "Share this article"
-  tags: "Tags"
-
-# 404 Page
-error_404:
-  title: "Page Not Found"
-  message: "Sorry, the page you're looking for doesn't exist."
-  back: "Back to Home"
