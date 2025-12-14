@@ -24,3 +24,6 @@ node_modules/
 # Environment
 .env
 .env.local
+
+# Local review notes (keep out of repo)
+_review_docs/
