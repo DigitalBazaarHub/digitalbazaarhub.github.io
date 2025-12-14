@@ -1,0 +1,143 @@
+---
+layout: default
+---
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign strings_key = 'strings_' | append: lang -%}
+{%- assign strings = site.data[strings_key] -%}
+
+<!-- Hero with banner (light/dark variants) -->
+<section class="hero">
+  <!-- Light mode hero image -->
+  <picture class="hero-image-light">
+    <source media="(max-width: 600px)" srcset="{{ '/assets/img/articles_hero_banner-600.webp' | relative_url }}" type="image/webp">
+    <source media="(max-width: 900px)" srcset="{{ '/assets/img/articles_hero_banner-800.webp' | relative_url }}" type="image/webp">
+    <source srcset="{{ '/assets/img/articles_hero_banner-1200.webp' | relative_url }}" type="image/webp">
+    <img 
+      src="{{ '/assets/img/articles_hero_banner-1200.webp' | relative_url }}" 
+      alt="{{ strings.cadence_page.hero_alt | default: 'People gathering in a warm digital bazaar' }}"
+      class="hero-image cadence-hero-image"
+      width="1200"
+      height="400"
+      loading="eager"
+      fetchpriority="high"
+    >
+  </picture>
+  <!-- Dark mode hero image -->
+  <picture class="hero-image-dark">
+    <source media="(max-width: 600px)" srcset="{{ '/assets/img/articles_hero_banner_dark-600.webp' | relative_url }}" type="image/webp">
+    <source media="(max-width: 900px)" srcset="{{ '/assets/img/articles_hero_banner_dark-800.webp' | relative_url }}" type="image/webp">
+    <source srcset="{{ '/assets/img/articles_hero_banner_dark-1200.webp' | relative_url }}" type="image/webp">
+    <img 
+      src="{{ '/assets/img/articles_hero_banner_dark-1200.webp' | relative_url }}" 
+      alt="{{ strings.cadence_page.hero_alt | default: 'People gathering in a warm digital bazaar' }}"
+      class="hero-image cadence-hero-image"
+      width="1200"
+      height="400"
+      loading="lazy"
+    >
+  </picture>
+  <div class="hero-text">
+    <div class="hero-kicker">{{ strings.cadence_page.kicker | default: 'Community rhythm' }}</div>
+    <h1 class="hero-title">{{ strings.cadence_page.title }}</h1>
+    <p class="hero-sub">{{ strings.cadence_page.subtitle }}</p>
+  </div>
+</section>
+
+<!-- Keep up callout -->
+<div class="cadence-keep-up-section">
+  <div class="cadence-keep-up">
+    <strong>{{ strings.cadence_page.keep_up.label }}</strong> {{ strings.cadence_page.keep_up.text }}
+  </div>
+</div>
+
+<!-- 1) Recurring Sessions -->
+<div class="cadence-section">
+  <h2>{{ strings.cadence_page.rhythms.heading }}</h2>
+  <div class="cadence-rhythms">
+    {%- for item in strings.cadence_page.rhythms.items -%}
+    <div class="rhythm-card">
+      <h3>{{ item.title }}</h3>
+      <p class="rhythm-desc">{{ item.description }}</p>
+      <p class="rhythm-how"><strong>{{ item.how }}</strong></p>
+    </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+<!-- 2) How to Participate -->
+<div class="cadence-section">
+  <h2>{{ strings.cadence_page.participation.heading }}</h2>
+  <div class="two-col-quality">
+    <div class="quality-card do-card">
+      <h3>{{ strings.cadence_page.participation.do.heading }}</h3>
+      <ul>
+        {%- for item in strings.cadence_page.participation.do.items -%}
+        <li>{{ item }}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div class="quality-card dont-card">
+      <h3>{{ strings.cadence_page.participation.dont.heading }}</h3>
+      <ul>
+        {%- for item in strings.cadence_page.participation.dont.items -%}
+        <li>{{ item }}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 3) Host a Session -->
+<div class="cadence-section">
+  <h2>{{ strings.cadence_page.host.heading }}</h2>
+  <p class="host-intro">{{ strings.cadence_page.host.text }}</p>
+  
+  <div class="intro-template">
+    <h3>{{ strings.cadence_page.host.template_label }}</h3>
+    <div class="template-wrapper">
+      <pre id="host-template-text" {% if lang == 'ar' %}dir="rtl"{% endif %}>{{ strings.cadence_page.host.template }}</pre>
+      <button class="copy-btn" id="copy-host-btn" type="button" aria-label="{{ strings.cadence_page.host.copy_button }}">
+        <span class="copy-icon">📋</span>
+        <span class="copy-text">{{ strings.cadence_page.host.copy_button }}</span>
+      </button>
+    </div>
+    <p class="copy-hint">{{ strings.cadence_page.host.note }}</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  const btn = document.getElementById('copy-host-btn');
+  const pre = document.getElementById('host-template-text');
+  if (!btn || !pre) return;
+  
+  btn.addEventListener('click', function() {
+    const text = pre.textContent;
+    navigator.clipboard.writeText(text).then(function() {
+      const originalText = btn.querySelector('.copy-text').textContent;
+      btn.querySelector('.copy-text').textContent = '{{ strings.cadence_page.host.copied | default: "Copied!" }}';
+      btn.classList.add('copied');
+      setTimeout(function() {
+        btn.querySelector('.copy-text').textContent = originalText;
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  });
+})();
+</script>
+
+<!-- 4) FAQ -->
+<div class="cadence-section">
+  <h2>{{ strings.cadence_page.faq.heading }}</h2>
+  <div class="mini-faq">
+    {%- for item in strings.cadence_page.faq.items -%}
+    <div class="faq-item">
+      <strong>{{ item.question }}</strong>
+      <p>{{ item.answer }}</p>
+    </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{{ content }}
+

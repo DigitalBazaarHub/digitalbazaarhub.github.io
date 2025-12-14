@@ -239,7 +239,7 @@ rules_page:
 #     "Start Here" Page     #
 #                           #
 #############################
-start_here:
+start_here_page:
   title: "Start Here (60 seconds)"
   subtitle: "Do these three steps to be active, not overwhelmed, today."
   
@@ -367,11 +367,13 @@ start_here:
 #                           #
 #############################
 cadence_page:
-  title: "Cadence"
-  subtitle: "The Bazaar stays warm and high-signal because a few things repeat. Show up consistently — the network compounds."
+  kicker: "Community cadence"
+  title: "How the bazaar keeps moving"
+  subtitle: "We run a few things on purpose: recurring sessions and light structure that keep the signal clean and participation easy — so you can drop in, contribute, and leave with something useful."
+  hero_alt: "People gathering in a warm digital bazaar"
   keep_up:
     label: "How to keep up:"
-    text: "Dates and reminders are posted in the Announcements group. Times vary — we try to rotate for different time zones."
+    text: "Dates and reminders are posted in the Announcements group on WhatsApp. Times vary — we try to rotate for different time zones."
 
   rhythms:
     heading: "📅 Recurring sessions"
@@ -412,6 +414,8 @@ cadence_page:
       What people will walk away with: [3 bullets]
       Suggested guests (optional): [names + why]
       Preferred month/time zone: [optional]
+    copy_button: "Copy"
+    copied: "Copied!"
     note: "Send this to the moderators (or post where you collect session proposals)."
 
   faq:
@@ -422,7 +426,7 @@ cadence_page:
       - question: "Do you post recaps?"
         answer: "Sometimes. If we do, we’ll link them from the relevant group (and later, on the website)."
       - question: "How do I know what’s next?"
-        answer: "Announcements group — that’s the source of truth."
+        answer: "Announcements group on WhatsApp — that’s the source of truth."
 
 #####################################
 #                                   #
