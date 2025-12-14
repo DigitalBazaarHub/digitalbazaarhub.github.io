@@ -59,7 +59,7 @@ layout: default
       <div class="rule-title">{{ rule.title }}</div>
     </div>
     <div class="rule-body">
-      {{ rule.body | newline_to_br }}
+      {{ rule.body | markdownify }}
       {%- if rule.list -%}
       <ul class="rule-list-inner">
         {%- for item in rule.list -%}
