@@ -1121,6 +1121,21 @@ a:hover {
   margin: 0;
 }
 
+.feature-card-cta {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--teal);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.feature-card-cta:hover {
+  color: var(--terracotta);
+  text-decoration: underline;
+}
+
 /* --------------------------------------------------------------------------
    10. CHIPS / TAGS
    --------------------------------------------------------------------------
@@ -2460,6 +2475,21 @@ code:not(pre code) {
   font-size: 0.85rem;
   color: var(--text-muted);
   font-style: italic;
+}
+
+.cadence-cta {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--teal);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.cadence-cta:hover {
+  color: var(--terracotta);
+  text-decoration: underline;
 }
 
 /* Rules Summary - Quick rules with CTA */

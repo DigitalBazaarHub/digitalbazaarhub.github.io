@@ -348,6 +348,7 @@ start_here_page:
       - title: "خيوط أسئلة وأجوبة دورية"
         description: "أسئلة وأجوبة غير متزامنة (Async) من خبراء في المجتمع."
     next_up: "الجلسة القادمة: يُعلن عنها في مجموعة الإعلانات."
+    cta_text: "اطّلع على إيقاع البازار"
 
   # Rules summary
   rules_summary:
