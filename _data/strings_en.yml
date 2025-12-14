@@ -3,16 +3,16 @@
 
 # Site
 site_title: "Digital Bazaar 💬"
-site_tagline: "Where the Arab digital world meets, trades, and grows."
+site_tagline: "A modern bazaar for Arab digital minds."
 
 # Navigation
 nav:
   home: "Home"
-  articles: "Articles"
-  archive: "Archive"
+  join: "Join"
+  start_here: "Start here"
+  cadence: "Cadence"
+  directory: "Directory"
   rules: "Rules"
-  about: "About"
-  join: "Join Us"
   menu: "Menu"
 
 # Language Toggle
@@ -23,26 +23,26 @@ language:
 
 # Hero Section
 hero:
-  kicker: "A warm, informal community"
-  headline: "Where the Arab digital world meets, trades, and grows."
-  description: "Digital Bazaar is a community for Arab builders, founders,product people, marketers, researchers, financiers and curious learners from across MENA and the diaspora. We swap ideas, share opportunities, write essays, and tinker with tools together."
+  kicker: "warm, focused, and curated"
+  headline: "A high-signal Arabic community for builders."
+  description: "Digital Bazaar is a WhatsApp-first community for Arab builders who ship: founders, engineers, product leaders, designers, marketers, researchers, and teams.\n\nStart here on the website to learn how we work, join the right lanes, and show up for recurring sessions like <i>Bazaar Saturdays</i> and the monthly <i>Firesides</i>."
   image_alt: "Humans and friendly robots talking and working together in a Middle Eastern bazaar."
 
 # About Section (What happens in the Bazaar?)
 about:
   kicker: "What happens in the Bazaar?"
-  title: "Conversations, writing and tinkering under one tent."
-  subtitle: "Digital Bazaar isn't just a chat, a blog, or a GitHub org. It's all three at once – tied together by the same people and stories."
+  title: "A living network — powered by recurring conversations."
+  subtitle: "Digital Bazaar is WhatsApp-first, but it’s not “just chat.” We use lanes, light structure, and recurring sessions to turn strangers into warm ties — and warm ties into real outcomes."
   features:
     - label: "Discussions"
-      title: "Conversations & lanes"
-      description: "Focused WhatsApp groups for different kinds of talk: General Chat, Jordanian Expats, Startups & Founders, Software & Engineering, Product & Growth, Management & Leadership, Advice & Mentorship, Jobs and more. Think of it as a souq of ongoing, overlapping conversations."
-    - label: "Writing"
-      title: "Articles & field notes"
-      description: "Essays, reflections and notes from people in the Bazaar – on engineering, product, leadership, markets, careers and life. Less \"content marketing\", more \"here's what actually happened and what we learned\"."
-    - label: "Tinkering"
-      title: "Open source & tools"
-      description: "A GitHub organisation for small tools, bots and experiments that grow out of community needs. Shared infra, shared learning, and low-pressure projects anyone can join when curiosity hits."
+      title: "Lanes with real conversations"
+      description: "Topic-based WhatsApp groups where people swap practical experience: engineering, product, design & growth, leadership, jobs, startups, expats, and more. Think of it as a souq of overlapping lanes — you join what matters and ignore the rest."
+    - label: "Cadence"
+      title: "Rituals and sessions that bring people back"
+      description: "We don’t rely on hope-based interaction. We run recurring rhythms like Bazaar Saturdays, plus monthly firesides/panels and periodic Q&A threads — so the network compounds over time instead of fading."
+    - label: "Projects & Mentorship"
+      title: "From talk → warm intros → shipped work"
+      description: "When trust forms, things happen: feedback loops, mentorship, collaborations, and community-born projects like Meshkah. Mentorship is structured (time-boxed office hours / clear asks), and projects are opt-in — no vague promises, just proof-of-work."
 
 # Rhythm Section (How we use the space)
 rhythm:
@@ -64,38 +64,36 @@ rhythm:
 
 # Rules Summary Section (for home page)
 rules_summary:
-  kicker: "Community rules"
+  kicker: "Bazaar standards"
   title: "How we keep the bazaar healthy"
-  subtitle: "The full rules live on their own page, but the spirit is simple: be decent, bring value, don't abuse the space."
+  subtitle: "Warm doesn’t mean messy. We protect attention, safety, and trust — so the space stays useful."
   short_title: "In short"
   items:
-    - title: "Be kind and respectful."
-      description: "We're here to support and uplift each other in our professional journeys."
-    - title: "Share knowledge freely."
-      description: "The bazaar thrives on open exchange of ideas, stories and opportunities."
-    - title: "Keep it constructive."
-      description: "Stay relevant to tech, business and the wider digital ecosystem – no drama for drama's sake."
-    - title: "No spam, no hard selling."
-      description: "Share your work naturally and respect everyone's attention."
-    - title: "Don't be an asshole."
-      description: "Zero tolerance for racism, sexism, harassment or toxic behavior of any kind."
+    - title: "No spam. No stealth promotion. No cross-posting."
+      description: "Links need context (who it’s for + why it matters + what you want). Post once, in the correct lane — don’t spray."
+    - title: "No “DM me” funnels."
+      description: "Don’t fish for leads, clients, or candidates. Default to public replies. DM only by consent or when someone asks."
+    - title: "Stay work-adjacent."
+      description: "Tech, product, business, careers, and the digital ecosystem. No politics/religion/sectarian flamewars."
+    - title: "Ask well. Give back."
+      description: "Good questions include context + constraints + what you tried. If you got help, follow up with outcomes."
+    - title: "Respect people, privacy, and safety."
+      description: "No harassment, hate, doxxing, scams, or impersonation. WhatsApp shows your phone number to members."
   moderation_title: "Moderation & safety"
-  moderation_text: "Moderators reserve the right to remove disruptive members at any time, with or without warning. The goal is not control – it's keeping the bazaar usable for everyone."
+  moderation_text: "We usually escalate: nudge → timeout/mute → removal → ban. Severe cases (harassment/scams) skip steps."
+
+
 
 # CTA Section
 cta:
   kicker: "Step inside"
   title: "Pull up a chair in the Bazaar."
-  subtitle: "Introduce yourself, share what you're working on, and join a lane that fits. The bazaar gets better every time someone brings a real story, question or experiment."
+  subtitle: "Start with a quick intro, join only 2 lanes to avoid notification overload, then join our recurring sessions (Bazaar Saturdays + monthly firesides). This is how strangers become warm ties."
 
 # Buttons
 buttons:
-  join_whatsapp: "Join the WhatsApp Community"
-  join_whatsapp_bazaar: "Join the WhatsApp Bazaar"
-  join_whatsapp_community: "Join the WhatsApp Community"
-  visit_github: "GitHub"
-  visit_github_org: "Visit us on GitHub"
-  read_articles: "Read articles & field notes"
+  join_whatsapp: "Join WhatsApp"
+  start_here: "Start Here (60 seconds)"
   browse_articles: "Browse recent articles"
   read_full_rules: "Read the full rules"
   read_more: "Read More"
@@ -161,71 +159,115 @@ filters:
 rules_page:
   kicker: "Community rules"
   title: "How we keep the bazaar healthy"
-  dek: "These guidelines exist so that Digital Bazaar stays useful, warm and safe – not to over-police conversation. If in doubt, lean towards generosity, clarity and respect."
-  meta_note: "This is a living document. We may refine it as the community grows and new situations appear."
+  dek: "These guidelines exist so Digital Bazaar stays useful, warm, and safe — not to over-police conversation. If in doubt, choose clarity, generosity, and respect."
+  meta_note: "This is a living document. We’ll refine it as the community grows and new situations appear."
   short_version_label: "Short version:"
-  short_version: "Be kind. Share generously. Keep things constructive and relevant. Don't spam or harass people. Moderators can remove anyone who repeatedly makes the bazaar worse."
+  short_version: "Be respectful. Be useful. No spam. No DM-funnels. Keep it work-adjacent. Protect privacy. Moderators can remove anyone who repeatedly makes the bazaar worse."
   rules:
     - number: "01"
-      title: "Be kind and respectful"
+      title: "Respect & safety come first"
       body: |
-        Treat everyone in the bazaar with basic human decency. We come from different countries, backgrounds and disciplines – assume good intent, ask questions, and avoid personal attacks.
-        
-        We're here to support and uplift each other in our professional journeys, not to score points.
+        Treat people with basic human decency. Disagreeing is fine; contempt is not.
+
+        **Not allowed:** harassment, hate, bullying, sexual harassment, threats, targeted insults, or pile-ons.
+
+        If someone asks you to stop, **stop**. If you’re unsure whether something crosses a line, don’t post it.
+
     - number: "02"
-      title: "Share knowledge and opportunities freely"
+      title: "Keep it work-adjacent (and avoid flame topics)"
       body: |
-        The bazaar only works if people bring real stories, lessons and opportunities. Share what you know: things you've tried, pitfalls you've hit, resources you've found useful, roles you're hiring for.
-        
-        You don't need to be "an expert" to contribute – honest field notes are often more valuable than polished theory.
+        Digital Bazaar is for the digital world: tech, product, business, careers, research, startups, design, growth, leadership, and adjacent learning.
+
+        **Not allowed:** political/religious/sectarian fights, culture-war bait, or anything that predictably turns into a flame thread.
+
+        Side quests are okay occasionally — but lanes are for useful, work-adjacent conversation.
+
     - number: "03"
-      title: "Keep discussions constructive and on-topic"
+      title: "Ask well, answer well, and follow up"
       body: |
-        Stay broadly within the world of tech, product, business, research and the digital ecosystem.
-        Side quests are fine, but the main lanes are for useful, work-adjacent conversations.
-        
-        Disagreeing is welcome; dragging people or starting flame wars is not. Critique ideas and systems, not people or whole groups.
+        We optimize for practical help and real experience.
+
+        **When asking, include:** context, constraints, what you tried, and what “good help” looks like.
+
+        **When answering:** share what you’ve actually seen or done; ask clarifying questions before giving hot takes.
+
+        **Follow up matters:** if you got help, post what happened (outcome + what you learned). This is how the bazaar compounds.
+
     - number: "04"
-      title: "No spam, no hard selling"
+      title: "No spam, no stealth promotion, no cross-posting"
       body: |
-        Share your work naturally – as part of a discussion, a story, or a genuine "here's something that might help".
-        Don't blast the same link everywhere or turn the bazaar into a sales funnel.
-        
-        If you're not sure whether something is appropriate, add context: why you're sharing it, who it's for, and what kind of feedback or response you're looking for.
+        Sharing is welcome. Attention theft is not.
+
+        **Allowed:** sharing your work with context, as part of a real discussion, or when someone asks.
+
+        **Not allowed:** link dumps, copy-paste promos, repeated posting, cross-posting the same thing across lanes, engagement farming, or “look at my thing” with no substance.
+
+        When in doubt, add: **who it’s for, why it matters, and what you want** (feedback / hires / discussion).
+
+        **Examples**
+        - ✅ Good: “Hiring a backend engineer in Amman (remote ok). Stack: Go/Postgres. Range: X–Y. Looking for referrals. (Jobs lane)”
+        - ✅ Good: “We wrote a postmortem on our outage — sharing because it’s relevant to today’s thread. Key lesson: …”
+        - ❌ Not ok: Dropping the same “check my product/course” link in 3 lanes with no context.
+        - ❌ Not ok: “Amazing opportunity!! DM me” with no details.
+
     - number: "05"
-      title: "Jobs & hiring etiquette"
+      title: "Jobs & opportunities (verified, structured, and lane-only)"
       body: |
-        Job posts and contract opportunities belong in the dedicated "Jobs Market" group, not sprayed across every group.
-      list:
-        - "Keep posts clear: role, company, location/remote, type (full-time, part-time, contract), and how to apply."
-        - "Don't tag or DM people at random with offers they didn't ask for."
-        - "If you're looking for work, one well-written message is better than daily bumps."
+        Job posts belong in **Jobs Market** — not in every group.
+
+        **Posts must include:** company, role, location/remote, type (FT/PT/contract), compensation range (if possible), and how to apply.
+
+        **Verified postings only:** moderators may ask for proof (company email, LinkedIn, or a credible reference). Unverifiable / shady posts can be removed.
+
+        **Not allowed:** recruiter spam, mass-DMs, or “DM me your CV” posts with zero details.
+
     - number: "06"
-      title: "Professional yet warm"
+      title: "DMs are not the default"
       body: |
-        The tone is deliberately informal – like a good café table at a conference – but this is still a professional space.
-        
-        Jokes are welcome; punching down is not. Share wins and losses, but respect privacy and avoid sharing sensitive information that isn't yours to share.
+        We discourage “DM me” funnels.
+
+        Default to public replies so everyone benefits. DM only:
+        - when someone explicitly asks you to, or
+        - for sensitive details after a public summary, or
+        - for introductions with consent.
+
+        **No cold outreach:** don’t DM members pitches, offers, or recruiting messages they didn’t request.
+
+        **Examples**
+        - ✅ Good: “I can intro you to a PM at Company X — want that intro?” (wait for yes)
+        - ✅ Good: “I’ll DM the doc because it includes private info; here’s the public summary: …”
+        - ❌ Not ok: DMing 20 members “I’m a recruiter, send CV.”
+        - ❌ Not ok: DMing founders “I can grow your product” after they never engaged with you.
+
     - number: "07"
-      title: "Moderators' discretion"
+      title: "Privacy & WhatsApp reality"
       body: |
-        Moderators can remove messages or members that are clearly making the space worse – spam, harassment, persistent bad-faith arguing, or ignoring repeated feedback.
-        
-        When possible, we'll nudge and explain first. In more serious cases, we may remove people without warning to protect the rest of the community.
+        WhatsApp shows your phone number to group members. Be mindful with personal info.
+
+        **Consent rule:** don’t share screenshots, quotes, or private details outside the bazaar without permission.
+
+        Don’t doxx, don’t expose identities, and don’t share sensitive company/customer information that isn’t yours to share.
+
     - number: "08"
-      title: "Don't be an asshole"
+      title: "Moderation & enforcement (how it works)"
       body: |
-        Zero tolerance for racism, sexism, hate, personal harassment, doxxing, or any kind of targeted abuse.
-        
-        If you're not sure whether something crosses the line, don't post it. If someone flags something to you, listen instead of doubling down.
+        Moderators protect the space — not people’s egos.
+
+        Typical escalation:
+        **nudge → delete message → timeout/mute → removal → ban**
+
+        Severe cases (harassment, hate, scams, impersonation, doxxing) may skip steps.
+
+        If you feel unsafe or see something off, message a moderator privately with:
+        **(a) link/screenshot, (b) what happened, (c) what outcome you want.**
   cta_title: "See something off?"
-  cta_text: "If a message or interaction makes you uncomfortable, reach out to a moderator privately. We'd rather hear about it early than let it fester."
-  cta_closing: "If all of this sounds good to you, you'll probably enjoy the bazaar."
+  cta_text: "If a message or interaction makes you uncomfortable, reach out to a moderator privately. We’d rather hear about it early than let it fester."
+  cta_closing: "If this sounds good to you, you’ll probably enjoy the bazaar."
 
 # Footer
 footer:
   title: "Digital Bazaar"
-  description: "A modern souq for Arab digital minds. Discussions, essays, experiments and community rules – across tech, product, business, research and more."
+  description: "A modern builders’ bazaar: lanes, rituals, and meetups that turn strangers into warm ties — without turning into noise.<br><br>Privacy note: WhatsApp shows your phone number to group members."
   sections_title: "Sections"
   community_title: "Community"
   copyright: "© %{year} Digital Bazaar"

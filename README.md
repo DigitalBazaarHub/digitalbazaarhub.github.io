@@ -2,7 +2,7 @@
 
 **البازار الرقمي** — A bilingual (Arabic/English) digital magazine for the Arab tech community.
 
-> Where the Arab digital world meets, trades, and grows.
+> A high-signal Arabic community for builders.
 
 ## Dependencies
 

@@ -3,11 +3,7 @@
 
 # Site Settings
 title: Digital Bazaar
-title_ar: البازار الرقمي
-tagline: Where the Arab digital world meets, trades, and grows.
-tagline_ar: حيث يلتقي العالم العربي الرقمي، ويتبادل، وينمو.
-description: A warm, informal community for Arab founders, builders, marketers, designers, and engineers.
-description_ar: مجتمع دافئ وغير رسمي للمؤسسين والبناة والمسوقين والمصممين والمهندسين العرب.
+description: A modern bazaar for Arab digital minds.
 url: "https://digitalbazaarhub.github.io"
 baseurl: ""
 

@@ -32,15 +32,29 @@
     
     <div class="nav-right" id="navRight">
       <div class="site-nav">
+        <a href="/{{ lang }}/join/" class="nav-link {% if page.url contains '/join/' %}active{% endif %}" data-i18n="nav_join" data-ar="{{ strings_ar.nav.join }}" data-en="{{ strings_en.nav.join }}">
+          {{ strings.nav.join }}
+        </a>
+        <a href="/{{ lang }}/start-here/" class="nav-link {% if page.url contains '/start-here/' %}active{% endif %}" data-i18n="nav_start_here" data-ar="{{ strings_ar.nav.start_here }}" data-en="{{ strings_en.nav.start_here }}">
+          {{ strings.nav.start_here }}
+        </a>
+        <a href="/{{ lang }}/cadence/" class="nav-link {% if page.url contains '/cadence/' %}active{% endif %}" data-i18n="nav_cadence" data-ar="{{ strings_ar.nav.cadence }}" data-en="{{ strings_en.nav.cadence }}">
+          {{ strings.nav.cadence }}
+        </a>
+        <a href="/{{ lang }}/directory/" class="nav-link {% if page.url contains '/directory/' %}active{% endif %}" data-i18n="nav_directory" data-ar="{{ strings_ar.nav.directory }}" data-en="{{ strings_en.nav.directory }}">
+          {{ strings.nav.directory }}
+        </a>
+        <a href="/{{ lang }}/rules/" class="nav-link {% if page.url contains '/rules/' %}active{% endif %}" data-i18n="nav_rules" data-ar="{{ strings_ar.nav.rules }}" data-en="{{ strings_en.nav.rules }}">
+          {{ strings.nav.rules }}
+        </a>
+        {% comment %}
         <a href="/{{ lang }}/articles/" class="nav-link {% if page.url contains '/articles/' %}active{% endif %}" data-i18n="nav_articles" data-ar="{{ strings_ar.nav.articles }}" data-en="{{ strings_en.nav.articles }}">
           {{ strings.nav.articles }}
         </a>
         <a href="/{{ lang }}/archive/" class="nav-link {% if page.url contains '/archive/' %}active{% endif %}" data-i18n="nav_archive" data-ar="{{ strings_ar.nav.archive | default: 'الأرشيف' }}" data-en="{{ strings_en.nav.archive | default: 'Archive' }}">
           {{ strings.nav.archive | default: 'Archive' }}
         </a>
-        <a href="/{{ lang }}/rules/" class="nav-link {% if page.url contains '/rules/' %}active{% endif %}" data-i18n="nav_rules" data-ar="{{ strings_ar.nav.rules }}" data-en="{{ strings_en.nav.rules }}">
-          {{ strings.nav.rules }}
-        </a>
+        {% endcomment %}
       </div>
       
       {% include language-toggle.html %}
