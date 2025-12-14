@@ -18,8 +18,10 @@ vendor/
 .idea/
 *.sublime-*
 
-# Node (if using any tooling)
+# Node (dev tooling only - not part of Jekyll build)
 node_modules/
+package.json
+package-lock.json
 
 # Environment
 .env

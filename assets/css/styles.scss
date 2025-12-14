@@ -2601,23 +2601,30 @@ code:not(pre code) {
   margin-bottom: 16px;
 }
 
-/* Rhythm cards grid */
+/* Rhythm cards grid - 2x2 on all breakpoints above mobile */
 .cadence-rhythms {
   display: grid;
-  gap: 16px;
+  gap: 18px;
 }
 
 @media (min-width: 640px) {
   .cadence-rhythms {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 .rhythm-card {
-  background: var(--surface-elevated);
+  background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 18px;
+  border-radius: var(--radius-lg);
+  padding: 18px 20px 20px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.12s ease, box-shadow 0.18s ease;
+}
+
+.rhythm-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
 }
 
 .rhythm-card h3 {
@@ -2667,14 +2674,8 @@ code:not(pre code) {
    Helper classes for common styling needs.
    Uses logical properties where applicable for RTL support.
    -------------------------------------------------------------------------- */
-.text-center { text-align: center; }
-.text-start { text-align: start; }
-.text-end { text-align: end; }
 
-.mt-0 { margin-top: 0; }
-.mb-0 { margin-bottom: 0; }
 
-.hidden { display: none !important; }
 
 /* --------------------------------------------------------------------------
    21. PRINT STYLES
