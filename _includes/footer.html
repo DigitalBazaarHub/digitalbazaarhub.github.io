@@ -15,11 +15,13 @@
     <div class="footer-title" data-i18n="footer_sections" data-ar="{{ strings_ar.footer.sections_title }}" data-en="{{ strings_en.footer.sections_title | default: 'Sections' }}">{{ strings.footer.sections_title | default: 'Sections' }}</div>
     <div class="footer-links">
       <a href="/{{ lang }}/" data-i18n="nav_home" data-ar="{{ strings_ar.nav.home }}" data-en="{{ strings_en.nav.home }}">{{ strings.nav.home }}</a>
+      <a href="/{{ lang }}/start-here/" data-i18n="footer_start_here" data-ar="{{ strings_ar.nav.start_here }}" data-en="{{ strings_en.nav.start_here }}">{{ strings.nav.start_here }}</a>
+      <a href="/{{ lang }}/cadence/" data-i18n="footer_cadence" data-ar="{{ strings_ar.nav.cadence }}" data-en="{{ strings_en.nav.cadence }}">{{ strings.nav.cadence }}</a>
+      <a href="/{{ lang }}/rules/" data-i18n="footer_rules" data-ar="{{ strings_ar.footer.links.rules }}" data-en="{{ strings_en.footer.links.rules | default: 'Community rules' }}">{{ strings.footer.links.rules | default: strings.nav.rules }}</a>
       {% comment %}
       <a href="/{{ lang }}/articles/" data-i18n="footer_articles" data-ar="{{ strings_ar.footer.links.articles }}" data-en="{{ strings_en.footer.links.articles | default: 'Articles & field notes' }}">{{ strings.footer.links.articles | default: strings.nav.articles }}</a>
       <a href="/{{ lang }}/archive/" data-i18n="footer_archive" data-ar="{{ strings_ar.footer.links.archive }}" data-en="{{ strings_en.footer.links.archive | default: 'Archive' }}">{{ strings.footer.links.archive | default: strings.nav.archive }}</a>
       {% endcomment %}
-      <a href="/{{ lang }}/rules/" data-i18n="footer_rules" data-ar="{{ strings_ar.footer.links.rules }}" data-en="{{ strings_en.footer.links.rules | default: 'Community rules' }}">{{ strings.footer.links.rules | default: strings.nav.rules }}</a>
     </div>
   </div>
 

@@ -2559,6 +2559,109 @@ code:not(pre code) {
 }
 
 /* --------------------------------------------------------------------------
+   19b. CADENCE PAGE
+   --------------------------------------------------------------------------
+   Community rhythm/cadence page showing recurring sessions, participation
+   guidelines, and session hosting templates.
+   
+   Reuses components from Start Here page: .intro-template, .mini-faq,
+   .two-col-quality, etc.
+   -------------------------------------------------------------------------- */
+
+/* Cadence hero image - same positioning as articles */
+.cadence-hero-image {
+  object-position: 50% 80% !important;
+}
+
+/* Keep up callout section - full width like hero */
+.cadence-keep-up-section {
+  padding: 24px 0 8px;
+}
+
+.cadence-keep-up {
+  background: rgba(21, 32, 41, 0.04);
+  border-radius: var(--radius-md);
+  padding: 14px 20px;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+[data-theme="dark"] .cadence-keep-up {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Sections */
+.cadence-section {
+  margin-bottom: 32px;
+}
+
+.cadence-section h2 {
+  font-size: 1.2rem;
+  color: var(--text-heading);
+  margin-bottom: 16px;
+}
+
+/* Rhythm cards grid */
+.cadence-rhythms {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .cadence-rhythms {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.rhythm-card {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+}
+
+.rhythm-card h3 {
+  font-size: 1rem;
+  color: var(--text-heading);
+  margin-bottom: 8px;
+}
+
+.rhythm-card .rhythm-desc {
+  font-size: 0.88rem;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.rhythm-card .rhythm-how {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.rhythm-card .rhythm-how strong {
+  font-weight: 500;
+}
+
+/* Host intro text */
+.host-intro {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+/* Do/Don't card accents */
+.do-card h3 {
+  color: var(--teal);
+}
+
+.dont-card h3 {
+  color: var(--terracotta);
+}
+
+/* --------------------------------------------------------------------------
    20. UTILITY CLASSES
    --------------------------------------------------------------------------
    Helper classes for common styling needs.
