@@ -100,13 +100,13 @@ layout: default
   <div class="two-col">
     <div>
       <div class="mini-heading">{{ strings.rules_summary.short_title }}</div>
-      <ul class="clean">
+      <ul class="list-plain list-arrow list-muted">
         {%- for rule in strings.rules_summary.items -%}
         <li><strong>{{ rule.title }}</strong> {{ rule.description }}</li>
         {%- endfor -%}
       </ul>
     </div>
-    <div class="callout">
+    <div class="callout-box">
       <p class="mini-heading">{{ strings.rules_summary.moderation_title }}</p>
       <p>{{ strings.rules_summary.moderation_text }}</p>
       <p style="margin-top:10px;">

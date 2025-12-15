@@ -44,53 +44,51 @@ layout: default
 </section>
 
 <!-- Keep up callout -->
-<div class="cadence-keep-up-section">
-  <div class="cadence-keep-up">
-    <strong>{{ strings.cadence_page.keep_up.label }}</strong> {{ strings.cadence_page.keep_up.text }}
-  </div>
+<div class="callout-box callout-box--info" style="margin-top: var(--space-lg);">
+  <strong>{{ strings.cadence_page.keep_up.label }}</strong> {{ strings.cadence_page.keep_up.text }}
 </div>
 
 <!-- 1) Recurring Sessions -->
-<div class="cadence-section">
+<section class="section">
   <h2>{{ strings.cadence_page.rhythms.heading }}</h2>
-  <div class="cadence-rhythms">
+  <div class="rhythm-grid">
     {%- for item in strings.cadence_page.rhythms.items -%}
     <div class="rhythm-card">
       <h3>{{ item.title }}</h3>
       <p class="rhythm-desc">{{ item.description }}</p>
-      <p class="rhythm-how"><strong>{{ item.how }}</strong></p>
+      <p class="rhythm-how">{{ item.how }}</p>
     </div>
     {%- endfor -%}
   </div>
-</div>
+</section>
 
 <!-- 2) How to Participate -->
-<div class="cadence-section">
+<section class="section">
   <h2>{{ strings.cadence_page.participation.heading }}</h2>
-  <div class="two-col-quality">
-    <div class="quality-card do-card">
+  <div class="info-card-grid">
+    <div class="info-card info-card--flat info-card--tall info-card--do">
       <h3>{{ strings.cadence_page.participation.do.heading }}</h3>
-      <ul>
+      <ul class="list-plain list-check">
         {%- for item in strings.cadence_page.participation.do.items -%}
         <li>{{ item }}</li>
         {%- endfor -%}
       </ul>
     </div>
-    <div class="quality-card dont-card">
+    <div class="info-card info-card--flat info-card--tall info-card--dont">
       <h3>{{ strings.cadence_page.participation.dont.heading }}</h3>
-      <ul>
+      <ul class="list-plain list-cross">
         {%- for item in strings.cadence_page.participation.dont.items -%}
         <li>{{ item }}</li>
         {%- endfor -%}
       </ul>
     </div>
   </div>
-</div>
+</section>
 
 <!-- 3) Host a Session -->
-<div class="cadence-section">
+<section class="section">
   <h2>{{ strings.cadence_page.host.heading }}</h2>
-  <p class="host-intro">{{ strings.cadence_page.host.text }}</p>
+  <p>{{ strings.cadence_page.host.text }}</p>
   
   <div class="intro-template">
     <h3>{{ strings.cadence_page.host.template_label }}</h3>
@@ -101,9 +99,9 @@ layout: default
         <span class="copy-text">{{ strings.cadence_page.host.copy_button }}</span>
       </button>
     </div>
-    <p class="copy-hint">{{ strings.cadence_page.host.note }}</p>
+    <p class="hint-text">{{ strings.cadence_page.host.note }}</p>
   </div>
-</div>
+</section>
 
 <script>
 (function() {
@@ -127,17 +125,14 @@ layout: default
 </script>
 
 <!-- 4) FAQ -->
-<div class="cadence-section">
+<section class="section">
   <h2>{{ strings.cadence_page.faq.heading }}</h2>
-  <div class="mini-faq">
-    {%- for item in strings.cadence_page.faq.items -%}
-    <div class="faq-item">
-      <strong>{{ item.question }}</strong>
-      <p>{{ item.answer }}</p>
-    </div>
-    {%- endfor -%}
+  {%- for item in strings.cadence_page.faq.items -%}
+  <div class="faq-item">
+    <strong>{{ item.question }}</strong>
+    <p>{{ item.answer }}</p>
   </div>
-</div>
+  {%- endfor -%}
+</section>
 
 {{ content }}
-

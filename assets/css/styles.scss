@@ -129,6 +129,7 @@
   --white: #FFFFFF;       /* Cards, button text on dark backgrounds */
   --muted: #4a5d6a;       /* Secondary text, meta info, captions */
   --kicker: #7a6330;      /* Section labels, category kickers */
+  --terracotta-tint: rgba(179,78,54,.06); /* Light terracotta wash for warm cards */
   
   /* === BORDER RADIUS ===
      Consistent rounded corners throughout the design */
@@ -156,6 +157,25 @@
   --transition-normal: 0.16s ease;  /* Standard interactions */
   --transition-slow: 0.18s ease;    /* Subtle animations */
   
+  /* === TYPOGRAPHY SCALE ===
+     Standardized font sizes for consistency across pages */
+  --text-2xl: clamp(26px, 4vw, 34px);  /* H1: Page titles */
+  --text-xl: 20px;                      /* H2: Section headings */
+  --text-lg: 18px;                      /* H3: Subsection headings */
+  --text-md: 16px;                      /* Body text, primary descriptions */
+  --text-sm: 14px;                      /* Secondary text, muted body, excerpts */
+  --text-xs: 12px;                      /* Captions, kickers, labels */
+  --text-2xs: 10px;                     /* Tiny text, chips */
+  
+  /* === SPACING SCALE ===
+     Consistent spacing for margins and padding */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  
   /* === SEMANTIC COLORS (Light Mode - Default) ===
      These are the "functional" colors that get swapped in dark mode.
      Components should use these instead of raw palette colors. */
@@ -170,7 +190,7 @@
   --border: rgba(21, 32, 41, 0.08);
   --border-strong: rgba(21, 32, 41, 0.15);
   --header-bg: rgba(244, 230, 196, 0.96);
-  --card-bg: var(--white);
+  --card-bg: #FFFDF6;  /* Cream card background */
   --card-shadow: var(--shadow-md);
 }
 
@@ -192,9 +212,10 @@
   --border: rgba(255, 255, 255, 0.08);
   --border-strong: rgba(255, 255, 255, 0.15);
   --header-bg: rgba(21, 32, 41, 0.96);
-  --card-bg: var(--ink);
+  --card-bg: #1a2833;  /* Same as --surface-elevated for consistency */
   --card-shadow: 0 7px 18px rgba(0, 0, 0, 0.3);
   --kicker: var(--saffron);
+  --terracotta-tint: rgba(179,78,54,.12); /* Slightly stronger in dark mode */
 }
 
 /* === DARK MODE TRANSITIONS ===
@@ -372,7 +393,7 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 18px;
-  font-size: 14px;
+  font-size: var(--text-sm);
   color: var(--text-muted);
 }
 
@@ -385,7 +406,7 @@ a:hover {
   position: relative;
   padding-bottom: 2px;
   font-weight: 500;
-  font-size: 15px;
+  font-size: var(--text-md);
   color: var(--text-muted);
   text-decoration: none;
 }
@@ -454,7 +475,7 @@ a:hover {
 }
 
 .lang-theme-toggle .theme-btn {
-  font-size: 14px;
+  font-size: var(--text-sm);
   padding: 0;
   margin: 0;
   background: none;
@@ -608,6 +629,7 @@ a:hover {
    -------------------------------------------------------------------------- */
 .hero-home {
   margin-top: 16px;
+  margin-bottom: var(--space-xl);  /* 32px spacing after hero */
   border-radius: 22px;
   overflow: hidden;
   position: relative;
@@ -697,7 +719,7 @@ a:hover {
 }
 
 .hero-home-sub {
-  font-size: 15px;
+  font-size: var(--text-md);
   margin: 0 0 clamp(16px, 2.5vw, 24px);
   color: rgba(244,230,196,0.92);
 }
@@ -797,7 +819,7 @@ a:hover {
 }
 
 .hero-sub {
-  font-size: 14px;
+  font-size: var(--text-sm);
   margin: 0;
   color: var(--text-muted);
 }
@@ -863,7 +885,7 @@ a:hover {
 }
 
 .card-excerpt {
-  font-size: 14px;
+  font-size: var(--text-sm);
   color: var(--text-muted);
 }
 
@@ -934,7 +956,6 @@ a:hover {
    - .btn-primary   : Terracotta→Marigold gradient (main CTA, WhatsApp)
    - .btn-teal      : Teal→Deep Teal gradient (GitHub, Read Rules)
    - .btn-saffron   : Saffron→Marigold gradient (Browse Articles)
-   - .btn-outline   : Transparent with border (secondary actions)
    
    All buttons have:
    - Pill shape (border-radius: 999px)
@@ -946,7 +967,7 @@ a:hover {
   appearance: none;
   border-radius: var(--radius-full);
   padding: 10px 16px;
-  font-size: 14px;
+  font-size: var(--text-md);
   font-weight: 650;
   border: 0;
   cursor: pointer;
@@ -1007,28 +1028,6 @@ a:hover {
   background: linear-gradient(135deg, #257a86, #1a4f56); /* Darker teal tones */
 }
 
-.btn-outline {
-  background: rgba(244,230,196,0.9);
-  color: var(--night);
-  border: 1px solid rgba(21,32,41,0.16);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
-}
-
-.btn-outline:hover {
-  background: #fef7e4;
-  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
-}
-
-[data-theme="dark"] .btn-outline {
-  background: var(--surface);
-  color: var(--text);
-  border: 1px solid var(--border-strong);
-}
-
-[data-theme="dark"] .btn-outline:hover {
-  background: var(--surface-elevated);
-}
-
 @media (max-width: 520px) {
   .btn {
     width: 100%;
@@ -1043,7 +1042,7 @@ a:hover {
    Includes kicker (uppercase label), title, and subtitle patterns.
    -------------------------------------------------------------------------- */
 .section {
-  margin-top: 32px;
+  margin-top: var(--space-2xl);  /* 48px - breathing room between sections */
 }
 
 .section-header {
@@ -1066,20 +1065,26 @@ a:hover {
 }
 
 .section-sub {
-  font-size: 14px;
+  font-size: var(--text-sm);
   margin: 0;
   color: var(--text-muted);
 }
 
 .section h2 {
-  font-size: 18px;
-  margin: 0 0 6px;
+  font-size: var(--text-xl);  /* 20px */
+  margin: 0 0 var(--space-md);
+  color: var(--text-heading);
+}
+
+.section h3 {
+  font-size: var(--text-lg);  /* 18px */
+  margin: 0 0 var(--space-sm);
   color: var(--text-heading);
 }
 
 .section > p {
-  margin: 0 0 14px;
-  font-size: 14px;
+  margin: 0 0 var(--space-md);
+  font-size: 16px;
   color: var(--text-muted);
 }
 
@@ -1103,6 +1108,10 @@ a:hover {
   box-shadow: var(--card-shadow);
 }
 
+[data-theme="dark"] .feature-card {
+  background: var(--ink);
+}
+
 .feature-card-label {
   font-size: 12px;
   font-weight: 700;
@@ -1120,24 +1129,559 @@ a:hover {
 }
 
 .feature-card-body {
-  font-size: 14px;
+  font-size: var(--text-sm);
   color: var(--text-muted);
   margin: 0;
 }
 
-.feature-card-cta {
+
+/* --------------------------------------------------------------------------
+   9b. UNIFIED INFO CARD
+   --------------------------------------------------------------------------
+   Standard card pattern for content sections across all pages.
+   Replaces: .checklist-card, .lane-card, .quality-card, .cadence-card,
+             .rhythm-card, .rules-summary
+   
+   Base: .info-card
+   Title: .info-card h2, .info-card h3
+   Body: .info-card p, .info-card ul
+   CTA link: .info-card .cta-link
+   -------------------------------------------------------------------------- */
+.info-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) calc(var(--space-md) + 2px);
+  margin-bottom: var(--space-lg);
+  box-shadow: var(--card-shadow);
+}
+
+/* Lighter variant for primary/hero cards */
+.info-card--light {
+  background: var(--white);
+}
+
+[data-theme="dark"] .info-card--light {
+  background: var(--card-bg);
+}
+
+.info-card--warm {
+  background: var(--terracotta-tint);
+}
+
+/* Featured/3D variant - keeps shadow, ink bg in dark mode */
+.info-card--featured {
+  box-shadow: var(--card-shadow);
+  border: 2px solid var(--border);
+}
+
+[data-theme="dark"] .info-card--featured {
+  background: var(--ink);
+  border-color: var(--border);
+}
+
+/* Flat variant - no shadow, surface-elevated bg in dark mode */
+.info-card--flat {
+  box-shadow: none;
+}
+
+[data-theme="dark"] .info-card--flat {
+  background: var(--surface-elevated);
+}
+
+/* Warm flat variant - keeps terracotta tint, no shadow */
+.info-card--warm.info-card--flat {
+  box-shadow: none;
+}
+
+/* Taller variant - more vertical padding */
+.info-card--tall {
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+}
+
+.info-card h2 {
+  font-size: var(--text-xl);  /* Bigger headers: 20px instead of 18px */
+  font-weight: 650;
+  color: var(--text-heading);
+  margin: 0 0 var(--space-md);
+}
+
+.info-card h3 {
+  font-size: calc(var(--text-md) + 1px);
+  font-weight: 600;
+  color: var(--text-heading);
+  margin: 0 0 var(--space-xs);
+}
+
+/* Title color modifiers for do/don't cards */
+.info-card--do h3 {
+  color: var(--teal);
+}
+
+.info-card--dont h3 {
+  color: var(--terracotta);
+}
+
+.info-card p {
+  font-size: var(--text-md);
+  color: var(--text);
+  margin: 0 0 var(--space-sm);
+  line-height: 1.6;
+}
+
+.info-card p:last-child {
+  margin-bottom: 0;
+}
+
+.info-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-card li {
+  font-size: var(--text-md);
+  color: var(--text);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px dashed var(--border);
+}
+
+.info-card li:last-child {
+  border-bottom: none;
+}
+
+.info-card li strong {
+  color: var(--text-heading);
+}
+
+/* CTA Link - used in cards and sections */
+.cta-link {
   display: inline-block;
-  margin-top: 12px;
-  font-size: 13px;
+  margin-top: var(--space-sm);
+  font-size: var(--text-md);
   font-weight: 600;
   color: var(--teal);
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
-.feature-card-cta:hover {
+.cta-link:hover {
   color: var(--terracotta);
   text-decoration: underline;
+}
+
+/* Info card grid - for 2-column layouts */
+.info-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+@media (max-width: 640px) {
+  .info-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small info cards - for compact grids (lanes, rhythm cards) */
+.info-card--sm {
+  padding: 14px 16px;
+}
+
+.info-card--sm h3 {
+  font-size: var(--text-md);
+  margin-bottom: var(--space-xs);
+}
+
+.info-card--sm p {
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-xs);
+}
+
+/* --------------------------------------------------------------------------
+   9c. UNIFIED CALLOUT
+   --------------------------------------------------------------------------
+   Standard callout pattern for highlighted info boxes.
+   Replaces: .highlight-box, .callout, .cta-box, .lanes-note
+   
+   Base: .callout-box
+   Variants: .callout-box--info (teal left border)
+             .callout-box--neutral (dashed border)
+   -------------------------------------------------------------------------- */
+.callout-box {
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  font-size: var(--text-md);
+  color: var(--text);
+  margin-bottom: var(--space-lg);
+  background: var(--surface-elevated);
+  border: 1px dashed var(--border-strong);
+}
+
+.callout-box strong {
+  color: var(--text-heading);
+}
+
+.callout-box p {
+  margin: 0 0 var(--space-sm);
+}
+
+.callout-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* Info variant - teal left border */
+.callout-box--info {
+  border-inline-start: 3px solid var(--teal);
+  background: rgba(47, 143, 157, 0.08);
+}
+
+[data-theme="dark"] .callout-box--info {
+  background: rgba(47, 143, 157, 0.12);
+}
+
+/* Neutral variant - dashed border */
+.callout-box--neutral {
+  background: var(--terracotta-tint);
+}
+
+/* White callout - used for CTA sections */
+.callout-box--white {
+  background: var(--white);
+  border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .callout-box--white {
+  background: var(--surface-elevated);
+}
+
+/* Rules intro paragraph styling */
+.rules-intro {
+  margin-top: 20px;
+  margin-bottom: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   9d. UNIFIED LISTS
+   --------------------------------------------------------------------------
+   Standard list patterns with icon prefixes.
+   -------------------------------------------------------------------------- */
+.list-plain {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-plain li {
+  font-size: var(--text-md);
+  color: var(--text);
+  padding: var(--space-xs) 0;
+  padding-inline-start: 20px;
+  position: relative;
+}
+
+/* Arrow list - for guidance items */
+.list-arrow li::before {
+  content: "→";
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--teal);
+}
+
+/* Check list - for "do this" items */
+.list-check li::before {
+  content: "✓";
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--teal);
+}
+
+/* Cross list - for "don't do this" items */
+.list-cross li::before {
+  content: "✗";
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--terracotta);
+}
+
+/* Muted list - subdued text color */
+.list-muted li {
+  color: var(--text-muted);
+}
+.list-muted li strong {
+  color: var(--text);
+}
+
+/* --------------------------------------------------------------------------
+   9e. PAGE HEADER
+   --------------------------------------------------------------------------
+   Centered page header for Start Here, Cadence, and similar pages.
+   -------------------------------------------------------------------------- */
+.page-header {
+  text-align: center;
+  padding: var(--space-xl) 0 var(--space-lg);
+}
+
+.page-header h1 {
+  font-size: var(--text-2xl);
+  color: var(--text-heading);
+  margin: 0 0 var(--space-sm);
+}
+
+.page-subtitle {
+  font-size: calc(var(--text-md) + 2px);
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   9f. CHECKLIST STEPS
+   --------------------------------------------------------------------------
+   Numbered step list with teal circles.
+   -------------------------------------------------------------------------- */
+.checklist-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checklist-steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 0;  /* More vertical spacing between steps */
+  border-bottom: 1px dashed var(--border);
+}
+
+.checklist-steps li:last-child {
+  border-bottom: none;
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: var(--teal);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--text-sm);
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-content strong {
+  display: block;
+  color: var(--text-heading);
+  margin-bottom: var(--space-xs);
+}
+
+.step-content p {
+  font-size: var(--text-md);
+  color: var(--text-muted);
+  margin: 0 0 var(--space-sm);
+}
+
+.step-cta {
+  margin-top: var(--space-sm);
+}
+
+.step-cta .btn {
+  font-size: var(--text-md);
+  padding: 8px 16px;
+}
+
+/* --------------------------------------------------------------------------
+   9g. TEMPLATE BLOCK (Copy/Paste)
+   --------------------------------------------------------------------------
+   Dark code-block style with copy button.
+   -------------------------------------------------------------------------- */
+/* Intro template block - flat style for copy/paste templates */
+.intro-template {
+  background: rgba(21, 32, 41, 0.04);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  margin-bottom: 28px;
+}
+
+[data-theme="dark"] .intro-template {
+  background: hsla(0, 0%, 100%, 0.06);
+}
+
+.intro-template .template-wrapper {
+  position: relative;
+  margin-bottom: var(--space-sm);
+}
+
+.intro-template h2,
+.intro-template h3 {
+  font-size: var(--text-xl);
+  font-weight: 650;
+  color: var(--text-heading);
+  margin: 0 0 var(--space-md);
+}
+
+.intro-template h3 {
+  font-size: var(--text-lg);
+}
+
+.intro-template pre {
+  background: var(--night);
+  color: #e5e7eb;
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+.intro-template .hint-text {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
+  font-style: italic;
+}
+
+/* Legacy template-wrapper for backward compatibility */
+.template-wrapper {
+  position: relative;
+  margin-bottom: var(--space-sm);
+}
+
+.info-card pre {
+  background: var(--night);
+  color: #e5e7eb;
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+/* RTL override for Arabic templates (Start Here & Cadence) */
+pre[dir="rtl"] {
+  direction: rtl !important;
+  text-align: right !important;
+  unicode-bidi: plaintext;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.copy-btn.copied {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff;
+}
+
+.copy-icon {
+  font-size: 0.9rem;
+}
+
+[dir="rtl"] .copy-btn {
+  right: auto;
+  left: 8px;
+}
+
+.hint-text,
+.info-card .hint-text {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   9i. SECTION DIVIDER & PLAIN SECTION
+   --------------------------------------------------------------------------
+   Visual separator and plain background section for "good to know" content.
+   -------------------------------------------------------------------------- */
+.section-divider {
+  border: none;
+  border-top: 1px dashed var(--border-strong);
+  margin: var(--space-2xl) 0;
+}
+
+.plain-section {
+  margin-bottom: var(--space-xl);
+}
+
+.plain-section h2 {
+  font-size: var(--text-xl);
+  font-weight: 650;
+  color: var(--text-heading);
+  margin: 0 0 var(--space-md);
+}
+
+.plain-section ul {
+  margin: 0 0 var(--space-md);
+}
+
+.plain-section .cta-link {
+  margin-top: var(--space-sm);
+}
+
+/* --------------------------------------------------------------------------
+   9h. FAQ ITEMS
+   --------------------------------------------------------------------------
+   Question/answer pairs.
+   -------------------------------------------------------------------------- */
+.faq-item {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px dashed var(--border);
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-item strong {
+  display: block;
+  color: var(--text-heading);
+  font-size: var(--text-md);
+  margin-bottom: var(--space-xs);
+}
+
+.faq-item p {
+  font-size: var(--text-md);
+  color: var(--text);
+  margin: 0;
+  line-height: 1.6;
 }
 
 /* --------------------------------------------------------------------------
@@ -1146,14 +1690,6 @@ a:hover {
    Small pill-shaped labels for categories and tags.
    Teal-tinted with subtle border.
    -------------------------------------------------------------------------- */
-.chip-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 8px;
-  font-size: 12px;
-}
-
 .chip {
   padding: 4px 9px;
   border-radius: var(--radius-full);
@@ -1183,49 +1719,17 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   12. CALLOUT BOX
+   12. MINI HEADING
    --------------------------------------------------------------------------
-   Highlighted info boxes with dashed border.
-   Used for important notes and sidebar content.
+   Small uppercase label used in callouts and sidebars.
    -------------------------------------------------------------------------- */
-.callout {
-  border-radius: var(--radius-lg);
-  border: 1px dashed var(--border-strong);
-  background: var(--surface-elevated);
-  padding: 14px 16px;
-  font-size: 14px;
-  color: var(--text-muted);
-}
-
-.callout strong {
-  color: var(--text-heading);
-}
-
 .mini-heading {
-  font-size: 13px;
+  font-size: var(--text-sm);
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-weight: 700;
   color: var(--kicker);
   margin-bottom: 6px;
-}
-
-ul.clean {
-  list-style: none;
-  padding-inline-start: 0;
-  margin: 0;
-  font-size: 14px;
-  color: var(--text-muted);
-}
-
-ul.clean li {
-  margin-bottom: 6px;
-}
-
-ul.clean li::before {
-  content: "•";
-  margin-inline-end: 6px;
-  color: var(--teal);
 }
 
 /* --------------------------------------------------------------------------
@@ -1298,7 +1802,7 @@ ul.clean li::before {
 }
 
 .article-card-excerpt {
-  font-size: 14px;
+  font-size: var(--text-sm);
   color: var(--text-muted);
   margin: 0;
   flex: 1;
@@ -1340,7 +1844,7 @@ ul.clean li::before {
 
 .filters-section > p {
   margin: 0 0 10px;
-  font-size: 14px;
+  font-size: var(--text-sm);
   color: var(--text-muted);
 }
 
@@ -1453,7 +1957,7 @@ ul.clean li::before {
 }
 
 .archive-month-heading {
-  font-size: 14px;
+  font-size: var(--text-sm);
   font-weight: 600;
   color: var(--kicker);
   text-transform: uppercase;
@@ -1490,7 +1994,7 @@ ul.clean li::before {
 }
 
 .archive-entry-title {
-  font-size: 15px;
+  font-size: var(--text-md);
   font-weight: 600;
   color: var(--text-heading);
   text-decoration: none;
@@ -1629,7 +2133,7 @@ ul.clean li::before {
   padding: 12px 16px;
   border-inline-start: 3px solid var(--teal);
   background: var(--surface-elevated);
-  font-size: 15px;
+  font-size: var(--text-md);
   color: var(--text);
 }
 
@@ -1701,31 +2205,10 @@ ul.clean li::before {
    16. RULES PAGE
    --------------------------------------------------------------------------
    Community rules with numbered list and detailed explanations.
-   
-   STRUCTURE:
-   .rules-header
-     .kicker
-     h1
-     .dek (subtitle/description)
-     .meta-note
-   .highlight-box (intro callout)
-   .rules-list-detailed
-     .rule
-       .rule-title-row (.rule-number + .rule-title)
-       .rule-body (explanation text, may contain .rule-list-inner)
-   .cta-box (WhatsApp CTA)
+   Uses unified components: .info-card, .callout-box, .hint-text
    
    Rule numbers and titles stay on same line via flexbox (no wrap).
    -------------------------------------------------------------------------- */
-.rules-intro {
-  margin-top: 20px;
-  margin-bottom: 16px;
-}
-
-.rules-header {
-  margin-bottom: 20px;
-}
-
 .kicker {
   font-size: 12px;
   font-weight: 700;
@@ -1735,13 +2218,6 @@ ul.clean li::before {
   margin-bottom: 6px;
 }
 
-.rules-header h1 {
-  font-size: clamp(26px, 4vw, 32px);
-  line-height: 1.2;
-  margin: 0 0 6px;
-  color: var(--text-heading);
-}
-
 .dek {
   font-size: 16px;
   color: var(--text-muted);
@@ -1749,133 +2225,67 @@ ul.clean li::before {
   line-height: 1.55;
 }
 
-.meta-note {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-bottom: 20px;
-}
-
-.highlight-box {
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
-  background: rgba(21, 32, 41, 0.06);
-  padding: 14px 16px;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--text);
-  margin-bottom: 24px;
-}
-
-[data-theme="dark"] .highlight-box {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.highlight-box strong {
-  color: var(--text-heading);
-}
-
-/* Rules List - Detailed */
-.rules-list-detailed {
+/* Rules List */
+.rules-list {
   list-style: none;
-  margin: 0;
+  margin: 0 0 var(--space-lg);
   padding: 0;
 }
 
-.rule {
+.rule-item {
   border-top: 1px dashed var(--border-strong);
-  padding: 16px 0;
+  padding: var(--space-lg) 0;  /* More breathing room between rules */
 }
 
-.rule:first-child {
+.rule-item:first-child {
   border-top: none;
   padding-top: 0;
 }
 
-.rule-title-row {
+.rule-header {
   display: flex;
   align-items: baseline;
-  gap: 8px;
-  margin-bottom: 4px;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
 }
 
 .rule-number {
-  font-size: 12px;
+  font-size: var(--text-lg);  /* Same as rule-title */
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.08em;  /* Tighter at larger size */
   color: var(--kicker);
   flex-shrink: 0;
 }
 
 .rule-title {
-  font-size: 18px;
+  font-size: var(--text-lg);
   font-weight: 650;
   color: var(--text-heading);
 }
 
 .rule-body {
-  font-size: 16px;
-  color: var(--text);
-  margin: 6px 0 0;
+  font-size: var(--text-md);
+  color: var(--text-muted);
+  margin: var(--space-xs) 0 0;
   line-height: 1.65;
 }
 
 .rule-body p {
-  margin: 0 0 8px;
+  margin: 0 0 var(--space-sm);
 }
 
 .rule-body p:last-child {
   margin-bottom: 0;
 }
 
-.rule-list-inner {
-  margin: 4px 0 0 0;
-  padding-inline-start: 18px;
-}
-
-.rule-list-inner li {
-  margin-bottom: 4px;
-  font-size: inherit;
-  color: inherit;
-}
-
-/* CTA Box */
-.cta-box {
-  margin-top: 26px;
-  border-radius: var(--radius-lg);
-  border: 1px dashed var(--border-strong);
-  background: var(--surface-elevated);
-  padding: 14px 16px;
-  font-size: 14px;
-  color: var(--text);
-}
-
-.cta-box strong {
-  color: var(--text-heading);
-}
-
-.cta-box p {
-  margin: 0 0 10px;
-}
-
-.cta-box p:last-of-type {
-  margin-bottom: 0;
-}
-
-.cta-box .btn {
-  margin-top: 10px;
-}
-
 /* --------------------------------------------------------------------------
    17. FOOTER
    --------------------------------------------------------------------------
-   Two variants:
-   
-   .footer-simple: Minimal footer for article pages (back link + copyright)
-   .footer-full:   3-column grid footer for home/main pages
-                   - Column 1: Site description
-                   - Column 2: Sections links
-                   - Column 3: Community links
+   .footer-full: 3-column grid footer for all pages
+                 - Column 1: Site description
+                 - Column 2: Sections links
+                 - Column 3: Community links
    
    Responsive: 3-col → 2-col (800px) → 1-col (600px)
    -------------------------------------------------------------------------- */
@@ -1887,23 +2297,6 @@ ul.clean li::before {
   color: var(--text-muted);
 }
 
-/* Simple footer (article pages) */
-.footer-simple {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.footer-simple a {
-  color: var(--text-muted);
-}
-
-.footer-simple a:hover {
-  color: var(--teal);
-}
-
-/* Full footer (home page) */
 .footer-full {
   display: grid;
   grid-template-columns: 2.5fr 1.5fr 1.5fr;
@@ -2129,478 +2522,9 @@ code:not(pre code) {
 }
 
 /* --------------------------------------------------------------------------
-   19. START HERE PAGE
+   19. CADENCE PAGE
    --------------------------------------------------------------------------
-   Onboarding/activation page with checklist, lane cards, templates, and FAQ.
-   Designed for mobile-first quick scanning (60-120 seconds to complete).
-   
-   Structure:
-     .start-here-header (h1 + intro text)
-     .checklist-card (.checklist-steps with .step-number + .step-content)
-     .intro-template (copy/paste template block)
-     .lanes-section (.lanes-grid with .lane-card items)
-     .two-col-quality (.quality-card for ask/give guidance)
-     .cadence-card (recurring sessions info)
-     .rules-summary (quick rules + CTA to full rules)
-     .privacy-notice (WhatsApp phone visibility warning)
-     .mini-faq (.faq-item question/answer pairs)
-   -------------------------------------------------------------------------- */
-
-/* Header */
-.start-here-header {
-  text-align: center;
-  padding: 32px 0 24px;
-}
-
-.start-here-header h1 {
-  font-size: clamp(1.8rem, 5vw, 2.4rem);
-  color: var(--text-heading);
-  margin-bottom: 8px;
-}
-
-.start-here-header p {
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  max-width: 480px;
-  margin: 0 auto;
-}
-
-/* Checklist Card - Primary action steps */
-.checklist-card {
-  background: var(--surface-elevated);
-  border: 2px solid var(--teal);
-  border-radius: var(--radius-md);
-  padding: 20px 24px;
-  margin-bottom: 28px;
-}
-
-.checklist-card h2 {
-  font-size: 1.15rem;
-  color: var(--text-heading);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.checklist-card h2::before {
-  content: "⚡";
-}
-
-.checklist-steps {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  counter-reset: step;
-}
-
-.checklist-steps li {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px dashed var(--border);
-}
-
-.checklist-steps li:last-child {
-  border-bottom: none;
-}
-
-.step-number {
-  flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  background: var(--teal);
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.85rem;
-}
-
-.step-content {
-  flex: 1;
-}
-
-.step-content strong {
-  display: block;
-  color: var(--text-heading);
-  margin-bottom: 4px;
-}
-
-.step-content p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin: 0 0 8px;
-}
-
-.step-cta {
-  margin-top: 8px;
-}
-
-.step-cta .btn {
-  font-size: 0.85rem;
-  padding: 6px 14px;
-}
-
-/* Intro Template - Copy/paste block */
-.intro-template {
-  background: rgba(21, 32, 41, 0.04);
-  border-radius: var(--radius-md);
-  padding: 20px 24px;
-  margin-bottom: 28px;
-}
-
-[data-theme="dark"] .intro-template {
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.intro-template h2 {
-  font-size: 1.1rem;
-  color: var(--text-heading);
-  margin-bottom: 12px;
-}
-
-.intro-template .template-wrapper {
-  position: relative;
-}
-
-.intro-template pre {
-  background: var(--night);
-  color: #e5e7eb;
-  padding: 16px;
-  border-radius: var(--radius-sm);
-  font-size: 0.85rem;
-  line-height: 1.7;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-
-/* RTL override for Arabic intro template (needs !important to override global code LTR rule) */
-.intro-template pre[dir="rtl"] {
-  direction: rtl !important;
-  text-align: right !important;
-  unicode-bidi: plaintext;
-}
-
-/* Copy button */
-.intro-template .copy-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.intro-template .copy-btn:hover {
-  background: rgba(255, 255, 255, 0.18);
-  color: #fff;
-}
-
-.intro-template .copy-btn.copied {
-  background: var(--teal);
-  border-color: var(--teal);
-  color: #fff;
-}
-
-.intro-template .copy-icon {
-  font-size: 0.9rem;
-}
-
-/* RTL: move copy button to left */
-[dir="rtl"] .intro-template .copy-btn {
-  right: auto;
-  left: 8px;
-}
-
-.intro-template .copy-hint {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-top: 10px;
-}
-
-/* Lanes Section - Group selection grid */
-.lanes-section {
-  margin-bottom: 28px;
-}
-
-.lanes-section h2 {
-  font-size: 1.15rem;
-  color: var(--text-heading);
-  margin-bottom: 8px;
-}
-
-.lanes-note {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-  padding: 10px 14px;
-  background: rgba(47, 143, 157, 0.08);
-  border-radius: var(--radius-sm);
-  border-inline-start: 3px solid var(--teal);
-}
-
-.lanes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
-}
-
-.lane-card {
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.lane-card strong {
-  color: var(--text-heading);
-  font-size: 0.95rem;
-}
-
-.lane-card span {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  flex: 1;
-}
-
-.lane-card a {
-  font-size: 0.8rem;
-  color: var(--teal);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.lane-card a:hover {
-  text-decoration: underline;
-}
-
-/* Quality Cards - Ask well / Give back */
-.two-col-quality {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 28px;
-}
-
-@media (max-width: 640px) {
-  .two-col-quality {
-    grid-template-columns: 1fr;
-  }
-}
-
-.quality-card {
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 16px 18px;
-}
-
-.quality-card h3 {
-  font-size: 1rem;
-  color: var(--text-heading);
-  margin-bottom: 10px;
-}
-
-.quality-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.quality-card li {
-  font-size: 0.88rem;
-  color: var(--text);
-  padding: 4px 0;
-  padding-inline-start: 18px;
-  position: relative;
-}
-
-.quality-card li::before {
-  content: "→";
-  position: absolute;
-  inset-inline-start: 0;
-  color: var(--teal);
-}
-
-/* Cadence Card - Recurring sessions */
-.cadence-card {
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 18px 20px;
-  margin-bottom: 28px;
-}
-
-.cadence-card h2 {
-  font-size: 1.1rem;
-  color: var(--text-heading);
-  margin-bottom: 12px;
-}
-
-.cadence-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.cadence-card li {
-  padding: 8px 0;
-  border-bottom: 1px dashed var(--border);
-  font-size: 0.9rem;
-  color: var(--text);
-}
-
-.cadence-card li:last-child {
-  border-bottom: none;
-}
-
-.cadence-card li strong {
-  color: var(--text-heading);
-}
-
-.cadence-card .next-up {
-  margin-top: 12px;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-style: italic;
-}
-
-.cadence-cta {
-  display: inline-block;
-  margin-top: 14px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--teal);
-  text-decoration: none;
-  transition: color 0.15s ease;
-}
-
-.cadence-cta:hover {
-  color: var(--terracotta);
-  text-decoration: underline;
-}
-
-/* Rules Summary - Quick rules with CTA */
-.rules-summary {
-  background: rgba(179, 78, 54, 0.06);
-  border: 1px solid rgba(179, 78, 54, 0.2);
-  border-radius: var(--radius-md);
-  padding: 18px 20px;
-  margin-bottom: 28px;
-}
-
-[data-theme="dark"] .rules-summary {
-  background: rgba(179, 78, 54, 0.12);
-}
-
-.rules-summary h2 {
-  font-size: 1.1rem;
-  color: var(--text-heading);
-  margin-bottom: 12px;
-}
-
-.rules-summary ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 14px;
-}
-
-.rules-summary li {
-  font-size: 0.9rem;
-  color: var(--text);
-  padding: 5px 0;
-  padding-inline-start: 20px;
-  position: relative;
-}
-
-.rules-summary li::before {
-  content: "✗";
-  position: absolute;
-  inset-inline-start: 0;
-  color: var(--terracotta);
-  font-weight: 700;
-}
-
-/* Privacy Notice */
-.privacy-notice {
-  background: rgba(21, 32, 41, 0.06);
-  border-radius: var(--radius-sm);
-  padding: 14px 18px;
-  margin-bottom: 28px;
-  font-size: 0.88rem;
-  color: var(--text);
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-[data-theme="dark"] .privacy-notice {
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.privacy-notice::before {
-  content: "🔒";
-  flex-shrink: 0;
-}
-
-/* Mini FAQ */
-.mini-faq {
-  margin-bottom: 28px;
-}
-
-.mini-faq h2 {
-  font-size: 1.1rem;
-  color: var(--text-heading);
-  margin-bottom: 14px;
-}
-
-.faq-item {
-  border-bottom: 1px solid var(--border);
-  padding: 12px 0;
-}
-
-.faq-item:last-child {
-  border-bottom: none;
-}
-
-.faq-item strong {
-  display: block;
-  color: var(--text-heading);
-  font-size: 0.95rem;
-  margin-bottom: 4px;
-}
-
-.faq-item p {
-  margin: 0;
-  font-size: 0.88rem;
-  color: var(--text-muted);
-}
-
-/* --------------------------------------------------------------------------
-   19b. CADENCE PAGE
-   --------------------------------------------------------------------------
-   Community rhythm/cadence page showing recurring sessions, participation
-   guidelines, and session hosting templates.
-   
-   Reuses components from Start Here page: .intro-template, .mini-faq,
-   .two-col-quality, etc.
+   Rhythm cards, FAQ styling, and hero positioning.
    -------------------------------------------------------------------------- */
 
 /* Cadence hero image - same positioning as articles */
@@ -2608,53 +2532,30 @@ code:not(pre code) {
   object-position: 50% 80% !important;
 }
 
-/* Keep up callout section - full width like hero */
-.cadence-keep-up-section {
-  padding: 24px 0 8px;
-}
-
-.cadence-keep-up {
-  background: rgba(21, 32, 41, 0.04);
-  border-radius: var(--radius-md);
-  padding: 14px 20px;
-  font-size: 0.9rem;
-  color: var(--text);
-}
-
-[data-theme="dark"] .cadence-keep-up {
-  background: rgba(255, 255, 255, 0.06);
-}
-
-/* Sections */
-.cadence-section {
-  margin-bottom: 32px;
-}
-
-.cadence-section h2 {
-  font-size: 1.2rem;
-  color: var(--text-heading);
-  margin-bottom: 16px;
-}
-
-/* Rhythm cards grid - 2x2 on all breakpoints above mobile */
-.cadence-rhythms {
+/* Rhythm cards grid - 2x2 */
+.rhythm-grid {
   display: grid;
-  gap: 18px;
+  gap: var(--space-lg);
 }
 
 @media (min-width: 640px) {
-  .cadence-rhythms {
+  .rhythm-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* Rhythm card - session info with hover effect */
 .rhythm-card {
-  background: var(--card-bg);
+  background: var(--white);  /* White in light mode */
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 18px 20px 20px;
+  padding: 24px 24px 28px;  /* Taller padding */
   box-shadow: var(--card-shadow);
   transition: transform 0.12s ease, box-shadow 0.18s ease;
+}
+
+[data-theme="dark"] .rhythm-card {
+  background: var(--ink);  /* 3D/Featured style in dark mode */
 }
 
 .rhythm-card:hover {
@@ -2663,57 +2564,30 @@ code:not(pre code) {
 }
 
 .rhythm-card h3 {
-  font-size: 1rem;
+  font-size: var(--text-lg);
+  font-weight: 650;
   color: var(--text-heading);
-  margin-bottom: 8px;
+  margin: 0 0 var(--space-sm);
 }
 
 .rhythm-card .rhythm-desc {
-  font-size: 0.88rem;
+  font-size: var(--text-md);
   color: var(--text);
-  margin-bottom: 10px;
-  line-height: 1.5;
+  margin: 0 0 var(--space-md);
+  line-height: 1.6;
 }
 
 .rhythm-card .rhythm-how {
-  font-size: 0.82rem;
+  font-size: var(--text-sm);
   color: var(--text-muted);
   margin: 0;
-  padding-top: 10px;
+  padding-top: var(--space-sm);
   border-top: 1px solid var(--border);
-}
-
-.rhythm-card .rhythm-how strong {
-  font-weight: 500;
-}
-
-/* Host intro text */
-.host-intro {
-  font-size: 0.95rem;
-  color: var(--text);
-  margin-bottom: 16px;
-}
-
-/* Do/Don't card accents */
-.do-card h3 {
-  color: var(--teal);
-}
-
-.dont-card h3 {
-  color: var(--terracotta);
+  font-style: italic;
 }
 
 /* --------------------------------------------------------------------------
-   20. UTILITY CLASSES
-   --------------------------------------------------------------------------
-   Helper classes for common styling needs.
-   Uses logical properties where applicable for RTL support.
-   -------------------------------------------------------------------------- */
-
-
-
-/* --------------------------------------------------------------------------
-   21. PRINT STYLES
+   20. PRINT STYLES
    --------------------------------------------------------------------------
    Minimal print-friendly overrides.
    Hides navigation, footer, and interactive elements.

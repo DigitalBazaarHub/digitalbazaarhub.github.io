@@ -2,7 +2,7 @@
 # All user-facing text for the English version
 
 # Site
-site_title: "Digital Bazaar 💬"
+site_title: "Digital Bazaar"
 site_tagline: "A modern bazaar for Arab digital minds."
 
 #############################
@@ -229,7 +229,7 @@ rules_page:
 #############################
 start_here_page:
   title: "Start Here (60 seconds)"
-  subtitle: "Do these three steps to be active, not overwhelmed, today."
+  subtitle: "Do these three steps to start contributing today and avoid getting overwhelmed."
   
   # Checklist
   checklist:
