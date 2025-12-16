@@ -34,7 +34,7 @@ arrow_external_rtl: "↖"
 # Hero Section
 hero:
   kicker: "warm, focused, and curated"
-  headline: "A high-signal Arabic community for builders."
+  headline: "A high-signal Arabic community for builders"
   description: "Digital Bazaar is a WhatsApp-first community for Arab builders who ship: founders, engineers, product leaders, designers, marketers, researchers, and teams.\n\nStart here on the website to learn how we work, join the right lanes, and show up for recurring sessions like <i>Bazaar Saturdays</i> and the monthly <i>Firesides</i>."
   image_alt: "Humans and friendly robots talking and working together in a Middle Eastern bazaar."
 

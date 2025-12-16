@@ -1,7 +1,7 @@
 # Digital Bazaar Community — Agent Rules
 
-> Bilingual Arabic/English Jekyll site for WhatsApp community
-> Aesthetic: High-end magazine, Middle Eastern-inspired palette
+> Bilingual Arabic/English Jekyll site for WhatsApp-based community
+> Aesthetic: Warm, focused & curated community website, Middle Eastern-inspired palette
 
 ---
 
@@ -37,15 +37,32 @@ Design every page like a premium publication spread:
 
 ## 🎨 COLOR PALETTE
 
+### Core Colors
 ```
 --sand: #F4E6C4        Background, warm neutral
---saffron: #E2B714     Accent, highlights
+--saffron: #E2B714     Accent, highlights, hover states
 --terracotta: #B34E36  Primary CTA, warmth
---marigold: #D9912A    Secondary accent, energy
+--marigold: #D9912A    Secondary accent, gradients
 --teal: #2F8F9D        Links, cool contrast
 --night: #152029       Headings, strong text
 --ink: #21313B         Body text
---white: #FFFFFF       Cards, buttons
+--white: #FFFFFF       Elevated surfaces
+```
+
+### Semantic Colors (Light Mode)
+```
+--card-bg: #FFFBF0           Cream card backgrounds
+--surface-elevated: #FFFDF6  Slightly warm white
+--terracotta-tint: rgba(179,78,54,.06)  Warm card tint
+--text-muted: #4a5d6a        Secondary text
+--kicker: #7a6330            Section labels
+```
+
+### Footer Colors
+```
+Light mode: #3d2a28 (Terracotta Ground)
+Dark mode:  #1a2a35 (Cool ink)
+Text:       rgba(244,230,196,0.85) (Sand @ 85%)
 ```
 
 **Never introduce colors outside this palette.**
@@ -56,17 +73,42 @@ Design every page like a premium publication spread:
 
 ```
 ├── _config.yml
-├── _data/rules_{ar,en}.yml
-├── _includes/{header,footer,language-toggle,article-card}.html
-├── _layouts/{default,home,article}.html
+├── _data/
+│   ├── strings_ar.yml       ← Arabic UI strings
+│   ├── strings_en.yml       ← English UI strings
+│   └── rules_{ar,en}.yml
+├── _includes/
+│   ├── header.html
+│   ├── footer.html          ← "The Campfire" footer
+│   └── article-card.html
+├── _layouts/
+│   ├── default.html
+│   ├── home.html
+│   ├── start-here.html
+│   ├── cadence.html
+│   ├── rules.html
+│   └── article.html
 ├── _posts/YYYY-MM-DD-title.md
-├── _docs/                    ← Design system reference
-│   ├── design-system.md
-│   ├── image-layouts.md
-│   └── article-templates.md
-├── assets/css/styles.css
-├── ar/index.html
-├── en/index.html
+├── _design_docs/            ← Design system reference
+│   ├── design-system.md     ← Typography, spacing, components
+│   ├── image-layouts.md     ← Float, bleed, overlay patterns
+│   ├── article-templates.md
+│   ├── css-framework-research.md
+│   └── starting-prompt.md
+├── assets/
+│   ├── css/styles.scss      ← Main stylesheet (~2700 lines)
+│   ├── fonts/               ← Self-hosted fonts
+│   └── img/                 ← Images (WebP preferred)
+├── ar/
+│   ├── index.html
+│   ├── start-here/
+│   ├── cadence/
+│   └── rules/
+├── en/
+│   ├── index.html
+│   ├── start-here/
+│   ├── cadence/
+│   └── rules/
 └── index.html               ← Redirects to /ar/
 ```
 
@@ -101,6 +143,7 @@ excerpt: "ملخص قصير"
 10. Verify language toggle works
 
 ### Performance (PageSpeed)
+
 11. Use WebP images with JPG/PNG fallbacks
 12. Add `loading="lazy"` to images below the fold
 13. Add `loading="eager"` and `fetchpriority="high"` to hero/LCP images
@@ -166,10 +209,11 @@ When implementing specific features, read these files:
 
 | Need | Reference |
 |------|-----------|
-| Image layouts (floats, bleeds, overlays) | `_docs/image-layouts.md` |
-| Typography (pull quotes, drop caps) | `_docs/design-system.md` |
-| Article page structure | `_docs/article-templates.md` |
-| Code block styling | `_docs/design-system.md` |
+| Typography, spacing, colors | `_design_docs/design-system.md` |
+| Image layouts (floats, bleeds, overlays) | `_design_docs/image-layouts.md` |
+| Article page structure | `_design_docs/article-templates.md` |
+| Code block styling | `_design_docs/design-system.md` |
+| CSS framework decision | `_design_docs/css-framework-research.md` |
 
 ---
 
@@ -179,4 +223,3 @@ When implementing specific features, read these files:
 - Tailwind RTL: https://github.com/20lives/tailwindcss-rtl
 - CSS Logical Properties: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values
 - Arabic Fonts: https://fonts.google.com/?subset=arabic
-

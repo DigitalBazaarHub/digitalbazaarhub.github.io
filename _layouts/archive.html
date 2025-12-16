@@ -106,9 +106,9 @@ layout: default
     {%- for year in posts_by_year -%}
     
     <h2 class="archive-year-heading">{{ year.name }}</h2>
-    
-    {%- assign posts_by_month = year.items | group_by_exp: "post", "post.date | date: '%B'" -%}
-    {%- for month in posts_by_month -%}
+      
+      {%- assign posts_by_month = year.items | group_by_exp: "post", "post.date | date: '%B'" -%}
+      {%- for month in posts_by_month -%}
     
     {%- if lang == 'ar' -%}
       {%- assign month_display = strings.months[month.name] | default: month.name -%}
@@ -118,18 +118,18 @@ layout: default
     <h3 class="archive-month-heading">{{ month_display }}</h3>
     
     <ul class="archive-entries">
-      {%- for post in month.items -%}
-      {%- assign cat_label = post.category -%}
-      {%- for cat in categories -%}
+          {%- for post in month.items -%}
+          {%- assign cat_label = post.category -%}
+          {%- for cat in categories -%}
         {%- if cat.id == post.category -%}
-          {%- if lang == 'ar' -%}
-            {%- assign cat_label = cat.ar -%}
-          {%- else -%}
-            {%- assign cat_label = cat.en -%}
-          {%- endif -%}
-          {%- break -%}
-        {%- endif -%}
-      {%- endfor -%}
+              {%- if lang == 'ar' -%}
+                {%- assign cat_label = cat.ar -%}
+              {%- else -%}
+                {%- assign cat_label = cat.en -%}
+              {%- endif -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
       {%- if post.lang == 'ar' -%}
         {%- assign post_lang_label = 'العربية' -%}
       {%- else -%}
@@ -146,25 +146,25 @@ layout: default
         {%- assign date_display = day_num | append: " " | append: month_short_ar -%}
       {%- else -%}
         {%- assign date_display = month_short | append: " " | append: day_num -%}
-      {%- endif -%}
+          {%- endif -%}
       <li class="archive-entry" 
-          data-lang="{{ post.lang }}"
-          data-category="{{ post.category }}"
-          data-author="{{ post.author_type | default: 'member' }}"
-          data-date="{{ post.date | date: '%Y-%m-%d' }}">
+              data-lang="{{ post.lang }}"
+              data-category="{{ post.category }}"
+              data-author="{{ post.author_type | default: 'member' }}"
+              data-date="{{ post.date | date: '%Y-%m-%d' }}">
         <span class="archive-entry-date">{{ date_display }}</span>
         <div class="archive-entry-content">
           <a href="{{ post.url | relative_url }}?lang={{ lang }}" class="archive-entry-title">{{ post.title }}</a>
           <div class="archive-entry-meta">{{ cat_label }} • {{ post_lang_label }}{% if post.reading_time %} • {{ post.reading_time }} {{ strings.article.read_time | default: 'min read' }}{% endif %}</div>
-          {%- if post.excerpt -%}
+              {%- if post.excerpt -%}
           <p class="archive-entry-teaser">{{ post.excerpt | strip_html | truncate: 160 }}</p>
-          {%- endif -%}
-        </div>
-      </li>
-      {%- endfor -%}
-    </ul>
+              {%- endif -%}
+            </div>
+          </li>
+          {%- endfor -%}
+        </ul>
     
-    {%- endfor -%}
+      {%- endfor -%}
     {%- endfor -%}
   </div>
 </section>

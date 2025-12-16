@@ -2,6 +2,8 @@
 
 Magazine-quality image layouts for articles.
 
+> **Last Updated:** December 2024
+
 ---
 
 ## Image Classes Overview
@@ -25,7 +27,7 @@ Magazine-quality image layouts for articles.
 ```css
 .img-inline {
   max-width: 100%;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   margin-block: 2rem;
 }
 ```
@@ -38,7 +40,7 @@ Magazine-quality image layouts for articles.
   max-width: 45%;
   margin-inline-end: 2rem;
   margin-block: 0.5rem 1.5rem;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   shape-outside: margin-box;
 }
 ```
@@ -51,7 +53,7 @@ Magazine-quality image layouts for articles.
   max-width: 45%;
   margin-inline-start: 2rem;
   margin-block: 0.5rem 1.5rem;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   shape-outside: margin-box;
 }
 ```
@@ -64,7 +66,7 @@ Magazine-quality image layouts for articles.
   max-width: 100vw;
   margin-inline: -60px;
   margin-block: 2.5rem;
-  border-radius: 20px;
+  border-radius: var(--radius-lg);
 }
 ```
 
@@ -89,7 +91,7 @@ Magazine-quality image layouts for articles.
 
 .img-overlay img {
   width: 100%;
-  border-radius: 20px;
+  border-radius: var(--radius-lg);
 }
 
 .img-overlay figcaption {
@@ -100,8 +102,8 @@ Magazine-quality image layouts for articles.
   padding: 3rem 2rem 1.5rem;
   background: linear-gradient(transparent, rgba(21,32,41,0.85));
   color: var(--white);
-  border-radius: 0 0 20px 20px;
-  font-size: 0.95rem;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  font-size: var(--text-sm);
 }
 ```
 
@@ -111,12 +113,12 @@ Magazine-quality image layouts for articles.
 .img-pair {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: var(--space-md);
   margin-block: 2rem;
 }
 
 .img-pair img {
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   width: 100%;
 }
 
@@ -184,4 +186,3 @@ All classes use CSS logical properties, so they automatically flip in Arabic (RT
 - `margin-inline-end` → margin on left in RTL
 
 No additional RTL-specific styles needed.
-

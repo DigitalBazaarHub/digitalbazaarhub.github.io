@@ -4,32 +4,42 @@
 {%- assign strings_ar = site.data.strings_ar -%}
 {%- assign strings_en = site.data.strings_en -%}
 
-<!-- Full Footer for All Pages -->
-<footer class="site-footer footer-full">
-  <div>
-    <div class="footer-title" data-i18n="footer_title" data-ar="{{ strings_ar.footer.title | default: strings_ar.site_title }}" data-en="{{ strings_en.footer.title | default: strings_en.site_title }}">{{ strings.footer.title | default: strings.site_title }}</div>
-    <p class="footer-text" data-i18n="footer_desc" data-ar="{{ strings_ar.footer.description | default: '' }}" data-en="{{ strings_en.footer.description | default: '' }}">{{ strings.footer.description }}</p>
-  </div>
+<!-- Full Footer — "The Campfire" -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-full">
+      <div>
+        <div class="footer-title" data-i18n="footer_title" data-ar="{{ strings_ar.footer.title | default: strings_ar.site_title }}" data-en="{{ strings_en.footer.title | default: strings_en.site_title }}">{{ strings.footer.title | default: strings.site_title }}</div>
+        <p class="footer-text" data-i18n="footer_desc" data-ar="{{ strings_ar.footer.description | default: '' }}" data-en="{{ strings_en.footer.description | default: '' }}">{{ strings.footer.description }}</p>
+      </div>
 
-  <div>
-    <div class="footer-title" data-i18n="footer_sections" data-ar="{{ strings_ar.footer.sections_title }}" data-en="{{ strings_en.footer.sections_title | default: 'Sections' }}">{{ strings.footer.sections_title | default: 'Sections' }}</div>
-    <div class="footer-links">
-      <a href="/{{ lang }}/" data-i18n="nav_home" data-ar="{{ strings_ar.nav.home }}" data-en="{{ strings_en.nav.home }}">{{ strings.nav.home }}</a>
-      <a href="/{{ lang }}/start-here/" data-i18n="footer_start_here" data-ar="{{ strings_ar.nav.start_here }}" data-en="{{ strings_en.nav.start_here }}">{{ strings.nav.start_here }}</a>
-      <a href="/{{ lang }}/cadence/" data-i18n="footer_cadence" data-ar="{{ strings_ar.nav.cadence }}" data-en="{{ strings_en.nav.cadence }}">{{ strings.nav.cadence }}</a>
-      <a href="/{{ lang }}/rules/" data-i18n="nav_rules" data-ar="{{ strings_ar.nav.rules }}" data-en="{{ strings_en.nav.rules }}">{{ strings.nav.rules }}</a>
-      {% comment %}
-      <a href="/{{ lang }}/articles/" data-i18n="footer_articles" data-ar="{{ strings_ar.footer.links.articles }}" data-en="{{ strings_en.footer.links.articles | default: 'Articles & field notes' }}">{{ strings.footer.links.articles | default: strings.nav.articles }}</a>
-      <a href="/{{ lang }}/archive/" data-i18n="footer_archive" data-ar="{{ strings_ar.footer.links.archive }}" data-en="{{ strings_en.footer.links.archive | default: 'Archive' }}">{{ strings.footer.links.archive | default: strings.nav.archive }}</a>
-      {% endcomment %}
+      <div>
+        <div class="footer-title" data-i18n="footer_sections" data-ar="{{ strings_ar.footer.sections_title }}" data-en="{{ strings_en.footer.sections_title | default: 'Sections' }}">{{ strings.footer.sections_title | default: 'Sections' }}</div>
+        <div class="footer-links">
+          <a href="/{{ lang }}/" data-i18n="nav_home" data-ar="{{ strings_ar.nav.home }}" data-en="{{ strings_en.nav.home }}">{{ strings.nav.home }}</a>
+          <a href="/{{ lang }}/start-here/" data-i18n="footer_start_here" data-ar="{{ strings_ar.nav.start_here }}" data-en="{{ strings_en.nav.start_here }}">{{ strings.nav.start_here }}</a>
+          <a href="/{{ lang }}/cadence/" data-i18n="footer_cadence" data-ar="{{ strings_ar.nav.cadence }}" data-en="{{ strings_en.nav.cadence }}">{{ strings.nav.cadence }}</a>
+          <a href="/{{ lang }}/rules/" data-i18n="nav_rules" data-ar="{{ strings_ar.nav.rules }}" data-en="{{ strings_en.nav.rules }}">{{ strings.nav.rules }}</a>
+          {% comment %}
+          <a href="/{{ lang }}/articles/" data-i18n="footer_articles" data-ar="{{ strings_ar.footer.links.articles }}" data-en="{{ strings_en.footer.links.articles | default: 'Articles & field notes' }}">{{ strings.footer.links.articles | default: strings.nav.articles }}</a>
+          <a href="/{{ lang }}/archive/" data-i18n="footer_archive" data-ar="{{ strings_ar.footer.links.archive }}" data-en="{{ strings_en.footer.links.archive | default: 'Archive' }}">{{ strings.footer.links.archive | default: strings.nav.archive }}</a>
+          {% endcomment %}
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title" data-i18n="footer_community" data-ar="{{ strings_ar.footer.community_title }}" data-en="{{ strings_en.footer.community_title | default: 'Community' }}">{{ strings.footer.community_title | default: 'Community' }}</div>
+        <div class="footer-links">
+          <a href="{{ site.social.whatsapp_community }}" target="_blank" rel="noopener" data-i18n="footer_whatsapp" data-ar="{{ strings_ar.footer.links.join_whatsapp }}" data-en="{{ strings_en.footer.links.join_whatsapp | default: 'Join us on WhatsApp ↗' }}">{{ strings.footer.links.join_whatsapp | default: 'Join WhatsApp ↗' }}</a>
+          <a href="{{ site.social.github }}" target="_blank" rel="noopener" data-i18n="footer_github" data-ar="{{ strings_ar.footer.links.visit_github }}" data-en="{{ strings_en.footer.links.visit_github | default: 'Visit us on GitHub ↗' }}">{{ strings.footer.links.visit_github | default: 'Visit GitHub org ↗' }}</a>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <div class="footer-title" data-i18n="footer_community" data-ar="{{ strings_ar.footer.community_title }}" data-en="{{ strings_en.footer.community_title | default: 'Community' }}">{{ strings.footer.community_title | default: 'Community' }}</div>
-    <div class="footer-links">
-      <a href="{{ site.social.whatsapp_community }}" target="_blank" rel="noopener" data-i18n="footer_whatsapp" data-ar="{{ strings_ar.footer.links.join_whatsapp }}" data-en="{{ strings_en.footer.links.join_whatsapp | default: 'Join us on WhatsApp ↗' }}">{{ strings.footer.links.join_whatsapp | default: 'Join WhatsApp ↗' }}</a>
-      <a href="{{ site.social.github }}" target="_blank" rel="noopener" data-i18n="footer_github" data-ar="{{ strings_ar.footer.links.visit_github }}" data-en="{{ strings_en.footer.links.visit_github | default: 'Visit us on GitHub ↗' }}">{{ strings.footer.links.visit_github | default: 'Visit GitHub org ↗' }}</a>
+    <!-- Closing tagline -->
+    <div class="footer-closing">
+      <span class="footer-tagline" data-i18n="footer_tagline" data-ar="{{ strings_ar.footer.tagline }}" data-en="{{ strings_en.footer.tagline }}">{{ strings.footer.tagline }}</span>
+      <span class="footer-copyright">© {{ 'now' | date: '%Y' }} Digital Bazaar</span>
     </div>
   </div>
 </footer>

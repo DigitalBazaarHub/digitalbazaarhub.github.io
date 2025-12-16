@@ -1,7 +1,13 @@
 # CSS Framework Research: Digital Bazaar
 
 **Date:** December 2025  
+**Status:** Research complete — **Custom CSS chosen** (no framework adopted)  
 **Purpose:** Evaluate CSS frameworks for cross-browser compatibility, RTL support, and design flexibility
+
+> **Outcome:** After evaluation, we chose to continue with custom CSS using design tokens 
+> (CSS custom properties) rather than adopting a framework. This provides maximum flexibility 
+> for our magazine aesthetic while keeping the codebase simple. The custom design system uses 
+> `--text-*`, `--space-*`, and `--radius-*` tokens similar to Open Props.
 
 ---
 

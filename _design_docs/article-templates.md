@@ -2,6 +2,8 @@
 
 Page structure and components for articles.
 
+> **Last Updated:** December 2025
+
 ---
 
 ## Article Layout Structure
@@ -84,8 +86,8 @@ Page structure and components for articles.
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.9rem;
-  color: var(--muted);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
   margin-bottom: 1rem;
 }
 
@@ -94,15 +96,15 @@ Page structure and components for articles.
 }
 
 .article-header h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: var(--text-2xl);
   line-height: 1.15;
-  color: var(--night);
+  color: var(--text-heading);
   margin: 0 0 1rem;
 }
 
 .article-excerpt {
-  font-size: 1.25rem;
-  color: var(--subtitle);
+  font-size: var(--text-lg);
+  color: var(--text-muted);
   line-height: 1.6;
   margin: 0;
 }
@@ -117,8 +119,8 @@ Page structure and components for articles.
   display: inline-flex;
   align-items: center;
   padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
   font-weight: 600;
 }
 
@@ -140,49 +142,47 @@ Page structure and components for articles.
 ## Article Content Container
 
 ```css
-.article-content {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: var(--ink);
+.article-page article {
+  font-size: var(--text-md);
+  line-height: 1.7;
+  color: var(--text);
 }
 
-.article-content p {
-  margin-bottom: 1.5rem;
+.article-page article p {
+  margin: 0 0 16px;
 }
 
-.article-content h2 {
-  font-size: 1.75rem;
-  color: var(--night);
-  margin-top: 3rem;
-  margin-bottom: 1rem;
+.article-page article h2 {
+  font-size: var(--text-xl);
+  color: var(--text-heading);
+  margin: 26px 0 10px;
 }
 
-.article-content h3 {
-  font-size: 1.35rem;
-  color: var(--night);
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
+.article-page article h3 {
+  font-size: var(--text-lg);
+  color: var(--text-heading);
+  margin: 22px 0 8px;
 }
 
 /* Lists */
-.article-content ul,
-.article-content ol {
-  padding-inline-start: 1.5rem;
-  margin-bottom: 1.5rem;
+.article-page article ul,
+.article-page article ol {
+  padding-inline-start: 1.5em;
+  margin: 0 0 16px;
 }
 
-.article-content li {
-  margin-bottom: 0.5rem;
+.article-page article li {
+  margin-bottom: 8px;
 }
 
 /* Links */
-.article-content a {
+.article-page article a {
   color: var(--teal);
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: 2px;
 }
 
-.article-content a:hover {
+.article-page article a:hover {
   color: var(--terracotta);
 }
 ```
@@ -206,21 +206,21 @@ Page structure and components for articles.
 
 ```css
 .related-articles {
-  margin-top: 4rem;
-  padding-top: 3rem;
-  border-top: 1px solid rgba(21, 32, 41, 0.1);
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--border);
 }
 
 .related-articles h2 {
-  font-size: 1.5rem;
-  color: var(--night);
-  margin-bottom: 1.5rem;
+  font-size: var(--text-xl);
+  color: var(--text-heading);
+  margin-bottom: var(--space-lg);
 }
 
 .articles-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  gap: var(--space-lg);
 }
 ```
 
@@ -254,11 +254,11 @@ Page structure and components for articles.
 
 ```css
 .article-card {
-  background: var(--white);
-  border-radius: 16px;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid rgba(21, 32, 41, 0.06);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border);
   transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
 
@@ -269,34 +269,37 @@ Page structure and components for articles.
 
 .article-card img {
   width: 100%;
-  aspect-ratio: 16/10;
+  height: 140px;
   object-fit: cover;
 }
 
 .article-card .card-content {
-  padding: 1.25rem;
+  padding: 12px 14px 14px;
 }
 
-.article-card h3 {
-  font-size: 1.1rem;
-  margin: 0.75rem 0 0.5rem;
-  line-height: 1.4;
+.article-card-kicker {
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--kicker);
 }
 
-.article-card h3 a {
-  color: var(--night);
-  text-decoration: none;
+.article-card-title {
+  font-size: var(--text-md);
+  font-weight: 650;
+  color: var(--text-heading);
+  margin: 0;
 }
 
-.article-card h3 a:hover {
-  color: var(--terracotta);
+.article-card-meta {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
 }
 
-.article-card .card-meta {
-  font-size: 0.85rem;
-  color: var(--muted);
-  display: flex;
-  gap: 1rem;
+.article-card-excerpt {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin: 0;
 }
 ```
-
