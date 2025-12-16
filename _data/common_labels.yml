@@ -1,0 +1,150 @@
+# Common UI Labels — Digital Bazaar
+# Shared labels, navigation, buttons, and footer content
+# Bilingual format: en (first), ar (second)
+# Last updated: December 2025
+
+# Site info
+site_title:
+  en: "Digital Bazaar"
+  ar: "البازار الرقمي"
+
+site_tagline:
+  en: "A modern bazaar for Arab digital minds."
+  ar: "بازار حديث للعقول الرقمية العربية."
+
+# Navigation
+nav:
+  home:
+    en: "Home"
+    ar: "الرئيسية"
+  join:
+    en: "Join"
+    ar: "انضم"
+  start_here:
+    en: "Start here"
+    ar: "ابدأ من هنا"
+  cadence:
+    en: "Cadence"
+    ar: "الإيقاع"
+  directory:
+    en: "Directory"
+    ar: "الدليل"
+  rules:
+    en: "Rules"
+    ar: "القواعد"
+  menu:
+    en: "Menu"
+    ar: "القائمة"
+
+# Buttons
+buttons:
+  join_whatsapp:
+    en: "Join WhatsApp"
+    ar: "انضم إلى واتساب"
+  start_here:
+    en: "Start Here (60 seconds)"
+    ar: "ابدأ من هنا (٦٠ ثانية)"
+  browse_articles:
+    en: "Browse recent articles"
+    ar: "تصفح أحدث المقالات"
+  read_full_rules:
+    en: "Read the full rules"
+    ar: "اقرأ القواعد كاملة"
+  read_more:
+    en: "Read More"
+    ar: "اقرأ المزيد"
+  back_home:
+    en: "Back to Home"
+    ar: "العودة للرئيسية"
+  back_to_articles:
+    en: "Back to Articles"
+    ar: "العودة للمقالات"
+  view_archive:
+    en: "View Full Archive"
+    ar: "عرض الأرشيف"
+
+# Directional arrows (flipped for RTL)
+arrows:
+  right:
+    en: "→"
+    ar: "←"
+  left:
+    en: "←"
+    ar: "→"
+  external:
+    en: "↗"
+    ar: "↖"
+
+# Months (for archive date localization)
+months:
+  January: "يناير"
+  February: "فبراير"
+  March: "مارس"
+  April: "أبريل"
+  May: "مايو"
+  June: "يونيو"
+  July: "يوليو"
+  August: "أغسطس"
+  September: "سبتمبر"
+  October: "أكتوبر"
+  November: "نوفمبر"
+  December: "ديسمبر"
+
+# Short months (for dates)
+months_short:
+  Jan: "يناير"
+  Feb: "فبراير"
+  Mar: "مارس"
+  Apr: "أبريل"
+  May: "مايو"
+  Jun: "يونيو"
+  Jul: "يوليو"
+  Aug: "أغسطس"
+  Sep: "سبتمبر"
+  Oct: "أكتوبر"
+  Nov: "نوفمبر"
+  Dec: "ديسمبر"
+
+# Footer
+footer:
+  title:
+    en: "Digital Bazaar"
+    ar: "البازار الرقمي"
+  description:
+    en: "A modern builders' bazaar: lanes, rituals, and meetups that turn strangers into warm ties — without turning into noise.<br><br>Privacy note: WhatsApp shows your phone number to group members."
+    ar: "بازار حديث للبنّائين: مسارات، إيقاع، ولقاءات تُحوّل الغرباء إلى روابط ودّية — دون أن تتحول المساحة إلى ضجيج.<br><br>ملاحظة خصوصية: واتساب يُظهر رقم هاتفك لأعضاء المجموعة."
+  sections_title:
+    en: "Sections"
+    ar: "الأقسام"
+  community_title:
+    en: "Community"
+    ar: "المجتمع"
+  copyright:
+    en: "© %{year} Digital Bazaar"
+    ar: "© %{year} البازار الرقمي"
+  tagline:
+    en: "Made with ❤ across the Arab world"
+    ar: "صُنع بـ ❤ عبر أنحاء العالم العربي"
+  links:
+    whatsapp:
+      en: "WhatsApp"
+      ar: "واتساب"
+    github:
+      en: "GitHub"
+      ar: "GitHub"
+    join_whatsapp:
+      en: "Join us on WhatsApp ↗"
+      ar: "انضم إلى واتساب ↖"
+    visit_github:
+      en: "Visit us on GitHub ↗"
+      ar: "زورنا على GitHub ↖"
+    articles:
+      en: "Articles & field notes"
+      ar: "المقالات والملاحظات"
+    archive:
+      en: "Archive"
+      ar: "الأرشيف"
+    rules:
+      en: "Community rules"
+      ar: "قواعد المجتمع"
+

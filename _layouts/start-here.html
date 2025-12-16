@@ -2,27 +2,27 @@
 layout: default
 ---
 {%- assign lang = page.lang | default: site.default_lang -%}
-{%- assign strings_key = 'strings_' | append: lang -%}
-{%- assign strings = site.data[strings_key] -%}
+{%- assign labels = site.data.common_labels -%}
+{%- assign page_content = site.data.pages['start-here'] -%}
 
 <!-- 1) Top header -->
 <div class="page-header">
-  <h1>{{ strings.start_here_page.title }}</h1>
-  <p class="page-subtitle">{{ strings.start_here_page.subtitle }}</p>
+  <h1>{{ page_content.title[lang] }}</h1>
+  <p class="page-subtitle">{{ page_content.subtitle[lang] }}</p>
 </div>
 
 <!-- 2) 3 Steps Checklist Card -->
 <div class="info-card info-card--featured">
-  <h2>{{ strings.start_here_page.checklist.heading }}</h2>
+  <h2>{{ page_content.checklist.heading[lang] }}</h2>
   <ol class="checklist-steps">
     <li>
       <div class="step-number">1</div>
       <div class="step-content">
-        <strong>{{ strings.start_here_page.checklist.step1.title }}</strong>
-        <p>{{ strings.start_here_page.checklist.step1.description }}</p>
+        <strong>{{ page_content.checklist.step1.title[lang] }}</strong>
+        <p>{{ page_content.checklist.step1.description[lang] }}</p>
         <div class="step-cta">
           <a class="btn btn-primary" href="{{ site.social.whatsapp_community }}" target="_blank" rel="noopener">
-            {{ strings.start_here_page.checklist.step1.button }} <span aria-hidden="true">{{ strings.arrow_external }}</span>
+            {{ page_content.checklist.step1.button[lang] }} <span aria-hidden="true">{{ labels.arrows.external[lang] }}</span>
           </a>
         </div>
       </div>
@@ -30,11 +30,11 @@ layout: default
     <li>
       <div class="step-number">2</div>
       <div class="step-content">
-        <strong>{{ strings.start_here_page.checklist.step2.title }}</strong>
-        <p>{{ strings.start_here_page.checklist.step2.description }}</p>
+        <strong>{{ page_content.checklist.step2.title[lang] }}</strong>
+        <p>{{ page_content.checklist.step2.description[lang] }}</p>
         <div class="step-cta">
           <a class="btn btn-saffron" href="{{ site.social.whatsapp_intros_group }}" target="_blank" rel="noopener">
-            {{ strings.start_here_page.checklist.step2.button }} <span aria-hidden="true">{{ strings.arrow_external }}</span>
+            {{ page_content.checklist.step2.button[lang] }} <span aria-hidden="true">{{ labels.arrows.external[lang] }}</span>
           </a>
         </div>
       </div>
@@ -42,35 +42,41 @@ layout: default
     <li>
       <div class="step-number">3</div>
       <div class="step-content">
-        <strong>{{ strings.start_here_page.checklist.step3.title }}</strong>
-        <p>{{ strings.start_here_page.checklist.step3.description }}</p>
+        <strong>{{ page_content.checklist.step3.title[lang] }}</strong>
+        <p>{{ page_content.checklist.step3.description[lang] }}</p>
       </div>
     </li>
   </ol>
 </div>
 
 <!-- 3) Intro Template -->
+{% assign intro_heading = page_content.intro_template.heading[lang] %}
+{% assign intro_content = page_content.intro_template.template[lang] %}
+{% assign intro_copy = page_content.intro_template.copy_button[lang] %}
+{% assign intro_copied = page_content.intro_template.copied[lang] %}
+{% assign intro_hint = page_content.intro_template.hint[lang] %}
+
 {% include copy-block.html
    id="intro-template-text"
-   heading=strings.start_here_page.intro_template.heading
-   content=strings.start_here_page.intro_template.template
-   button_text=strings.start_here_page.intro_template.copy_button
-   copied_text=strings.start_here_page.intro_template.copied
-   hint=strings.start_here_page.intro_template.hint
+   heading=intro_heading
+   content=intro_content
+   button_text=intro_copy
+   copied_text=intro_copied
+   hint=intro_hint
    lang=lang
 %}
 
 <!-- 4) Pick Your 2 Lanes -->
 <section class="section">
-  <h2>{{ strings.start_here_page.lanes.heading }}</h2>
+  <h2>{{ page_content.lanes.heading[lang] }}</h2>
   <div class="callout-box callout-box--info">
-    <strong>{{ strings.start_here_page.lanes.note_label | default: "Rule of thumb:" }}</strong> {{ strings.start_here_page.lanes.note }}
+    <strong>{{ page_content.lanes.note_label[lang] }}</strong> {{ page_content.lanes.note[lang] }}
   </div>
   <div class="info-card-grid info-card-grid--lanes">
-    {%- for lane in strings.start_here_page.lanes.items -%}
+    {%- for lane in page_content.lanes.items -%}
     <div class="info-card info-card--sm info-card--flat">
-      <h3>{{ lane.name }}</h3>
-      <p>{{ lane.description }}</p>
+      <h3>{{ lane.name[lang] }}</h3>
+      <p>{{ lane.description[lang] }}</p>
     </div>
     {%- endfor -%}
   </div>
@@ -79,18 +85,18 @@ layout: default
 <!-- 5) Ask Well / Give Back -->
 <div class="info-card-grid">
   <div class="info-card info-card--flat">
-    <h3>{{ strings.start_here_page.quality.ask_well.heading }}</h3>
+    <h3>{{ page_content.quality.ask_well.heading[lang] }}</h3>
     <ul class="list-plain list-arrow">
-      {%- for item in strings.start_here_page.quality.ask_well.items -%}
-      <li>{{ item | markdownify | remove: '<p>' | remove: '</p>' }}</li>
+      {%- for item in page_content.quality.ask_well.items -%}
+      <li>{{ item[lang] | markdownify | remove: '<p>' | remove: '</p>' }}</li>
       {%- endfor -%}
     </ul>
   </div>
   <div class="info-card info-card--flat">
-    <h3>{{ strings.start_here_page.quality.give_back.heading }}</h3>
+    <h3>{{ page_content.quality.give_back.heading[lang] }}</h3>
     <ul class="list-plain list-arrow">
-      {%- for item in strings.start_here_page.quality.give_back.items -%}
-      <li>{{ item }}</li>
+      {%- for item in page_content.quality.give_back.items -%}
+      <li>{{ item[lang] }}</li>
       {%- endfor -%}
     </ul>
   </div>
@@ -101,30 +107,30 @@ layout: default
 
 <!-- 6) Recurring Sessions / Cadence -->
 <div class="info-card info-card--warm info-card--flat">
-  <h2>{{ strings.start_here_page.cadence.heading }}</h2>
+  <h2>{{ page_content.cadence.heading[lang] }}</h2>
   <ul class="list-plain">
-    {%- for item in strings.start_here_page.cadence.items -%}
-    <li><strong>{{ item.title }}</strong> — {{ item.description }}</li>
+    {%- for item in page_content.cadence.items -%}
+    <li><strong>{{ item.title[lang] }}</strong> — {{ item.description[lang] }}</li>
     {%- endfor -%}
   </ul>
-  <p class="hint-text">{{ strings.start_here_page.cadence.next_up }}</p>
-  <a href="/{{ lang }}/cadence/" class="cta-link">{{ strings.start_here_page.cadence.cta_text }} {{ strings.arrow_right }}</a>
+  <p class="hint-text">{{ page_content.cadence.next_up[lang] }}</p>
+  <a href="/{{ lang }}/cadence/" class="cta-link">{{ page_content.cadence.cta_text[lang] }} {{ labels.arrows.right[lang] }}</a>
 </div>
 
 <!-- 7) Rules in 20 Seconds -->
 <div class="info-card info-card--warm info-card--flat">
-  <h2>{{ strings.start_here_page.rules_summary.heading }}</h2>
+  <h2>{{ page_content.rules_summary.heading[lang] }}</h2>
   <ul class="list-plain list-cross">
-    {%- for item in strings.start_here_page.rules_summary.items -%}
-    <li>{{ item }}</li>
+    {%- for item in page_content.rules_summary.items -%}
+    <li>{{ item[lang] }}</li>
     {%- endfor -%}
   </ul>
-  <a class="cta-link" href="/{{ lang }}/rules/">{{ strings.start_here_page.rules_summary.button }} {{ strings.arrow_right }}</a>
+  <a class="cta-link" href="/{{ lang }}/rules/">{{ page_content.rules_summary.button[lang] }} {{ labels.arrows.right[lang] }}</a>
 </div>
 
 <!-- 8) Privacy Notice -->
 <div class="callout-box">
-  <strong>{{ strings.start_here_page.privacy.label }}</strong> {{ strings.start_here_page.privacy.text }}
+  <strong>{{ page_content.privacy.label[lang] }}</strong> {{ page_content.privacy.text[lang] }}
 </div>
 
 <!-- Separator between action steps and good-to-know -->
@@ -132,12 +138,12 @@ layout: default
 
 <!-- 9) Mini FAQ -->
 <section class="plain-section">
-  <h2>{{ strings.start_here_page.faq.heading }}</h2>
+  <h2>{{ page_content.faq.heading[lang] }}</h2>
   
-  {%- for item in strings.start_here_page.faq.items -%}
+  {%- for item in page_content.faq.items -%}
   <div class="faq-item">
-    <strong>{{ item.question }}</strong>
-    <p>{{ item.answer }}</p>
+    <strong>{{ item.question[lang] }}</strong>
+    <p>{{ item.answer[lang] }}</p>
   </div>
   {%- endfor -%}
 </section>

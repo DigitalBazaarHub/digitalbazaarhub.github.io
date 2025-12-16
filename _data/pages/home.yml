@@ -1,0 +1,159 @@
+# Homepage content - bilingual (en first, ar second)
+# Last updated: December 2025
+
+hero:
+  kicker:
+    en: "warm, focused, and curated"
+    ar: "دافئ، مركّز، ومنتقى"
+  headline:
+    en: "A high-signal Arabic community for builders"
+    ar: "مجتمع عربي عالي الجودة للبنّائين"
+  description:
+    en: "Digital Bazaar is a WhatsApp-first community for Arab builders who ship: founders, engineers, product leaders, designers, marketers, researchers, and teams.\n\nStart here on the website to learn how we work, join the right lanes, and show up for recurring sessions like <i>Bazaar Saturdays</i> and the monthly <i>Firesides</i>."
+    ar: "البازار الرقمي مجتمع «واتساب أولاً» للبنّائين العرب الذين يُنجزون: مؤسسون، مهندسون، قادة منتج، مصمّمون، مسوّقون، باحثون، وفرق.\n\nابدأ من هنا على الموقع لتتعرف كيف نعمل، وتختار المسارات المناسبة، وتشارك في جلساتنا المتكررة مثل <i>سبت البازار</i> و<i>جلسات فايرسايد</i> الشهرية."
+  image_alt:
+    en: "Humans and friendly robots talking and working together in a Middle Eastern bazaar."
+    ar: "بشر وروبوتات ودودة يتحدثون ويعملون معاً في بازار شرق أوسطي."
+
+about:
+  kicker:
+    en: "What happens in the Bazaar?"
+    ar: "ماذا يحدث في البازار؟"
+  title:
+    en: "A living network — powered by recurring conversations."
+    ar: "شبكة حيّة — تقودها محادثات متكررة."
+  subtitle:
+    en: "Digital Bazaar is WhatsApp-first, but it's not \"just chat.\" We use lanes, light structure, and recurring sessions to turn strangers into warm ties — and warm ties into real outcomes."
+    ar: "البازار الرقمي «واتساب أولاً»، لكنه ليس «مجرد دردشة». نستخدم مسارات واضحة، وتنظيماً خفيفاً، وجلسات متكررة لتحويل الغرباء إلى روابط ودّية — والروابط الودّية إلى نتائج حقيقية."
+  features:
+    - label:
+        en: "Discussions"
+        ar: "النقاشات"
+      title:
+        en: "Lanes with real conversations"
+        ar: "مسارات بمحادثات حقيقية"
+      description:
+        en: "Topic-based WhatsApp groups where people swap practical experience: engineering, product, design & growth, leadership, jobs, startups, expats, and more. Think of it as a souq of overlapping lanes — you join what matters and ignore the rest."
+        ar: "مجموعات واتساب حسب المواضيع يتبادل فيها الناس خبراتهم العملية: الهندسة، المنتج، التصميم والنمو، القيادة، الوظائف، الشركات الناشئة، المغتربون، وغيرها. تخيلها كسوق من مسارات متداخلة — تنضم لما يهمك وتتجاهل الباقي."
+    - label:
+        en: "Cadence"
+        ar: "الإيقاع"
+      title:
+        en: "Rituals and sessions that bring people back"
+        ar: "طقوس وجلسات تعيد الناس باستمرار"
+      description:
+        en: "We don't rely on hope-based interaction. We run recurring rhythms like Bazaar Saturdays, plus monthly firesides/panels and periodic Q&A threads — so the network compounds over time instead of fading."
+        ar: "لا نعتمد على التفاعل «بالأمل». لدينا إيقاع ثابت مثل سبت البازار، وجلسات فايرسايد الشهرية، وأسئلة وأجوبة دورية — كي تتراكم العلاقات مع الوقت بدل أن تخبو."
+    - label:
+        en: "Projects & Mentorship"
+        ar: "المشاريع والإرشاد"
+      title:
+        en: "From talk → warm intros → shipped work"
+        ar: "من حديث ← روابط ودّية ← إنجاز"
+      description:
+        en: "When trust forms, things happen: feedback loops, mentorship, collaborations, and community-born projects like Meshkah. Mentorship is structured (time-boxed office hours / clear asks), and projects are opt-in — no vague promises, just proof-of-work."
+        ar: "عندما يتكوّن الودّ والثقة، تبدأ الأشياء الحقيقية: دوائر تغذية راجعة، إرشاد، تعاون، ومشاريع وُلدت من المجتمع مثل Meshkah. الإرشاد مُنظّم (وقت محدد/طلبات واضحة)، والمشاريع اختيارية — بلا وعود فضفاضة، فقط إثبات عمل."
+
+# Rhythm Section (How we use the space) - currently hidden in layout
+rhythm:
+  kicker:
+    en: "How we use the space"
+    ar: "كيف نستخدم المساحة"
+  title:
+    en: "A working bazaar, not a broadcast channel."
+    ar: "بازار يعمل — وليس قناة بث."
+  subtitle:
+    en: "Most days, the Bazaar looks like a mix of small, specific exchanges and slower, deeper threads. You dip in where it's relevant, add something useful, then step back out."
+    ar: "في معظم الأيام، يبدو البازار مزيجاً من تبادلات صغيرة ومحددة، وخيوط أبطأ وأعمق. تدخل حيث يهمك الأمر، تضيف ما يفيد، ثم تترك مساحة لغيرك."
+  items:
+    - title:
+        en: "Short questions, real answers."
+        ar: "أسئلة قصيرة، إجابات واقعية."
+      description:
+        en: "Ask concrete questions from your context: a product decision, a management knot, an infra tradeoff, a career move."
+        ar: "اسأل أسئلة محددة من سياقك: قرار منتج، عقدة إدارية، مفاضلة هندسية، خطوة مهنية."
+    - title:
+        en: "Stories over takes."
+        ar: "قصص أكثر… وآراء ساخنة أقل."
+      description:
+        en: "We prefer \"here's what we tried and how it went\" more than hot takes or generic advice threads."
+        ar: "نفضّل «هذا ما جرّبناه وكيف سار» على الآراء العامة أو النصائح بلا تجربة."
+    - title:
+        en: "Slow-burning threads."
+        ar: "خيوط بطيئة النضج."
+      description:
+        en: "Some discussions turn into articles or tools. When something keeps coming up, we write it down or prototype it."
+        ar: "بعض النقاشات تتحول لاحقاً إلى مقالات أو أدوات. عندما يتكرر موضوع مهم، نكتبه أو نبني له نموذجاً بسيطاً."
+  tips_title:
+    en: "Light rules of thumb"
+    ar: "قواعد خفيفة تساعدك"
+  tips:
+    - en: "Skim, don't try to read everything. The bazaar is always on."
+      ar: "تصفّح ولا تحاول قراءة كل شيء. البازار دائماً مفتوح."
+    - en: "Reply where you can genuinely help, not everywhere you have an opinion."
+      ar: "ردّ حيث تستطيع أن تساعد فعلاً، لا حيث لديك رأي فقط."
+    - en: "It's fine to lurk for a while – just introduce yourself when you're ready."
+      ar: "لا بأس أن تتابع بصمت فترة — لكن قدّم نفسك عندما تصبح جاهزاً."
+
+rules_summary:
+  kicker:
+    en: "Bazaar standards"
+    ar: "معايير البازار"
+  title:
+    en: "How we keep the bazaar healthy"
+    ar: "كيف نحافظ على صحة البازار"
+  subtitle:
+    en: "Warm doesn't mean messy. We protect attention, safety, and trust — so the space stays useful."
+    ar: "الدفء لا يعني الفوضى. نحمي الانتباه والأمان والثقة — ليبقى المكان مفيداً."
+  short_title:
+    en: "In short"
+    ar: "باختصار"
+  items:
+    - title:
+        en: "No spam. No stealth promotion. No cross-posting."
+        ar: "لا سبام. لا ترويج مبطّن. لا نشرٍ متكرر بين المسارات."
+      description:
+        en: "Links need context (who it's for + why it matters + what you want). Post once, in the correct lane — don't spray."
+        ar: "أي رابط يحتاج سياقاً (لمن هو + لماذا يهم + ماذا تريد). انشر مرة واحدة في المسار الصحيح — ولا ترشّ المحتوى في كل مكان."
+    - title:
+        en: "No \"DM me\" funnels."
+        ar: "لا لقُمع «راسلني على الخاص»."
+      description:
+        en: "Don't fish for leads, clients, or candidates. Default to public replies. DM only by consent or when someone asks."
+        ar: "لا تصطد عملاء/فرص/مرشحين عبر دفع الناس للخاص. الخيار الافتراضي هو الرد علناً. الخاص فقط بموافقة أو بطلب."
+    - title:
+        en: "Stay work-adjacent."
+        ar: "ابقَ قريباً من العمل."
+      description:
+        en: "Tech, product, business, careers, and the digital ecosystem. No politics/religion/sectarian flamewars."
+        ar: "تقنية، منتجات، أعمال، مسارات مهنية، والبيئة الرقمية. لا نقاشات سياسية/دينية/طائفية تتحول لحرائق."
+    - title:
+        en: "Ask well. Give back."
+        ar: "اسأل جيداً. ورد الجميل."
+      description:
+        en: "Good questions include context + constraints + what you tried. If you got help, follow up with outcomes."
+        ar: "السؤال الجيد يتضمن سياقاً + قيوداً + ماذا جرّبت. وإذا استفدت، ارجع وشارك النتيجة."
+    - title:
+        en: "Respect people, privacy, and safety."
+        ar: "احترام الناس والخصوصية والأمان."
+      description:
+        en: "No harassment, hate, doxxing, scams, or impersonation. WhatsApp shows your phone number to members."
+        ar: "لا تحرش، لا كراهية، لا تشهير/دَوْكسنغ، لا احتيال أو انتحال. واتساب يُظهر رقم هاتفك لأعضاء المجموعات."
+  moderation_title:
+    en: "Moderation & safety"
+    ar: "الإشراف والأمان"
+  moderation_text:
+    en: "We usually escalate: nudge → timeout/mute → removal → ban. Severe cases (harassment/scams) skip steps."
+    ar: "غالباً نُصعّد هكذا: تنبيه ← كتم/مهلة ← إزالة ← حظر. الحالات الشديدة (تحرش/احتيال) تتجاوز المراحل."
+
+cta:
+  kicker:
+    en: "Step inside"
+    ar: "ادخل البازار"
+  title:
+    en: "Pull up a chair in the Bazaar."
+    ar: "اسحب كرسياً في البازار."
+  subtitle:
+    en: "Start with a quick intro, join only 2 lanes to avoid notification overload, then join our recurring sessions (Bazaar Saturdays + monthly firesides). This is how strangers become warm ties."
+    ar: "ابدأ بتعريف سريع، وانضم لمسارين فقط لتجنب إرهاق الإشعارات، ثم شارك في جلساتنا المتكررة (سبت البازار + جلسات فايرسايد الشهرية). هكذا يتحول الغرباء إلى روابط ودّية."
+

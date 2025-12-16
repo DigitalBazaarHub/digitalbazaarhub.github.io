@@ -1,0 +1,156 @@
+# Cadence Page Content — Bilingual
+# en: English (first)
+# ar: Arabic (second)
+
+kicker:
+  en: "Community cadence"
+  ar: "إيقاع المجتمع"
+
+title:
+  en: "How the bazaar keeps moving"
+  ar: "كيف يظلّ البازار حيًّا ومتحرّكًا"
+
+subtitle:
+  en: "We run a few things on purpose: recurring sessions and light structure that keep the signal clean and participation easy — so you can drop in, contribute, and leave with something useful."
+  ar: "نُدير بعض الأشياء عن قصد: جلسات متكرّرة وهيكلٌ خفيف يحافظ على نقاء الإشارة ويجعل المشاركة سهلة — لتدخل، وتُساهم، وتخرج بشيءٍ مفيد."
+
+hero_alt:
+  en: "People gathering in a warm digital bazaar"
+  ar: "تجمّع أناس في بازار رقمي دافئ"
+
+keep_up:
+  label:
+    en: "How to keep up:"
+    ar: "كيف تتابع؟"
+  text:
+    en: "Dates and reminders are posted in the WhatsApp <i>\"Announcements\"</i> group. Times vary — we try to rotate for different time zones."
+    ar: "نعلن المواعيد والتذكيرات في قروب «الإعلانات» على الواتساب. قد تختلف الأوقات — ونحاول المداورة بين المناطق الزمنية."
+
+rhythms:
+  heading:
+    en: "📅 Recurring sessions"
+    ar: "📅 جلسات متكرّرة"
+  items:
+    - title:
+        en: "📱 Bazaar Saturdays"
+        ar: "📱 بازار السبت"
+      description:
+        en: "A casual text-based Saturday session across the groups: share what you're building/learning, ask questions, and join the conversation."
+        ar: "جلسة كتابية خفيفة يوم السبت عبر المجموعات: شارك ما تبنيه/تتعلمه، اطرح أسئلة، وشارك في النقاش."
+      how:
+        en: "Best way to join: post a 2–3 line update + one clear question."
+        ar: "أفضل طريقة للمشاركة: تحديث قصير (سطران–ثلاثة) + سؤال واحد واضح."
+    - title:
+        en: "🎙️ Monthly Firesides"
+        ar: "🎙️ جلسات فايرسايد الشهرية"
+      description:
+        en: "A guest-led session (or panel) on one topic, with live Q&A. Format + time are announced in advance."
+        ar: "جلسة يقودها ضيف (أو حلقة نقاش) حول موضوع واحد مع أسئلة وأجوبة مباشرة. نعلن الشكل والموعد مسبقًا."
+      how:
+        en: "Best way to join: read the prompt, bring one thoughtful question, and follow up after."
+        ar: "أفضل طريقة للمشاركة: اقرأ تمهيد الجلسة، جهّز سؤالًا واحدًا جيدًا، ثم تابع بعد الجلسة."
+    - title:
+        en: "🤔 Periodic Q&A threads"
+        ar: "🤔 خيوط الأسئلة والأجوبة الدورية"
+      description:
+        en: "Async ask me anything threads with community experts. Great for deep questions without meeting times."
+        ar: "خيوط «اسألني أي شيء» غير متزامنة مع خبراء من المجتمع. ممتازة للأسئلة العميقة دون الالتزام بموعد."
+      how:
+        en: "Best way to join: give context + constraints + what you tried."
+        ar: "أفضل طريقة للمشاركة: سياق + قيود + ماذا جرّبت."
+    - title:
+        en: "🤝 Mentorship"
+        ar: "🤝 الإرشاد"
+      description:
+        en: "Structured mentorship with time-boxed office hours and clear asks. No vague promises — just proof-of-work and real feedback loops. Head to the <i>\"Advice & Mentorship\"</i> group."
+        ar: "إرشاد مُنظّم مع ساعات مكتب محددة المدة وطلبات واضحة. لا وعود مبهمة — فقط عمل حقيقي وحلقات ملاحظات. توجّه إلى قروب «النصائح والإرشاد»."
+      how:
+        en: "Best way to join: come with a specific question or challenge, not a general 'pick your brain' request."
+        ar: "أفضل طريقة للمشاركة: تعال بسؤال أو تحدٍّ محدد، وليس طلب عام «أريد أسألك»."
+
+participation:
+  heading:
+    en: "✅ How to participate (without getting overwhelmed)"
+    ar: "✅ كيف تشارك دون أن تُرهق"
+  do:
+    heading:
+      en: "Do this"
+      ar: "افعل هذا"
+    items:
+      - en: "Join 1–2 lanes first, stay unmuted for a week, then expand."
+        ar: "ابدأ بمسارين فقط، ولا تطفئ الإشعارات لمدة أسبوع، ثم زد تدريجيًا."
+      - en: "Ask with context, and follow up with outcomes."
+        ar: "اطرح الأسئلة بسياق، ثم عُد بنتيجة ما حدث."
+      - en: "Reply where you can genuinely help — not everywhere you have an opinion."
+        ar: "رُدّ حيث يمكنك مساعدة حقيقية — ليس في كل مكان لديك رأي فيه."
+  dont:
+    heading:
+      en: "Avoid this"
+      ar: "تجنّب هذا"
+    items:
+      - en: "Cross-posting the same message everywhere."
+        ar: "إعادة نشر نفس الرسالة في كل المجموعات."
+      - en: "Drive-by links with no context."
+        ar: "روابط سريعة بلا سياق."
+      - en: "\"DM me\" marketplace behavior or cold outreach."
+        ar: "سلوك «راسلني على الخاص» أو رسائل باردة دون تمهيد."
+
+host:
+  heading:
+    en: "🎙️ Want to host a Fireside or run a Q&A?"
+    ar: "🎙️ هل تريد استضافة فايرسايد أو حلقة سؤال وجواب؟"
+  text:
+    en: "We love community-led sessions. Keep it practical, focused, and useful."
+    ar: "نرحّب بالجلسات التي يقودها أعضاء المجتمع — بشرط أن تكون عملية ومركّزة ومفيدة."
+  template_label:
+    en: "Copy/paste pitch:"
+    ar: "انسخ/الصق هذا المقترح:"
+  template:
+    en: |
+      Topic: [one clear topic]
+      Format: [fireside / panel / Q&A thread]
+      Who it's for: [roles / level]
+      What people will walk away with: [3 bullets]
+      Suggested guests (optional): [names + why]
+      Preferred month/time zone: [optional]
+    ar: |
+      الموضوع: [موضوع واحد واضح]
+      الشكل: [فايرسايد / حلقة نقاش / خيط سؤال وجواب]
+      لمن؟: [أدوار / مستوى]
+      ماذا سيستفيد الناس منه؟: [3 نقاط]
+      ضيوف مقترحون (اختياري): [أسماء + لماذا]
+      شهر/فترة زمنية تقريبية: [اختياري]
+  copy_button:
+    en: "Copy"
+    ar: "نسخ"
+  copied:
+    en: "Copied!"
+    ar: "تم النسخ!"
+  note:
+    en: "Send this to the moderators (or post where you collect session proposals)."
+    ar: "أرسل هذا للمشرفين (أو انشره في المكان الذي تجمعون فيه مقترحات الجلسات)."
+
+faq:
+  heading:
+    en: "❓ Quick answers"
+    ar: "❓ إجابات سريعة"
+  items:
+    - question:
+        en: "Are sessions Arabic-only?"
+        ar: "هل الجلسات بالعربية فقط؟"
+      answer:
+        en: "No. Some are Arabic, some English, many are mixed. Both are welcome."
+        ar: "لا. بعضها عربي، بعضها إنجليزي، وكثير منها خليط. الاثنين مرحّب بهما."
+    - question:
+        en: "Do you post recaps?"
+        ar: "هل تنشرون ملخصات؟"
+      answer:
+        en: "Sometimes. If we do, we'll link them from the relevant group (and later, on the website)."
+        ar: "أحيانًا. وعندها نضع الرابط في القروب ذات الصلة (ولاحقًا على الموقع)."
+    - question:
+        en: "How do I know what's next?"
+        ar: "كيف أعرف ما القادم؟"
+      answer:
+        en: "<i>\"Announcements\"</i> group on WhatsApp — that's the source of truth."
+        ar: "قروب «الإعلانات» على الواتساب - هي مصدر الحقيقة."
+

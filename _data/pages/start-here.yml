@@ -1,0 +1,274 @@
+# Start Here page content - bilingual (en first, ar second)
+# Last updated: December 2025
+
+title:
+  en: "Start Here (60 seconds)"
+  ar: "ابدأ من هنا (٦٠ ثانية)"
+
+subtitle:
+  en: "Do these three steps to start contributing today and avoid getting overwhelmed."
+  ar: "اتبع هذه الخطوات الثلاث لتكون مُشاركًا—لا مُرهقًا—اليوم."
+
+# 3 Steps Checklist
+checklist:
+  heading:
+    en: "3 steps to get started"
+    ar: "٣ خطوات للبدء"
+  step1:
+    title:
+      en: "Join the WhatsApp Community"
+      ar: "انضم إلى مجتمع واتساب"
+    description:
+      en: "One tap gets you into the main hub. You'll see all the group lanes from there."
+      ar: "بنقرة واحدة تدخل إلى المركز الرئيسي. ومن هناك سترى كل مسارات/مجموعات البازار."
+    button:
+      en: "Join WhatsApp"
+      ar: "انضم إلى واتساب"
+  step2:
+    title:
+      en: "Post your intro in the \"General Chat\" group"
+      ar: "اكتب تعريفك في مجموعة \"الدردشة العامة\""
+    description:
+      en: "30 seconds. Use the template below—no fluff, just context so people know how to help."
+      ar: "٣٠ ثانية. استخدم القالب أدناه—بدون حشو—فقط سياق يساعد الناس يعرفون كيف يساعدوك."
+    button:
+      en: "Go to \"General Chat\" group"
+      ar: "اذهب إلى قروب \"الدردشة العامة\""
+  step3:
+    title:
+      en: "Join only 2 lanes (for now)"
+      ar: "انضم لمسارين فقط (مبدئيًا)"
+    description:
+      en: "Pick two groups that match what you actually do. More lanes = more noise. You can add more later."
+      ar: "اختر مجموعتين تناسبان ما تفعله فعلاً. كلما زادت المسارات زاد الضجيج. يمكنك إضافة المزيد لاحقًا."
+
+# Intro Template
+intro_template:
+  heading:
+    en: "📝 Post this intro (copy/paste)"
+    ar: "📝 انسخ/الصق هذا التعريف"
+  template:
+    en: |
+      👋 [Name] — [City/Country, optional]
+      
+      🛠 Role: [What you do — e.g. "Backend engineer at X" or "Solo founder building Y"]
+      
+      🔨 Building/Learning: [One line about your current focus]
+      
+      💡 Can help with: [1–2 things — e.g. "Python, system design, hiring engineers"]
+      
+      🔍 Looking for: [One thing — e.g. "Co-founder intros" or "Feedback on landing page"]
+      
+      🔗 [LinkedIn/GitHub/Website — optional]
+    ar: |
+      👋 [الاسم] — [المدينة/البلد، اختياري]
+      
+      🛠 الدور: [ماذا تعمل — مثال: مهندس برمجيات في شركة "س" أو مؤسس منفرد يبني "ص"]
+      
+      🔨 أبني/أتعلّم: [سطر واحد عن تركيزك الحالي]
+      
+      💡 أقدر أساعد في: [شيئان كحد أقصى — مثال: بايثون، تصميم الأنظمة، توظيف مهندسين]
+      
+      🔍 أبحث عن: [شيء واحد — مثال: "تعريفات لشريك مؤسس" أو "تعليق على صفحة هبوط"]
+      
+      🔗  روابط (اختياري) - linkedin, github, website
+  hint:
+    en: "Tip: Keep it short. You can always share more in conversation. If you want replies, end with one clear ask (feedback / intros / hiring / learning)."
+    ar: "نصيحة: خلّيه قصير. تقدر تضيف تفاصيل لاحقًا في النقاش. وإذا تريد ردود، اختم بطلب واحد واضح (تعليق / تعريفات / توظيف / تعلّم)."
+  copy_button:
+    en: "Copy"
+    ar: "نسخ"
+  copied:
+    en: "Copied!"
+    ar: "تم النسخ!"
+
+# Lanes
+lanes:
+  heading:
+    en: "🚦 Pick your 2 lanes"
+    ar: "🚦 اختر مسارين"
+  note_label:
+    en: "Rule of thumb:"
+    ar: "قاعدة ذهبية:"
+  note:
+    en: "Join 2 lanes today. Add more later if you stay unmuted for a week."
+    ar: "انضم لمسارين اليوم. أضف المزيد لاحقًا إذا بقيت غير مكتوم لمدة أسبوع."
+  join_button:
+    en: "Join →"
+    ar: "انضم →"
+  items:
+    - name:
+        en: "💬 General Chat"
+        ar: "💬 الدردشة العامة"
+      description:
+        en: "Introductions, casual discussion, random questions, community vibes, Bazaar Saturdays sessions"
+        ar: "التعريفات، حديث خفيف، أسئلة سريعة، أجواء المجتمع، وجلسات بازار السبت"
+    - name:
+        en: "🧑‍💻 Software & Engineering"
+        ar: "🧑‍💻 البرمجة والهندسة"
+      description:
+        en: "Code, architecture, tools, debugging, tech deep-dives"
+        ar: "كود، معمارية، أدوات، تصحيح أخطاء، نقاشات تقنية عميقة"
+    - name:
+        en: "👕 Product, Design & Growth"
+        ar: "👕 المنتج والتصميم والنمو"
+      description:
+        en: "UX, metrics, experiments, go-to-market, design critiques"
+        ar: "تجربة مستخدم، مؤشرات، تجارب، طرح للسوق، نقد/مراجعات تصميم"
+    - name:
+        en: "💼 Jobs Market"
+        ar: "💼 سوق الوظائف"
+      description:
+        en: "Hiring, job posts, contract gigs, career moves"
+        ar: "توظيف، إعلانات وظائف، عقود وفريلانس، تحركات مهنية"
+    - name:
+        en: "✍️ Advice & Mentorship"
+        ar: "✍️ النصيحة والإرشاد"
+      description:
+        en: "Career questions, feedback requests, \"how did you…\" threads"
+        ar: "أسئلة مهنية، طلبات ملاحظات، مواضيع \"كيف سويت…\""
+    - name:
+        en: "🤝 Management & Leadership"
+        ar: "🤝 الإدارة والقيادة"
+      description:
+        en: "Leading teams, org design, people problems, growth paths"
+        ar: "قيادة فرق، تصميم المنظمات، مشاكل الناس، مسارات نمو"
+    - name:
+        en: "🚀 Startups & Founders"
+        ar: "🚀 الشركات الناشئة والمؤسسون"
+      description:
+        en: "Fundraising, MVPs, pivots, co-founder matching"
+        ar: "تمويل، MVP، محاورات/تحولات، تعارف شركاء مؤسسين"
+    - name:
+        en: "🇯🇴 Jordanian Expats"
+        ar: "🇯🇴 الأردنيون المغتربون"
+      description:
+        en: "For Jordanians abroad—local context, diaspora connections"
+        ar: "للأردنيين في الخارج—سياق محلي وروابط الجالية"
+
+# Quality guidance
+quality:
+  ask_well:
+    heading:
+      en: "🎯 Ask well"
+      ar: "🎯 اسأل بشكل جيّد"
+    items:
+      - en: "**Context** — what's the situation?"
+        ar: "**السياق** — ما الوضع؟"
+      - en: "**What you tried** — show your work"
+        ar: "**ما الذي جرّبته** — ورّينا محاولاتك"
+      - en: "**Constraints** — timeline, budget, blockers"
+        ar: "**القيود** — وقت، ميزانية، عوائق"
+      - en: "**What you want** — feedback? options? an intro?"
+        ar: "**ماذا تريد** — رأي؟ خيارات؟ تعريف/Intro؟"
+  give_back:
+    heading:
+      en: "🤝 Give back"
+      ar: "🤝 ردّ الجميل"
+    items:
+      - en: "Follow up with what happened"
+        ar: "ارجع وشارك ماذا حدث بعد ذلك"
+      - en: "Keep requests public when possible"
+        ar: "خلّ طلباتك عامة قدر الإمكان"
+      - en: "Don't cross-post the same thing everywhere"
+        ar: "لا تكرر نفس الشيء في كل المجموعات"
+      - en: "Help others when you can"
+        ar: "ساعد غيرك عندما تقدر"
+
+# Cadence summary
+cadence:
+  heading:
+    en: "📅 Recurring sessions"
+    ar: "📅 جلسات متكررة"
+  items:
+    - title:
+        en: "Bazaar Saturdays"
+        ar: "بازار السبت"
+      description:
+        en: "A casual text-based Saturday session across the groups: share what you're building/learning, ask questions, and join the conversation."
+        ar: "جلسة يوم السبت الكتابية، بشكل خفيف وعبر المجموعات، شارك ما تبنيه/تتعلمه، اطرح أسئلة، وشارك في النقاش."
+    - title:
+        en: "Monthly Firesides"
+        ar: "جلسات فايرسايد الشهرية"
+      description:
+        en: "One or more guests, one topic, live Q&A. Announced in advance."
+        ar: "ضيف أو أكثر، موضوع واحد، وأسئلة وأجوبة مباشرة. يُعلن عنها مسبقًا."
+    - title:
+        en: "Periodic Q&A threads"
+        ar: "خيوط أسئلة وأجوبة دورية"
+      description:
+        en: "Async \"ask me anything\" from community experts."
+        ar: "أسئلة وأجوبة غير متزامنة (Async) من خبراء في المجتمع."
+  next_up:
+    en: "Next Fireside: announced in the Announcements group."
+    ar: "الجلسة القادمة: يُعلن عنها في مجموعة الإعلانات."
+  cta_text:
+    en: "See how the Bazaar works"
+    ar: "اطّلع على إيقاع البازار"
+
+# Rules summary
+rules_summary:
+  heading:
+    en: "📜 Rules in 20 seconds"
+    ar: "📜 القواعد في ٢٠ ثانية"
+  items:
+    - en: "No spam, no stealth promotion, no cross-posting"
+      ar: "لا سبام، لا ترويج مبطّن، ولا تكرار نشر نفس الشيء"
+    - en: "No \"DM me\" marketplace behavior"
+      ar: "لا سلوك \"راسلني على الخاص\" كسوق للصفقات"
+    - en: "Stay work-adjacent (no political/sectarian flamewars)"
+      ar: "التزم بمواضيع العمل (لا حروب سياسية/طائفية)"
+    - en: "Respect privacy and safety"
+      ar: "احترام الخصوصية والسلامة"
+    - en: "Mods can remove anyone making the space worse"
+      ar: "للمشرفين حق إزالة من يُسيء للمساحة"
+  button:
+    en: "Read full rules"
+    ar: "اقرأ القواعد كاملة"
+
+# Privacy notice
+privacy:
+  label:
+    en: "Privacy note:"
+    ar: "ملاحظة خصوصية:"
+  text:
+    en: "WhatsApp shows your phone number to members in the same groups. If you're not comfortable with that, don't join groups you're unsure about."
+    ar: "واتساب يُظهر رقم هاتفك لأعضاء المجموعات التي تشاركهم فيها. إذا لم تكن مرتاحًا لهذا، لا تنضم لمجموعات أنت غير متأكد منها."
+
+# FAQ
+faq:
+  heading:
+    en: "❓ Quick answers"
+    ar: "❓ إجابات سريعة"
+  items:
+    - question:
+        en: "Is this Arabic-only?"
+        ar: "هل المجتمع بالعربية فقط؟"
+      answer:
+        en: "No. Most discussion is in English or Arabic depending on who's talking. Both are welcome. Many threads are bilingual."
+        ar: "لا. أغلب النقاش يكون بالعربية أو بالإنجليزية حسب المتحدثين. كلاهما مرحّب به. كثير من الخيوط تكون ثنائية اللغة."
+    - question:
+        en: "Can I promote my product?"
+        ar: "هل أقدر أروّج لمنتجي؟"
+      answer:
+        en: "Yes—if you add context (who it's for, what problem it solves, what feedback you want). No drive-by links."
+        ar: "نعم—إذا أضفت سياقًا (لمن هو؟ ما المشكلة التي يحلّها؟ وما نوع الملاحظات التي تريدها). لا روابط سريعة بدون شرح."
+    - question:
+        en: "Can I DM people?"
+        ar: "هل أقدر أرسل رسائل خاصة للناس؟"
+      answer:
+        en: "Only if they've invited it or you have genuine context. Cold outreach = bad look. Start in public threads first."
+        ar: "فقط إذا كان الشخص دعا لذلك أو لديك سياق حقيقي. الإزعاج/التواصل البارد يعطي انطباعًا سيئًا. ابدأ في النقاشات العامة أولاً."
+    - question:
+        en: "Who moderates?"
+        ar: "من هم المشرفون؟"
+      answer:
+        en: "A small group of active community members. We nudge first, escalate if needed. Severe cases (harassment, spam) skip steps."
+        ar: "مجموعة صغيرة من أعضاء المجتمع النشطين. غالبًا نبدأ بتنبيه لطيف ثم نُصعّد عند الحاجة. الحالات الشديدة (تحرش، سبام) قد تتجاوز الخطوات."
+    - question:
+        en: "What if I mess up?"
+        ar: "ماذا لو أخطأت؟"
+      answer:
+        en: "You'll probably get a friendly nudge. We're not looking to kick people—just keep the signal high. Learn and move on."
+        ar: "غالبًا ستأخذ تنبيهًا لطيفًا. لسنا هنا لطرد الناس—فقط للحفاظ على جودة النقاش. تعلّم وكمل."
+

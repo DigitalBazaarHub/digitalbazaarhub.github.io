@@ -2,33 +2,39 @@
 layout: default
 ---
 {%- assign lang = page.lang | default: site.default_lang -%}
-{%- assign strings_key = 'strings_' | append: lang -%}
-{%- assign strings = site.data[strings_key] -%}
+{%- assign labels = site.data.common_labels -%}
+{%- assign page_content = site.data.pages.cadence -%}
+
+{%- comment -%} Pre-assign values for includes {%- endcomment -%}
+{%- assign hero_alt = page_content.hero_alt[lang] -%}
+{%- assign hero_kicker = page_content.kicker[lang] -%}
+{%- assign hero_title = page_content.title[lang] -%}
+{%- assign hero_subtitle = page_content.subtitle[lang] -%}
 
 <!-- Hero with banner (light/dark variants) -->
 {% include hero-banner.html 
    image_base="articles_hero_banner" 
-   alt=strings.cadence_page.hero_alt
-   kicker=strings.cadence_page.kicker
-   title=strings.cadence_page.title
-   subtitle=strings.cadence_page.subtitle
+   alt=hero_alt
+   kicker=hero_kicker
+   title=hero_title
+   subtitle=hero_subtitle
    hero_class="cadence-hero-image"
 %}
 
 <!-- Keep up callout -->
 <div class="callout-box callout-box--info callout-box--spaced">
-  <strong>{{ strings.cadence_page.keep_up.label }}</strong> {{ strings.cadence_page.keep_up.text }}
+  <strong>{{ page_content.keep_up.label[lang] }}</strong> {{ page_content.keep_up.text[lang] }}
 </div>
 
 <!-- 1) Recurring Sessions -->
 <section class="section">
-  <h2>{{ strings.cadence_page.rhythms.heading }}</h2>
+  <h2>{{ page_content.rhythms.heading[lang] }}</h2>
   <div class="rhythm-grid">
-    {%- for item in strings.cadence_page.rhythms.items -%}
+    {%- for item in page_content.rhythms.items -%}
     <div class="rhythm-card">
-      <h3>{{ item.title }}</h3>
-      <p class="rhythm-desc">{{ item.description }}</p>
-      <p class="rhythm-how">{{ item.how }}</p>
+      <h3>{{ item.title[lang] }}</h3>
+      <p class="rhythm-desc">{{ item.description[lang] }}</p>
+      <p class="rhythm-how">{{ item.how[lang] }}</p>
     </div>
     {%- endfor -%}
   </div>
@@ -36,21 +42,21 @@ layout: default
 
 <!-- 2) How to Participate -->
 <section class="section">
-  <h2>{{ strings.cadence_page.participation.heading }}</h2>
+  <h2>{{ page_content.participation.heading[lang] }}</h2>
   <div class="info-card-grid">
     <div class="info-card info-card--flat info-card--tall info-card--do">
-      <h3>{{ strings.cadence_page.participation.do.heading }}</h3>
+      <h3>{{ page_content.participation.do.heading[lang] }}</h3>
       <ul class="list-plain list-check">
-        {%- for item in strings.cadence_page.participation.do.items -%}
-        <li>{{ item }}</li>
+        {%- for item in page_content.participation.do.items -%}
+        <li>{{ item[lang] }}</li>
         {%- endfor -%}
       </ul>
     </div>
     <div class="info-card info-card--flat info-card--tall info-card--dont">
-      <h3>{{ strings.cadence_page.participation.dont.heading }}</h3>
+      <h3>{{ page_content.participation.dont.heading[lang] }}</h3>
       <ul class="list-plain list-cross">
-        {%- for item in strings.cadence_page.participation.dont.items -%}
-        <li>{{ item }}</li>
+        {%- for item in page_content.participation.dont.items -%}
+        <li>{{ item[lang] }}</li>
         {%- endfor -%}
       </ul>
     </div>
@@ -59,28 +65,35 @@ layout: default
 
 <!-- 3) Host a Session -->
 <section class="section">
-  <h2>{{ strings.cadence_page.host.heading }}</h2>
-  <p>{{ strings.cadence_page.host.text }}</p>
+  {%- assign host_heading = page_content.host.heading[lang] -%}
+  {%- assign host_template_label = page_content.host.template_label[lang] -%}
+  {%- assign host_template = page_content.host.template[lang] -%}
+  {%- assign host_copy_button = page_content.host.copy_button[lang] -%}
+  {%- assign host_copied = page_content.host.copied[lang] -%}
+  {%- assign host_note = page_content.host.note[lang] -%}
+  
+  <h2>{{ host_heading }}</h2>
+  <p>{{ page_content.host.text[lang] }}</p>
   
   {% include copy-block.html
      id="host-template-text"
-     heading=strings.cadence_page.host.template_label
+     heading=host_template_label
      heading_level=3
-     content=strings.cadence_page.host.template
-     button_text=strings.cadence_page.host.copy_button
-     copied_text=strings.cadence_page.host.copied
-     hint=strings.cadence_page.host.note
+     content=host_template
+     button_text=host_copy_button
+     copied_text=host_copied
+     hint=host_note
      lang=lang
   %}
 </section>
 
 <!-- 4) FAQ -->
 <section class="section">
-  <h2>{{ strings.cadence_page.faq.heading }}</h2>
-  {%- for item in strings.cadence_page.faq.items -%}
+  <h2>{{ page_content.faq.heading[lang] }}</h2>
+  {%- for item in page_content.faq.items -%}
   <div class="faq-item">
-    <strong>{{ item.question }}</strong>
-    <p>{{ item.answer }}</p>
+    <strong>{{ item.question[lang] }}</strong>
+    <p>{{ item.answer[lang] }}</p>
   </div>
   {%- endfor -%}
 </section>

@@ -1,0 +1,158 @@
+# Articles & Archive page content - bilingual (en first, ar second)
+# Last updated: December 2025
+
+# Archive page
+archive:
+  kicker:
+    en: "Full archive"
+    ar: "الأرشيف"
+  title:
+    en: "The shelves of the Digital Bazaar"
+    ar: "رفوف البازار الرقمي"
+  subtitle:
+    en: 'Every article, essay and field note that''s been written so far. Filters start with everything set to "all", sorted by newest first. Browse by year, month, topic, language or author.'
+    ar: "كل مقال وملاحظة ميدانية كُتبت حتى الآن. ابدأ بعرض الكل، ثم صفِّ حسب السنة أو الشهر أو الموضوع أو اللغة أو الكاتب."
+  hero_alt:
+    en: "Ancient archive shelves of scrolls mixed with glowing digital artifacts, tended by small robots."
+    ar: "رفوف أرشيف قديمة من اللفائف ممزوجة بقطع رقمية متوهجة، يعتني بها روبوتات صغيرة."
+
+# Articles listing page
+articles:
+  kicker:
+    en: "Articles & field notes"
+    ar: "المقالات والملاحظات"
+  title:
+    en: "Recent writings from the Digital Bazaar"
+    ar: "أحدث الكتابات من البازار الرقمي"
+  subtitle:
+    en: "Essays, reflections and notes from people in the Bazaar – on engineering, product, management, markets, careers and life. These are the latest pieces; older work lives in the archive."
+    ar: "مقالات وتأملات وملاحظات من أشخاص في البازار — في الهندسة، المنتج، الإدارة، الأسواق، والمسارات المهنية."
+  hero_alt:
+    en: "Groups of people and robots talking in the Digital Bazaar"
+    ar: "مجموعات من الناس والروبوتات يتحدثون في البازار الرقمي"
+  section_title:
+    en: "Latest essays"
+    ar: "أحدث المقالات"
+  section_sub:
+    en: "The most recent articles, sorted by newest first."
+    ar: "أحدث القطع مرتبة من الأحدث إلى الأقدم."
+  intro:
+    en: "Ideas and insights from Digital Bazaar members"
+    ar: "أفكار ورؤى من أعضاء البازار"
+  empty:
+    en: "No articles yet. Be the first to write!"
+    ar: "لا توجد مقالات بعد. كن أول من يكتب!"
+  no_results:
+    en: "No articles match the selected filters."
+    ar: "لا توجد مقالات تطابق عوامل التصفية."
+  featured:
+    en: "Featured Articles"
+    ar: "مقالات مميزة"
+
+# Archive filters
+filters:
+  title:
+    en: "Filter the archive"
+    ar: "تصفية الأرشيف"
+  subtitle:
+    en: "Use these controls to slice the archive."
+    ar: "استخدم أدوات التصفية لتحديد ما تريد."
+  all_articles:
+    en: "All articles"
+    ar: "كل المقالات"
+  all_years:
+    en: "all years"
+    ar: "كل السنوات"
+  newest:
+    en: "newest first"
+    ar: "الأحدث أولاً"
+  articles_count:
+    en: "articles"
+    ar: "مقالات"
+  language:
+    label:
+      en: "Language"
+      ar: "اللغة"
+    all:
+      en: "All languages"
+      ar: "الكل"
+    ar:
+      en: "العربية"
+      ar: "العربية"
+    en:
+      en: "English"
+      ar: "English"
+  category:
+    label:
+      en: "Category"
+      ar: "التصنيف"
+    all:
+      en: "All categories"
+      ar: "كل التصنيفات"
+  author:
+    label:
+      en: "Author"
+      ar: "الكاتب"
+    all:
+      en: "All authors"
+      ar: "الكل"
+    team:
+      en: "Bazaar Team"
+      ar: "فريق البازار"
+    member:
+      en: "Community member"
+      ar: "عضو من المجتمع"
+  time:
+    label:
+      en: "Year"
+      ar: "السنة"
+    all:
+      en: "All years"
+      ar: "كل السنوات"
+    week:
+      en: "Last Week"
+      ar: "آخر أسبوع"
+    month:
+      en: "Last Month"
+      ar: "آخر شهر"
+    year:
+      en: "This Year"
+      ar: "هذا العام"
+  sort:
+    label:
+      en: "Sort"
+      ar: "الترتيب"
+    newest:
+      en: "Newest first"
+      ar: "الأحدث أولاً"
+    oldest:
+      en: "Oldest first"
+      ar: "الأقدم أولاً"
+  clear:
+    en: "Clear filters"
+    ar: "مسح التصفية"
+  results:
+    en: "result"
+    ar: "نتيجة"
+  results_plural:
+    en: "results"
+    ar: "نتائج"
+
+# Article detail page
+article:
+  by:
+    en: "By"
+    ar: "بقلم"
+  published:
+    en: "Published on"
+    ar: "نُشر في"
+  read_time:
+    en: "min read"
+    ar: "دقائق للقراءة"
+  share:
+    en: "Share this article"
+    ar: "شارك المقال"
+  tags:
+    en: "Tags"
+    ar: "الوسوم"
+

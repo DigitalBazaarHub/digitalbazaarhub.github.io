@@ -1,0 +1,250 @@
+# Rules page content - bilingual (en first, ar second)
+# Last updated: December 2025
+
+kicker:
+  en: "Community rules"
+  ar: "قواعد المجتمع"
+
+title:
+  en: "How we keep the bazaar healthy"
+  ar: "كيف نحافظ على صحة البازار"
+
+dek:
+  en: "These guidelines exist so Digital Bazaar stays useful, warm, and safe — not to over-police conversation. If in doubt, choose clarity, generosity, and respect."
+  ar: "هذه الإرشادات موجودة ليبقى البازار الرقمي مفيداً ودافئاً وآمناً — لا لفرض رقابة زائدة. إذا ترددت، اختر الوضوح والكرم والاحترام."
+
+meta_note:
+  en: "This is a living document. We'll refine it as the community grows and new situations appear."
+  ar: "هذه وثيقة حيّة. سنحسّنها مع نمو المجتمع وظهور مواقف جديدة."
+
+short_version_label:
+  en: "Short version:"
+  ar: "باختصار:"
+
+short_version:
+  en: "Be respectful. Be useful. No spam. No DM-funnels. Keep it work-adjacent. Protect privacy. Moderators can remove anyone who repeatedly makes the bazaar worse."
+  ar: "الإحترام قبل كل شيء. كن مفيداً. لا سبام. لا قُمع «راسلني على الخاص». ابقَ قريباً من العمل. احمِ الخصوصية. للمشرفين حق إزالة من يكرر إفساد المكان."
+
+rules:
+  - number:
+      en: "01"
+      ar: "٠١"
+    title:
+      en: "Respect & safety come first"
+      ar: "الاحترام والأمان أولاً"
+    body:
+      en: |
+        Treat people with basic human decency. Disagreeing is fine; contempt is not.
+
+        **Not allowed:** harassment, hate, bullying, sexual harassment, threats, targeted insults, or pile-ons.
+
+        If someone asks you to stop, **stop**. If you're unsure whether something crosses a line, don't post it.
+      ar: |
+        عامل الناس بكرامة إنسانية. الاختلاف طبيعي؛ الاحتقار ليس كذلك.
+
+        **غير مسموح:** التحرش، الكراهية، التنمّر، التحرش الجنسي، التهديد، الإهانات الموجهة، أو حملات الاستهداف الجماعية.
+
+        إذا طلب منك شخص التوقف، **توقف**. وإن لم تكن متأكداً أن كلامك مناسب، لا تنشره.
+
+  - number:
+      en: "02"
+      ar: "٠٢"
+    title:
+      en: "Keep it work-adjacent (and avoid flame topics)"
+      ar: "ابقَ قريباً من العمل (وتجنّب مواضيع الحريق)"
+    body:
+      en: |
+        Digital Bazaar is for the digital world: tech, product, business, careers, research, startups, design, growth, leadership, and adjacent learning.
+
+        **Not allowed:** political/religious/sectarian fights, culture-war bait, or anything that predictably turns into a flame thread.
+
+        Side quests are okay occasionally — but lanes are for useful, work-adjacent conversation.
+      ar: |
+        البازار الرقمي للبيئة الرقمية: تقنية، منتجات، أعمال، مسارات مهنية، أبحاث، شركات ناشئة، تصميم، نمو، قيادة، وتعلّم مرتبط بذلك.
+
+        **غير مسموح:** معارك سياسية/دينية/طائفية، أو "طُعم" يجرّنا لحروب كلامية.
+
+        "الاستطرادات" ممكنة أحياناً — لكن المسارات مخصصة لما هو مفيد وقريب من العمل.
+
+  - number:
+      en: "03"
+      ar: "٠٣"
+    title:
+      en: "Ask well, answer well, and follow up"
+      ar: "اسأل جيداً، وأجب جيداً، ثم ارجع بالنتيجة"
+    body:
+      en: |
+        We optimize for practical help and real experience.
+
+        **When asking, include:** context, constraints, what you tried, and what "good help" looks like.
+
+        **When answering:** share what you've actually seen or done; ask clarifying questions before giving hot takes.
+
+        **Follow up matters:** if you got help, post what happened (outcome + what you learned). This is how the bazaar compounds.
+      ar: |
+        نحن نُحسّن مساحة تساعد عملياً وتشارك خبرات حقيقية.
+
+        **عند السؤال، اذكر:** السياق، القيود، ماذا جرّبت، وما شكل المساعدة التي تريدها.
+
+        **عند الإجابة:** شارك ما رأيته/جربته فعلاً، واسأل أسئلة توضيحية قبل "الآراء الساخنة".
+
+        **المتابعة مهمة:** إذا استفدت، ارجع وشارك ماذا حدث (النتيجة + ما تعلمته). هكذا يتراكم أثر البازار.
+
+  - number:
+      en: "04"
+      ar: "٠٤"
+    title:
+      en: "No spam, no stealth promotion, no cross-posting"
+      ar: "لا سبام، لا ترويج مبطّن، لا نشرٍ متكرر بين المسارات"
+    body:
+      en: |
+        Sharing is welcome. Attention theft is not.
+
+        **Allowed:** sharing your work with context, as part of a real discussion, or when someone asks.
+
+        **Not allowed:** link dumps, copy-paste promos, repeated posting, cross-posting the same thing across lanes, engagement farming, or "look at my thing" with no substance.
+
+        When in doubt, add: **who it's for, why it matters, and what you want** (feedback / hires / discussion).
+
+        **Examples**
+        - ✅ Good: "Hiring a backend engineer in Amman (remote ok). Stack: Go/Postgres. Range: X–Y. Looking for referrals. (Jobs lane)"
+        - ✅ Good: "We wrote a postmortem on our outage — sharing because it's relevant to today's thread. Key lesson: …"
+        - ❌ Not ok: Dropping the same "check my product/course" link in 3 lanes with no context.
+        - ❌ Not ok: "Amazing opportunity!! DM me" with no details.
+      ar: |
+        المشاركة مرحّب بها. سرقة الانتباه ليست كذلك.
+
+        **مسموح:** مشاركة عملك بسياق، ضمن نقاش حقيقي، أو عندما يطلبه أحد.
+
+        **غير مسموح:** رمي روابط بلا شرح، ترويج منسوخ/ملصوق، تكرار النشر، نشر نفس الشيء في عدة مسارات، اصطياد التفاعل، أو "شوفوا منتجي" بلا قيمة.
+
+        عند الشك، أضف: **لمن هذا؟ لماذا يهم؟ وماذا تريد؟** (نقاش / توظيف / ملاحظات).
+
+        **أمثلة**
+        - ✅ جيد: "نبحث عن مهندس Backend في عمّان (أو عن بُعد). التقنية: Go/Postgres. نطاق الراتب: X–Y. نبحث عن ترشيحات. (مسار الوظائف)"
+        - ✅ جيد: "هذه خلاصة Postmortem لعطل حصل معنا — أشاركها لأنها مرتبطة بنقاش اليوم. أهم درس: …"
+        - ❌ غير مناسب: نشر نفس رابط "دورتي/منتجي" في ٣ مسارات بدون سياق.
+        - ❌ غير مناسب: "فرصة رهيبة!! راسلني على الخاص" بدون تفاصيل.
+
+  - number:
+      en: "05"
+      ar: "٠٥"
+    title:
+      en: "Jobs & opportunities (verified, structured, and lane-only)"
+      ar: "الوظائف والفرص (موثّقة، منظمة، وفي مسارها فقط)"
+    body:
+      en: |
+        Job posts belong in **Jobs Market** — not in every group.
+
+        **Posts must include:** company, role, location/remote, type (FT/PT/contract), compensation range (if possible), and how to apply.
+
+        **Verified postings only:** moderators may ask for proof (company email, LinkedIn, or a credible reference). Unverifiable / shady posts can be removed.
+
+        **Not allowed:** recruiter spam, mass-DMs, or "DM me your CV" posts with zero details.
+      ar: |
+        منشورات الوظائف مكانها **مسار سوق الوظائف** — وليس في كل المجموعات.
+
+        **يجب أن تتضمن المنشورات:** الشركة، الدور، الموقع/عن بُعد، النوع (دوام كامل/جزئي/عقد)، نطاق الراتب (إن أمكن)، وطريقة التقديم.
+
+        **منشورات موثّقة فقط:** قد يطلب المشرفون إثباتاً (إيميل شركة، LinkedIn، أو مرجع موثوق). المنشورات غير القابلة للتحقق أو المريبة قد تُزال.
+
+        **غير مسموح:** سبام التوظيف، رسائل جماعية بالخاص، أو "أرسل CV" بدون أي تفاصيل.
+
+  - number:
+      en: "06"
+      ar: "٠٦"
+    title:
+      en: "DMs are not the default"
+      ar: "الرسائل الخاصة ليست الخيار الافتراضي"
+    body:
+      en: |
+        We discourage "DM me" funnels.
+
+        Default to public replies so everyone benefits. DM only:
+        - when someone explicitly asks you to, or
+        - for sensitive details after a public summary, or
+        - for introductions with consent.
+
+        **No cold outreach:** don't DM members pitches, offers, or recruiting messages they didn't request.
+
+        **Examples**
+        - ✅ Good: "I can intro you to a PM at Company X — want that intro?" (wait for yes)
+        - ✅ Good: "I'll DM the doc because it includes private info; here's the public summary: …"
+        - ❌ Not ok: DMing 20 members "I'm a recruiter, send CV."
+        - ❌ Not ok: DMing founders "I can grow your product" after they never engaged with you.
+      ar: |
+        نحن لا نشجع قُمع "راسلني على الخاص".
+
+        الخيار الافتراضي أن يكون الرد علناً ليستفيد الجميع. الخاص فقط:
+        - عندما يطلب الطرف الآخر ذلك صراحة، أو
+        - لتفاصيل حساسة بعد ملخص علني، أو
+        - لمقدمات/تعريفات بموافقة الطرفين.
+
+        **لا تواصل بارد:** لا ترسل بالخاص عروضاً أو ترويجاً أو رسائل توظيف لمن لم يطلبها.
+
+        **أمثلة**
+        - ✅ جيد: "أستطيع أن أعرّفك على PM في شركة X — هل تريد هذه المقدمة؟" (انتظر الموافقة)
+        - ✅ جيد: "سأرسل المستند بالخاص لأن فيه معلومات حساسة؛ وهذا الملخص العلني: …"
+        - ❌ غير مناسب: مراسلة ٢٠ عضواً: "أنا Recruiter، أرسلوا CV."
+        - ❌ غير مناسب: مراسلة مؤسسين: "سأنمّي منتجك" دون أي تفاعل أو طلب.
+
+  - number:
+      en: "07"
+      ar: "٠٧"
+    title:
+      en: "Privacy & WhatsApp reality"
+      ar: "الخصوصية وواقع واتساب"
+    body:
+      en: |
+        WhatsApp shows your phone number to group members. Be mindful with personal info.
+
+        **Consent rule:** don't share screenshots, quotes, or private details outside the bazaar without permission.
+
+        Don't doxx, don't expose identities, and don't share sensitive company/customer information that isn't yours to share.
+      ar: |
+        واتساب يُظهر رقم هاتفك لأعضاء المجموعات. انتبه لما تشاركه من معلومات شخصية.
+
+        **قاعدة الموافقة:** لا تنشر لقطات شاشة أو اقتباسات أو تفاصيل خاصة خارج البازار دون إذن.
+
+        لا تشهير/دَوْكسنغ، لا كشف هويات، ولا مشاركة معلومات حساسة عن شركة/عملاء ليست لك صلاحية نشرها.
+
+  - number:
+      en: "08"
+      ar: "٠٨"
+    title:
+      en: "Moderation & enforcement (how it works)"
+      ar: "الإشراف وآلية التطبيق (كيف يعمل الأمر)"
+    body:
+      en: |
+        Moderators protect the space — not people's egos.
+
+        Typical escalation:
+        **nudge → delete message → timeout/mute → removal → ban**
+
+        Severe cases (harassment, hate, scams, impersonation, doxxing) may skip steps.
+
+        If you feel unsafe or see something off, message a moderator privately with:
+        **(a) link/screenshot, (b) what happened, (c) what outcome you want.**
+      ar: |
+        دور المشرفين حماية المساحة — لا حماية مشاعر الأفراد.
+
+        غالباً يكون التصعيد هكذا:
+        **تنبيه → حذف الرسالة → كتم/مهلة → إزالة → حظر**
+
+        الحالات الشديدة (تحرش، كراهية، احتيال، انتحال، دَوْكسنغ) قد تتجاوز المراحل.
+
+        إذا شعرت بعدم الأمان أو رأيت شيئاً مريباً، راسل مشرفاً على الخاص مع:
+        **(أ) رابط/لقطة، (ب) ماذا حدث، (ج) ما النتيجة التي تريدها.**
+
+cta_title:
+  en: "See something off?"
+  ar: "ترى شيئاً غير مناسب؟"
+
+cta_text:
+  en: "If a message or interaction makes you uncomfortable, reach out to a moderator privately. We'd rather hear about it early than let it fester."
+  ar: "إذا جعلتك رسالة أو تفاعل غير مرتاح، تواصل مع مشرف على الخاص. نفضّل سماع ذلك مبكراً على تركه يتفاقم."
+
+cta_closing:
+  en: "If this sounds good to you, you'll probably enjoy the bazaar."
+  ar: "إذا كانت هذه القواعد تناسبك، فغالباً ستستمتع بالبازار."
+

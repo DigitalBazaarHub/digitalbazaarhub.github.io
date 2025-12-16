@@ -4,8 +4,7 @@
 {%- if lang == 'en' -%}
   {%- assign text_direction = 'ltr' -%}
 {%- endif -%}
-{%- assign strings_key = 'strings_' | append: lang -%}
-{%- assign strings = site.data[strings_key] -%}
+{%- assign labels = site.data.common_labels -%}
 <html lang="{{ lang }}" dir="{{ text_direction }}">
 <head>
   <!-- Prevent flash of wrong theme -->
@@ -21,37 +20,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   {%- if page.title -%}
-    <title>{{ page.title }} — {{ strings.site_title }}</title>
+    <title>{{ page.title }} — {{ labels.site_title[lang] }}</title>
   {%- else -%}
-    <title>{{ strings.site_title }} — {{ strings.site_tagline }}</title>
+    <title>{{ labels.site_title[lang] }} — {{ labels.site_tagline[lang] }}</title>
   {%- endif -%}
   
   <meta name="description" content="{{ page.excerpt | default: site.description }}">
   
   <!-- Open Graph (Facebook, WhatsApp, LinkedIn, Telegram) -->
   {%- if page.layout == 'home' or page.url == '/ar/' or page.url == '/en/' -%}
-  <meta property="og:title" content="{{ strings.site_title }}">
+  <meta property="og:title" content="{{ labels.site_title[lang] }}">
   {%- else -%}
-  <meta property="og:title" content="{{ page.title }} — {{ strings.site_title }}">
+  <meta property="og:title" content="{{ page.title }} — {{ labels.site_title[lang] }}">
   {%- endif -%}
-  <meta property="og:description" content="{{ page.excerpt | default: strings.site_tagline }}">
+  <meta property="og:description" content="{{ page.excerpt | default: labels.site_tagline[lang] }}">
   <meta property="og:type" content="{% if page.layout == 'article' %}article{% else %}website{% endif %}">
   <meta property="og:locale" content="{{ lang }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
-  <meta property="og:site_name" content="{{ strings.site_title }}">
+  <meta property="og:site_name" content="{{ labels.site_title[lang] }}">
   <meta property="og:image" content="{{ '/assets/img/og-image.jpg' | absolute_url }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="{{ strings.site_title }}">
+  <meta property="og:image:alt" content="{{ labels.site_title[lang] }}">
 
   <!-- Twitter Card (X) - Large Image -->
   <meta name="twitter:card" content="summary_large_image">
   {%- if page.layout == 'home' or page.url == '/ar/' or page.url == '/en/' -%}
-  <meta name="twitter:title" content="{{ strings.site_title }}">
+  <meta name="twitter:title" content="{{ labels.site_title[lang] }}">
   {%- else -%}
-  <meta name="twitter:title" content="{{ page.title }} — {{ strings.site_title }}">
+  <meta name="twitter:title" content="{{ page.title }} — {{ labels.site_title[lang] }}">
   {%- endif -%}
-  <meta name="twitter:description" content="{{ page.excerpt | default: strings.site_tagline }}">
+  <meta name="twitter:description" content="{{ page.excerpt | default: labels.site_tagline[lang] }}">
   <meta name="twitter:image" content="{{ '/assets/img/og-image.jpg' | absolute_url }}">
   
   <!-- Theme Color -->

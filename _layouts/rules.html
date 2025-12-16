@@ -2,41 +2,45 @@
 layout: default
 ---
 {%- assign lang = page.lang | default: site.default_lang -%}
-{%- assign strings_key = 'strings_' | append: lang -%}
-{%- assign strings = site.data[strings_key] -%}
+{%- assign labels = site.data.common_labels -%}
+{%- assign page_content = site.data.pages.rules -%}
 {%- assign text_align = 'start' -%}
+
+{% assign hero_kicker = page_content.kicker[lang] %}
+{% assign hero_title = page_content.title[lang] %}
+{% assign hero_subtitle = page_content.dek[lang] %}
 
 <!-- Rules hero with banner (light/dark variants) -->
 {% include hero-banner.html 
    image_base="rules_hero_banner" 
-   alt=strings.rules_page.hero_alt
-   kicker=strings.rules_page.kicker
-   title=strings.rules_page.title
-   subtitle=strings.rules_page.dek
+   alt=page_content.hero_alt
+   kicker=hero_kicker
+   title=hero_title
+   subtitle=hero_subtitle
    hero_class="rules-hero-image"
 %}
 
 <div class="rules-intro">
-  <p class="hint-text hint-text--aligned">{{ strings.rules_page.meta_note }}</p>
+  <p class="hint-text hint-text--aligned">{{ page_content.meta_note[lang] }}</p>
 </div>
 
 <div class="callout-box callout-box--info">
-  <strong>{{ strings.rules_page.short_version_label | default: 'Short version:' }}</strong> {{ strings.rules_page.short_version }}
+  <strong>{{ page_content.short_version_label[lang] }}</strong> {{ page_content.short_version[lang] }}
 </div>
 
 <ol class="rules-list">
-  {%- for rule in strings.rules_page.rules -%}
+  {%- for rule in page_content.rules -%}
   <li class="rule-item">
     <div class="rule-header">
-      <span class="rule-number">{{ rule.number }}</span>
-      <span class="rule-title">{{ rule.title }}</span>
+      <span class="rule-number">{{ rule.number[lang] }}</span>
+      <span class="rule-title">{{ rule.title[lang] }}</span>
     </div>
     <div class="rule-body">
-      {{ rule.body | markdownify }}
+      {{ rule.body[lang] | markdownify }}
       {%- if rule.list -%}
       <ul class="list-plain list-arrow">
         {%- for item in rule.list -%}
-        <li>{{ item }}</li>
+        <li>{{ item[lang] }}</li>
         {%- endfor -%}
       </ul>
       {%- endif -%}
@@ -46,12 +50,12 @@ layout: default
 </ol>
 
 <div class="callout-box callout-box--white callout-box--aligned">
-  <p><strong>{{ strings.rules_page.cta_title }}</strong> {{ strings.rules_page.cta_text }}</p>
-  <p>{{ strings.rules_page.cta_closing }}</p>
+  <p><strong>{{ page_content.cta_title[lang] }}</strong> {{ page_content.cta_text[lang] }}</p>
+  <p>{{ page_content.cta_closing[lang] }}</p>
   <p class="callout-cta">
     <a class="btn btn-primary" href="{{ site.social.whatsapp_community }}" target="_blank" rel="noopener">
-      <span>{{ strings.buttons.join_whatsapp }}</span>
-      <span aria-hidden="true">{{ strings.arrow_external }}</span>
+      <span>{{ labels.buttons.join_whatsapp[lang] }}</span>
+      <span aria-hidden="true">{{ labels.arrows.external[lang] }}</span>
     </a>
   </p>
 </div>

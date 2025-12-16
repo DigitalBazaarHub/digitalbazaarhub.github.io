@@ -2,10 +2,8 @@
 layout: default
 ---
 {%- assign content_lang = page.lang | default: site.default_lang -%}
-{%- assign strings_key = 'strings_' | append: content_lang -%}
-{%- assign strings = site.data[strings_key] -%}
-{%- assign strings_ar = site.data.strings_ar -%}
-{%- assign strings_en = site.data.strings_en -%}
+{%- assign labels = site.data.common_labels -%}
+{%- assign page_content = site.data.pages.articles -%}
 {%- assign categories = site.data.categories -%}
 
 {%- assign content_dir = 'rtl' -%}
@@ -32,8 +30,8 @@ layout: default
 
 <div class="article-page" 
      data-content-lang="{{ content_lang }}"
-     data-strings-ar='{"by":"{{ strings_ar.article.by }}","read_time":"{{ strings_ar.article.read_time }}","back_to_articles":"{{ strings_ar.buttons.back_to_articles }}","tags":"{{ strings_ar.article.tags | default: "الوسوم" }}"}'
-     data-strings-en='{"by":"{{ strings_en.article.by }}","read_time":"{{ strings_en.article.read_time }}","back_to_articles":"{{ strings_en.buttons.back_to_articles }}","tags":"{{ strings_en.article.tags | default: "Tags" }}"}'>
+     data-strings-ar='{"by":"{{ page_content.article.by.ar }}","read_time":"{{ page_content.article.read_time.ar }}","back_to_articles":"{{ strings.buttons.back_to_articles }}","tags":"{{ page_content.article.tags.ar }}"}'
+     data-strings-en='{"by":"{{ page_content.article.by.en }}","read_time":"{{ page_content.article.read_time.en }}","back_to_articles":"{{ strings.buttons.back_to_articles }}","tags":"{{ page_content.article.tags.en }}"}'>
   
   <header lang="{{ content_lang }}" dir="{{ content_dir }}">
       {%- if page.category -%}
@@ -47,8 +45,8 @@ layout: default
       {%- endif -%}
       
       <div class="meta">
-        {{ strings.article.by }} {{ page.author }}
-      {%- if page.reading_time -%} • {{ page.reading_time }} {{ strings.article.read_time }}{%- endif -%}
+        {{ page_content.article.by[content_lang] }} {{ page.author }}
+      {%- if page.reading_time -%} • {{ page.reading_time }} {{ page_content.article.read_time[content_lang] }}{%- endif -%}
       • {{ page.date | date: "%d %B %Y" }}
         • {{ post_lang_label }}
       </div>
@@ -72,7 +70,7 @@ layout: default
       
       {%- if page.tags and page.tags.size > 0 -%}
       <div class="tag-row">
-        <span data-i18n="tags">{{ strings.article.tags | default: "Tagged" }}:</span>
+        <span data-i18n="tags">{{ page_content.article.tags[content_lang] }}:</span>
         {%- for tag in page.tags -%}
         <span class="chip">#{{ tag }}</span>
         {%- endfor -%}

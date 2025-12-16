@@ -1,10 +1,8 @@
 {%- assign lang = include.lang | default: page.lang | default: site.default_lang -%}
 {%- assign post = include.post -%}
 {%- assign categories = site.data.categories -%}
-
-{%- comment -%} Load strings based on ARTICLE language (not site language) {%- endcomment -%}
-{%- assign card_strings_key = 'strings_' | append: post.lang -%}
-{%- assign card_strings = site.data[card_strings_key] -%}
+{%- assign article_content = site.data.pages.articles -%}
+{%- assign labels = site.data.common_labels -%}
 
 {%- comment -%} Category label in article's language {%- endcomment -%}
 {%- assign cat_label = post.category -%}
@@ -37,7 +35,7 @@
 {%- assign month_short = post.date | date: "%b" -%}
 {%- assign year_num = post.date | date: "%Y" -%}
 {%- if post.lang == 'ar' -%}
-  {%- assign month_localized = card_strings.months_short[month_short] | default: month_short -%}
+  {%- assign month_localized = labels.months_short[month_short] | default: month_short -%}
   {%- assign date_display = day_num | append: " " | append: month_localized | append: " " | append: year_num -%}
 {%- else -%}
   {%- assign date_display = post.date | date: "%d %b %Y" -%}
@@ -70,8 +68,8 @@
     <div class="card-title">{{ post.title }}</div>
     
     <div class="card-meta">
-      {{ card_strings.article.by }} {{ post.author }}
-      {%- if post.reading_time %} • {{ post.reading_time }} {{ card_strings.article.read_time }}{%- endif %}
+      {{ article_content.article.by[post.lang] }} {{ post.author }}
+      {%- if post.reading_time %} • {{ post.reading_time }} {{ article_content.article.read_time[post.lang] }}{%- endif %}
       • {{ date_display }}
       • {{ post_lang_label }}
     </div>

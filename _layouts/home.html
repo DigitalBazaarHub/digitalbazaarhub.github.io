@@ -2,8 +2,8 @@
 layout: default
 ---
 {%- assign lang = page.lang | default: site.default_lang -%}
-{%- assign strings_key = 'strings_' | append: lang -%}
-{%- assign strings = site.data[strings_key] -%}
+{%- assign labels = site.data.common_labels -%}
+{%- assign page_content = site.data.pages.home -%}
 
 <!-- Hero Section - Full Bleed with Overlay -->
 <section class="hero-home" aria-labelledby="hero-heading">
@@ -13,7 +13,7 @@ layout: default
     <source srcset="{{ '/assets/img/home_hero_banner-1200.webp' | relative_url }}" type="image/webp">
     <img 
       src="{{ '/assets/img/home_hero_banner-1200.webp' | relative_url }}" 
-      alt="{{ strings.hero.image_alt }}"
+      alt="{{ page_content.hero.image_alt[lang] }}"
       class="hero-home-img"
       width="1024"
       height="1024"
@@ -24,17 +24,17 @@ layout: default
   <div class="hero-home-gradient"></div>
   <div class="hero-home-content">
     <div class="hero-home-inner">
-      <div class="hero-kicker">{{ strings.hero.kicker }}</div>
-      <h1 class="hero-home-title" id="hero-heading">{{ strings.hero.headline }}</h1>
-      <p class="hero-home-sub">{{ strings.hero.description }}</p>
+      <div class="hero-kicker">{{ page_content.hero.kicker[lang] }}</div>
+      <h1 class="hero-home-title" id="hero-heading">{{ page_content.hero.headline[lang] }}</h1>
+      <p class="hero-home-sub">{{ page_content.hero.description[lang] }}</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="{{ site.social.whatsapp_community }}" target="_blank" rel="noopener">
-          <span>{{ strings.buttons.join_whatsapp }}</span>
-          <span aria-hidden="true">{{ strings.arrow_external }}</span>
+          <span>{{ labels.buttons.join_whatsapp[lang] }}</span>
+          <span aria-hidden="true">{{ labels.arrows.external[lang] }}</span>
         </a>
         <a class="btn btn-teal" href="/{{ lang }}/start-here/">
-          <span>{{ strings.buttons.start_here }}</span>
-          <span aria-hidden="true">{{ strings.arrow_right }}</span>
+          <span>{{ labels.buttons.start_here[lang] }}</span>
+          <span aria-hidden="true">{{ labels.arrows.right[lang] }}</span>
         </a>
       </div>
     </div>
@@ -44,17 +44,17 @@ layout: default
 <!-- 1) WHAT HAPPENS IN THE BAZAAR -->
 <section class="section" id="about">
   <div class="section-header">
-    <div class="section-kicker">{{ strings.about.kicker }}</div>
-    <h2 class="section-title">{{ strings.about.title }}</h2>
-    <p class="section-sub">{{ strings.about.subtitle }}</p>
+    <div class="section-kicker">{{ page_content.about.kicker[lang] }}</div>
+    <h2 class="section-title">{{ page_content.about.title[lang] }}</h2>
+    <p class="section-sub">{{ page_content.about.subtitle[lang] }}</p>
   </div>
 
   <div class="features-grid">
-    {%- for feature in strings.about.features -%}
+    {%- for feature in page_content.about.features -%}
     <article class="feature-card">
-      <div class="feature-card-label">{{ feature.label }}</div>
-      <h3 class="feature-card-title">{{ feature.title }}</h3>
-      <p class="feature-card-body">{{ feature.description }}</p>
+      <div class="feature-card-label">{{ feature.label[lang] }}</div>
+      <h3 class="feature-card-title">{{ feature.title[lang] }}</h3>
+      <p class="feature-card-body">{{ feature.description[lang] }}</p>
     </article>
     {%- endfor -%}
   </div>
@@ -64,24 +64,24 @@ layout: default
 <!-- 2) HOW THE BAZAAR FLOWS - HIDDEN -->
 <section class="section" id="rhythm">
   <div class="section-header">
-    <div class="section-kicker">{{ strings.rhythm.kicker }}</div>
-    <h2 class="section-title">{{ strings.rhythm.title }}</h2>
-    <p class="section-sub">{{ strings.rhythm.subtitle }}</p>
+    <div class="section-kicker">{{ page_content.rhythm.kicker[lang] }}</div>
+    <h2 class="section-title">{{ page_content.rhythm.title[lang] }}</h2>
+    <p class="section-sub">{{ page_content.rhythm.subtitle[lang] }}</p>
   </div>
 
   <div class="two-col">
     <div>
       <ul class="clean">
-        {%- for item in strings.rhythm.items -%}
-        <li><strong>{{ item.title }}</strong> {{ item.description }}</li>
+        {%- for item in page_content.rhythm.items -%}
+        <li><strong>{{ item.title[lang] }}</strong> {{ item.description[lang] }}</li>
         {%- endfor -%}
       </ul>
     </div>
     <div class="callout">
-      <div class="mini-heading">{{ strings.rhythm.tips_title }}</div>
+      <div class="mini-heading">{{ page_content.rhythm.tips_title[lang] }}</div>
       <ul class="clean">
-        {%- for tip in strings.rhythm.tips -%}
-        <li>{{ tip }}</li>
+        {%- for tip in page_content.rhythm.tips -%}
+        <li>{{ tip[lang] }}</li>
         {%- endfor -%}
       </ul>
     </div>
@@ -92,27 +92,27 @@ layout: default
 <!-- 3) HOW WE KEEP THE BAZAAR HEALTHY (RULES SUMMARY) -->
 <section class="section" id="rules-summary">
   <div class="section-header">
-    <div class="section-kicker">{{ strings.rules_summary.kicker }}</div>
-    <h2 class="section-title">{{ strings.rules_summary.title }}</h2>
-    <p class="section-sub">{{ strings.rules_summary.subtitle }}</p>
+    <div class="section-kicker">{{ page_content.rules_summary.kicker[lang] }}</div>
+    <h2 class="section-title">{{ page_content.rules_summary.title[lang] }}</h2>
+    <p class="section-sub">{{ page_content.rules_summary.subtitle[lang] }}</p>
   </div>
 
   <div class="two-col">
     <div>
-      <div class="mini-heading">{{ strings.rules_summary.short_title }}</div>
+      <div class="mini-heading">{{ page_content.rules_summary.short_title[lang] }}</div>
       <ul class="list-plain list-arrow list-muted">
-        {%- for rule in strings.rules_summary.items -%}
-        <li><strong>{{ rule.title }}</strong> {{ rule.description }}</li>
+        {%- for rule in page_content.rules_summary.items -%}
+        <li><strong>{{ rule.title[lang] }}</strong> {{ rule.description[lang] }}</li>
         {%- endfor -%}
       </ul>
     </div>
     <div class="callout-box">
-      <p class="mini-heading">{{ strings.rules_summary.moderation_title }}</p>
-      <p>{{ strings.rules_summary.moderation_text }}</p>
+      <p class="mini-heading">{{ page_content.rules_summary.moderation_title[lang] }}</p>
+      <p>{{ page_content.rules_summary.moderation_text[lang] }}</p>
       <p style="margin-top:10px;">
         <a href="/{{ lang }}/rules/" class="btn btn-teal">
-          <span>{{ strings.buttons.read_full_rules }}</span>
-          <span aria-hidden="true">{{ strings.arrow_external }}</span>
+          <span>{{ labels.buttons.read_full_rules[lang] }}</span>
+          <span aria-hidden="true">{{ labels.arrows.external[lang] }}</span>
         </a>
       </p>
     </div>
@@ -122,9 +122,9 @@ layout: default
 <!-- SOFT CTA -->
 <section class="section">
   <div class="section-header">
-    <div class="section-kicker">{{ strings.cta.kicker }}</div>
-    <h2 class="section-title">{{ strings.cta.title }}</h2>
-    <p class="section-sub">{{ strings.cta.subtitle }}</p>
+    <div class="section-kicker">{{ page_content.cta.kicker[lang] }}</div>
+    <h2 class="section-title">{{ page_content.cta.title[lang] }}</h2>
+    <p class="section-sub">{{ page_content.cta.subtitle[lang] }}</p>
   </div>
 
 </section>

@@ -2,8 +2,8 @@
 layout: default
 ---
 {%- assign lang = page.lang | default: site.default_lang -%}
-{%- assign strings_key = 'strings_' | append: lang -%}
-{%- assign strings = site.data[strings_key] -%}
+{%- assign labels = site.data.common_labels -%}
+{%- assign page_content = site.data.pages.articles -%}
 {%- assign categories = site.data.categories -%}
 
 <!-- Archive hero with banner (light/dark variants) -->
@@ -15,7 +15,7 @@ layout: default
     <source srcset="{{ '/assets/img/archive_hero_banner-1200.webp' | relative_url }}" type="image/webp">
     <img 
       src="{{ '/assets/img/archive_hero_banner-1200.webp' | relative_url }}" 
-      alt="{{ strings.archive.hero_alt | default: 'Ancient archive shelves of scrolls mixed with glowing digital artifacts' }}"
+      alt="{{ page_content.archive.hero_alt[lang] }}"
       class="hero-image archive-hero-image"
       width="1200"
       height="400"
@@ -30,7 +30,7 @@ layout: default
     <source srcset="{{ '/assets/img/archive_hero_banner_dark-1200.webp' | relative_url }}" type="image/webp">
     <img 
       src="{{ '/assets/img/archive_hero_banner_dark-1200.webp' | relative_url }}" 
-      alt="{{ strings.archive.hero_alt | default: 'Ancient archive shelves of scrolls mixed with glowing digital artifacts' }}"
+      alt="{{ page_content.archive.hero_alt[lang] }}"
       class="hero-image archive-hero-image"
       width="1200"
       height="400"
@@ -38,61 +38,61 @@ layout: default
     >
   </picture>
   <div class="hero-text">
-    <div class="hero-kicker">{{ strings.archive.kicker | default: 'Full archive' }}</div>
-    <h1 class="hero-title">{{ strings.archive.title | default: 'The shelves of the Digital Bazaar' }}</h1>
-    <p class="hero-sub">{{ strings.archive.subtitle }}</p>
+    <div class="hero-kicker">{{ page_content.archive.kicker[lang] }}</div>
+    <h1 class="hero-title">{{ page_content.archive.title[lang] }}</h1>
+    <p class="hero-sub">{{ page_content.archive.subtitle[lang] }}</p>
   </div>
 </section>
 
 <!-- Filters -->
 <section class="filters-section">
-  <h2>{{ strings.filters.title | default: 'Filter the archive' }}</h2>
-  <p>{{ strings.filters.subtitle | default: 'Use these controls to slice the archive.' }}</p>
+  <h2>{{ page_content.filters.title[lang] }}</h2>
+  <p>{{ page_content.filters.subtitle[lang] }}</p>
 
   <div class="filters">
     <div class="filters-header">
-      <div class="filters-title" id="filters-summary">{{ strings.filters.all_articles | default: 'All articles' }} • {{ strings.filters.all_years | default: 'all years' }} • {{ strings.filters.newest | default: 'newest first' }}</div>
-      <div class="filters-clear" id="clear-filters">{{ strings.filters.clear | default: 'Clear filters' }}</div>
+      <div class="filters-title" id="filters-summary">{{ page_content.filters.all_articles[lang] }} • {{ page_content.filters.all_years[lang] }} • {{ page_content.filters.newest[lang] }}</div>
+      <div class="filters-clear" id="clear-filters">{{ page_content.filters.clear[lang] }}</div>
     </div>
     <div class="filters-grid">
       <div class="filter-group">
-        <label for="filter-language">{{ strings.filters.language.label | default: 'Language' }}</label>
+        <label for="filter-language">{{ page_content.filters.language.label[lang] }}</label>
         <select id="filter-language" class="filter-select">
-          <option value="">{{ strings.filters.language.all | default: 'All languages' }}</option>
-          <option value="en">{{ strings.filters.language.en | default: 'English' }}</option>
-          <option value="ar">{{ strings.filters.language.ar | default: 'العربية' }}</option>
+          <option value="">{{ page_content.filters.language.all[lang] }}</option>
+          <option value="en">{{ page_content.filters.language.en[lang] }}</option>
+          <option value="ar">{{ page_content.filters.language.ar[lang] }}</option>
         </select>
       </div>
       <div class="filter-group">
-        <label for="filter-category">{{ strings.filters.category.label | default: 'Category' }}</label>
+        <label for="filter-category">{{ page_content.filters.category.label[lang] }}</label>
         <select id="filter-category" class="filter-select">
-          <option value="">{{ strings.filters.category.all | default: 'All categories' }}</option>
+          <option value="">{{ page_content.filters.category.all[lang] }}</option>
           {%- for cat in categories -%}
           <option value="{{ cat.id }}">{% if lang == 'ar' %}{{ cat.ar }}{% else %}{{ cat.en }}{% endif %}</option>
           {%- endfor -%}
         </select>
       </div>
       <div class="filter-group">
-        <label for="filter-author">{{ strings.filters.author.label | default: 'Author' }}</label>
+        <label for="filter-author">{{ page_content.filters.author.label[lang] }}</label>
         <select id="filter-author" class="filter-select">
-          <option value="">{{ strings.filters.author.all | default: 'All authors' }}</option>
-          <option value="team">{{ strings.filters.author.team | default: 'Bazaar Team' }}</option>
-          <option value="member">{{ strings.filters.author.member | default: 'Community member' }}</option>
+          <option value="">{{ page_content.filters.author.all[lang] }}</option>
+          <option value="team">{{ page_content.filters.author.team[lang] }}</option>
+          <option value="member">{{ page_content.filters.author.member[lang] }}</option>
         </select>
       </div>
       <div class="filter-group">
-        <label for="filter-year">{{ strings.filters.time.label | default: 'Year' }}</label>
+        <label for="filter-year">{{ page_content.filters.time.label[lang] }}</label>
         <select id="filter-year" class="filter-select">
-          <option value="">{{ strings.filters.time.all | default: 'All years' }}</option>
+          <option value="">{{ page_content.filters.time.all[lang] }}</option>
           <option value="2025">2025</option>
           <option value="2024">2024</option>
         </select>
       </div>
       <div class="filter-group">
-        <label for="filter-sort">{{ strings.filters.sort.label | default: 'Sort' }}</label>
+        <label for="filter-sort">{{ page_content.filters.sort.label[lang] }}</label>
         <select id="filter-sort" class="filter-select">
-          <option value="newest">{{ strings.filters.sort.newest | default: 'Newest first' }}</option>
-          <option value="oldest">{{ strings.filters.sort.oldest | default: 'Oldest first' }}</option>
+          <option value="newest">{{ page_content.filters.sort.newest[lang] }}</option>
+          <option value="oldest">{{ page_content.filters.sort.oldest[lang] }}</option>
         </select>
       </div>
     </div>
@@ -111,7 +111,7 @@ layout: default
       {%- for month in posts_by_month -%}
     
     {%- if lang == 'ar' -%}
-      {%- assign month_display = strings.months[month.name] | default: month.name -%}
+      {%- assign month_display = labels.months[month.name] | default: month.name -%}
     {%- else -%}
       {%- assign month_display = month.name -%}
     {%- endif -%}
@@ -142,7 +142,7 @@ layout: default
       {%- assign day_num = post.date | date: "%-d" -%}
       {%- assign month_short = post.date | date: "%b" -%}
       {%- if lang == 'ar' -%}
-        {%- assign month_short_ar = strings.months_short[month_short] | default: month_short -%}
+        {%- assign month_short_ar = labels.months_short[month_short] | default: month_short -%}
         {%- assign date_display = day_num | append: " " | append: month_short_ar -%}
       {%- else -%}
         {%- assign date_display = month_short | append: " " | append: day_num -%}
@@ -155,7 +155,7 @@ layout: default
         <span class="archive-entry-date">{{ date_display }}</span>
         <div class="archive-entry-content">
           <a href="{{ post.url | relative_url }}?lang={{ lang }}" class="archive-entry-title">{{ post.title }}</a>
-          <div class="archive-entry-meta">{{ cat_label }} • {{ post_lang_label }}{% if post.reading_time %} • {{ post.reading_time }} {{ strings.article.read_time | default: 'min read' }}{% endif %}</div>
+          <div class="archive-entry-meta">{{ cat_label }} • {{ post_lang_label }}{% if post.reading_time %} • {{ post.reading_time }} {{ page_content.article.read_time[lang] }}{% endif %}</div>
               {%- if post.excerpt -%}
           <p class="archive-entry-teaser">{{ post.excerpt | strip_html | truncate: 160 }}</p>
               {%- endif -%}
@@ -313,10 +313,10 @@ layout: default
     
     // Update summary
     const parts = [];
-    parts.push(visible + ' {{ strings.filters.articles_count | default: "articles" }}');
+    parts.push(visible + ' {{ page_content.filters.articles_count[lang] | default: "articles" }}');
     if (year) parts.push(year);
-    else parts.push('{{ strings.filters.all_years | default: "all years" }}');
-    parts.push(sort === 'oldest' ? '{{ strings.filters.sort.oldest | default: "oldest first" }}' : '{{ strings.filters.sort.newest | default: "newest first" }}');
+    else parts.push('{{ page_content.filters.all_years[lang] | default: "all years" }}');
+    parts.push(sort === 'oldest' ? '{{ page_content.filters.sort.oldest[lang] | default: "oldest first" }}' : '{{ page_content.filters.sort.newest[lang] | default: "newest first" }}');
     summary.textContent = parts.join(' • ');
   }
   
@@ -337,7 +337,7 @@ layout: default
   
   // Initial count
   const entries = Array.from(document.querySelectorAll('.archive-entry'));
-  summary.textContent = entries.length + ' {{ strings.filters.articles_count | default: "articles" }} • {{ strings.filters.all_years | default: "all years" }} • {{ strings.filters.sort.newest | default: "newest first" }}';
+  summary.textContent = entries.length + ' {{ page_content.filters.articles_count[lang] | default: "articles" }} • {{ page_content.filters.all_years[lang] | default: "all years" }} • {{ page_content.filters.sort.newest[lang] | default: "newest first" }}';
 })();
 </script>
 
