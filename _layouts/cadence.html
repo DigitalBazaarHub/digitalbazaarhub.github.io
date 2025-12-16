@@ -6,45 +6,17 @@ layout: default
 {%- assign strings = site.data[strings_key] -%}
 
 <!-- Hero with banner (light/dark variants) -->
-<section class="hero">
-  <!-- Light mode hero image -->
-  <picture class="hero-image-light">
-    <source media="(max-width: 600px)" srcset="{{ '/assets/img/articles_hero_banner-600.webp' | relative_url }}" type="image/webp">
-    <source media="(max-width: 900px)" srcset="{{ '/assets/img/articles_hero_banner-800.webp' | relative_url }}" type="image/webp">
-    <source srcset="{{ '/assets/img/articles_hero_banner-1200.webp' | relative_url }}" type="image/webp">
-    <img 
-      src="{{ '/assets/img/articles_hero_banner-1200.webp' | relative_url }}" 
-      alt="{{ strings.cadence_page.hero_alt | default: 'People gathering in a warm digital bazaar' }}"
-      class="hero-image cadence-hero-image"
-      width="1200"
-      height="400"
-      loading="eager"
-      fetchpriority="high"
-    >
-  </picture>
-  <!-- Dark mode hero image -->
-  <picture class="hero-image-dark">
-    <source media="(max-width: 600px)" srcset="{{ '/assets/img/articles_hero_banner_dark-600.webp' | relative_url }}" type="image/webp">
-    <source media="(max-width: 900px)" srcset="{{ '/assets/img/articles_hero_banner_dark-800.webp' | relative_url }}" type="image/webp">
-    <source srcset="{{ '/assets/img/articles_hero_banner_dark-1200.webp' | relative_url }}" type="image/webp">
-    <img 
-      src="{{ '/assets/img/articles_hero_banner_dark-1200.webp' | relative_url }}" 
-      alt="{{ strings.cadence_page.hero_alt | default: 'People gathering in a warm digital bazaar' }}"
-      class="hero-image cadence-hero-image"
-      width="1200"
-      height="400"
-      loading="lazy"
-    >
-  </picture>
-  <div class="hero-text">
-    <div class="hero-kicker">{{ strings.cadence_page.kicker | default: 'Community rhythm' }}</div>
-    <h1 class="hero-title">{{ strings.cadence_page.title }}</h1>
-    <p class="hero-sub">{{ strings.cadence_page.subtitle }}</p>
-  </div>
-</section>
+{% include hero-banner.html 
+   image_base="articles_hero_banner" 
+   alt=strings.cadence_page.hero_alt
+   kicker=strings.cadence_page.kicker
+   title=strings.cadence_page.title
+   subtitle=strings.cadence_page.subtitle
+   hero_class="cadence-hero-image"
+%}
 
 <!-- Keep up callout -->
-<div class="callout-box callout-box--info" style="margin-top: var(--space-lg);">
+<div class="callout-box callout-box--info callout-box--spaced">
   <strong>{{ strings.cadence_page.keep_up.label }}</strong> {{ strings.cadence_page.keep_up.text }}
 </div>
 
@@ -90,39 +62,17 @@ layout: default
   <h2>{{ strings.cadence_page.host.heading }}</h2>
   <p>{{ strings.cadence_page.host.text }}</p>
   
-  <div class="intro-template">
-    <h3>{{ strings.cadence_page.host.template_label }}</h3>
-    <div class="template-wrapper">
-      <pre id="host-template-text" {% if lang == 'ar' %}dir="rtl"{% endif %}>{{ strings.cadence_page.host.template }}</pre>
-      <button class="copy-btn" id="copy-host-btn" type="button" aria-label="{{ strings.cadence_page.host.copy_button }}">
-        <span class="copy-icon">📋</span>
-        <span class="copy-text">{{ strings.cadence_page.host.copy_button }}</span>
-      </button>
-    </div>
-    <p class="hint-text">{{ strings.cadence_page.host.note }}</p>
-  </div>
+  {% include copy-block.html
+     id="host-template-text"
+     heading=strings.cadence_page.host.template_label
+     heading_level=3
+     content=strings.cadence_page.host.template
+     button_text=strings.cadence_page.host.copy_button
+     copied_text=strings.cadence_page.host.copied
+     hint=strings.cadence_page.host.note
+     lang=lang
+  %}
 </section>
-
-<script>
-(function() {
-  const btn = document.getElementById('copy-host-btn');
-  const pre = document.getElementById('host-template-text');
-  if (!btn || !pre) return;
-  
-  btn.addEventListener('click', function() {
-    const text = pre.textContent;
-    navigator.clipboard.writeText(text).then(function() {
-      const originalText = btn.querySelector('.copy-text').textContent;
-      btn.querySelector('.copy-text').textContent = '{{ strings.cadence_page.host.copied | default: "Copied!" }}';
-      btn.classList.add('copied');
-      setTimeout(function() {
-        btn.querySelector('.copy-text').textContent = originalText;
-        btn.classList.remove('copied');
-      }, 2000);
-    });
-  });
-})();
-</script>
 
 <!-- 4) FAQ -->
 <section class="section">

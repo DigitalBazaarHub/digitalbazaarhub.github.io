@@ -1,0 +1,68 @@
+{% comment %}
+  Hero Banner Include
+  ===================
+  A responsive hero section with light/dark mode images.
+  
+  Parameters:
+  - image_base: Base name for hero images (e.g., 'articles_hero_banner')
+  - alt: Alt text for the hero image
+  - kicker: Small label above the title
+  - title: Main heading (h1)
+  - subtitle: Supporting text below the title
+  - hero_class: Additional class for the hero-image (e.g., 'cadence-hero-image')
+  
+  Usage:
+  {% include hero-banner.html 
+     image_base="articles_hero_banner" 
+     alt=strings.cadence_page.hero_alt
+     kicker=strings.cadence_page.kicker
+     title=strings.cadence_page.title
+     subtitle=strings.cadence_page.subtitle
+     hero_class="cadence-hero-image"
+  %}
+{% endcomment %}
+
+{%- assign image_base = include.image_base | default: 'articles_hero_banner' -%}
+{%- assign hero_class = include.hero_class | default: '' -%}
+
+<section class="hero">
+  <!-- Light mode hero image -->
+  <picture class="hero-image-light">
+    <source media="(max-width: 600px)" srcset="{{ '/assets/img/' | append: image_base | append: '-600.webp' | relative_url }}" type="image/webp">
+    <source media="(max-width: 900px)" srcset="{{ '/assets/img/' | append: image_base | append: '-800.webp' | relative_url }}" type="image/webp">
+    <source srcset="{{ '/assets/img/' | append: image_base | append: '-1200.webp' | relative_url }}" type="image/webp">
+    <img 
+      src="{{ '/assets/img/' | append: image_base | append: '-1200.webp' | relative_url }}" 
+      alt="{{ include.alt | default: 'Hero banner for the Digital Bazaar' }}"
+      class="hero-image {{ hero_class }}"
+      width="1200"
+      height="400"
+      loading="eager"
+      fetchpriority="high"
+    >
+  </picture>
+  <!-- Dark mode hero image -->
+  <picture class="hero-image-dark">
+    <source media="(max-width: 600px)" srcset="{{ '/assets/img/' | append: image_base | append: '_dark-600.webp' | relative_url }}" type="image/webp">
+    <source media="(max-width: 900px)" srcset="{{ '/assets/img/' | append: image_base | append: '_dark-800.webp' | relative_url }}" type="image/webp">
+    <source srcset="{{ '/assets/img/' | append: image_base | append: '_dark-1200.webp' | relative_url }}" type="image/webp">
+    <img 
+      src="{{ '/assets/img/' | append: image_base | append: '_dark-1200.webp' | relative_url }}" 
+      alt="{{ include.alt | default: 'Hero banner for the Digital Bazaar' }}"
+      class="hero-image {{ hero_class }}"
+      width="1200"
+      height="400"
+      loading="lazy"
+    >
+  </picture>
+  <div class="hero-text">
+    {%- if include.kicker -%}
+    <div class="hero-kicker">{{ include.kicker }}</div>
+    {%- endif -%}
+    <h1 class="hero-title">{{ include.title }}</h1>
+    {%- if include.subtitle -%}
+    <p class="hero-sub">{{ include.subtitle }}</p>
+    {%- endif -%}
+  </div>
+</section>
+

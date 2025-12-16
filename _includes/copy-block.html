@@ -1,0 +1,69 @@
+{% comment %}
+  Copy Block Include
+  ==================
+  A copy-to-clipboard text block with button.
+  
+  Parameters:
+  - id: Unique ID for the pre element (required)
+  - heading: Optional heading text (uses h2 by default)
+  - heading_level: Heading level (2, 3, etc.). Default: 2
+  - content: The text content to copy
+  - button_text: Text on the copy button (default: 'Copy')
+  - copied_text: Text shown after copying (default: 'Copied!')
+  - hint: Optional hint text below the block
+  - lang: Current language for RTL support
+  
+  Usage:
+  {% include copy-block.html
+     id="intro-template-text"
+     heading=strings.start_here_page.intro_template.heading
+     content=strings.start_here_page.intro_template.template
+     button_text=strings.start_here_page.intro_template.copy_button
+     copied_text=strings.start_here_page.intro_template.copied
+     hint=strings.start_here_page.intro_template.hint
+     lang=lang
+  %}
+{% endcomment %}
+
+{%- assign block_id = include.id | default: 'copy-block' -%}
+{%- assign btn_id = 'copy-' | append: block_id | append: '-btn' -%}
+{%- assign heading_level = include.heading_level | default: 2 -%}
+{%- assign copied_text = include.copied_text | default: 'Copied!' -%}
+
+<div class="intro-template">
+  {%- if include.heading -%}
+  <h{{ heading_level }}>{{ include.heading }}</h{{ heading_level }}>
+  {%- endif -%}
+  <div class="template-wrapper">
+    <pre id="{{ block_id }}" {% if include.lang == 'ar' %}dir="rtl"{% endif %}>{{ include.content }}</pre>
+    <button class="copy-btn" id="{{ btn_id }}" type="button" aria-label="{{ include.button_text | default: 'Copy' }}">
+      <span class="copy-icon">📋</span>
+      <span class="copy-text">{{ include.button_text | default: 'Copy' }}</span>
+    </button>
+  </div>
+  {%- if include.hint -%}
+  <p class="hint-text">{{ include.hint }}</p>
+  {%- endif -%}
+</div>
+
+<script>
+(function() {
+  const btn = document.getElementById('{{ btn_id }}');
+  const pre = document.getElementById('{{ block_id }}');
+  if (!btn || !pre) return;
+  
+  btn.addEventListener('click', function() {
+    const text = pre.textContent;
+    navigator.clipboard.writeText(text).then(function() {
+      const originalText = btn.querySelector('.copy-text').textContent;
+      btn.querySelector('.copy-text').textContent = '{{ copied_text }}';
+      btn.classList.add('copied');
+      setTimeout(function() {
+        btn.querySelector('.copy-text').textContent = originalText;
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  });
+})();
+</script>
+

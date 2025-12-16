@@ -50,38 +50,15 @@ layout: default
 </div>
 
 <!-- 3) Intro Template -->
-<div class="intro-template">
-  <h2>{{ strings.start_here_page.intro_template.heading }}</h2>
-  <div class="template-wrapper">
-    <pre id="intro-template-text" {% if lang == 'ar' %}dir="rtl"{% endif %}>{{ strings.start_here_page.intro_template.template }}</pre>
-    <button class="copy-btn" id="copy-template-btn" type="button" aria-label="{{ strings.start_here_page.intro_template.copy_button }}">
-      <span class="copy-icon">📋</span>
-      <span class="copy-text">{{ strings.start_here_page.intro_template.copy_button }}</span>
-    </button>
-  </div>
-  <p class="hint-text">{{ strings.start_here_page.intro_template.hint }}</p>
-</div>
-
-<script>
-(function() {
-  const btn = document.getElementById('copy-template-btn');
-  const pre = document.getElementById('intro-template-text');
-  if (!btn || !pre) return;
-  
-  btn.addEventListener('click', function() {
-    const text = pre.textContent;
-    navigator.clipboard.writeText(text).then(function() {
-      const originalText = btn.querySelector('.copy-text').textContent;
-      btn.querySelector('.copy-text').textContent = '{{ strings.start_here_page.intro_template.copied | default: "Copied!" }}';
-      btn.classList.add('copied');
-      setTimeout(function() {
-        btn.querySelector('.copy-text').textContent = originalText;
-        btn.classList.remove('copied');
-      }, 2000);
-    });
-  });
-})();
-</script>
+{% include copy-block.html
+   id="intro-template-text"
+   heading=strings.start_here_page.intro_template.heading
+   content=strings.start_here_page.intro_template.template
+   button_text=strings.start_here_page.intro_template.copy_button
+   copied_text=strings.start_here_page.intro_template.copied
+   hint=strings.start_here_page.intro_template.hint
+   lang=lang
+%}
 
 <!-- 4) Pick Your 2 Lanes -->
 <section class="section">
@@ -89,7 +66,7 @@ layout: default
   <div class="callout-box callout-box--info">
     <strong>{{ strings.start_here_page.lanes.note_label | default: "Rule of thumb:" }}</strong> {{ strings.start_here_page.lanes.note }}
   </div>
-  <div class="info-card-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+  <div class="info-card-grid info-card-grid--lanes">
     {%- for lane in strings.start_here_page.lanes.items -%}
     <div class="info-card info-card--sm info-card--flat">
       <h3>{{ lane.name }}</h3>

@@ -4,78 +4,51 @@ layout: default
 {%- assign lang = page.lang | default: site.default_lang -%}
 {%- assign strings_key = 'strings_' | append: lang -%}
 {%- assign strings = site.data[strings_key] -%}
+{%- assign text_align = 'start' -%}
 
 <!-- Rules hero with banner (light/dark variants) -->
-<section class="hero">
-  <!-- Light mode hero image -->
-  <picture class="hero-image-light">
-    <source media="(max-width: 600px)" srcset="{{ '/assets/img/rules_hero_banner-600.webp' | relative_url }}" type="image/webp">
-    <source media="(max-width: 900px)" srcset="{{ '/assets/img/rules_hero_banner-800.webp' | relative_url }}" type="image/webp">
-    <source srcset="{{ '/assets/img/rules_hero_banner-1200.webp' | relative_url }}" type="image/webp">
-    <img 
-      src="{{ '/assets/img/rules_hero_banner-1200.webp' | relative_url }}" 
-      alt="{{ strings.rules_page.hero_alt | default: 'Ancient scrolls with community guidelines in the Digital Bazaar' }}"
-      class="hero-image rules-hero-image"
-      width="1200"
-      height="400"
-      loading="eager"
-      fetchpriority="high"
-    >
-  </picture>
-  <!-- Dark mode hero image -->
-  <picture class="hero-image-dark">
-    <source media="(max-width: 600px)" srcset="{{ '/assets/img/rules_hero_banner_dark-600.webp' | relative_url }}" type="image/webp">
-    <source media="(max-width: 900px)" srcset="{{ '/assets/img/rules_hero_banner_dark-800.webp' | relative_url }}" type="image/webp">
-    <source srcset="{{ '/assets/img/rules_hero_banner_dark-1200.webp' | relative_url }}" type="image/webp">
-    <img 
-      src="{{ '/assets/img/rules_hero_banner_dark-1200.webp' | relative_url }}" 
-      alt="{{ strings.rules_page.hero_alt | default: 'Ancient scrolls with community guidelines in the Digital Bazaar' }}"
-      class="hero-image rules-hero-image"
-      width="1200"
-      height="400"
-      loading="lazy"
-    >
-  </picture>
-  <div class="hero-text">
-    <div class="hero-kicker">{{ strings.rules_page.kicker }}</div>
-    <h1 class="hero-title">{{ strings.rules_page.title }}</h1>
-    <p class="hero-sub">{{ strings.rules_page.dek }}</p>
-  </div>
-</section>
+{% include hero-banner.html 
+   image_base="rules_hero_banner" 
+   alt=strings.rules_page.hero_alt
+   kicker=strings.rules_page.kicker
+   title=strings.rules_page.title
+   subtitle=strings.rules_page.dek
+   hero_class="rules-hero-image"
+%}
 
 <div class="rules-intro">
-  <p class="hint-text" style="text-align: start;">{{ strings.rules_page.meta_note }}</p>
+  <p class="hint-text hint-text--aligned">{{ strings.rules_page.meta_note }}</p>
 </div>
 
 <div class="callout-box callout-box--info">
-    <strong>{{ strings.rules_page.short_version_label | default: 'Short version:' }}</strong> {{ strings.rules_page.short_version }}
-  </div>
+  <strong>{{ strings.rules_page.short_version_label | default: 'Short version:' }}</strong> {{ strings.rules_page.short_version }}
+</div>
 
 <ol class="rules-list">
-    {%- for rule in strings.rules_page.rules -%}
+  {%- for rule in strings.rules_page.rules -%}
   <li class="rule-item">
     <div class="rule-header">
       <span class="rule-number">{{ rule.number }}</span>
       <span class="rule-title">{{ rule.title }}</span>
-      </div>
-      <div class="rule-body">
+    </div>
+    <div class="rule-body">
       {{ rule.body | markdownify }}
-        {%- if rule.list -%}
+      {%- if rule.list -%}
       <ul class="list-plain list-arrow">
-          {%- for item in rule.list -%}
-          <li>{{ item }}</li>
-          {%- endfor -%}
-        </ul>
-        {%- endif -%}
-      </div>
-    </li>
-    {%- endfor -%}
-  </ol>
+        {%- for item in rule.list -%}
+        <li>{{ item }}</li>
+        {%- endfor -%}
+      </ul>
+      {%- endif -%}
+    </div>
+  </li>
+  {%- endfor -%}
+</ol>
 
-<div class="callout-box callout-box--white" style="text-align: {% if lang == 'ar' %}right{% else %}left{% endif %};">
-    <p><strong>{{ strings.rules_page.cta_title }}</strong> {{ strings.rules_page.cta_text }}</p>
-    <p>{{ strings.rules_page.cta_closing }}</p>
-  <p style="margin-top: var(--space-md);">
+<div class="callout-box callout-box--white callout-box--aligned">
+  <p><strong>{{ strings.rules_page.cta_title }}</strong> {{ strings.rules_page.cta_text }}</p>
+  <p>{{ strings.rules_page.cta_closing }}</p>
+  <p class="callout-cta">
     <a class="btn btn-primary" href="{{ site.social.whatsapp_community }}" target="_blank" rel="noopener">
       <span>{{ strings.buttons.join_whatsapp }}</span>
       <span aria-hidden="true">{{ strings.arrow_external }}</span>

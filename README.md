@@ -43,46 +43,63 @@ Visit [http://localhost:4000](http://localhost:4000)
 | `make images-webp` | Convert to WebP (requires `webp`) |
 | `make setup-hooks` | Enable git pre-commit hooks |
 
-## Workflows
-
-### Adding a New Article
+## Adding a New Page
 
 ```bash
-# 1. Create the post file
-touch _posts/$(date +%Y-%m-%d)-my-article-slug.md
+# 1. Create the layout
+touch _layouts/my-page.html
 
-# 2. Add front matter and content (see template below)
+# 2. Create page files for each language
+mkdir -p ar/my-page en/my-page
+echo '---\nlayout: my-page\nlang: ar\npermalink: /ar/my-page/\n---' > ar/my-page/index.html
+echo '---\nlayout: my-page\nlang: en\npermalink: /en/my-page/\n---' > en/my-page/index.html
 
-# 3. Preview locally
+# 3. Add strings to _data/strings_ar.yml and _data/strings_en.yml
+
+# 4. Preview and build
 make serve
-
-# 4. Build and commit
 make prod-build
-git add .
-git commit -m "Add new article: My Article Title"
-git push
 ```
 
-### Updating Assets (Logo, Fonts, Images)
+**Layout template:**
 
-```bash
-# 1. Replace source files in assets/img/ (keep originals)
+```liquid
+---
+layout: default
+---
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign strings = site.data['strings_' | append: lang] -%}
 
-# 2. Regenerate optimized versions
-make images        # Creates resized PNG/JPG
-make images-webp   # Creates WebP versions
+{% include hero-banner.html 
+   image_base="my_page_hero"
+   title=strings.my_page.title
+   subtitle=strings.my_page.subtitle
+%}
 
-# 3. If updating fonts
-make assets
+<section class="section">
+  <h2>{{ strings.my_page.heading }}</h2>
+  <div class="info-card-grid">
+    {% for item in strings.my_page.items %}
+    <div class="info-card info-card--flat">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
 
-# 4. Build and commit
-make prod-build
-git add .
-git commit -m "Update assets"
-git push
+{% include copy-block.html
+   id="template-text"
+   heading=strings.my_page.template.heading
+   content=strings.my_page.template.content
+   button_text=strings.my_page.template.copy
+   lang=lang
+%}
 ```
 
-## Writing Articles
+📖 **Full reference:** See [`_design_docs/design-system.md`](_design_docs/design-system.md) for all components, tokens, and patterns.
+
+## Adding an Article
 
 Create `_posts/YYYY-MM-DD-slug.md`:
 
@@ -96,37 +113,41 @@ lang: ar               # 'ar' or 'en'
 category: community    # See _data/categories.yml
 author_type: team      # 'team' or 'member'
 excerpt: "Brief description"
-reading_time: 5        # Minutes
+reading_time: 5
 ---
 
-Your content here (supports Markdown and HTML)...
+Your content here...
 ```
 
 ## Project Structure
 
 ```
-_config.yml        # Jekyll config
-_data/             # Translations & content (strings_ar.yml, strings_en.yml, categories.yml)
-_docs/             # Design system documentation
-_includes/         # Components (article-card, header, footer)
-_layouts/          # Templates (home, article, archive, rules)
-_posts/            # Articles (bilingual)
-pages/ar/, pages/en/  # Language-specific pages
-assets/css/        # Styles (SCSS → compiled CSS)
-assets/fonts/      # Self-hosted fonts (Space Grotesk, IBM Plex Sans Arabic)
-assets/img/        # Optimized images (WebP)
-scripts/           # Utility scripts (download-assets.sh)
-Makefile           # Dev commands
+_config.yml           # Jekyll config
+_data/                # Translations (strings_ar.yml, strings_en.yml)
+_design_docs/         # Design system documentation
+_includes/            # Reusable components
+  ├── hero-banner.html   # Hero with light/dark images
+  ├── copy-block.html    # Copy-to-clipboard template
+  ├── article-card.html  # Article card component
+  ├── header.html        # Site header
+  └── footer.html        # Site footer
+_layouts/             # Page templates
+_posts/               # Articles
+ar/, en/              # Language-specific pages
+assets/
+  ├── css/styles.scss    # Main stylesheet
+  ├── fonts/             # Self-hosted fonts
+  └── img/               # Optimized images
 ```
 
 ## Fonts
 
-| Font | Language | Weights | Source |
-|------|----------|---------|--------|
-| Space Grotesk | English (LTR) | 400, 500, 700 | [Google Fonts](https://fonts.google.com/specimen/Space+Grotesk) |
-| IBM Plex Sans Arabic | Arabic (RTL) | 400, 500, 700 | [Google Fonts](https://fonts.google.com/specimen/IBM+Plex+Sans+Arabic) |
+| Font | Language | Weights |
+|------|----------|---------|
+| Space Grotesk | English | 400, 500, 700 |
+| IBM Plex Sans Arabic | Arabic | 400, 500, 700 |
 
-Fonts are self-hosted for performance. Run `make assets` to download.
+Fonts are self-hosted. Run `make assets` to download.
 
 ## Deployment
 
