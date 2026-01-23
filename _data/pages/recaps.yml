@@ -89,7 +89,9 @@ items:
     description:
       en: "Three founders shared their journey of building startups transparently, including failures and pivots. Key takeaway: vulnerability builds trust."
       ar: "شارك ثلاثة مؤسسين رحلتهم في بناء شركاتهم الناشئة بشفافية، بما في ذلك الإخفاقات والتحولات. الدرس الرئيسي: الانفتاح يبني الثقة."
-    url: null
+    url:
+      en: /articles/en-building-in-public-recap/
+      ar: null
 
   - title:
       en: "Product Management Q&A with Layla Hassan"

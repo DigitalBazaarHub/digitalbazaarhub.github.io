@@ -137,15 +137,21 @@ Each recap entry:
   description:
     en: "Brief summary of what happened and key takeaways."
     ar: "ملخص موجز لما حدث والنقاط الرئيسية."
-  url: null                             # Optional: link to detailed recap article
+  url: null                             # Optional: link to detailed recap article (see below)
 ```
 
 **Event types:** `fireside`, `panel`, `qa`, `workshop`, `bazaar_saturday`, `other`
 
-**Optional detailed recap:** If the event has a full write-up, create an article in `_posts/` and link it via the `url` field:
+**Optional detailed recap:** If the event has a full write-up, link it via the `url` field. Two formats supported:
 
 ```yaml
-  url: /articles/2025-01-18-building-in-public-recap/
+# Same article for both languages:
+  url: /articles/en-building-in-public-recap/
+
+# Different articles per language:
+  url:
+    en: /articles/en-building-in-public-recap/
+    ar: /articles/ar-building-in-public-recap/
 ```
 
 **View the page:** `/en/recaps/` or `/ar/recaps/` (not linked from nav — direct access only)

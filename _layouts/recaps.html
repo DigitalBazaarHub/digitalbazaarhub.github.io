@@ -23,7 +23,7 @@ layout: default
 
 <!-- Recaps Section -->
 <section class="section">
-  <h2>{{ page_content.recaps.heading[lang] }}</h2>
+  <h2 id="past-events">{{ page_content.recaps.heading[lang] }}</h2>
 
   {%- if page_content.items.size > 0 -%}
   <!-- Recaps Grid -->
@@ -37,7 +37,9 @@ layout: default
         <span class="recap-date">{{ item.date }}</span>
       </div>
       <h3>
-        {%- if item.url -%}
+        {%- if item.url[lang] -%}
+        <a href="{{ item.url[lang] | relative_url }}">{{ item.title[lang] }}</a>
+        {%- elsif item.url and item.url.en == nil and item.url.ar == nil -%}
         <a href="{{ item.url | relative_url }}">{{ item.title[lang] }}</a>
         {%- else -%}
         {{ item.title[lang] }}
@@ -90,10 +92,11 @@ layout: default
 
   totalPagesEl.textContent = totalPages;
 
-  function showPage(page) {
+  function showPage(page, shouldScroll) {
     const start = (page - 1) * ITEMS_PER_PAGE;
     const end = start + ITEMS_PER_PAGE;
 
+    // Update card visibility
     cards.forEach((card, index) => {
       if (index >= start && index < end) {
         card.style.display = '';
@@ -106,18 +109,23 @@ layout: default
     currentPageEl.textContent = page;
     prevBtn.disabled = page === 1;
     nextBtn.disabled = page === totalPages;
+
+    // Scroll to "Past Events" heading
+    if (shouldScroll) {
+      document.getElementById('past-events').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
   prevBtn.addEventListener('click', function() {
-    if (currentPage > 1) showPage(currentPage - 1);
+    if (currentPage > 1) showPage(currentPage - 1, true);
   });
 
   nextBtn.addEventListener('click', function() {
-    if (currentPage < totalPages) showPage(currentPage + 1);
+    if (currentPage < totalPages) showPage(currentPage + 1, true);
   });
 
-  // Initialize first page
-  showPage(1);
+  // Initialize first page without scrolling
+  showPage(1, false);
 })();
 </script>
 
