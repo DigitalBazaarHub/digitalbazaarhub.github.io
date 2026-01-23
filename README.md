@@ -119,6 +119,37 @@ reading_time: 5
 Your content here...
 ```
 
+## Adding a Recap
+
+Recaps are past community events (firesides, panels, Q&As, workshops, etc.). Add new recaps to `_data/pages/recaps.yml` — add entries at the top of the `items` list (newest first).
+
+Each recap entry:
+
+```yaml
+- title:
+    en: "Event Title in English"
+    ar: "عنوان الفعالية بالعربية"
+  date: "2025-01-18"                    # YYYY-MM-DD format
+  event_type: fireside                  # fireside | panel | qa | workshop | bazaar_saturday | other
+  host:
+    en: "Host Name"
+    ar: "اسم المضيف"
+  description:
+    en: "Brief summary of what happened and key takeaways."
+    ar: "ملخص موجز لما حدث والنقاط الرئيسية."
+  url: null                             # Optional: link to detailed recap article
+```
+
+**Event types:** `fireside`, `panel`, `qa`, `workshop`, `bazaar_saturday`, `other`
+
+**Optional detailed recap:** If the event has a full write-up, create an article in `_posts/` and link it via the `url` field:
+
+```yaml
+  url: /articles/2025-01-18-building-in-public-recap/
+```
+
+**View the page:** `/en/recaps/` or `/ar/recaps/` (not linked from nav — direct access only)
+
 ## Project Structure
 
 ```

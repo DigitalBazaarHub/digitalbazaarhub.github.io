@@ -2728,6 +2728,159 @@ code:not(pre code) {
 }
 
 /* --------------------------------------------------------------------------
+   19b. RECAPS PAGE
+   --------------------------------------------------------------------------
+   Recap cards, pagination controls.
+   Follows rhythm-card pattern with additional metadata display.
+   -------------------------------------------------------------------------- */
+
+/* Recaps grid - 2x2 on desktop, single column on mobile */
+.recap-grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+  .recap-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Recap card - event info with metadata */
+.recap-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 24px 28px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.12s ease, box-shadow 0.18s ease;
+}
+
+[data-theme="dark"] .recap-card {
+  background: var(--card-bg-featured);
+}
+
+.recap-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Recap metadata row */
+.recap-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+/* Event type badge */
+.recap-type {
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: var(--radius-md);
+  background: var(--teal);
+  color: var(--white);
+}
+
+.recap-type--fireside { background: var(--terracotta); }
+.recap-type--panel { background: var(--marigold); }
+.recap-type--qa { background: var(--teal); }
+.recap-type--workshop { background: #6b7280; }
+.recap-type--bazaar_saturday { background: var(--saffron); color: var(--ink); }
+.recap-type--other { background: var(--ink); }
+
+/* Date display */
+.recap-date {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+/* Card title */
+.recap-card h3 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-heading);
+  margin: 0 0 var(--space-sm);
+  line-height: var(--leading-tight);
+}
+
+.recap-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.recap-card h3 a:hover {
+  color: var(--teal);
+}
+
+/* Description */
+.recap-desc {
+  font-size: var(--text-md);
+  color: var(--text);
+  margin: 0 0 var(--space-md);
+  line-height: var(--leading-normal);
+}
+
+/* Host info */
+.recap-host {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin: 0;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border);
+  font-style: italic;
+}
+
+/* Pagination controls */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border);
+}
+
+.pagination-btn {
+  background: var(--teal);
+  color: var(--white);
+  border: none;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: var(--teal-dark, #267a86);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--text-md);
+  padding: var(--space-2xl) var(--space-lg);
+}
+
+/* --------------------------------------------------------------------------
    20. PRINT STYLES
    --------------------------------------------------------------------------
    Minimal print-friendly overrides.

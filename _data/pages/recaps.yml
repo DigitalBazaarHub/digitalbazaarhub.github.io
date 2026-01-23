@@ -1,0 +1,170 @@
+# Recaps Page Content — Bilingual
+# en: English (first)
+# ar: Arabic (second)
+
+kicker:
+  en: "Event recaps"
+  ar: "ملخّصات الفعاليات"
+
+title:
+  en: "What we've done together"
+  ar: "ما أنجزناه معًا"
+
+subtitle:
+  en: "A record of past community sessions, firesides, and gatherings. Browse, reflect, and catch up on what you might have missed."
+  ar: "سجلٌّ لجلسات المجتمع السابقة، والفايرسايدات، واللقاءات. تصفّح، وتأمّل، واطّلع على ما فاتك."
+
+hero_alt:
+  en: "Community members gathering around a warm discussion"
+  ar: "أعضاء المجتمع يجتمعون حول نقاش دافئ"
+
+# Pagination labels
+pagination:
+  previous:
+    en: "Previous"
+    ar: "السابق"
+  next:
+    en: "Next"
+    ar: "التالي"
+  page:
+    en: "Page"
+    ar: "صفحة"
+  of:
+    en: "of"
+    ar: "من"
+  showing:
+    en: "Showing"
+    ar: "عرض"
+  to:
+    en: "to"
+    ar: "إلى"
+
+# Section heading
+recaps:
+  heading:
+    en: "Past events"
+    ar: "الفعاليات السابقة"
+  empty:
+    en: "No recaps yet. Check back after our next event!"
+    ar: "لا توجد ملخّصات بعد. عُد بعد فعاليتنا القادمة!"
+
+# Event type labels (for display)
+event_types:
+  fireside:
+    en: "Fireside"
+    ar: "فايرسايد"
+  panel:
+    en: "Panel"
+    ar: "حلقة نقاش"
+  qa:
+    en: "Q&A"
+    ar: "سؤال وجواب"
+  workshop:
+    en: "Workshop"
+    ar: "ورشة عمل"
+  bazaar_saturday:
+    en: "Bazaar Saturday"
+    ar: "بازار السبت"
+  other:
+    en: "Event"
+    ar: "فعالية"
+
+# Recaps list — add new recaps at the top
+# Each recap has:
+#   - title (bilingual)
+#   - date: YYYY-MM-DD format
+#   - event_type: fireside | panel | qa | workshop | bazaar_saturday | other
+#   - host (bilingual) - who hosted/led the session
+#   - description (bilingual) - brief summary
+#   - url (optional) - relative URL to a detailed recap page/article
+items:
+  - title:
+      en: "Building in Public: Lessons from Arab Founders"
+      ar: "البناء علنًا: دروس من مؤسسين عرب"
+    date: "2025-01-18"
+    event_type: fireside
+    host:
+      en: "Ahmad & Sara"
+      ar: "أحمد وسارة"
+    description:
+      en: "Three founders shared their journey of building startups transparently, including failures and pivots. Key takeaway: vulnerability builds trust."
+      ar: "شارك ثلاثة مؤسسين رحلتهم في بناء شركاتهم الناشئة بشفافية، بما في ذلك الإخفاقات والتحولات. الدرس الرئيسي: الانفتاح يبني الثقة."
+    url: null
+
+  - title:
+      en: "Product Management Q&A with Layla Hassan"
+      ar: "سؤال وجواب في إدارة المنتجات مع ليلى حسن"
+    date: "2025-01-11"
+    event_type: qa
+    host:
+      en: "Layla Hassan"
+      ar: "ليلى حسن"
+    description:
+      en: "Deep dive into transitioning from engineering to PM, building roadmaps, and handling stakeholder conflicts."
+      ar: "غوص عميق في الانتقال من الهندسة إلى إدارة المنتجات، وبناء خرائط الطريق، والتعامل مع تضارب أصحاب المصلحة."
+    url: null
+
+  - title:
+      en: "Design Systems in Arabic-First Products"
+      ar: "أنظمة التصميم في المنتجات العربية أولًا"
+    date: "2025-01-04"
+    event_type: workshop
+    host:
+      en: "Nour Design Studio"
+      ar: "استوديو نور للتصميم"
+    description:
+      en: "Hands-on workshop covering RTL considerations, typography choices, and component architecture for bilingual apps."
+      ar: "ورشة عمل تطبيقية تغطي اعتبارات الاتجاه من اليمين لليسار، واختيارات الخطوط، وهندسة المكونات للتطبيقات ثنائية اللغة."
+    url: null
+
+  - title:
+      en: "Career Paths Panel: Tech Leadership"
+      ar: "حلقة نقاش المسارات المهنية: القيادة التقنية"
+    date: "2024-12-21"
+    event_type: panel
+    host:
+      en: "Bazaar Team"
+      ar: "فريق البازار"
+    description:
+      en: "Four tech leaders discussed paths to CTO/VP Engineering roles, managing up, and building engineering culture."
+      ar: "ناقش أربعة قادة تقنيين مسارات الوصول لأدوار CTO/نائب رئيس الهندسة، والإدارة للأعلى، وبناء ثقافة هندسية."
+    url: null
+
+  - title:
+      en: "Bazaar Saturday: Year-End Reflections"
+      ar: "بازار السبت: تأملات نهاية العام"
+    date: "2024-12-14"
+    event_type: bazaar_saturday
+    host:
+      en: "Community"
+      ar: "المجتمع"
+    description:
+      en: "Members shared their biggest wins and lessons from 2024. Lots of gratitude and goal-setting for the new year."
+      ar: "شارك الأعضاء أكبر إنجازاتهم ودروسهم من 2024. كثير من الامتنان وتحديد الأهداف للعام الجديد."
+    url: null
+
+  - title:
+      en: "Freelancing in the Arab World"
+      ar: "العمل الحر في العالم العربي"
+    date: "2024-12-07"
+    event_type: fireside
+    host:
+      en: "Omar & Fatima"
+      ar: "عمر وفاطمة"
+    description:
+      en: "Practical tips on pricing, contracts, finding clients, and managing finances as a freelancer in MENA."
+      ar: "نصائح عملية حول التسعير والعقود وإيجاد العملاء وإدارة المالية كعامل حر في منطقة الشرق الأوسط."
+    url: null
+
+  - title:
+      en: "Open Source Contributions Workshop"
+      ar: "ورشة المساهمة في المصادر المفتوحة"
+    date: "2024-11-30"
+    event_type: workshop
+    host:
+      en: "Karim Mansour"
+      ar: "كريم منصور"
+    description:
+      en: "From finding beginner-friendly issues to submitting your first PR. Live coding session with real repositories."
+      ar: "من إيجاد المشاكل المناسبة للمبتدئين إلى تقديم أول طلب دمج. جلسة برمجة حية مع مستودعات حقيقية."
+    url: null
