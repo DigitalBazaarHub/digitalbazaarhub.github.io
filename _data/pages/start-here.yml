@@ -110,11 +110,11 @@ lanes:
         en: "Code, architecture, tools, debugging, tech deep-dives"
         ar: "كود، معمارية، أدوات، تصحيح أخطاء، نقاشات تقنية عميقة"
     - name:
-        en: "👕 Product, Design & Growth"
-        ar: "👕 المنتج والتصميم والنمو"
+        en: "🚀 Business & Product"
+        ar: "🚀 الأعمال والمنتجات"
       description:
-        en: "UX, metrics, experiments, go-to-market, design critiques"
-        ar: "تجربة مستخدم، مؤشرات، تجارب، طرح للسوق، نقد/مراجعات تصميم"
+        en: "Fundraising, MVPs, pivots, UX, metrics, experiments, go-to-market, design critiques"
+        ar: "تمويل ،تجربة مستخدم، مؤشرات، تجارب، طرح للسوق، نقد/مراجعات تصميم، MVP، محاورات/تحولات"
     - name:
         en: "💼 Jobs Market"
         ar: "💼 سوق الوظائف"
@@ -133,12 +133,6 @@ lanes:
       description:
         en: "Leading teams, org design, people problems, growth paths"
         ar: "قيادة فرق، تصميم المنظمات، مشاكل الناس، مسارات نمو"
-    - name:
-        en: "🚀 Startups & Founders"
-        ar: "🚀 الشركات الناشئة والمؤسسون"
-      description:
-        en: "Fundraising, MVPs, pivots, co-founder matching"
-        ar: "تمويل، MVP، محاورات/تحولات، تعارف شركاء مؤسسين"
     - name:
         en: "🇯🇴 Jordanian Expats"
         ar: "🇯🇴 الأردنيون المغتربون"
